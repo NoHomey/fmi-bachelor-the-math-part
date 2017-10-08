@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\newcommand{\pto}[2]{\xrightarrow[#1 \to #2]{}}
+\newcommand{\xto}[1]{\pto{x}{#1}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\spc}[0]{\quad}
+\newcommand{\e}[0]{\varepsilon}
+\newcommand{\seq}[1]{\{#1_n\}_{n=1}^{\infty}}
+\newcommand{\cntrdcn}[0]{\lightning}
+\newcommand{\limk}[0]{\displaystyle\lim_{k \to \infty}}
+
+\title{Първата задача доц. Първанов я показа вчера на дъската, 2-рата е от мен :) Последното нещо е уравнение на допирателна към графика на фунцкия и връзката й с полинома на Тейлор}
+\author{Иво Стратев}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \maketitle
+    \section{}
+    \(f: [0, 6) \to \R\\
+    f(0) = 2\\
+    f(1) = 1\\
+    \displaystyle\lim_{x \to 6 - 0} f(x) = 3\\
+    1. \exists \min f(x), \; x \in [0, 6)\\
+    2. \text{Графика на фунцкия, която няма максимум}\)\\\\
+    \begin{tikzpicture}
+        \draw(-1,0) -- (7,0);
+        \draw(0,-1) -- (0,4);
+        \draw(0,2) to[out=20,in=-90] (1,1);
+        \draw(1,1) to[out=20,in=-100] (6,3);
+        \node [circle,draw,inner sep=0pt,minimum width=0.3cm] at (6,3) {}; 
+        \draw [dashed] (-1,2.5) -- (7,2.5);
+        \draw [dashed] (-1,3) -- (7,3);
+        \draw [dashed] (-1,3.5) -- (7,3.5);
+        \draw [dashed] (5.5,-1) -- (5.5,4);
+        \draw [dashed] (6,-1) -- (6,4);
+        \foreach \x in {0,1,2,3,4,5,6}
+            \draw (\x cm,3pt) -- (\x cm,-3pt) (\x, 0) node[below=3pt] {$ \x $};
+        \foreach \x in {1,2,3}
+            \draw (-3pt, \x cm) -- (3pt, \x cm) (0, \x) node[left=3pt] {$ \x $};
+    \end{tikzpicture}\\
+    \(\exists \delta < 1\; \forall x \in (6 - \delta, 6) \; f(x) \in (2,5,3,5)\\
+    x > 6 - \delta \implies f(x) > 2,5\\
+    \implies x \in [0, 6 - \delta] \; \exists \min f(x) \leq 1\)
+    \section{}
+    \(f: [0, 6) \to \R\\
+    f(0) = 4\\
+    f(4) = 2\\
+    \displaystyle\lim_{x \to 6 - 0} f(x) = 1\\
+    1. \exists \max f(x), \; x \in [1, 6)\\
+    2. \text{Графика на фунцкия, която няма минимум}\)\\\\
+    \begin{tikzpicture}
+        \draw(-1,0) -- (7,0);
+        \draw(0,-1) -- (0,5);
+        \draw(0,4) to[out=20,in=-100] (4,2);
+        \draw(4,2) to[out=20,in=100] (6,1);
+        \node [circle,draw,inner sep=0pt,minimum width=0.3cm] at (6,1) {}; 
+        \draw [dashed] (-1,1.5) -- (7,1.5);
+        \draw [dashed] (-1,1) -- (7,1);
+        \draw [dashed] (-1,0.5) -- (7,0.5);
+        \draw [dashed] (5.5,-1) -- (5.5,5);
+        \draw [dashed] (6,-1) -- (6,5);
+        \foreach \x in {0,1,2,3,4,5,6}
+            \draw (\x cm,3pt) -- (\x cm,-3pt) (\x, 0) node[below=3pt] {$ \x $};
+        \foreach \x in {1,2,3,4}
+            \draw (-3pt, \x cm) -- (3pt, \x cm) (0, \x) node[left=3pt] {$ \x $};
+    \end{tikzpicture}\\
+    \(\exists \delta < 1\; \forall x \in (6 - \delta, 6) \; f(x) \in (0,5,1,5)\\
+    x >  6 - \delta \implies f(x) < 1,5\\
+    \implies x \in [0, 6 - \delta] \; \exists \max f(x) \geq 4\)
+    \section{Уравнение на допирателна към графика на фунцкия}
+    \subsection{Полином на Тейлор}
+    \((T_n(a))(x) = \displaystyle\sum_{k = 0}^n \frac{f^{(k)}(a)}{k!}(x - a)^k\)
+    \subsection{Уравнение на допирателна към графика на фунцкия}
+    \(y = T_1(x_0) = f(x_0) + f'(x_0)(x - x_0)\)
+\end{document}

@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\newcommand{\pto}[2]{\xrightarrow[#1 \to #2]{}}
+\newcommand{\xto}[1]{\pto{x}{#1}}
+\newcommand{\nto}[0]{\pto{n}{\infty}}
+\newcommand{\kto}[0]{\pto{k}{\infty}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\spc}[0]{\quad}
+\newcommand{\e}[0]{\varepsilon}
+\newcommand{\seq}[1]{\{#1_n\}_{n=1}^{\infty}}
+\newcommand{\cntrdcn}[0]{\lightning}
+\newcommand{\limk}[0]{\displaystyle\lim_{k \to \infty}}
+
+\title{Аритметични действия със сходящи редици}
+\author{Иво Стратев}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \maketitle
+    \section{\("+"\)}
+    \(\seq{a} \nto a\\
+    \seq{b} \nto b\\
+    0 \leq |a_n + b_n - (a + b)| = |a_n - a + b_n - b| \leq |a_n - a| + |b_n - b|\\
+    |a_n - a| \nto 0, \; |b_n - b| \nto 0\\
+    \implies \seq{a_n + b} \nto a + b\)
+    \section{\("\--"\)}
+    \(\seq{a} \nto a\\
+    \seq{b} \nto b\\
+    0 \leq |a_n + b_n - (a + b)| = |a_n - a + b_n - b| \leq |a_n - a| + |b_n - b|\\
+    |a_n - a| \nto 0, \; |b_n - b| \nto 0\\
+    \implies \seq{a_n + b} \nto a + b\\
+    \seq{b} \nto b\\
+    \implies \forall \e > 0 \; \exists \nu; \; \forall n > \nu \implies |b_n - b| = |-(b_n - b)| = |-b_n + b| < \e\\
+    \implies \seq{-b} \nto -b\\
+    \implies \seq{a_n + (-)b} = \seq{a_n - b} \nto a + (-b) = a - b\\
+    \implies \seq{a_n - b} \nto a - b\)
+    \section{\("*"\)}
+    \(\seq{a} \nto a\\
+    \seq{b} \nto b\\
+    0 \leq |a_nb_n - ab| = |a_nb_n - ab \pm a_nb| =\\
+    = |a_n(b_n - b) + b(a_n - a)| \leq |a_n||b_n - b| + |b||a_n - a|\\
+    |b_n - b| \nto 0, \; |a_n - a| \nto  0\\
+    \seq{a} \text{ e ограничена} \implies |a_n||b_n - b| \nto 0\\
+    \implies |a_n||b_n - b| + |b||a_n - a| \nto 0 \implies |a_nb_n - ab| \nto 0\\
+    \implies \seq{a_nb} \nto ab\)
+    \section{\("/"\)}
+    \(\seq{a} \nto a\\
+    \seq{b} \nto b\\
+    0 \leq |a_nb_n - ab| = |a_nb_n - ab \pm a_nb| =\\
+    = |a_n(b_n - b) + b(a_n - a)| \leq |a_n||b_n - b| + |b||a_n - a|\\
+    |b_n - b| \nto 0, \; |a_n - a| \nto  0\\
+    \seq{a} \text{ e ограничена} \implies |a_n||b_n - b| \nto 0\\
+    \implies |a_n||b_n - b| + |b||a_n - a| \nto 0 \implies |a_nb_n - ab| \nto 0\\
+    \implies \seq{a_nb} \nto ab\\
+    \text{БОО } b > 0 \implies \seq{b} \nto b > 0\\
+    \implies \forall \e > 0 \; \exists \nu; \; \forall n > \nu\\
+    \implies |b_n - b| < \e \implies b_n \in (b - \e, b + \e)\\
+    \e := \frac{b}{2} \implies  b_n \in (b - \frac{b}{2}, b + \frac{b}{2}) \implies b_n \in (\frac{b}{2}, \frac{3b}{2})\\
+    \implies n < \nu \implies b_n \notin (\frac{b}{2}, \frac{3b}{2}) \implies n > \nu \implies b_n > \frac{b}{2} > 0\\
+    \implies |\frac{1}{b_n} - \frac{1}{b}| = |\frac{b - b_n}{bb_n}| = \frac{|b - b_n|}{|b||b_n|}\\
+    b_n > \frac{b}{2}, \; |b - b_n| \nto \e\\
+    \implies \frac{|b - b_n|}{|b||b_n|} < \frac{2}{b^2}|b - b_n| \nto 0\\
+    \implies \seq{\frac{1}{b}} \nto \frac{1}{b}\\
+    \implies \seq{a_n\frac{1}{b}} \nto a\frac{1}{b}\\
+    \implies \{\frac{a_n}{b_n}\}_{n=1}^{\infty} \nto \frac{a}{b}\)
+\end{document}

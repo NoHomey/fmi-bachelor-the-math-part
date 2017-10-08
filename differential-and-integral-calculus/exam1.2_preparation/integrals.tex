@@ -1,0 +1,219 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\cntrdcn}{\lightning}
+\newcommand{\dx}[1]{\,\mathrm{d}#1}
+\newcommand{\stkout}[1]{\ifmmode\text{\sout{\ensuremath{#1}}}\else\sout{#1}\fi}
+\newcommand{\iton}{n \in \N, \; i = [1, n] \subset \N}
+\newcommand{\sumk}{\sum_{k = 1}^n}
+\newcommand{\RimanSum}{\sumk f(\xi_k)(x_k - x_{k - 1})}
+\newcommand{\limRimanSum}{\lim_{diam(\tau) \to 0} \RimanSum}
+\newcommand{\intfromto}[2]{\int\limits_{#1}^{#2}}
+\newcommand{\intfromatob}{\intfromto{a}{b}}
+\newcommand{\sumDarbu}[1]{\sumk #1_k(x_k - x_{k - 1})}
+\newcommand{\sumf}{\sumDarbu{m}}
+\newcommand{\Sumf}{\sumDarbu{M}}
+\newcommand{\pto}[2]{\xrightarrow[#1 \to #2]{}}
+\newcommand{\nto}{\pto{n}{\infty}}
+\newcommand{\hto}{\pto{h}{0}}
+\newcommand{\limh}{\lim_{h \to 0}}
+
+\title{Теория за определен и неопределен интеграл}
+\author{Иво Стратев}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \maketitle
+    \section{Def. Неопределен интеграл от функция \(f(x)\) e функция \(F(x)\) удовлетворяваща условието \(F'(x) = f(x)\)}
+    \subsection{Интегриране по части}
+    \subsubsection{Опр. \(\int f(x)g'(x)\dx{x} = f(x)g(x) - \int g(x)f'(x)\dx{x}\)}
+    \subsubsection{Док-во:}
+    \(\\\int f(x)g'(x)\dx{x} = f(x)g(x) - \int g(x)f'(x)\dx{x} \; |()'\\
+    \\f(x)g'(x) = (f(x)g(x))' - g(x)f'(x)\\
+    \\f(x)g'(x) = \stkout{(f(x)'g(x)} + f(x)g'(x) - \stkout{g(x)f'(x)}\\
+    \\\implies f(x)g'(x) = f(x)g'(x)\)
+    \subsubsection{Бонус Док-во:}
+    \(\\\int f(x)g'(x)\dx{x} = \int f(x)\dx{g(x)}\\
+    \\g'(x) = \frac{\dx{g(x)}}{\dx{x}} \implies g'(x)\dx{x} = \dx{g(x)}\\
+    \\\implies \int f(x)\dx{g(x)} = f(x)g(x) - \int g(x)\dx{f(x)} =\\
+    \\ = f(x)g(x) - \int g(x)f'(x)\dx{x}\)
+    \subsection{Формула за смяна на променливите}
+    \subsubsection{Опр. \(\int f(x)\dx{x} = F(x) \implies \int f(\varphi(t))\varphi'(t)\dx{t} = F(\varphi(t))\)}
+    \subsubsection{Док-во:}
+    \(\\\int f(\varphi(t))\varphi'(t)\dx{t} = F(\varphi(t)) \; |()'\\
+    \\ f(\varphi(t))\varphi'(t) = (F(\varphi(t)))'\\
+    \\ f(\varphi(t))\varphi'(t) = F'(\varphi(t))\varphi'(t)\\
+    \\ f(\varphi(t))\varphi'(t) = f(\varphi(t))\varphi'(t)\\
+    \\\implies \int f(\varphi(t))\varphi'(t)\dx{t} = F(\varphi(t))\)
+    \subsection{Бонус Док-во:}
+    \(\int \frac{1}{x} \dx{x} = \ln|x|\\
+    \\x \geq 0 \implies |x| = x\\
+    \\\implies \int \frac{1}{x} \dx{x} = \ln(x) \; |()'\\
+    \\\implies \frac{1}{x} = \frac{1}{x}\\
+    \\x < 0 \implies |x| = -x\\
+    \\\implies \int \frac{1}{x} \dx{x} = \ln(-x) \; |()'\\
+    \\\implies \frac{1}{x} = \frac{1}{-x}(-1) = \frac{1}{x}\\
+    \\\implies \int \frac{1}{x} \dx{x} = \ln|x|\)
+    \section{Определен интеграл}
+    \subsection{Риман}
+    \(\\\iton\\ 
+    a, b \in \R, \; f : [a, b] \to \R\\
+    \tau = \{a = x_0 < x_1 < x_2 \ldots < x_{n - 1} < x_n = b\}\\
+    diam(\tau) = max\{x_k - x_{k - 1} \; | \; \forall k \in i, \; x_{k - 1}, x_k \in \tau\}\\
+    \xi_k \in [x_{k - 1}, \; x_k], \; \forall k \in i, \; \; x_{k - 1}, x_k \in \tau\\
+    S_R = \RimanSum \text{ сума на Риман}\\
+    \limRimanSum = \intfromatob f(x) \dx{x} = I\\
+    \\\forall \e > 0 \; \exists \delta_\e > 0 ; \; \forall \tau = \{a = x_0 < x_1 < x_2 \ldots < x_{n - 1} < x_n = b\}, \; diam(\tau) < \delta_\e\\
+    \forall \{\xi_1, \ldots, \xi_n\} ; \; \xi_k \in [x_{k - 1}, \; x_k], \; \forall k \in i, \; \; x_{k - 1}, x_k \in \tau\\
+    \implies |\RimanSum - I| < \e\\
+    \forall f \text{, за което е изпълнено горното условие е интегруема фунцкия в смисъл на Риман}\)
+    \subsection{Дарбу}
+    \(\\\iton\\ 
+    a, b \in \R, \; f : [a, b] \to \R\\
+    \tau = \{a = x_0 < x_1 < x_2 \ldots < x_{n - 1} < x_n = b\}\\
+    diam(\tau) = max\{x_k - x_{k - 1} \; | \; \forall k \in i, \; x_{k - 1}, x_k \in \tau\}\\
+    m_k = inf\{f(x) \; | \; x \in [x_{k - 1}, \; x_k]\} \forall k \in i\\
+    M_k = sup\{f(x) \; | \; x \in [x_{k - 1}, \; x_k]\} \forall k \in i\\
+    \\\text{Малка сума на Дарбу } s_f = \sumf, \; \underline{I} = sup s_f\\
+    \\\text{Голяма сума на Дарбу }S_f = \Sumf, \; \overline{I} = inf S_f\\\
+    \\\text{Ако} \underline{I} = \overline{I} = I, \text{ то } f(x) \text{ наричаме интегруема в смисъл на Дарбу и }\\
+    \intfromatob f(x) \dx{x} = I\)
+    \subsubsection{\(\underline{I}\)}
+    \(1. \forall \tau; \; \sumf \leq \underline{I}\\
+    2. \forall \e > 0 \; \exists \tau_\e; \; \sumf > \underline{I} - \e\)
+    \subsubsection{\(\overline{I}\)}
+    \(1. \forall \tau; \; \Sumf \geq \overline{I}\\
+    2. \forall \e > 0 \; \exists \tau_\e; \; \Sumf < \overline{I} + \e\)
+    \(\\\\\implies s_f \leq S_R \leq S_f\)
+    \\\\\\\begin{tikzpicture}
+        \draw(0,0) -- (6,0);
+        \foreach \x in {1,3,5}
+            \draw (\x cm,3pt) -- (\x cm,-3pt);
+        \draw (1,0) node[below=3pt] {$ \underline{I} - \e $};
+        \draw (2, 0) node[above=3pt] {малки суми};
+        \draw (3,0) node[below=3pt] {$ I $};
+        \draw (4, 0) node[above=3pt] {големи суми};
+        \draw (5,0) node[below=3pt] {$ \overline{I} + \e $};
+    \end{tikzpicture}
+    \(\\\\\tau' \succ \tau \iff \tau \subset \tau'\)
+    \subsubsection{\(\tau' \succ \tau \implies s_{f_\tau} \leq s_{f_{\tau'}}\) При добавяне на нови точки малките суми не намаляват}
+    \text{Док-во:}\\
+    \(\tau = \{x_0 < x_1 < x_2 \ldots < x_{n - 1} < x_n\}\\
+    j \in [1, n] \subset \N\\
+    \tau' = \tau \cup \{x'\}, \; x' \in (x_{j - 1}, x_j)\\
+    m' = inf\{f(x) \; | \; x \in [x_{j - 1}, \; x']\}\\
+    m'' = inf\{f(x) \; | \; x \in [x', \; x_j]\}\\
+    m_j = inf\{f(x) \; | \; x \in [x_{j - 1}, \; x_j]\}\\
+    \implies m', m'' \geq m_j\\
+    m'(x' - x_{j - 1}) + m''(x_j - x') \geq m_j(x' - x_{j - 1}) + m_j(x_j - x') =\\
+    = m_j(x_j - \stkout{x'} + \stkout{x'} - x_{j - 1}) = m_j(x_j - x_{j - 1})\\
+    \implies s_{f_\tau} \leq s_{f_{\tau'}}\)
+    \subsubsection{\(\tau' \succ \tau \implies S_{f_\tau} \geq S_{f_{\tau'}}\) При добавяне на нови точки големите суми не растат}
+    \text{Док-во:}\\
+    \(\tau = \{x_0 < x_1 < x_2 \ldots < x_{n - 1} < x_n\}\\
+    j \in [1, n] \subset \N\\
+    \tau' = \tau \cup \{x'\}, \; x' \in (x_{j - 1}, x_j)\\
+    M' = sup\{f(x) \; | \; x \in [x_{j - 1}, \; x']\}\\
+    M'' = sup\{f(x) \; | \; x \in [x', \; x_j]\}\\
+    M_j = sup\{f(x) \; | \; x \in [x_{j - 1}, \; x_j]\}\\
+    \implies M', M'' \leq M_j\\
+    M'(x' - x_{j - 1}) + M''(x_j - x') \leq M_j(x' - x_{j - 1}) + М_j(x_j - x') =\\
+    = M_j(x_j - \stkout{x'} + \stkout{x'} - x_{j - 1}) = М_j(x_j - x_{j - 1})\\
+    \implies s_{f_\tau} \geq s_{f_{\tau'}}\)
+    \subsubsection{Всяка малка сума не надминава, коя да е голяма сума}
+    \text{Док-во:}\\
+    \(\tau_1 = \{a = x_0 < x_1 < x_2 \ldots < x_{n - 1} < x_k = b\}\\
+    \tau_2 = \{a = x_0 < x_1 < x_2 \ldots < x_{n - 1} < x_j = b\}\\
+    \tau_3 = \tau_1 \cup \tau_2\\
+    \tau_3 = \tau_1 \cup \tau_2 \implies \tau_3 \succ \tau_1 \implies s_{f_{\tau_1}} \leq s_{f_{\tau_3}}\\
+    \tau_3 = \tau_1 \cup \tau_2 \implies \tau_3 \succ \tau_2 \implies S_{f_{\tau_3}} \leq S_{f_{\tau_2}}\\
+    \implies s_{f_{\tau_1}} \leq s_{f_{\tau_3}} \leq S_{f_{\tau_3}} \leq S_{f_{\tau_2}} \implies s_{f_{\tau_1}} \leq S_{f_{\tau_2}}\)
+    \subsubsection{Критерий на Дарбу (НДУ за интегруемост по Дарбу)}
+    \(\forall \e > 0 \; \exists \tau_1, \tau_2; \; S_{f_{\tau_1}} - s_{f_{\tau_2}} < e\\
+    \text{Док-во:}\\
+    (\Leftarrow)\\
+    s_{f_{\tau_2}} \leq \underline{I} \leq \overline{I} \leq S_{f_{\tau_1}} \implies \overline{I} - \underline{I} < \e \; \forall \e > 0\\
+    (\Rightarrow)\\
+    \implies s_{f_{\tau_2}} > \underline{I} - \frac{\e}{2}, \quad S_{f_{\tau_1}} < \overline{I} + \frac{\e}{2}\\
+    \overline{I} = \underline{I} = I \implies S_{f_{\tau_1}} - s_{f_{\tau_2}} < \stkout{I} + \frac{\e}{2} - \stkout{I} + \frac{\e}{2} < \e\\
+    \\\implies \sumk(M_k - m_k)(x_k - x_{k - 1}) < \e\)
+    \subsection{Всяка непрекъсната функция в даден интервал е интегрируема в него}
+    Док-во:\\
+    \(\forall \e > 0 \exists \delta > 0 ; \; \forall x_1, x_2 \in [a, b] \; |x_1 - x_2| < \delta\\
+    \implies |f(x_1) - f(x_2)| < \frac{\e}{2(b - a)}\\
+    \text{Ако } \tau = \{x_0 < x_1 < x_2 \ldots < x_{n - 1} < x_n\}, \; \dim \tau < \delta\\
+    \implies S_{f_\tau} - s_{f_\tau} = \sumk(M_k - m_k)(x_k - x_{k - 1}) < \frac{\e}{2\stkout{(b - a)}}\stkout{(b - a)} < \frac{\e}{2} < \e\)
+    \subsection{Всяка нарастваща и ограничена в даден интервал фунцкия е интегруема в него}
+     Док-во:\\
+    \(\tau = \{x_k = a + k\frac{b - a}{n} \; | \; \forall k \in [1,n] \subset \N\}, \implies diam\tau = \frac{b - a}{n}\\
+    \implies \lim_{n \to \infty} S_{f_\tau} - s_{f_\tau} = \lim_{n \to \infty} \sumk(M_k - m_k)(x_k - x_{k - 1}) = \\
+    = \lim_{n \to \infty} \sumk(f(x_k) - f(x_{k - 1}))(\frac{b - a}{n}) = (\frac{b - a}{n})(f(b) - f(a)) \nto 0\)
+    \subsection{Th За средните стойности}
+    \(f(x) : [a, b] \to [m, M]\) е интегруема\\
+    \(\implies m \leq \frac{\intfromatob f(x) \dx{x}}{b - a} \leq M\)\\
+    Док-во:\\
+    \(m \leq f(x) \leq M \; | \intfromatob \dx{x}\\
+    \intfromatob m \dx{x} \leq \intfromatob f(x) \dx{x} \leq \intfromatob M \dx{x}\\
+    m(b - a) \leq \intfromatob f(x) \dx{x} \leq M(b - a) \; |/(b - a)\\
+    \implies m \leq \frac{\intfromatob f(x) \dx{x}}{b - a} \leq M\)
+    \subsection{Втора Th За средните стойности}
+    \(f(x) : [a, b] \to [m, M]\) е интегруема\\
+    \(\implies \exists c \in [a, b]; \; \intfromatob f(x) \dx{x} = f(c)(b - a\)\\
+    Док-во Ползвайки горната теорема:\\
+    \(\implies m \leq \frac{\intfromatob f(x) \dx{x}}{b - a} \leq M\\
+    \mu = \frac{\intfromatob f(x) \dx{x}}{b - a} \implies m \leq \mu \leq M\)\\
+    Ако \(f(x)\) е непрекъсната\\
+    \(\implies \exists c \in [a, b]; \; f(c) = \mu\\
+    \mu = \frac{\intfromatob f(x) \dx{x}}{b - a} = f(c) \; |(b - a)\\
+    \implies \intfromatob f(x) \dx{x} = f(c)(b - a)\)
+    \subsection{Th Функцията  \(F(x) = \intfromto{a}{x}f(t)\dx{t}\) е непрекъсната}
+    Док-во Ползвайки горната теорема:\\
+    И ако:\\
+    \(|f(t)| \leq M\\ 
+    \intfromatob f(t) \dx{t} = f(c)(b - a) \implies \intfromto{a}{x} f(t) \dx{t} = f(c)(x - a) = F(x)\\
+    \implies |F(x_2) - F(x_1)| = |f(c)(x_2 - a) - f(c)(x_1 - a)| = |f(c)x_2 - f(c)x_1| = \\
+    = |\intfromto{a}{x_2} f(t) \dx{t} - \intfromto{a}{x_1} f(t) \dx{t}| = |\intfromto{a}{x_2} f(t) \dx{t} + \intfromto{x_1}{a} f(t) \dx{t}| = |\intfromto{x_1}{x_2} f(t) \dx{t}| \leq\\
+    \leq |Mx_2 - Mx_1| = |M(x_2 - x_1)| = M|x_2 - x_1|\)
+    \subsection{Th На Нютон-Лайбниц}
+    \(f(x) \in C[a,b], \; F(x) = \intfromto{a}{x}f(t)\dx{t}, \; x \in [a,b]\\
+    \implies F(x) \text{ е диференцируема в интервала } [a,b] \; F'(x) = f(x)\)\\
+    Док-во в точката \(x_0 \in [a,b], \; h; \; x_o + h \in [a,b]\\
+    \implies \frac{F(x_0 + h) - F(x_0)}{h} = \frac{\intfromto{a}{x_0 + h} f(t) \dx{t} - \intfromto{a}{x_0} f(t) \dx{t}}{h} =\\
+    = \frac{\intfromto{a}{x_0 + h} f(t) \dx{t} \, + \intfromto{x_0}{a} f(t) \dx{t}}{h} = \frac{\intfromto{x_0}{x_0 + h} f(t) dx{t}}{h} = \frac{f(c)(x_0 + h - x_0)}{h} = f(c)\\
+    x \in [min\{x_0 + h, h\}, max\{x_0 + h, x_0\}]\\
+    \implies x_0 + h \hto x_0 \implies c \hto x_0 \implies f(c) \to f(x_0)\\
+    \frac{F(x_0 + h) - F(x_0)}{h} = f(c) \; | \limh\\
+    \implies \limh \frac{F(x_0 + h) - F(x_0)}{h} = f(x_0)\\
+    \implies F'(x) = f(x), \; \forall x \in [a, b] \)
+    \subsection{Формула на Нютон-Лайбниц}
+    \(\intfromatob f(x) \dx{x} = \Phi(b) - \Phi(a)\)\\
+    Док-во:\\
+    \(F(x) = \Phi(x) + C\\
+    F(x) = \intfromto{a}{x}f(t)\dx{t} \implies F(a) = 0 = \Phi(a) + C\\
+    \implies C = -\Phi(a) \implies \intfromatob f(x) \dx{x} = F(b) = \Phi(b) + C = \Phi(b) - \Phi(a)\\
+    \intfromatob f(x) \dx{x} = \Phi(b) - \Phi(a) = \Phi(x)|_a^b\\
+    \implies \intfromatob f'(x) \dx{x} = f(x)|_a^b\)
+    \subsection{Интегриране по части \(\intfromatob f(x) \dx{g(x)} = f(x)g(x)|_a^b - \intfromatob g(x)\dx{f(x)}\)}
+    \((f(x)g(x))' = f'(x)g(x) + f(x)g'(x)\\
+    \implies f(x)g'(x) = (f(x)g(x))' - f'(x)g(x) \; | \intfromatob \dx{x}\\
+    \implies \intfromatob f(x)g'(x) \dx{x} = \intfromatob (f(x)g(x))' \dx{x} - \intfromatob g(x)f'(x)\dx{x}\\
+    \implies \intfromatob f(x) \dx{g(x)} = f(x)g(x)|_a^b - \intfromatob g(x)\dx{f(x)}\)
+    \subsection{Формула за смяна на променливите}
+    \(\intfromatob f(x) \dx{x}\\
+    x = \varphi(t) \implies t = \varphi^{-1}(x)\\
+    a = \varphi(\alpha) \implies \alpha = \varphi^{-1}(a)\\
+    b = \varphi(\beta) \implies \beta = \varphi^{-1}(b)\\
+    \implies \intfromatob f(x) \dx{x} = \intfromto{\alpha}{\beta}f(\varphi(t)) \varphi'(t) \dx{t}\)\\
+    Док-во:\\
+    \(\int f(t) \dx{t} = \int f(\varphi(t)) \varphi'(t) \dx{t} = \Phi(t) = \Phi(\varphi^{-1}(x)) \; | ()|_a^b\\
+    \implies \intfromatob f(t) \dx{t} = \Phi(\varphi^{-1}(a)) - \Phi(\varphi^{-1}(b)) = \Phi(\alpha) - \Phi(\beta) = \intfromto{\alpha}{\beta}f(\varphi(t)) \varphi'(t) \dx{t}\)
+\end{document}

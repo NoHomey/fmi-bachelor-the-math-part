@@ -1,0 +1,70 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage[margin=0.5in, top=1cm, left=1in]{geometry}
+
+\newcommand{\N}{\mathbb{N}}
+
+\title{Домашна работа 2, № 45342, Група 3}
+\author{Иво Стратев}
+
+\DeclareMathSizes{10}{14}{9}{7}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \maketitle
+    \section{Задача 5. а)}
+    \(3^0 = 1 = 0! \\
+      3^1 = 3, \; 1! = 1 \implies 3^1 > 1! \\
+      3^2 = 9, \; 2! = 2 \implies 3^2 > 2! \\
+      3^3 = 27, \; 3! = 6 \implies 3^3 > 3! \\
+      3^4 = 81, \; 4! = 24 \implies 3^4 > 4! \\
+      3^5 = 243, \; 5! = 120 \implies 3^5 > 5! \\
+      3^6 = 729, \; 6! = 720 \implies 3^6 > 6! \\
+      3^7 = 2187, \; 7! = 5040 \implies 3^7 < 7! \\\\
+      P(n): \; 3^n < n! \; , \; n \geq 7 \)
+    \subsection{База:}
+    \(P(7): \; 2187 = 3^7 < 7! = 5040 \)
+    \subsection{Индукт. предположение:}
+    \(P(k): \; 3^k < k! \; , \; \text{\large{ за някое }} k \geq 7 \)
+    \subsection{Индукт. стъпка:}
+    \(P(k + 1): \; 3^{k + 1} < (k + 1)! \\
+      3^k < k! \; | .3\\
+      3^{k + 1} = 3^k.3 < 3k! < (k + 1)k! = (k + 1)! \implies \\
+      3^{k + 1} < (k + 1)! \)
+    \subsection{Заключение:}
+    \(\forall n \geq 7 P(n)\)
+    \section{Задача 6. а)}
+    \(P(n): \; 3 | 2^{2n} - 1, \; \forall n \in \N \)
+    \subsection{База:}
+    \(P(0): \; 3 | 2^{2.0} - 1 \)
+    \begin{align*}
+      2^{2.0} - 1 \\
+      &=& 2^0 - 1 \\
+      &=& 1 - 1 \\ 
+      &=& 0
+    \end{align*}
+    \(3 | 0 \implies  3 | 2^{2.0} - 1 \)
+    \subsection{Индукт. предположение:}
+    \(P(k): \; 3 | 2^{2k} - 1, \; \text{\large{ за някое }} k \in \N \implies \\
+    \\\exists d \in \N : \; 2^{2k} - 1 = 3.d \)
+    \subsection{Индукт. стъпка:}
+    \(P(k + 1): \; 3 | 2^{2(k + 1)} - 1 \)
+    \begin{align*}
+      2^{2(k + 1)} - 1 \\
+      &=& 2^{2k + 2} - 1 \\
+      &=& 2^{2k}.4 - 1 \\
+      &=& 2^{2k}.4 - 4 + 3 \\
+      &=& 4(2^{2k} - 1) + 3 \\
+      &=& 4.3.d + 3 \\
+      &=& 3(4.d + 1)
+    \end{align*}
+    \(3 | 3(4.d + 1) \implies 3 | 2^{2(k + 1)} - 1 \)
+    \subsection{Заключение:}
+    \(\forall n \in \N P(n)\)
+\end{document}\grid
+\grid

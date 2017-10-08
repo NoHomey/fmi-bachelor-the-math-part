@@ -1,0 +1,199 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\newcommand{\pto}[2]{\xrightarrow[#1 \to #2]{}}
+\newcommand{\npto}[2]{\cancel{\xrightarrow[#1 \to #2]{}}}
+\newcommand{\xto}[1]{\pto{x}{#1}}
+\newcommand{\nimplies}{\cancel\implies}
+\newcommand{\nxto}[1]{\npto{x}{#1}}
+\newcommand{\nto}[0]{\pto{n}{\infty}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\D}[0]{\mathbb{D}}
+\newcommand{\spc}[0]{\quad}
+\newcommand{\e}[0]{\varepsilon}
+\newcommand{\seq}[1]{\{#1_n\}_{n=1}^{\infty}}
+
+\title{Околности. Определения за граница на редица и фунцкия}
+\author{Иво Стратев}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \maketitle
+    \section{Околности}
+    \subsection{Околност на \(a \in \R\)}
+    \(\forall \e > 0; \; |x - a| < \e \iff x \in (a - \e, a + \e)\)
+    \subsection{Пробита околност на \(a \in \R\)}
+    \(\forall \e > 0; \; 0 < |x - a| < \e \iff x \in (a - \e, a) \cup (a, a + \e)\)
+    \subsection{Околност на \(a - 0 \in \R\)}
+    \(\forall \e > 0; \; a - \e < x < a \iff x \in (a - \e, a)\)
+    \subsection{Околност на \(a + 0 \in \R\)}
+    \(\forall \e > 0; \; a < x < a + \e \iff x \in (a, a + \e)\)
+    \subsection{Околност на \(\infty\)}
+    \(\forall M > 0 \in \R \spc x > M \iff x \in (M, \infty)\)
+    \subsection{Околност на \(-\infty\)}
+    \(\forall M < 0 \in \R \spc x < M \iff x \in (-\infty, M)\)
+    \section{Редици}
+    \subsection{\(\seq{a} \nto a \in \R\)}
+    \(\forall \e \; \exists \nu; n > \nu \implies |a_n - a| < \e\)
+    \subsection{\(\seq{a} \nto \infty\)}
+    \(\forall C > 0 \; \exists \nu; n > \nu \implies a_n > C\)
+    \subsection{\(\seq{a} \nto -\infty\)}
+    \(\forall C < 0 \; \exists \nu; n > \nu \implies a_n < C\)
+    \subsection{\(\seq{a} \nto a + 0\)}
+    \(\forall \e \; \exists \nu; n > \nu \implies a < a_n < a + \e\)
+    \subsection{\(\seq{a} \nto a - 0\)}
+    \(\forall \e \; \exists \nu; n > \nu \implies a - \e < a_n < a\)
+    \section{Функции}
+    \subsection{\(f(x) \xto{x_0} A \in \R\)}
+    \(
+        \begin{aligned}[c]
+        \text{Хайне}\\
+        f: \D \to \R\\
+        f(x) \xto{x_0} A \in \R\\
+        \forall \seq{x} \nto x_0, x_n \in \D, x_n \neq x_0\\
+        \implies \{f(x_n)\} \nto A 
+        \end{aligned}
+        \spc\spc
+        \begin{aligned}[c]
+         \text{Коши}\\
+        f: \D \to \R\\
+        f(x) \xto{x_0} A \in \R\\
+        \forall \e > 0 \; \exists \delta > 0, x \in \D; \spc 0 < |x - x_0| < \delta\\
+        \implies |f(x) - A| < \e
+        \end{aligned}
+    \)
+    \subsection{Лява (Дясна) граница \\ \(f(x) \xto{x_0 - 0 (x_0 + 0)} A\)}
+    \(
+        \begin{aligned}[c]
+        \text{Хайне}\\
+        f: \D \to \R\\
+        f(x) \xto{x_0 - 0 (x_0 + 0)} A\\
+        \forall \seq{x} \nto x_0 - 0 (x_0 + 0),\\
+        x_n \in \D, x_n < x_0 (x_n > x_0)\\
+        \implies \{f(x_n)\} \nto A 
+        \end{aligned}
+        \spc\spc
+        \begin{aligned}[c]
+         \text{Коши}\\
+        f: \D \to \R\\
+        f(x) \xto{x_0 - 0 (x_0 + 0)} A\\
+        \forall \e > 0 \; \exists \delta > 0, x \in \D;\\
+        x_0 - \delta < x_n < x_0 (x_0 < x_n < x_0 + \delta)\\
+        \implies |f(x) - A| < \e
+        \end{aligned}
+    \)
+    \subsection{\(f(x) \xto{\pm \infty} A \in \R\)}
+    \(
+        \begin{aligned}[c]
+        \text{Хайне}\\
+        f: \D \to \R\\
+        f(x) \xto{\pm \infty} A \in \R\\
+        \forall \seq{x} \nto \pm \infty, x_n \in \D\\
+        \implies \{f(x_n)\} \nto A 
+        \end{aligned}
+        \spc\spc
+        \begin{aligned}[c]
+         \text{Коши}\\
+        f: \D \to \R\\
+        f(x) \xto{\pm \infty} A \in \R\\
+        \forall \e > 0\; \exists M > 0 (M < 0), \; x \in \D; \; x > M (x < M)\\
+        \implies |f(x) - A| < \e
+        \end{aligned}
+    \)
+    \subsection{\(f(x) \xto{c} \pm \infty\) при \(c = a \in R\) или \(c = a - 0\) или \(c = a + 0\) или \(c = \pm \infty\)}
+    \subsubsection{Хайне за \(f(x) \xto{c} \pm \infty\) при \(c = a \in R\) или \(c = a - 0\) или \(c = a + 0\) или \(c = \pm \infty\))}
+    \(f: \D \to \R \spc f(x) \xto{c} \pm \infty\\
+    \forall \seq{x} \nto c \spc x_n \in \D\\
+    \implies \{f(x_n)\} \nto \pm \infty\)
+    \subsubsection{Коши за \(f(x) \xto{a \in \R} \pm \infty\)}
+    \(f: \D \to \R \spc f(x) \xto{a} \pm \infty\\
+    \forall A > 0 (A < 0) \; \exists \delta > 0, x \in \D; \; 0 < |x - a| < \delta\\
+    \implies f(x) > A (f(x) < A)\)
+    \subsubsection{Коши за \(f(x) \xto{a \pm 0} \pm \infty\)}
+    \(f: \D \to \R \spc f(x) \xto{a \pm 0} \pm \infty\\
+    \forall A > 0 (A < 0) \; \exists \delta > 0, \; x \in \D; \; a < x < a + \delta (a - \delta < x < a)\\
+    \implies f(x) > A (f(x) < A)\)
+    \subsubsection{Коши за \(f(x) \xto{\pm \infty} \pm \infty\)}
+    \(f: \D \to \R \spc f(x) \xto{\pm \infty} \pm \infty\\
+    \forall A > 0 (A < 0) \; \exists B > 0 (B < 0), x \in \D; x > B (x < B)\\
+    \implies f(x) > A (f(x) < A)\)
+    \section{Отрицания на определения за граници на Функции}
+    \subsection{\(f(x) \nxto{x_0} A \in \R\)}
+    \(
+        \begin{aligned}[c]
+        \text{Хайне}\\
+        f: \D \to \R\\
+        f(x) \nxto{x_0} A \in \R\\
+        \exists \seq{x} \nto x_0, x_n \in \D, x_n \neq x_0\\
+        \nimplies \{f(x_n)\} \nto A 
+        \end{aligned}
+        \spc\spc
+        \begin{aligned}[c]
+         \text{Коши}\\
+        f: \D \to \R\\
+        f(x) \nxto{x_0} A \in \R\\
+        \exists \e > 0 \; \forall \delta > 0, x \in \D; \spc 0 < |x - x_0| < \delta\\
+        \implies |f(x) - A| \geq \e
+        \end{aligned}
+    \)
+    \subsection{Лява (Дясна) граница \\ \(f(x) \nxto{x_0 - 0 (x_0 + 0)} A\)}
+    \(
+        \begin{aligned}[c]
+        \text{Хайне}\\
+        f: \D \to \R\\
+        f(x) \nxto{x_0 - 0 (x_0 + 0)} A\\
+        \exists \seq{x} \nto x_0 - 0 (x_0 + 0),\\
+        x_n \in \D, x_n < x_0 (x_n > x_0)\\
+        \nimplies \{f(x_n)\} \nto A 
+        \end{aligned}
+        \spc\spc
+        \begin{aligned}[c]
+        \text{Коши}\\
+        f: \D \to \R\\
+        f(x) \nxto{x_0 - 0 (x_0 + 0)} A\\
+        \exists \e > 0 \; \forall \delta > 0, x \in \D;\\
+        x_0 - \delta < x_n < x_0 (x_0 < x_n < x_0 + \delta)\\
+        \implies |f(x) - A| \geq \e
+        \end{aligned}
+    \)
+    \subsection{\(f(x) \nxto{\pm \infty} A \in \R\)}
+    \(
+        \begin{aligned}[c]
+        \text{Хайне}\\
+        f: \D \to \R\\
+        f(x) \nxto{\pm \infty} A \in \R\\
+        \exists \seq{x} \nto \pm \infty, x_n \in \D\\
+        \nimplies \{f(x_n)\} \nto A 
+        \end{aligned}
+        \spc\spc
+        \begin{aligned}[c]
+        \text{Коши}\\
+        f: \D \to \R\\
+        f(x) \nxto{\pm \infty} A \in \R\\
+        \exists \e > 0\; \forall M > 0 (M < 0), \; x \in \D; \; x > M (x < M)\\
+        \implies |f(x) - A| \geq \e
+        \end{aligned}
+    \)
+    \subsection{\(f(x) \nxto{c} \pm \infty\) при \(c = a \in R\) или \(c = a - 0\) или \(c = a + 0\) или \(c = \pm \infty\)}
+    \subsubsection{Хайне за \(f(x) \nxto{c} \pm \infty\) при \(c = a \in R\) или \(c = a - 0\) или \(c = a + 0\) или \(c = \pm \infty\))}
+    \(f: \D \to \R \spc f(x) \nxto{c} \pm \infty\\
+    \exists \seq{x} \nto c \spc x_n \in \D\\
+    \nimplies \{f(x_n)\} \nto \pm \infty\)
+    \subsubsection{Коши за \(f(x) \nxto{a \in \R} \pm \infty\)}
+    \(f: \D \to \R \spc f(x) \nxto{a} \pm \infty\\
+    \exists A > 0 (A < 0) \; \forall \delta > 0, x \in \D; \; 0 < |x - a| < \delta\\
+    \implies f(x) \leq A (f(x) \geq A)\)
+    \subsubsection{Коши за \(f(x) \xto{a \pm 0} \pm \infty\)}
+    \(f: \D \to \R \spc f(x) \nxto{a \pm 0} \pm \infty\\
+    \exists A > 0 (A < 0) \; \forall \delta > 0, \; x \in \D; \; a < x < a + \delta (a - \delta < x < a)\\
+    \implies f(x) \leq A (f(x) \geq A)\)
+    \subsubsection{Коши за \(f(x) \nxto{\pm \infty} \pm \infty\)}
+    \(f: \D \to \R \spc f(x) \nxto{\pm \infty} \pm \infty\\
+    \exists A > 0 (A < 0) \; \forall B > 0 (B < 0), x \in \D; x > B (x < B)\\
+    \implies f(x) \leq A (f(x) \geq A)\)
+\end{document}

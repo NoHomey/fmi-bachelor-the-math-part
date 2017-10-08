@@ -1,0 +1,57 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage[margin=0.5in, top=1cm, left=1in]{geometry}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+\title{Домашна работа 3, № 45342, Група 3}
+\author{Иво Стратев}
+
+\DeclareMathSizes{10}{14}{10}{7}
+
+
+\begin{document}
+    \pagenumbering{gobble}
+    \maketitle
+    \section{Задача 19}
+    \(f: \R \to \R : f(x) = \frac{x}{x^2 + 1} \\\\ 
+    \forall w \in \R \; w^2 + 1 > 0 \implies \\\\
+    f \text{ е непрекъсната в } \R \\\\
+    f(x) = 0 \iff x = 0 \)
+    \subsection{Инекция}
+    Нека \(x_1, \; x_2 \in \R, \; x_1 \neq x_2 \) \\\\
+    Допс. \(f(x_1) = f(x_2) \\\\
+    f(x_1) = \frac{x_1}{x_1^2 + 1} \\\\
+    f(x_2) = \frac{x_2}{x_2^2 + 1} \\\\
+    f(x_1) = f(x_2) \implies \\\\
+    \frac{x_1}{x_1^2 + 1} = \frac{x_2}{x_2^2 + 1} \implies \\\\
+    x_1(x_2^2 + 1) = x_2(x_1^2 + 1) \implies \\\\
+    x_1x_2^2 + x_1 = x_2x_1^2 + x_2 \implies \\\\
+    x_1x_2(x_2 - x_1) = x_2 - x_1 \iff x_2 - x_1 = 0 \implies \\\\
+    x_2 = x_1 \implies \lightning \implies f\) е инекция
+    \subsection{Сюрекция}
+    \(\forall h \in \R \; h = sign(h)|h| \implies \\\\
+    f(x) = \frac{x}{x^2 + 1} = \frac{sign(x)|x|}{x^2 + 1}\) \\\\
+    Нека \(g: \R \backslash \{0\} \to \R : g(x) = \frac{|x|}{x^2 + 1} \\\\
+    \forall u \in \R \backslash \{0\} \; |u| < u^2 + 1 \; | \; \frac{1}{u^2 + 1} \implies \\\\ 
+    \frac{|u|}{u^2 + 1} < 1 \; | \; sign(u) \implies \\\\
+    \begin{cases}
+    	\frac{u}{u^2 + 1} < 1 \; , & u > 0 \\
+    	\frac{u}{u^2 + 1} > -1 \; , & u < 0
+    \end{cases} \implies \\\\\\
+    \begin{cases}
+    	f(x) < 1 \; , & x > 0 \\
+    	f(x) = 0 \; , & x = 0 \\
+    	f(x) > -1 \; , & x < 0 
+    \end{cases} \implies \\\\\\
+    \forall t \in \R \; -1 < f(t) < 1 \implies \\\\
+    f \text{ не е сюрекция } \implies \\\\
+    f \text{ не е биекция } \)
+\end{document}

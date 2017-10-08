@@ -1,0 +1,265 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage[margin=0.5in, top=1cm, left=1in]{geometry}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Prime}{\mathbb{P}}
+
+\title{Домашна работа 1, № 45342, Група 3}
+\author{Иво Стратев}
+
+\DeclareMathSizes{10}{14}{10}{7}
+
+\begin{document}
+    \maketitle
+    \section*{Задача 1.}
+    Седем сандъка с различни материали трябва да бъдат разпределени на десететажен строеж, като сандъците не бива да
+    се отварят и на десетия етаж трябва да бъдат оставени не по-малко от два вида материали. \\\\
+    Сандъците не бива да се отварят това значи, че всеки различен материал ще бъде точно на един етаж. \\\\
+    Сандъците са с различни материали това ги прави различими и всеки етаж си има номер, който го различава от останалите. \\\\
+    На десетия етаж трябва да има поне два вида материали, което значи че предварително избираме колко от седемте сандъка ще бъдат
+    на десетия етаж, като техния брой може да е: 2, 3, 4, 5, 6, или 7. Този избор можем да направим по
+    \(\binom{7}{i} \; i = 2, \dots,  7\) различни начина. \\\\
+    След като изберем колко и кои от седемте сандъка да отидат на десетия етаж остава да разпределим останалите сандъци.
+    Всеки от които може да бъде поставен на останалите етажи, които са 9. Сандъците и етажите са раличими, което значи,
+    че на всеки сандък гледаме като позиция във вектор с елемнти от множеството на останлите сандъци. Броят на всички такива вектори спрямо броя на сандъците поставени на десетия етаж е: \(9^{7 - i} \; i = 2, \dots,  7\) където \(i\) е броя на сандъците поставени на десетия етаж. \\\\
+    Всеки избор на сандъците, които да са на десетия етаж ни води до следната формула за разпределянето на седемте сандъка:
+    \(\binom{7}{i}9^{7 - i} \; i = 2, \dots,  7\) \\\\
+    Разпределянето на сандъците зависи от избора ни на тези, които поставяме на десетия етаж и всеки такъв избор води до 
+    решение за разпределянето на всички, което значи, че броят на всички решения се задава с формулата: 
+    \(\displaystyle\sum_{i = 2}^7\binom{7}{i}9^{7 - i} \\\\\\
+    i = 2, \quad \frac{7.6}{2}9^5 = 21.59049 = 1240029, \quad i = 3, \quad \frac{7.6.5}{3!}9^4 = 35.9^4 = 35.6561 = 229635 \\\\
+    i = 4, \quad \frac{7.6.5.4}{4!}9^3 = 35.9^3 = 35.729 = 25515, \quad  i = 5, \quad \frac{7.6.5.4.3}{5!}9^2 = 21.81 = 1701\\\\
+    i = 6, \quad \frac{7.6.5.4.3.2}{6!}9 = 7.9 = 63, \quad i = 7, \quad \frac{7!}{7!}9^0 = 1.1 = 1 \\\\
+    1 + 63 + 1701 + 25515 + 229635 + 1240029 = 1496944 \)
+    Отговор: \(1496944\)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section*{Задача 2.}
+	\(P(n): n\) прави са прекарани през равнината. Секторите, на които тези прави разделят равнината,
+	могат да се оцветят в два цвята, така че всички сектори с обща граница - линия, да са разноцветни.,
+	\(\forall n \in \N\)
+	\subsubsection*{База:}
+	\(P(0): 0\)  прави са прекарани през равнината. Секторите, на които тези прави разделят равнината,
+	могат да се оцветят в два цвята, така че всички сектори с обща граница - линия, да са разноцветни. \\\\
+	\(0\) прави са прекарани през равнината. Следва в равнината има само един сектор - самата равнина.
+	Следва няма и сектори с обща граница, която да е линия и следователно можем да оцветим равнината в един цвят,
+	така че всички сектори с обща граница - линия, да са разноцветни. 
+	\subsection*{Индукционно предположение:}
+	\(P(k): k\) прави са прекарани през равнината. Секторите, на които тези прави разделят равнината,
+	могат да се оцветят в два цвята, така че всички сектори с обща граница - линия, да са разноцветни. за някое \(k \in \N\)
+	\subsection*{Индукционно стъпка:}
+	\(P(k + 1): k + 1\) прави са прекарани през равнината. Секторите, на които тези прави разделят равнината,
+	могат да се оцветят в два цвята, така че всички сектори с обща граница - линия, да са разноцветни. \\\\
+	От индукционното предположение знаем, че секторите, получени при прекарването на \(k\) прави в равнина,
+	могат да се оцветят в два цвята, така че всички сектори с обща граница - линия, да са разноцветни.
+	Тогава нека имаме равнина, през която са прекарани \(k\) прави, всички сектори са оцветени в два цвята, такаче да
+	няма сектори с обща граница, която да е линия и да са оцветени в един цвят. \\\\
+	Сега ако всички сектори в равнината си разменят цветовете отново е вярно, че
+	в равнината са прекарани \(k\) прави, оцветена е двуцветно и всички сектори с обща граница,
+	която е линия са оцветени в различен цвят. (1) \\\\
+	Прекарваме нова права в равнината. \\\\
+	Ако новата права съвпада с някоя от вече прекараните прави е същото като тя да не е прекарана,
+	защото същата права вече е прекарана и е вярно, че всички сектори с обща граница - линия,
+	са оцветни разнозветно в равнина, през която са прекарани \(k\) прави и е оцветена в два цвята. \\\\
+	Ако новата права не съвпада с никоя от вече прекараните прави, получаваме нови сектори,
+	от които поне два ще имат обща граница линия и ще са оцветени в един цвят.
+	Новата права разделя равнината на две полуравнини и от всички сектори през,
+	които е минала прекараната права получаваме по два нови сектора,
+	които имат граница линия и са оцветени в един цвят, нека ги наречем - граничните сектори. \\\\
+	За всяка от двете полуравнини поотделно е вярно, че всички сектори в полуравнината,
+	които имат обща граница - линия са оцветени в различен цвят, а полуравнина е оцветена в два цвята. (2) \\\\
+	Избираме едната полуравнина и разменяме цветовете само на секторите в нея.
+	Тогава за граничните сектори е в сила, че секторите с обща граница - линия, са оцветени в различен цвят. \\\\
+	От (2) следва, че секторите, които са в неизбраната полуравнина и имат обща граница,
+	която е линия са оцветени в различен цвят и тази полуравнина е оцветена в два цвята. \\\\
+	Но от (1) и (2) следва, че всички секторите, които са в избраната полуравнина и имат обща граница,
+	която е линия са оцветени в различни цветове, а полуравнината е оцветена в два цвята. \\\\
+	Така всички сектори в равнината, които имат граница линия са оцветени разноцветно, a равнината е оцветена в два цвята. \\\\
+	Седоватлно за равнина, в която са прекарани \(k + 1\) прави е вярно, че секторите,
+	на които тези прави разделят равнината, могат да се оцветят в два цвята, така че всички сектори с обща граница - линия, да са разноцветни.
+	\subsection*{Заключение:}
+	\(\forall n \in \N \; P(n)\)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \section*{Задача 3.}
+    \subsection*{a)}
+    \(P = \N \backslash \{0\} \\\\
+    R = \{(a, b) \in P^2 \: | \; \exists q \in \Q : \; \frac{a}{b} = q^2\} \\\\
+    Q = \Q \backslash \{0\} \\\\
+    \forall (a, b) \in P^2 \; a, b \geq 1 \implies \not\exists (c, d) \in P^2 : \; \frac{c}{d} = 0 \implies \\\\
+    R = \{(a, b) \in P^2 \: | \; \exists q \in Q : \; \frac{a}{b} = q^2\} \)
+    \subsubsection*{рефлексивност}
+    \(a \in P \\\\
+    \frac{a}{a} = 1 = 1^2 \overset{1 \in Q}{\implies} (a, a) \in R \implies \\\\
+    \forall a \in P \; (a, a) \in R \implies R \; \text{ е рефлексивна}\)
+    \subsubsection*{симетричност}
+    \(a, b \in P : \; a \neq b, \; (a, b) \in R \implies \\\\
+    \exists q \in Q : \; \frac{a}{b} = q^2 \\\\
+    \frac{b}{a} = \frac{1}{q^2} = \left(\frac{1}{q}\right)^2 \overset{\frac{1}{q} \in Q}{\implies} (b, a) \in R \implies \\\\
+    \forall a, b \in P : \; a \neq b, \; (a, b) \in R \implies (b, a) \in R \implies \\\\
+    R \; \text{ е симетрична}\)
+    \subsubsection*{транзитивност}
+    \(a, b, c \in P : \; (a, b) \in R, \; (b, c) \in R \implies \\\\
+    \exists q_1, q_2 \in Q : \; \frac{a}{b} = q_1^2, \; \frac{b}{c} = q_2^2 \\\\
+    (q_1q_2)^2 = q_1^2q_2^2 = \frac{a}{b}\frac{b}{c} = \frac{ab}{bc} = \frac{a}{c} \overset{q_1q_2 \in Q}{\implies} (a, c) \in R \implies \\\\
+    \forall a, b, c \in P : \; (a, b) \in R, \; (b, c) \in R \implies (a, c) \in R \implies \\\\
+    R \; \text{ е транзитивна} \\\\
+    \implies R \; \text{ е релация на еквивалентност} \implies \\\\
+    \forall a \in P \; [a] = \{b \; | \; b \in P, \;  aRb\} = \{b \; | \; b \in P , \; \exists q \in Q : \; \frac{a}{b} = q^2\} = \\\\
+    = \{\frac{a}{q^2} \; | \; \exists q \in Q : \; \frac{a}{q^2} \in P\} \)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+    \subsection*{б)}
+    \(\forall n \in \N \; I_n = \begin{cases}
+    	\{1, \dots, n\} \subset \N &, n \geq 1 \\
+    	\emptyset &, n = 0
+    \end{cases} \\\\ \)
+    Нека \(\Prime\) е множеството от всички прости числа и нека\\\\ 
+    \(M = \left\{\displaystyle\prod_{h \in I_n} p_h \; \Big| \; n \in P, \; \forall i \in I_n \; p_i \in \Prime, \; \forall j, k \in I_n \; p_j = p_k \iff j = k \right\} \cup \{1\} \implies \\\
+    \forall p \in \Prime \; p \in M \overset{1 \in P}{\implies} \Prime \subset M \; (6 \notin \Prime) \\\\
+    \forall p \in \Prime \; p \in P \implies \Prime \subset P \; (6 \notin \Prime) \implies \\\\
+    M \subset P  \; (4 \notin M) \; (\text{P е затворено относно операцията умножение}) \\\\
+    S = \Z \backslash \{0\} \implies \Prime \subset M \subset P \subset S \subset Q \subset \Q \; (\Prime \subset \N \subset \Z \subset \Q) \)
+    \subsubsection*{Тв.}
+    \(\forall m \in M \; [m] = \{m.s^2 \; | \; s \in S\} \)
+    \subsubsection*{Док-во:}
+    \(m \in M \\\\
+    \lbrack m \rbrack = \{\frac{m}{q^2} \; | \; \exists q \in Q : \; \frac{m}{q^2} \in P\} \\\\
+    u \in S \implies u^2 \in P \implies m.u^2 \in P \implies \\\\
+    \frac{m}{m.u^2} = \frac{1}{u^2} = \left(\frac{1}{u}\right)^2 \overset{\frac{1}{u} \in Q}{\implies} m R m.u^2 \implies m.u^2 \in [m] \implies \\\\
+    \forall u \in S \; m.u^2 \in [m] \implies \{m.s^2 \; | \; s \in S\} \subseteq [m] \\\\
+    \frac{m}{q^2} \in [m] \implies q \in Q : \; \frac{m}{q^2} \in P \implies \exists t \in P : \; \frac{m}{q^2} = t \\\\
+    q \in Q \implies \exists c,d \in S : \; c \nmid d, \; q = \frac{c}{d} \implies \frac{m}{(\frac{c}{d})^2} = t \implies \\\\
+    m.d^2 = t.c^2 \overset{m,d,t,c \in S}{\implies} c^2 |m.d^2 \overset{c^2 \nmid d^2}{\implies} c^2 | m \implies \\\\
+    c^2 = 1 \; \left(\begin{cases}
+    c^2 | m \iff c^2 \in M, \; \exists k \in M : \; m = k.c^2  \\
+    \forall z \in S, \; z \neq \pm 1 \implies z^2 \notin M 
+    \end{cases}\right) \implies \\\\\\
+    \frac{m}{q^2} = \frac{m}{\frac{1}{d^2}} = m.d^2 \implies \frac{m}{q^2} \in \{m.s	^2 \; | \; s \in S\} \implies \\\\
+    \forall \frac{m}{q^2} \in [m] \; \frac{m}{q^2} \in \{m.s^2 \; | \; s \in S\} \implies [m] \subseteq \{m.s^2 \; | \; s \in S\} \implies \\\\
+    \lbrack m \rbrack = \{m.s^2 \; | \; s \in S\} \implies \forall m \in M \; [m] = \{m.s^2 \; | \; s \in S\} \subseteq P \qed \)
+    \subsubsection*{Тв.}
+    \(\forall m_1, m_2 \in M, \; m_1 \neq m_2 \implies [m_1] \neq [m_2]\)
+    \subsubsection*{Док-во:}
+    \(m_1, m_2 \in M, \; m_1 \neq m_2 \implies m_1 \neq m_2.1 = m_2.1^2 = m_2.(-1)^2 \\\\
+    \lbrack m_2 \rbrack = \{m_2.s^2 \; | \; s \in S\} \\\\
+    \forall z \in S, \; z \neq \pm 1 \implies z^2 \notin M \implies \\\\
+    \forall z \in S \; m_1 \neq m_2.z^2 \implies m_1 \notin [m_2] \implies [m_1] \neq [m_2] \implies \\\\
+    \forall m_1, m_2 \in M, \; m_1 \neq m_2 \implies [m_1] \neq [m_2] \qed \\\\\\
+    X \; \text{ е множеството от класовете на еквивалентност на } R \implies \\\\
+    \begin{cases}
+    \forall x \in X \; x \neq \emptyset \\\\
+    \forall x, h \in X, \; x \neq h \implies x \cap h = \emptyset \\\\
+    \underset{x \in X}{\bigcup} x = P
+    \end{cases}\)
+    \subsubsection*{Тв.}
+    \(X = \{[m] \; | \; m \in M\}\)
+    \subsubsection*{Док-во:}
+    \(\forall m \in M \; [m] = \{m.s^2 \; | \; s \in S\} \neq \emptyset \\\\\\
+    a, b \in M, \; a \neq b \implies [a] \neq [b] \\\\
+    \text{Доп. } \; [a] \cap [b] \neq \emptyset \implies \exists c \in [a] \cap [b] \implies \\\\
+    \begin{cases}
+    	\exists s_1 \in S : c = a.s_1^2 \\\\
+    	\exists s_2 \in S : c = b.s_2^2
+    \end{cases} \implies a.s_1^2 = b.s_2^2 \implies \\\\\\
+    s_1^2 = \frac{b.s_2^2}{a} = s_2^2.\frac{b}{a} \implies s_1 = \pm \sqrt{s_2^2.\frac{b}{a}} = \pm |s_2| \sqrt{\frac{b}{a}} \\\\
+    s_1 \in S \overset{|s_2| \in P}{\iff} \sqrt{\frac{b}{a}} \in P \\\\
+    \begin{cases}
+    	a \neq b \implies \frac{b}{a} \neq 1 \\
+    	b < a \implies \frac{b}{a} \in Q \backslash S \\
+    	a \nmid b \implies \frac{b}{a} \in Q \backslash S \\
+    	a | b \implies \frac{b}{a} \in M
+    \end{cases} \implies \sqrt{\frac{b}{a}} \notin P \implies \\\\
+    s_1 \notin S \implies \lightning \implies [a] \cap [b] = \emptyset \implies \\\\
+    \forall a, b \in M, \; a \neq b \implies [a] \neq [b] \implies [a] \cap [b] = \emptyset \\\\\\
+    1 \in M \implies [1] = \{1.s^2 \; | \; s \in S \} = \{s^2 \; | \; s \in S \} \ni 1 \; (\pm 1 \in S) \\\\
+    \text{От основната теорема на аритметиката:} \\\\
+    \forall p \in P, \; p \neq 1 \; \exists! k \in P, \; \exists! p_1, \dots, p_k \in \Prime, \; \exists! \alpha_1, \dots, \alpha_k \in P : \\\\
+    p = \displaystyle\prod_{i \in I_k} p_i^{\alpha_i}, \; \forall i, j \in I_k \; p_i = p_j \iff i = j \implies \\\\
+    \forall L \in 2^{\{p_1, \dots, p_k\}} \backslash \{\emptyset\} \; \displaystyle\prod_{l \in L} l \in M \\\\
+    \text{Делим всяко } \; \alpha_i \text{ с частно и остатък на две и получаваме } \\\\
+    \forall i \in I_k \; \exists q_i \in \N, \; r_i \in \{0, 1\} : \; \forall i \in I_k \; \alpha_i = 2.q_i + r_i \implies \\\\
+    p = \displaystyle\prod_{i \in I_k} p_i^{2.q_i + r_i} \\\\
+    A_0 = \{i \; | \; i \in I_k, \; \alpha_i \equiv 0 \pmod{2}\} \\\\
+    A_1 = \{i \; | \; i \in I_k, \; \alpha_i \equiv 1 \pmod{2}\} \implies \\\\
+   \forall i \in I_k \; i \in A_0 \lor i \in A_1 \implies \\\\
+   A_0 \cap A_1 = \emptyset, \; A_0 \cup A_1 = I_k \implies \\\\
+   |A_0| + |A_1| = k \implies \\\\
+   \text{Ако } A_1 = \emptyset \implies A_0 = I_k \implies \\\\
+   p = \displaystyle\prod_{i \in I_k} p_i^{2.q_i} = 1.\left(\displaystyle\prod_{i \in I_k} p_i^{q_i} \right)^2 \implies p \in [1] \\\\\\
+   \text{Ако } A_0 = \emptyset \implies A_1 = I_k \implies \\\\
+   p = \displaystyle\prod_{i \in I_k} p_i^{2.q_i + 1} = \displaystyle\prod_{i \in I_k} p_i.p_i^{2.q_i} = \displaystyle\prod_{i \in I_k} p_i.\displaystyle\prod_{i \in I_k} p_i^{2.q_i} = \\\\
+   = \displaystyle\prod_{i \in I_k} p_i.\left(\displaystyle\prod_{i \in I_k} p_i^{q_i} \right)^2 \implies p \in \left[\displaystyle\prod_{i \in I_k} p_i\right] \;
+   \left(\displaystyle\prod_{i \in I_k} p_i \in M \right) \\\\\\
+   \text{Нека } A_0 \neq \emptyset, \; A_1 \neq \emptyset \implies p = \displaystyle\prod_{j \in \{0, 1\}} \displaystyle\prod_{i \in A_j} p_i^{2.q_i + j} = \\\\
+    = \displaystyle\prod_{i \in A_1} p_i^{2.q_i + 1}.\displaystyle\prod_{j \in A_0} p_j^{2.q_j} = \displaystyle\prod_{i \in A_1} p_i.p_i^{2.q_i}.\displaystyle\prod_{j \in A_0} p_j^{2.q_j} = \\\\ 
+    = \displaystyle\prod_{i \in A_1} p_i.\displaystyle\prod_{j \in I_k} p_j^{2.q_j} = \displaystyle\prod_{i \in A_1} p_i.\displaystyle{\left(\prod_{j \in I_k} p_j^{q_j}\right)^2} \implies \\\\
+    p \in \left[\displaystyle\prod_{i \in A_1} p_i\right] \; \left(\displaystyle\prod_{i \in A_1} p_i \in M \right) \implies \\\\
+    \forall p \in P \; \exists m \in M : \; p \in [m] \implies \underset{u \in M}{\bigcup} [u] = P \implies \\\\
+    X = \{[u] \; | \; u \in M\} \qed \\\\\\
+    Y = \{\{p_1, p_2, \dots, p_n \} \; | \; n \in P, \; \forall i \in I_n \; p_i \in \Prime \} \cup \{\emptyset\} \\\\
+    \psi : Y \to M \\\\
+    \psi(y) = \begin{cases}
+    	\min(y).\psi(y \backslash \{\min(y)\}) &, y \neq \emptyset \\\\
+    	1 &, y = \emptyset
+    \end{cases} = \begin{cases}
+    	\displaystyle\prod_{i \in I_n} p_i &, y = \{p_1, p_2, \dots, p_n \} \\\\
+    	1 &, y = \emptyset
+    \end{cases} \implies \\\\\\
+    \forall A, B \in Y, \; A \neq B \implies \psi(A) \neq \psi(B) \implies \psi \; \text{ е инекция} \\\\
+    1 \in M, \; \emptyset \in Y, \; \psi(\emptyset) = 1 \\\\
+    m \in M, \; m \neq 1 \implies \exists! l \in P, \; \exists! w_1, \dots, w_l \in \Prime : \\\\
+    m = \displaystyle\prod_{i \in I_l} w_i, \; \forall i, j \in I_l \; w_i = w_j \iff i = j \\\\
+    W = \{w_1, \dots, w_l\} \implies W \in Y \\\\
+    \psi(W) = \psi(\{w_1, \dots, w_l\}) = \displaystyle\prod_{i \in I_l} w_i = m \\\\
+    \implies \exists w \in Y : \; \psi(w) = m \implies \\\\
+    \forall m \in M \; \exists w \in Y : \; \psi(w) = m \implies \\\\
+    \psi \; \text{ е сюрекция} \implies \psi \; \text{ е биекция} \\\\\\
+    \begin{array}{cccc}
+    	\varphi : & Y  & \to & X \\
+     ~ &  y & \mapsto & [\psi(y)]
+    \end{array} \implies \varphi(y) = [\psi(y)] = \{\psi(y).s^2 \; | \; s \in S \} \\\\\\
+    y_1, y_2 \in Y, \; y_1 \neq y_2 \implies \psi(y_1) \neq \psi(y_2) \implies \\\\
+    \lbrack \psi(y_1) \rbrack \neq [\psi(y_2)] \implies \varphi(y_1) \neq \varphi(y_2) \implies \\\\
+    \forall y_1, y_2 \in Y, \; y_1 \neq y_2 \implies \varphi(y_1) \neq \varphi(y_2) \implies \varphi \; \text{ е инекция} \\\\
+    X = \{[z] \; | \; z \in M\} \implies \forall x \in X \; \exists z \in M : \; x = [z] \implies \\\\
+    \forall x \in X \; \exists y \in Y : \; x = [\psi(y)] = \varphi(y) \implies \\\\
+    \varphi \; \text{ е сюрекция} \implies \varphi \; \text{ е биекция} \implies \\\\
+    X = \{[\psi(y)] \; | \; y \in Y\} = \{\varphi(y) \; | \; y \in Y\}\)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \section*{Задача 4.}
+    \(K = \{(a, b) \in \R^2 \; | \; \frac{a}{b} = 2\}, \quad L = \{(a, b) \in \R^2 \; | \; \frac{b}{a} = 3\} \\\\
+    \begin{array}{cccc}
+    \varphi : & K  & \to & L \\
+     ~ &  (a, b) & \mapsto & (\frac{a}{6}, b)
+    \end{array} \)
+    \subsection*{Проверка за коректност}
+    \((a, b) \in K \implies \frac{a}{b} = 2 \implies \frac{b}{a} = \frac{1}{2}\\\\
+    \frac{b}{\frac{a}{6}} = \frac{b}{a}.6 = \frac{1}{2}.6 = 3, \; \frac{a}{6}, b \in \R \implies \\\\
+    \varphi((a,b)) = (\frac{a}{6}, b) \in L \implies \varphi : \; K \to L\)
+    \subsection*{Инекция}
+    \((a_1, b_1), (a_2, b_2) \in K, (a_1, b_1) \neq (a_2, b_2) \implies \\\\
+    \begin{cases}
+    	a_1 \neq a_2 \\
+    	b_1 \neq b_2
+    \end{cases} \implies \begin{cases}
+    	\frac{a_1}{6} \neq \frac{a_2}{6} \\
+    	b_1 \neq b_2
+    \end{cases} \implies \\\\
+    (\frac{a_1}{6}, b_1) \neq (\frac{a_2}{6}, b_2) \implies \varphi((a_1, b_1)) \neq \varphi((a_2, b_2)) \implies \\\\
+	\forall k_1, k_2 \in K, \; k_1 \neq k_2 \implies \varphi(k_1) \neq \varphi(k_2) \implies\varphi \; \text{ е инкеция} \)
+	\subsection*{Сюрекция}
+	\((a, b) \in L \implies \frac{b}{a} = 3 \implies \frac{a}{b} = \frac{1}{3} \implies 6.\frac{a}{b} = 2 \implies \frac{6.a}{b} = 2 \\\\
+	6.a, b \in \R \implies (6.a, b) \in K \\\\
+	\varphi((6.a, b)) = (\frac{6.a}{6}, b) = (a, b) \implies \\\\
+	\forall l \in L \; \exists k \in K : \; \varphi(k) = l \implies \\\\
+	\varphi \; \text{ е сюрекция} \implies \varphi \; \text{ е биекция} \implies |K| = |L| \)
+\end{document}

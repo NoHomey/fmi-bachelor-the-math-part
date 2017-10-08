@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+
+\title{Критерии за изпъкналост/вдлъбнатост на функция}
+\author{Иво Стратев}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \maketitle
+    \section{\(f: (a, b) \to \mathbb{R}\)}
+    \section{Изпъкналост \(\smile\)}
+    \subsection{\(\forall x, x_0 \in (a, b) \implies f(x) \geq f(x_0) + f'(x_0)(x - x_0)\)}
+    \subsection{\(\forall x_1, x_2 \in (a, b); \; x_1 < x_2 \implies f'(x_1) \leq f'(x_2) \quad (f'\uparrow) \)}
+    \subsection{\(\forall x \in (a, b) \implies f''(x) \geq 0\)}
+    \section{Вдлъбнатост \(\frown\)}
+    \subsection{\(\forall x, x_0 \in (a, b) \implies f(x) \leq f(x_0) + f'(x_0)(x - x_0)\)}
+    \subsection{\(\forall x_1, x_2 \in (a, b); \; x_1 < x_2 \implies f'(x_1) \geq f'(x_2) \quad (f'\downarrow) \)}
+    \subsection{\(\forall x \in (a, b) \implies f''(x) \leq 0\)}
+\end{document}

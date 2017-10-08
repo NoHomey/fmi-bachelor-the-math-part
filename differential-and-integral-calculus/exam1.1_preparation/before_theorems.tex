@@ -1,0 +1,118 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\newcommand{\pto}[2]{\xrightarrow[#1 \to #2]{}}
+\newcommand{\xto}[1]{\pto{x}{#1}}
+\newcommand{\nto}[0]{\pto{n}{\infty}}
+\newcommand{\kto}[0]{\pto{k}{\infty}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\spc}[0]{\quad}
+\newcommand{\e}[0]{\varepsilon}
+\newcommand{\seq}[1]{\{#1_n\}_{n=1}^{\infty}}
+\newcommand{\cntrdcn}[0]{\lightning}
+\newcommand{\limk}[0]{\displaystyle\lim_{k \to \infty}}
+
+\title{Теоремки, преди теоремите за средни стойности}
+\author{Иво Стратев}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \maketitle
+    \section{\(\seq{a} \nto a, \; \forall n \in \mathbb{N} \; a_n > 0 \implies a \geq 0\)}
+    \(\seq{a} \nto a \implies \forall \e > 0 \; \exists \nu; \; \forall n > \nu \implies |a_n - a| < \e\\
+    \text{Допс. } a < 0 \implies (a_n - a) > 0 \implies |a_n - a| > \e \implies \cntrdcn(\seq{a} \nto a)\)\\\\
+    \begin{tikzpicture}
+        \draw(0,0) -- (6,0);
+        \foreach \x in {1,2,3,4,5}
+            \draw (\x cm,3pt) -- (\x cm,-3pt);
+        \draw (1,0) node[below=3pt] {$ a - \e $};
+        \draw (2,0) node[below=3pt] {$ a $};
+        \draw (3,0) node[below=3pt] {$ a + \e $};
+        \draw (4,0) node[below=3pt] {$ 0 $};
+        \draw (5,0) node[below=3pt] {$ a_n $};
+    \end{tikzpicture}
+     \section{\(\seq{a} \nto a, \; \forall n \in \mathbb{N} \; a_n < 0 \implies a \leq 0\)}
+    \(\seq{a} \nto a \implies \forall \e > 0 \; \exists \nu; \; \forall n > \nu \implies |a_n - a| < \e\\
+    \text{Допс. } a > 0 \implies (a_n - a) < 0 \implies |a_n - a| > \e \implies \cntrdcn(\seq{a} \nto a)\)\\\\
+    \begin{tikzpicture}
+        \draw(0,0) -- (6,0);
+        \foreach \x in {1,2,3,4,5}
+            \draw (\x cm,3pt) -- (\x cm,-3pt);
+        \draw (3,0) node[below=3pt] {$ a - \e $};
+        \draw (4,0) node[below=3pt] {$ a $};
+        \draw (5,0) node[below=3pt] {$ a + \e $};
+        \draw (2,0) node[below=3pt] {$ 0 $};
+        \draw (1,0) node[below=3pt] {$ a_n $};
+    \end{tikzpicture}
+    \section{Th(За непрекъснатите ф-ци)}
+    Ако \(f(x)\) е непрекъсната в околност на \(x_0, \; f(x_0) > 0 \; (f(x_0) < 0)\) и \(f(x)\) е непрекъсната в \(x_0\)\\
+    \(\exists \delta > 0; \; f(x) > \frac{f(x_0)}{2} \; (f(x) < \frac{f(x_0)}{2}) \; \forall x \in (x_0 - \delta, x_0 + \delta)\)
+    \bigbreak
+    Д-во:
+    \(f(x)\) е непрекъсната в околност на \(x_0\\
+    \implies \forall \e > 0 \; \exists \delta > 0; \; |x - x_0| < \delta \implies |f(x) - f(x_0)| < \e\\
+    \e := \frac{f(x_0)}{2} = y_0, \; \forall y_0 \; \exists \delta_{y_0} > 0; \; |x - x_0| < \delta_{y_0}\\
+    \implies |f(x) - f(x_0)| < y_0 \iff f(x_0) - y_0 < f(x) < f(x_0) + y_0\\
+    \implies \frac{f(x_0)}{2} < f(x) < \frac{3f(x_0)}{2} \implies f(x) > \frac{f(x_0)}{2}\)
+    \section{Th(Вайерщрас)}
+    Нека \(f(x) \in C[a, b]\) то тя е ограничена и има НГС и НМС.
+    \bigbreak
+    Д-во:
+    \(f(x)\) - ограничена \(\iff \exists M \in \R; \; \forall x \in [a, b] \spc f(x) \leq M\)\\
+    Доп., че \(f(x)\) e неограничена \(\implies \forall M \in \R \; \exists x_M \in [a, b]; \; f(x_M) > M\\
+    \implies \forall n \in \mathbb{N}; \exists x_n \in [a, b]; \; f(x_n) \geq n\\
+    \text{От Th(Болцано-Вайерщрас за редици) }\\
+    \implies \exists \{x_{n_k}\}_{k=1}^{\infty} - \text{сходяща подредица на } \seq{x}\\
+    \text{и } x_{n_k} \kto x_0 \in [a, b]\text{.}\\
+    \text{От } f(x) \in C[a, b] \implies \limk f(x_{n_k}) = f(x_0)\\
+    f(x_0) \geq n \implies f(x_{n_k}) \geq n_k > k / \limk\\
+    \limk f(x_{n_k}) \geq \limk k = \infty \implies \cntrdcn (\{f(x_{n_k})\} \text{ е ограничена})\)
+    \bigbreak
+    \(M = sup\{f(x): x \in [a, b]\}\)
+    Доп., че \(\forall x \in [a, b] \spc f(x) < M\\
+    g(x) = \frac{1}{M - f(x)}\)\\
+    От аритметични действия с неп. функции \(\implies g(x)\) е непрекъсната\\
+    \(\implies \exists C > 0; \; \forall x \in [a, b] \spc g(x) \leq C\\
+    \implies \frac{1}{M - f(x)} \leq C / \frac{M - f(x)}{C}\\
+    \frac{1}{C} \leq M - f(x)\\
+    f(x) \leq M - \frac{1}{C} \; \forall x \in [a, b] \implies \cntrdcn (M = sup\{f(x): x \in [a, b]\})\\
+    \implies \exists x_{max}; \; f(x) \leq M \spc \forall x \in [a, b], \; f(x_{max}) = M\)
+    \bigbreak
+    \(m = inf\{f(x): x \in [a, b]\}\)
+    Доп., че \(\forall x \in [a, b] \spc f(x) > m\\
+    h(x) = \frac{1}{f(x) - m}\)\\
+    От аритметични действия с неп. функции \(\implies h(x)\) е непрекъсната\\
+    \(\implies \frac{1}{f(x) - m} \leq C / \frac{f(x) - m}{C}\\
+    \frac{1}{C} \leq f(x) - m\\
+    \frac{1}{C} + m \leq f(x) \; \forall x \in [a, b] \implies \cntrdcn (m = inf\{f(x): x \in [a, b]\})\\
+    \implies \exists x_{min}; \; f(x) \geq m \spc \forall x \in [a, b], \; f(x_{min}) = m\)
+    \section{Th(Болцано)}
+    Нека \(f(x) \in C[a, b], \; f(a)f(b) < 0 \implies \exists c \in (a, b); \; f(c) = 0\)
+    \bigbreak
+    Д-во: БОО \(f(a) > 0, \; f(b) < 0\\
+    \\A = \{\forall x \in [a, b]: f(x) > 0\} \subset [a, b] \implies A \text{ е ограчено}\\
+    c = limsupA\)
+    \subsection{\(f(c) > 0\)}
+    \(f(c) > 0 \implies \exists \delta > 0; \; \forall x \in (c - \delta, c + \delta) \; f(x) > \frac{f(c)}{2} > 0\\
+    \forall x > c; \; f(x) \leq 0 \implies \cntrdcn (f(c) > 0)\)
+    \subsection{\(f(c) < 0\)}
+    \(f(c) < 0 \implies \exists \e > 0; \; \forall x \in (c - \e, c + \e) \; f(x) < \frac{f(c)}{2} < 0\\
+    \forall x > c; \; f(x) \geq 0 \implies \cntrdcn (f(c) < 0)\)
+    \bigbreak
+    От 3.1 и 3.2 \(\implies \exists c \in (a, b); \; f(c) = 0\)
+    \section{Th Болцано-Вайерщрас \\ (за междинните стойностии)}
+    Нека \(f(x) \in C[a, b], \; m = minf(x) \text{ и } n = maxf(x)\\
+    \implies \forall c \in [m, n] \; \exists x_c \in [a, b]; \; f(x_c) = c\)
+    \\Д-во: \(h(x) = f(x) - c\)\\
+    Ако \(c  = m\) или \(c  = n \implies \exists x_c \in [a, b]; \; f(x_c) = c\)\\
+    Ако \(c \in (m, n) \spc d = min\{x_{min}, x_{max}\} \spc e = max\{x_{min}, x_{max}\}\\
+    h(x): [d, e], \; h(d)h(e) < 0\\
+    \text{От Th(Болцано) за \(h\) в } [d, e] \implies \exists x_c; \; h(x_c) = f(x_c) - c = 0\\
+    \implies \exists x_c \in [a, b]; \; f(x_c) = c\)
+\end{document}

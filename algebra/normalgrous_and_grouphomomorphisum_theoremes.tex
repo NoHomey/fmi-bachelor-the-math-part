@@ -1,0 +1,165 @@
+\documentclass{article}
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+
+\setlength{\parindent}{0mm}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\NSG}{\; \underline{\triangleleft} \;}
+
+\begin{document}
+
+\title{Нормални подгрупи. Факторгрупи. Теореми за хомоморфизмите}
+\author{Иво Стратев}
+\date{\today}
+\maketitle
+
+\subsection*{Определение: Нормална група}
+Нека $G$ е група и $H \leq G$. $H$ е нормална подгрупа на $G$, ако:
+\begin{align*}
+	\forall g \in G gH = \{gh \; | \; h \in H\} = Hg = \{hg \; | \; h \in H\}
+\end{align*}
+
+\subsubsection*{Означение: Нормална група}
+Ако $H$ е нормална подгрупа на $G$ ще използваме означението: $H \NSG G$ или $H \triangleleft G$, ако $H < G$.
+
+\section*{Твърдение 1:}
+Нека $G$ е група и $H \leq G$ и нека $g^{-1}Hg = \{g^{-1}hg \; | \; h \in H\}$. Тогава $g^{-1}Hg \leq G$.
+
+\subsection*{Доказателство:}
+
+\begin{align*}
+	H \leq G & \implies e \in H \implies e^{-1}ee = eee = e \in g^{-1}Hg \\
+			 & \implies \forall h_1, h_2 \in H h_1h_2 \in H \implies (g^{-1}h_1g)(g^{-1}h_2g) = g^{-1}h_1h_2g \in g^{-1}Hg \\
+			 & \implies \forall h \in H \implies h^{-1} \in H \implies (g^{-1}hg)^{-1} = g^{-1}h^{-1}g \in g^{-1}Hg \\
+			 & \implies g^{-1}Hg \leq G \qed
+\end{align*}
+
+\section*{Твърдение 2:}
+Нека $G$ е група и $H \leq G$. Ако $\forall g \in G \; g^{-1}Hg \subseteq H$, то $g^{-1}Hg = H$.
+
+\subsection*{Доказателство:}
+\begin{align*}
+\forall g \in G \; g^{-1}Hg \subseteq H \implies gHg^{-1} \subseteq H \implies \\
+\forall h \in H \; ghg^{-1} \in H \implies \exists k \in H : \; ghg^{-1} = k \implies gh = kg \implies \\
+H \ni h = g^{-1}kg \in g^{-1}Hg \subseteq H \implies g^{-1}Hg = H \qed
+\end{align*}
+
+\section*{Твърдение 3:}
+Нека $G$ е група и $H \leq G$. Тогава $\forall g \in G \; \forall h \in H \; g^{-1}hg \in H \iff H \NSG G$.
+
+\subsection*{Доказателство:}
+\begin{align*}
+\forall g \in G \; \forall h \in H \; g^{-1}hg \in H \iff \forall g \in G \; g^{-1}Hg \subseteq H \iff
+\end{align*}
+
+От Твърдение 2
+\begin{align*}
+\forall g \in G \; g^{-1}Hg = H \iff Hg = gH \iff H \NSG G \qed
+\end{align*}
+
+\section*{Твърдение 4:}
+Нека $G$ е група, $n \in \N$ и $H_1, \; H_2, \; \dots, H_n \NSG G$, тогава $\displaystyle\bigcap_{k = 1}^n H_k \NSG G$.
+
+\subsection*{Доказателство:}
+Нека $H = \displaystyle\bigcap_{k = 1}^n H_k, \; I_n = \{k \in \N \; | \; k \leq n\}$
+\begin{align*}
+\forall k \in I_n \; e \in H_k \implies e \in H \implies H \neq \emptyset \\
+\forall h \in H \implies \forall k \in I_n \; h \in H_k \implies h^{-1} \in H_k \implies h^{-1} \in H \\
+\forall a, b \in H \implies \forall k \in I_n \; a, b \in H_k \implies ab \in H_k \implies ab \in H \\
+\implies H \leq G 
+\end{align*}
+
+От Твърдение 3
+\begin{align*}
+\forall h \in H \implies \forall k \in I_n \; \forall g \in G \; g^{-1}hg \in H_k \implies \\
+g^{-1}hg \in H_k \implies g^{-1}hg \in H \implies H \NSG G \qed
+\end{align*}
+
+\section*{Твърдение 5:}
+Нека $G$ е група. Тогава $\forall H \leq G : \; |G : \; H| = 2 \implies H \NSG G$
+
+\subsection*{Доказателство:}
+
+\begin{align*}
+	\forall H \leq G : \; |G : H| = 2 \; \forall g \in G
+\end{align*}
+
+Ако $g \in H \implies gH = H = Hg \implies H \NSG G$ \\
+Ако $g \notin H \implies$
+\begin{align*} gH \neq H \land Hg \neq H \land H \cup gH = \emptyset = H \cup Hg \implies \\
+G = H \cap gH = H \cap Hg \implies G \backslash H = Hg = gH \implies H \NSG G \qed
+\end{align*}
+
+\subsubsection*{Означениe}
+Нека $G$ е група и $H \NSG G$ и нека $G/H = \{gH \; | \; g \in G\}$
+
+\subsection*{}
+Нека $._{G/H} : \; G/H \times G/H \to G/H : \; \forall a, b \in G \; aH.bH = abH$
+
+\section*{Твърдение 6:}
+Нека $G$ е група и $H \NSG G$. Тогава $(G/H, ._{G/H})$ е група.
+
+\subsection*{Доказателство:}
+
+Коректност на операцията: \\
+Нека $a, \; b, \; c, \; d \in G : \; aH = cH \land bH = dH \implies$
+
+\begin{align*}
+	a^{-1}cH = H \implies a^{-1}c \in H \\
+	b^{-1}dH = H \implies b^{-1}d \in H \\
+	(ab)^{-1}cd = b^{-1}a^{-1}cd = b^{-1}a^{-1}c(bb^{-1})d = (b^{-1}(a^{-1}c)b)(b^{-1}d) \\
+	H \NSG G \implies b^{-1}(a^{-1}c)b \in H \implies (b^{-1}(a^{-1}c)b)(b^{-1}d) \in H \implies \\
+	(ab)^{-1}cd \in H \implies abH = cdH \implies
+\end{align*}
+Бинарната операцията е дефинирана коректно.
+
+\subsection*{}
+$\forall a, b, c \in G \; a(bc)H = \{a(bc)h \; | \; h \in H\} = \{abch \; | \; h \in H\} = \{(ab)ch \; | \; h \in H\} = (ab)cH \implies$ \\
+Бинарната операцията е асоциативна.
+
+\begin{align*}
+	e \in G \implies eH = H \\
+	\forall a \in G aH = aeH = aH.eH = Ha = Hae = Ha.He \implies 
+\end{align*}
+$H$ играе ролята на единичен елемент.
+
+\begin{align*}
+	\forall a \in G \; aH.a^{-1}H = aa^{-1}H = eH = H = a^{-1}aH = a^{-1}H.aH \implies \\
+	\forall a \in G \; \exists b \in G : \; aH.bH = H \land b = a^{-1}
+\end{align*}
+$\implies (G/H, ._{G/H})$ е група $\qed$.
+
+\section*{}
+
+Нека $G, G'$ са групи и нека $\varphi : \; G \to G'$ е хомоморфизъм на групи.
+
+Множеството $Ker_\varphi = \{a \in G \; | \; \varphi(a) = e\}$ ще наричаме ядро на $\varphi$, а
+
+множеството $Im_\varphi = \{b \in G' \; | \; \exists a \in G : \; \varphi(a) = b \} = \{\varphi(a) \; | \; a \in G\}$ ще наричаме образ на $\varphi$.
+
+\section*{Твърдение 7:}
+Нека $G, G'$ са групи и нека $\varphi : \; G \to G'$ е хомоморфизъм на групи. Тогава $\varphi(e_G) = e_{G'}$.
+
+\subsection*{Доказателство:}
+\begin{align*}
+	\forall a \in G \; \varphi(a) = \varphi(ae) = \varphi(a)\varphi(e) \; | \; \varphi(a)^{-1} \implies e_{G'} = \varphi(e_G) \qed
+\end{align*}
+
+\section*{Твърдение 8:}
+Нека $G, G'$ са групи и нека $\varphi : \; G \to G'$ е хомоморфизъм на групи. Тогава $\forall a \in G \; \varphi(a^{-1}) = \varphi(a)^{-1}$.
+
+\subsection*{Доказателство:}
+\begin{align*}
+	\forall a \in G \; \varphi(aa^{-1}) = \varphi(a)\varphi(a^{-1}) = e \; | \; \varphi(a)^{-1} \implies \varphi(a)^{-1}\varphi(a)\varphi(a^{-1}) =\varphi(a)^{-1}
+	\implies \varphi(a^{-1}) = \varphi(a)^{-1}  \qed
+\end{align*}
+
+\end{document}

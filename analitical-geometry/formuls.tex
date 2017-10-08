@@ -1,0 +1,158 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+
+\newcommand{\vectr}{\overrightarrow}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \section{Афинни операции с вектори}
+    \subsection{Вектор}
+    \(M(x_1, x_2, x_3), \; N(y_1, y_2, y_3)\\
+    \vectr{MN}(y_1 - x_1, y_2 - x_2, y_3 - x_3)\\
+    |\vectr{MN}| = \sqrt{(y_1 - x_1)^2 + (y_2 - x_2)^2 + (y_3 - x_3)^2}\)
+    \subsection{Умножение на вектор със скалар}
+    \(\vectr{a}(a_1, a_2, a_3), \; |a| = \sqrt{a_1^2 + a_2^2 + a_3^2}\\
+    \lambda \in \mathbb{R} \; \vectr{b} = \lambda \vectr{a}, \; \vectr{b}(\lambda a_1, \lambda a_2, \lambda a_3)\\
+    |\vectr{b}| = \sqrt{(\lambda a_1)^2 + (a_2 \lambda)^2 + (a_3 \lambda)^2} = \sqrt{\lambda^2 (a_1^2 + a_2^2 + a_3^2)} = |\lambda||\vectr{a}|\\
+    \vectr{b} \uparrow \uparrow \vectr{a}, \; \lambda > 0\\
+    \vectr{b} \uparrow \downarrow \vectr{a}, \; \lambda < 0\\
+    \vectr{a} = \vectr{MN}, \; -\vectr{a} = -\vectr{MN} = \vectr{NM}, \; \lambda = -1\)
+    \subsection{Събиране на вектори}
+    \(\vectr{AC}(a_1, a_2, a_3), \; \vectr{CB}(b_1, b_2, b_3)\\
+    \vectr{AB} = \vectr{AC} + \vectr{AB}\\
+    \vectr{AB}(a_1 + b_1, a_2 + b_2, a_3 + b_3)\)
+    \subsection{Среда на отсечка}
+    \(A(a_1, a_2, a_3), \; B(b_1, b_2, b_3)\\
+    AM = MB = \frac{1}{2}AB\\
+    \\M(\frac{a_1 + b_1}{2}, \frac{a_2 + b_2}{2}, \frac{a_3 + b_3}{2})\)
+    \subsection{Медицентър}
+    \(A(a_1, a_2, a_3), \; B(b_1, b_2, b_3), \; C(c_1, c_2, c_3)\\
+    \\M(\frac{a_1 + b_1 + c_1}{3}, \frac{a_2 + b_2 + c_2}{3}, \frac{a_3 + b_3 + c_3}{3})\)
+    \section{Скаларно произведение}
+    \(\vectr{a}, \vectr{b} \neq \vectr{0}\)
+    \subsection{}
+    \(\vectr{a} \vectr{b} = |\vectr{a}| |\vectr{b}| \cos(\vectr{a}, \vectr{b}) \in \mathbb{R}\)
+    \subsection{}
+    \(\vectr{a} \vectr{b} = \vectr{b}\vectr{a}\)
+    \subsection{}
+    \((\vectr{a} + \vectr{b})\vectr{c} = \vectr{a}\vectr{c} + \vectr{b}\vectr{c}\)
+    \subsection{}
+    \((\lambda\vectr{a})\vectr{b} = \lambda(\vectr{a}\vectr{b})\)
+    \subsection{}
+    \(\vectr{a}^2 = \vectr{a} \vectr{a} = |\vectr{a}|^2\)
+    \subsection{}
+    \(\vectr{a} \vectr{b} = 0 \iff \vectr{a} \perp \vectr{b}\)
+    \subsection{}
+    \(\cos(\vectr{a}, \vectr{b}) = \frac{\vectr{a} \vectr{b}}{|\vectr{a}| |\vectr{b}|}\)
+    \subsection{}
+    \(\vectr{a}(a_1, a_2, a_3), \; \vectr{b}(b_1, b_2, b_3) \implies \vectr{a} \vectr{b} = a_1b_1 + a_2b_2 + a_3b_3\)
+    \section{Векторно произведение}
+    \(\vectr{a}, \vectr{b} \neq \vectr{0} \implies \exists! \quad \vectr{a} \times \vectr{b}\)
+    \subsection{}
+    \(|\vectr{a} \times \vectr{b}| = |\vectr{a}| |\vectr{b}| \sin(\vectr{a}, \vectr{b})\)
+    \subsection{}
+    \(\vectr{a} \times \vectr{b} \perp \vectr{a}, \; \vectr{a} \times \vectr{b} \perp \vectr{b}\)
+    \subsection{}
+    \(\vectr{a}, \vectr{b}, \vectr{a} \times \vectr{b} \in S^+\)
+    \subsection{Свойства}
+    \subsubsection{}
+    \(\vectr{a} \times \vectr{b} = - \vectr{b} \times \vectr{a}\)
+    \subsubsection{}
+    \((\vectr{a} + \vectr{b}) \times \vectr{c} = \vectr{a} \times \vectr{c} + \vectr{b} \times \vectr{c}\)
+    \subsubsection{}
+    \((\lambda \vectr{a}) \times (\mu \vectr{b}) = \lambda\mu(\vectr{a} \times \vectr{b})\)
+    \subsubsection{}
+    \(\vectr{a} \times \vectr{b} = \vectr{0} \iff \vectr{a} \parallel \vectr{b}\)
+    \subsubsection{}
+    Лице на успоредник, построен върху \(\vectr{a}, \vectr{b}\) взети с общо начало\\
+    \\\(S = |\vectr{a} \times \vectr{b}|\)
+    \subsubsection{}
+    Лице на триъгълник, построен върху \(\vectr{a}, \vectr{b}\) взети с общо начало\\
+    \\\(S = \frac{|\vectr{a} \times \vectr{b}|}{2}\)
+    \subsubsection{}
+    \(\sin(\vectr{a}, \vectr{b}) = \frac{\vectr{a} \times \vectr{b}}{|\vectr{a}||\vectr{b}|}\)
+    \subsubsection{}
+    \((\vectr{a} \times \vectr{b})(\vectr{a} \times \vectr{b}) = \vectr{a}^2 \vectr{b}^2 - (\vectr{a} \vectr{b})^2\)
+    \subsubsection{}
+    \(\vectr{a}(a_1, a_2, a_3), \; \vectr{b}(b_1, b_2, b_3)\\
+    \\\implies \vectr{a} \times \vectr{b}\left(\begin{vmatrix}
+        a_2 & a_3\\
+        b_2 & b_3
+    \end{vmatrix}, \begin{vmatrix}
+        a_3 & a_1\\
+        b_3 & b_1
+    \end{vmatrix}, \begin{vmatrix}
+        a_1 & a_2\\
+        b_1 & b_2
+    \end{vmatrix}\right)\)
+    \section{Двойно векторно произведение}
+    \subsection{}
+    \((\vectr{a} \times \vectr{b}) \times \vectr{c} = \begin{vmatrix}
+        \vectr{a}\vectr{c} & \vectr{b}\vectr{c}\\
+        \vectr{a} & \vectr{b}
+    \end{vmatrix}\)
+    \subsection{}
+    \(\vectr{a} \times (\vectr{b} \times \vectr{c}) = \begin{vmatrix}
+        \vectr{a}\vectr{c} & \vectr{a}\vectr{b}\\
+        \vectr{c} & \vectr{b}
+    \end{vmatrix}\)
+    \section{Смесено произведение}
+    \(\vectr{a}\vectr{b}\vectr{c} = (\vectr{a} \times \vectr{b})\vectr{c} = \vectr{a}(\vectr{b} \times \vectr{c}) \in \mathbb{R}\)
+    \subsection{}
+    \(\vectr{a}\vectr{b}\vectr{c} = 0 \iff \vectr{a} \parallel \vectr{b} \parallel \vectr{c} \parallel \vectr{a}\)
+    \subsection{}
+    \(\vectr{a}\vectr{b}\vectr{c} = \vectr{b}\vectr{c}\vectr{a} = \vectr{c}\vectr{a}\vectr{b}\)
+    \subsection{}
+    \(\vectr{a}\vectr{b}\vectr{c} = -\vectr{b}\vectr{a}\vectr{c} = -\vectr{a}\vectr{c}\vectr{b} = -\vectr{c}\vectr{b}\vectr{a}\)
+    \subsection{}
+    \((\vectr{a_1} + \vectr{a_2})\vectr{b}\vectr{c} = \vectr{a_1}\vectr{b}\vectr{c} + \vectr{a_2}\vectr{b}\vectr{c}\)
+    \subsection{}
+    \((\lambda\vectr{a})\vectr{b}\vectr{c} = \vectr{a}(\lambda\vectr{b})\vectr{c} = \vectr{a}\vectr{b}(\lambda\vectr{c}) = \lambda(\vectr{a}\vectr{b}\vectr{c})\)
+    \subsection{}
+    Обем на паралепипед, построен върху \(\vectr{a}, \vectr{b}, \vectr{c}\) взети с общо начало\\
+    \\\(V = |\vectr{a}\vectr{b}\vectr{c}|\)
+    \subsection{}
+    Обем на тетраедър, построен върху \(\vectr{a}, \vectr{b}, \vectr{c}\) взети с общо начало\\
+    \\\(V = |\frac{\vectr{a}\vectr{b}\vectr{c}}{6}|\)
+    \subsection{}
+    \(\vectr{a}(a_1, a_2, a_3), \; \vectr{b}(b_1, b_2, b_3), \; \vectr{c}(c_1, c_2, c_3)\\
+    \\\implies \begin{vmatrix}
+        a_1 & a_2 & a_3 \\
+        b_1 & b_2 & b_3 \\
+        c_1 & c_2 & c_3
+    \end{vmatrix}\)
+    \subsection{}
+    \((\vectr{a}\vectr{b}\vectr{c})^2 = \begin{vmatrix}
+        \vectr{a}^2 & \vectr{a}\vectr{b} & \vectr{a}\vectr{c} \\
+        \vectr{b}\vectr{a} & \vectr{b}^2 & \vectr{b}\vectr{c} \\
+        \vectr{c}\vectr{a} & \vectr{c}\vectr{b} & \vectr{c}^2
+    \end{vmatrix}\)
+    \section{Права в равнина}
+    \(g : Ax + By + C = 0\) - Общо уравниение на права в равнина
+    \subsection{}
+    \(\vectr{p}(-B, A) \parallel g\)
+    \subsection{}
+    \(\vectr{q}(A, B) \perp g\)
+    \subsection{}
+    \(h \parallel g \iff h : Ax + By + C_h = 0\)
+    \subsection{}
+    \(l \perp g \iff l : -Bx + Ay + C_l = 0\)
+    \subsection{Нормално уравниение на права в равнина}
+    \(g : \frac{Ax + By + C}{\sqrt{A^2 + B^2}} = 0\)
+    \subsection{Разтояние от точка до права}
+    \(M(x_M, y_M) \implies d = \frac{Ax_M + By_M + C}{\sqrt{A^2 + B^2}}\)
+    \subsection{уравниение на ъглополовиящи}
+    \(g_1 : A_1x + B_1y + C_1 = 0, \; g : A_2x + B_2y + C_2 = 0\\
+    \\\implies b_1, b_2 = \frac{A_1x + B_1y + C_1}{\sqrt{A_1^2 + B_1^2}} \pm \frac{A_2x + B_2y + C_2}{\sqrt{A_2^2 + B_2^2}}\)
+    \subsection{Уравниение на права минаваща през две точки}
+    \(A(x_A, y_A), \; B(x_B, y_B)\\
+    \\l : \begin{vmatrix}
+        x - x_A & y - y_A\\
+        x_B - x_A & y - y_B
+    \end{vmatrix} = 0\)
+\end{document}
