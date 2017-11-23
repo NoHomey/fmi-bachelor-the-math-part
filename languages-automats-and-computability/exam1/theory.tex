@@ -1,0 +1,196 @@
+\documentclass[12pt]{article}
+    
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+
+\newcommand{\Lang}{\mathcal{L}}
+\newcommand{\N}{\mathbb{N}}
+
+\setlength{\parindent}{0mm}
+        
+\title{Езици и автомати}
+\author{Иво Стратев}
+        
+\begin{document}
+\maketitle
+
+\section*{Недетерминирани крайни автомати}
+
+\subsection*{Определение}
+
+Недермининар краен автомат представлява: \\
+
+$N = (\Sigma, \; Q, \; s, \; \Delta, \; F)$, където: \\
+
+$\Sigma$ - крайно множество от букви (азбука) \\
+
+$Q$ - крайно множество от състояния \\
+
+$s \in Q$ - начално състояние \\
+
+$\Delta \; : \; Q \times \Sigma \to 2^Q $ - функция на преходите. Тя е тотална. Ако за някоя двойка $(q, \; a)$ няма преход в автомата, то $\Delta(q, \; a) = \emptyset$; \\
+
+$F \subseteq Q$ - множество от финални състояния \\
+
+\subsubsection*{Дефиниция за $\Delta^*$}
+
+$\Delta^* \; : \; Q\times\Sigma^* \to 2^Q \; : \; \\\\
+\Delta^*(q, \; \varepsilon) = {q} \\\\
+\Delta^*(q, \; a\alpha) = \displaystyle\bigcup_{p \in \Delta(q, \; a)} \Delta^*(p, \; \alpha) $
+
+\subsubsection*{Език на недетерминирания автомат $\Delta^*$, $\Lang(N)$}
+
+$\Lang(N) = \{\omega \in \Sigma^* \; | \; \Delta^*(s, \; \omega) \in F\}$
+
+\subsection*{"Действия" с недетерминирани автомати}
+
+Нека $\Sigma$ e азбука. \\
+
+Нека $N_1 = (\Sigma, \; Q_1, \; s_1, \; \Delta_1, \; F_1)$ и $N_2 = (\Sigma, \; Q_2, \; s_2, \; \Delta_2, \; F_2)$  - К.Н.А и $Q_1 \cap Q_2 = \emptyset$ \\
+
+Нека $N = (\Sigma, \; Q, \; s, \; \Delta, \; F)$
+
+\subsubsection*{Конкатенация, $\Lang(N) = \Lang(N_1) \; . \; \Lang(N_2)$}
+
+$Q = Q_1 \cup Q_2$ \\
+
+$s = s_1$ \\
+
+$\Delta(q, \; a) = \begin{cases}
+    \Delta_1(q, \; a), & q \in Q_1 \backslash F_1 \\
+    \Delta_2(q, \; a), & q \in Q_2 \\
+    \Delta_1(q, \; a) \cup \Delta_2(s_2, \; a), & q \in F_1
+\end{cases}$ \\\\
+
+$F = \begin{cases}
+  F_1 \cup F_2, & s_2 \in F_2\\
+  F_2, & s_2 \notin F_2  
+\end{cases}$
+
+\subsubsection*{Обединение, $\Lang(N) = \Lang(N_1) \cup \Lang(N_2)$}
+
+$s \not \in Q_1 \cup Q_2$ \\\
+
+$Q = Q_1 \cup Q_2 \cup \{s\}$ \\
+
+$\Delta(q, \; a) = \begin{cases}
+    \Delta_1(q, \; a), & q \in Q_1 \\
+    \Delta_2(q, \; a), & q \in Q_2 \\
+    \Delta_1(s_1, \; a) \cup \Delta_2(s_2, \; a), & q = s
+\end{cases}$ \\\\
+
+$F = \begin{cases}
+  F_1 \cup F_2 \cup \{s\}, & s_1 \in F_1 \; \lor \; s_2 \in F_2 \\
+  F_1 \cup F_2, & s_1 \notin F_1 \; \land \; s_2 \notin F_2 \\
+\end{cases}$
+
+\subsubsection*{Позитивна обвивка, $\Lang(N) = \Lang(N_1)^+$}
+
+$Q = Q_1$ \\
+
+$s = s_1$ \\
+
+$\Delta(q, \; a) = \begin{cases}
+    \Delta_1(q, \; a), & q \in Q_1 \backslash F_1 \\
+    \Delta_1(q, \; a) \cup \Delta_1(s, \; a), & q \in F_1
+\end{cases}$ \\\\
+
+$F = F_1$
+
+\subsubsection*{Звезда на Клини, $\Lang(N) = \Lang(N_1)^* = \{\varepsilon\} \cup \Lang(N_1)^+$}
+
+$E = (\Sigma, \; \{s_\varepsilon\}, \; s_\varepsilon, \; \Delta_\varepsilon, \; \{s_\varepsilon\})$ \\
+
+$s_\varepsilon \notin Q_1$ \\
+
+$\Delta_\varepsilon(s_\varepsilon, \; \varepsilon) = \{s_\varepsilon\} \\\\
+\forall a \in \Sigma \quad \Delta_\varepsilon(s_\varepsilon, \; a) = \emptyset $ \\
+
+$Q = Q_1 \cup \{s_\varepsilon\}$ \\
+
+$s = s_\varepsilon$ \\
+
+$\Delta(q, \; a) = \begin{cases}
+    \Delta_1(q, \; a), & q \in Q_1 \backslash F_1 \\
+    \Delta_1(q, \; a) \cup \Delta_1(s, \; a), & q \in F_1 \\ 
+    \Delta_1(s, \; a), & q = s_\varepsilon
+\end{cases}$ \\\\
+
+$F = F_1 \cup \{s_\varepsilon\}$
+
+\section*{Лема за покачването (Pumping Lemma)}
+
+Нека $L \subseteq \Sigma^*$ е безкраен регулярен език. \\
+
+$\exists \; p \in \N^+ \; : \; \forall \; \omega \in L \; : \; |\omega| \geq p, \; \exists \; x, \; y, \; z \in \Sigma^* \; : \\\\
+\omega = xyz \; \land \; |xy| \leq p \; \land \; |y| \geq 1 \; \land \; (\forall \; i \in \N \; xy^iz \in L) $
+
+\subsection*{Следствие (Контрапозиция на лемата за покачването)}
+
+Нека $L \subseteq \Sigma^*$ е безкраен език. \\
+
+Ако е изпълнено, че: \\
+ 
+$\forall \; p \in \N^+ \; \exists \; \omega \in L \; : \; |\omega| \geq p, \; \forall x, \; y, \; z \in \Sigma^* \; : \\\\
+ \omega = xyz \; \land \; |xy| \leq p \; \land \; |y| \geq 1 \; \land \; (\exists \; i \in \N \; xy^iz \notin L) $. \\
+
+Тогава $L$ не е регулярен.
+
+\section*{Релация на Майхил-Нероуд и минимален автомат}
+
+\subsection*{Релация на Майхил-Нероуд}
+
+Нека $\Sigma$ e азбука и $L \subseteq \Sigma^*$ \\
+
+$R_L = \{(x, \; y) \in \Sigma^*\times\Sigma^* \; | \; \forall z \in \Sigma^* \; xz \in L \iff yz \in L\} \\\\
+\Sigma^*/R_L = \{[\alpha]_{R_L} \; | \; \alpha \in \Sigma^*\}$
+
+\subsection*{Теорема за съществуване на минимален автомат}
+
+Ако съществува $n \in \N \; : \; n = |\Sigma^*/R_L|$. Тогава $L$ е регулярен и съществува минимален Д.К.А
+$M = (\Sigma, \; Q_M, \; s_M, \; \delta_M, \; F_M)$, такъв че $\Lang(M) = L$. \\
+
+$Q_M = \Sigma^*/R_L$ \\
+
+$s_M = [\varepsilon]_L$ \\
+
+$\delta_M([\alpha]_{R_L}, \; a) = [\alpha.a]_L$ \\
+
+$F_M = \{[\alpha]_{R_L} \; | \; \alpha \in L\} = \{q \in Q_M \; | \; q \subseteq L\}$
+
+\subsubsection*{Лема $\delta_M$ е коректно дефинирана ($\delta_M$ задава функция)}
+\subsubsection*{Лема $\delta_M^*([\varepsilon]_{R_L}, \; \omega) = [\omega]_{R_L}$}
+\subsubsection*{Лема $\Lang(M) = L$}
+
+\section*{Еквивалетност на състояния на автомат и минимален автомат}
+
+Нека $\Sigma$ e азбука и $A = (\Sigma, \; Q, \; s, \; \delta, \; F)$ е свързан, тотален Д.К.А
+
+\subsection*{Еквивалетност на състояния на автомат}
+
+$R_\equiv = \{(p, \; q) \in Q \; | \; \forall \omega \in \Sigma^* \; \delta^*(p, \; \omega) \in F \iff \delta^*(q, \; \omega) \in F\}$
+
+\subsection*{Минимален Д.К.А построен по състояния на класовете на еквивалентност на $R_\equiv$}
+
+Нека $A_\equiv = (\Sigma, \; Q_\equiv, \; s_\equiv, \; \delta_\equiv, \; F_\equiv)$ \\
+
+$Q_\equiv = Q/R_\equiv = \{[q]_{R_\equiv} \; | \; q \in Q\}$ \\
+
+$s_\equiv = [s]_{R_\equiv}$ \\
+
+$\delta_\equiv([q]_{R_\equiv}, \; a) = [\delta(q, \; a)]_{R_\equiv}$ \\
+
+$F_\equiv = \{[q]_{R_\equiv} \; | \; q \in Q, \; [q]_{R_\equiv} \subseteq F\} = \{[q]_{R_\equiv} \; | \; q \in Q, \; [q]_{R_\equiv} \cap F \neq \emptyset\}$
+
+\subsubsection*{Лема $\delta_\equiv$ е коректно дефинирана ($\delta_\equiv$ задава функция)}
+\subsubsection*{Лема $\delta_\equiv^*([s]_{R_\equiv}, \; \omega) = [\delta^*(s, \; \omega)]_{R_\equiv} \implies \Lang(A_\equiv) = L$}
+\subsubsection*{Лема $A_\equiv$ е с минимален брой състояния}
+
+\end{document}
