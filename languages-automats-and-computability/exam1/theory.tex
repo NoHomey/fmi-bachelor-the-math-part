@@ -21,6 +21,60 @@
 \begin{document}
 \maketitle
 
+\section*{Регулярни езици}
+
+\subsection*{Основни}
+
+Нека $\Sigma$ е азбука. Тогава $\emptyset, \; \{\varepsilon\}, \; \forall \; a \in \Sigma \; \{a\}$ - са регурлярни езици
+
+\subsection*{Операции}
+
+\subsubsection*{Обединение}
+
+Ако $L_1, \; L_2$ са регулярни, то и $L_1 \cup L_2 = \{\omega \; | \; \omega \in L_1 \; \lor \; \omega \in L_2 \}$ е регулярен.
+
+\subsubsection*{Конкатенация}
+
+Ако $L_1, \; L_2$ са регулярни, то и $L_1 \; . \; L_2 = \{\omega_1.\omega_2 \; | \; \omega_1 \in L_1 \; \land \; \omega_2 \in L_2\}$ е регулярен. \\\\
+
+$L^0 = \{\varepsilon\}$ \\
+
+$\forall n \in \N \; L^{n + 1} = L^n\;.\;L $
+
+\subsubsection*{Звезда на Клини}
+
+Ако $L$ е регулярен, то и $L^* = \displaystyle\bigcup_{n \in \N} L^n$ е регулярен.
+
+\subsection*{Дефиниция}
+
+Един език е регулярен, ако се получава от основните с помощта на краен брой прилагания на операциите: обединение, конкатенация и звезда на Клини. 
+
+\section*{Регулярни изрази}
+
+\subsection*{Базови}
+
+Символите $\emptyset, \; \varepsilon, \; a$ са регулярни изрази $(\forall \; a \in \Sigma)$ \\
+
+\subsection*{"Производни"}
+
+Ако $r_1$ и $r_2$ са регулярни изрази, то и $r_1 + r_2, \; r_1 \; . \; r_2$ и $r_1^*$ също са регулярни изрази.
+
+\subsection*{Език на регулярен израз}
+
+$\Lang(\emptyset) = \emptyset$ \\
+
+$\Lang(\varepsilon) = \{\varepsilon\}$ \\
+
+$\forall a \in \Sigma \; \Lang(a) = \{a\}$ \\
+
+Нека $r_1$ и $r_2$ са регулярни изрази и $L_1 = \Lang(r_1), \; L_2 = \Lang(r_2)$. Тогава: \\
+
+$L_1 \cup L_2 = \Lang(r_1) \cup \Lang(r_2) = \Lang(r_1 + r_2)$ \\
+
+$L_1 \; . \; L_2 = \Lang(r_1) \; . \; \Lang(r_2) = \Lang(r_1 \; . \; r_2)$ \\
+
+$L_1^* = \Lang(r_1)^* = \Lang(r_1^*)$
+
 \section*{Недетерминирани крайни автомати}
 
 \subsection*{Определение}
@@ -192,5 +246,15 @@ $F_\equiv = \{[q]_{R_\equiv} \; | \; q \in Q, \; [q]_{R_\equiv} \subseteq F\} = 
 \subsubsection*{Лема $\delta_\equiv$ е коректно дефинирана ($\delta_\equiv$ задава функция)}
 \subsubsection*{Лема $\delta_\equiv^*([s]_{R_\equiv}, \; \omega) = [\delta^*(s, \; \omega)]_{R_\equiv} \implies \Lang(A_\equiv) = L$}
 \subsubsection*{Лема $A_\equiv$ е с минимален брой състояния}
+
+\section*{Задачи:}
+
+Ако $L \subseteq \{a, \; b\}^*$ е регулярен език.
+
+То езикът $\{(ab)^n(ba)^k \; | \; n, \; k \in \N\}$ е регулярен, защото очевидно се описва от регулярния израз $(ab)^*(ba)^*$. \\
+
+Ако $D$ е краен език над $\{a, \; b\}^*$, то $L \cup \overline{D}$ винаги е регулярен, защото щом $D$ е регулярен, то и $\overline{D}$ е регулярен, следователно и $L \cup \overline{D}$ е регулярен. \\
+
+Ако $K \subseteq \{a, \; b\}^*$ не е регулярен. То $L \cap K$ може да е не регулярен, но може и да е регулярен, например ако $L \cap K = \emptyset$ то той ще е регулярен. \\
 
 \end{document}
