@@ -21,10 +21,12 @@
 \begin{document}
     \pagenumbering{gobble}
     \maketitle
+
     \section{Th(Ферма)}
     Нека \(f(x)\) е дефинирна в \(x_0\) - лок. екст. и \(f(x)\) е диференцируема в \(x_0\), то \(f'(x_0) = 0\)
     \bigbreak
     Д-во:
+
     \subsection{\(x_0\) е т. лок. макс.}
     \(\exists \delta > 0; \; \forall x \in (x_0 - \delta, x_0 + \delta) \spc f(x) \leq f(x_0)\\
     \implies f(x) - f(x_0) \leq 0 \spc \forall x \in (x_0 - \delta, x_0 + \delta)\)
@@ -35,35 +37,44 @@
     \(x < x_0 \implies x - x_0 < 0 \spc \forall x \in (x_0 - \delta, x_0 + \delta)\\
     \implies \displaystyle\lim\limits_{\substack{x \to x_0 \\ x < x_0}} \frac{f(x) - f(x_0)}{x - x_0} \geq 0\)\\
     От 1.1.1 и 1.1.2 \(\implies \displaystyle\lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0) = 0\)
+
     \subsection{\(x_0\) е т. лок. мин.}
     \(\exists \delta > 0; \; \forall x \in (x_0 - \delta, x_0 + \delta) \spc f(x) \geq f(x_0)\\
     \implies f(x) - f(x_0) \geq 0 \spc \forall x \in (x_0 - \delta, x_0 + \delta)\)
+
     \subsubsection{\(x > x_0\)}
     \(x > x_0 \implies x - x_0 > 0 \spc \forall x \in (x_0 - \delta, x_0 + \delta)\\
     \implies \displaystyle\lim\limits_{\substack{x \to x_0 \\ x > x_0}} \frac{f(x) - f(x_0)}{x - x_0} \geq 0\)
+
     \subsubsection{\(x < x_0\)}
     \(x < x_0 \implies x - x_0 < 0 \spc \forall x \in (x_0 - \delta, x_0 + \delta)\\
     \implies \displaystyle\lim\limits_{\substack{x \to x_0 \\ x < x_0}} \frac{f(x) - f(x_0)}{x - x_0} \leq 0\)\\
     От 1.2.1 и 1.2.2 \(\implies \displaystyle\lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0) = 0\)
+
     \section{Th(Рол)}
     Нека \(f(x) \in C[a, b]\) и \(f(x)\) е диференцируема в \((a, b)\) и \(f(a) = f(b)\\
     \exists c \in (a, b); \; f'(c) = 0\)
     \bigbreak
     Д-во:
+
     \subsection{\(f(x) \equiv const\)}
     \(f'(x) = 0\)
+
     \subsection{\(f(x) \not\equiv const\)}
     От Th(Вайерщрас) \(\implies\)\\
     \(\exists x_{min}, x_{max} \in [a, b];\\
     f(x_{max}) = max\{f(x) : \; x \in [a, b]\}\\
     f(x_{min}) = min\{f(x) : \; x \in [a, b]\}\)
+
     \subsubsection{\(x_{min}, x_{max} \notin (a, b)\)}
     \(x_{min} \neq x_{max}, f(a) = f(b) \implies minf(x) = maxf(x)\\
     \implies f(x) \equiv const \implies \cntrdcn (f(x) \not\equiv const)\)
     \subsubsection{Ако поне една от \(x_{min}\) или \(x_{max} \in (a, b)\)}
+
     Ако \(x_{max} \in (a, b), c = x_{max}\) в противен случай \(c = x_{min}\\
     \implies c \in (a, b)\) - лок. екст. от Th(Ферма)\\
     \(\implies f'(c) = 0\)
+
     \section{Th(За крайните нараствания на Лагранж)}
     Нека \(f(x) \in C[a, b]\) и \(f(x)\) е диференцируема в \((a, b)\\
     \exists c \in (a, b); \; f(b) - (a) = f'(c)(b - a)\)
@@ -80,6 +91,7 @@
     h'(c) = f'(c) - k = 0\\
     \implies f'(c) = k = \frac{f(b) - f(a)}{b - a}\\
     \implies f'(c)(b - a) = f(b) - f(a)\)
+
     \section{Обобщена Th(За крайните нараствания на Коши)}
     Нека \(f(x), g(x) \in C[a, b]\) и \(f(x), g(x)\) са диференцируеми в \((a, b),\\
     \text{като } g'(x) \neq 0 \; \forall x \in (a, b)\\
@@ -103,6 +115,10 @@
     h'(c) = f'(c) - kg'(x) = 0\\
     \implies f'(c) = kg'(c) = \frac{f(b) - f(a)}{g(b) - g(a)}g'(c)\\
     \implies \frac{f'(c)}{g'(c)} = \frac{f(b) - f(a)}{g(b) - g(a)}\)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     \section{Th(\(f(x)\uparrow \; \in C(a, b) \iff f'(x) \geq 0 \; \forall x \in (a, b)\))}
     \subsection{Th(\(f(x)\uparrow \; \in C(a, b) \implies f'(x) \geq 0 \; \forall x \in (a, b)\))}
     \(t \in (a, b)\)
@@ -116,6 +132,7 @@
     \implies \displaystyle\lim_{x \to t} \frac{f(x) - f(t)}{x - t} = f'(t) \geq 0\)
     \smallbreak
     От 5.1.1 и 5.1.2 \(\implies \forall x \in (a, b) f'(x) \geq 0\)
+
     \subsection{Th(\(f(x) \in C(a, b); \; f'(x) \geq 0 \; \forall x \in (a, b) \implies f(x)\uparrow\))}
     \(f(x)\uparrow \implies \forall x_1, x_2 \in (a, b); \; x_1 < x_2 \implies f(x_1) \leq f(x_2)\)\\
     Доп., че \(\exists t_1, t_2 \in (a, b); \; t_1 < t_2; \; f(t_1) > f(t_2)\)\\
@@ -125,6 +142,7 @@
     t_1 < t_2 \implies t_2 - t_1 > 0\\
     \implies f(t_2) - f(t_1) \geq 0 \implies f(t_2) \geq f(t_1) \implies \cntrdcn (f(t_1) > f(t_2))\\
     \implies f(x) \in C(a, b); \; f'(x) \geq 0 \; \forall x \in (a, b) \implies f(x)\uparrow\)
+
     \section{Th(\(f(x)\downarrow \; \in C(a, b) \iff f'(x) \leq 0 \; \forall x \in (a, b)\))}
     \subsection{Th(\(f(x)\downarrow \; \in C(a, b) \implies f'(x) \leq 0 \; \forall x \in (a, b)\))}
     \(t \in (a, b)\)
@@ -138,6 +156,7 @@
     \implies \displaystyle\lim_{x \to t} \frac{f(x) - f(t)}{x - t} = f'(t) \leq 0\)
     \smallbreak
     От 6.1.1 и 6.1.2 \(\implies \forall x \in (a, b) f'(x) \leq 0\)
+
     \subsection{Th(\(f(x) \in C(a, b); \; f'(x) \leq 0 \; \forall x \in (a, b) \implies f(x)\downarrow\))}
     \(f(x)\downarrow \implies \forall x_1, x_2 \in (a, b); \; x_1 < x_2 \implies f(x_1) \geq f(x_2)\)\\
     Доп., че \(\exists t_1, t_2 \in (a, b); \; t_1 < t_2; \; f(t_1) < f(t_2)\)\\
@@ -147,6 +166,7 @@
     t_1 < t_2 \implies t_2 - t_1 > 0\\
     \implies f(t_2) - f(t_1) \leq 0 \implies f(t_2) \leq f(t_1) \implies \cntrdcn (f(t_1) < f(t_2))\\
     \implies f(x) \in C(a, b); \; f'(x) \leq 0 \; \forall x \in (a, b) \implies f(x)\downarrow\)
+    
     \section{\(f'(x) = 0 \; \forall x \in (a, b) \implies f(x) \equiv const \; \forall x \in (a, b)\)}
     Нека \(f(x)\) е дефинирна и диференцируема в \((a, b)\) и\\
     \(f'(x) = 0 \; \forall x \in (a, b) \implies f(x) \equiv const \; \forall x \in (a, b)\)

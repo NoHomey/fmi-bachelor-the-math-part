@@ -1,0 +1,619 @@
+\documentclass[12pt]{article}
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+
+\usepackage{amsmath,amsthm}
+\usepackage{lipsum}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usepackage{cancel}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+
+\setlength{\parindent}{0mm}
+
+\newcommand{\pto}[2]{\xrightarrow[#1 \to #2]{}}
+\newcommand{\npto}[2]{\cancel{\xrightarrow[#1 \to #2]{}}}
+\newcommand{\xto}[1]{\pto{x}{#1}}
+\newcommand{\nimplies}{\cancel\implies}
+\newcommand{\nxto}[1]{\npto{x}{#1}}
+\newcommand{\nto}{\pto{n}{\infty}}
+\newcommand{\kto}{\pto{k}{\infty}}
+\newcommand{\limk}{\displaystyle\lim_{k \to \infty}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\spc}{\quad}
+\newcommand{\e}{\varepsilon}
+\newcommand{\seq}[1]{\{#1_n\}_{n=1}^{\infty}}
+\newcommand{\cntrdcn}{\lightning}
+    
+\title{Теория за ДИС 1.1}
+\author{Иво Стратев}
+    
+\begin{document}
+\maketitle
+
+\section*{Околности. Определения за граница на редица и фунцкия}
+
+\section*{Околности}
+
+\subsection*{Околност на \(a \in \R\)}
+\(\forall \e > 0 \quad |x - a| < \e \iff x \in (a - \e, \; a + \e)\)
+
+\subsection*{Пробита околност на \(a \in \R\)}
+\(\forall \e > 0 \quad 0 < |x - a| < \e \iff x \in (a - \e, \; a) \cup (a, \; a + \e)\)
+
+\subsection*{Околност на \(a - 0 \in \R\)}
+\(\forall \e > 0 \quad a - \e < x < a \iff x \in (a - \e, \; a)\)
+
+\subsection*{Околност на \(a + 0 \in \R\)}
+\(\forall \e > 0 \quad a < x < a + \e \iff x \in (a, \; a + \e)\)
+
+\subsection*{Околност на \(\infty\)}
+\(\forall M > 0 \in \R \spc x > M \iff x \in (M,\; \infty)\)
+
+\subsection*{Околност на \(-\infty\)}
+\(\forall M < 0 \in \R \spc x < M \iff x \in (-\infty,\; M)\)
+
+\section*{Редици}
+
+\subsection*{\(\seq{a} \nto a \in \R\)}
+\(\forall \e \; \exists\nu \in \N \; : \; \forall n \in  \N \; : \; n > \nu \implies |a_n - a| < \e\)
+
+\subsection*{\(\seq{a} \nto \infty\)}
+\(\forall C \in \R^+ \; \exists\nu \in \N \; : \; \forall n \in  \N \; : \; n > \nu \implies a_n > C\)
+
+\subsection*{\(\seq{a} \nto -\infty\)}
+\(\forall C \in \R^- \; \exists\nu \in \N \; : \; \forall n \in  \N \; : \; n > \nu \implies a_n < C\)
+
+\subsection*{\(\seq{a} \nto a + 0\)}
+\(\forall \e \; \exists\nu \in \N \; : \; \forall n \in  \N \; : \; n > \nu \implies a < a_n < a + \e\)
+
+\subsection*{\(\seq{a} \nto a - 0\)}
+\(\forall \e \; \exists\nu \in \N \; : \; \forall n \in  \N \; : \; n > \nu \implies a - \e < a_n < a\)
+
+\section*{Функции}
+
+\subsection*{\(f(x) \xto{x_0} A \in \R\)}
+\(\begin{aligned}[c]
+    \text{Хайне}\\
+    f: \D \to \R\\
+    f(x) \xto{x_0} A \in \R\\
+    \forall \seq{x} \nto x_0, \; x_n \in \D \; : \; x_n \neq x_0\\
+    \implies \{f(x_n)\} \nto A 
+\end{aligned}
+\spc\spc
+\begin{aligned}[c]
+    \text{Коши}\\
+    f: \D \to \R\\
+    f(x) \xto{x_0} A \in \R\\
+    \forall \e > 0 \; \exists \delta > 0, \; x \in \D \; : \; 0 < |x - x_0| < \delta\\
+    \implies |f(x) - A| < \e
+\end{aligned}\)
+
+\subsection*{Лява (Дясна) граница \\ \(f(x) \xto{x_0 - 0 \; (x_0 + 0)} A\)}
+\(\begin{aligned}[c]
+    \text{Хайне}\\
+    f: \D \to \R\\
+    f(x) \xto{x_0 - 0 (x_0 + 0)} A\\
+    \forall \seq{x} \nto x_0 - 0 \; (x_0 + 0),\\
+    x_n \in \D \; : \; x_n < x_0 \; (x_n > x_0)\\
+    \implies \{f(x_n)\} \nto A 
+\end{aligned}
+\spc\spc
+\begin{aligned}[c]
+    \text{Коши}\\
+    f: \D \to \R\\
+    f(x) \xto{x_0 - 0 \; (x_0 + 0)} A\\
+    \forall \e > 0 \; \exists \delta > 0, \; x \in \D \; : \\
+    x_0 - \delta < x_n < x_0 \; (x_0 < x_n < x_0 + \delta)\\
+    \implies |f(x) - A| < \e
+\end{aligned}\)
+
+\subsection*{\(f(x) \xto{\pm \infty} A \in \R\)}
+\(\begin{aligned}[c]
+    \text{Хайне}\\
+    f: \D \to \R\\
+    f(x) \xto{\pm \infty} A \in \R\\
+    \forall \seq{x} \nto \pm \infty, \; x_n \in \D\\
+    \implies \{f(x_n)\} \nto A 
+\end{aligned}
+\spc\spc
+\begin{aligned}[c]
+    \text{Коши}\\
+    f: \D \to \R\\
+    f(x) \xto{\pm \infty} A \in \R\\
+    \forall \e > 0 \; \exists M > 0 \; (M < 0), \; x \in \D \; : \; x > M \; (x < M)\\
+    \implies |f(x) - A| < \e
+\end{aligned}\)
+
+\subsection*{\(f(x) \xto{c} \pm \infty\) при \(c = a \in R\) или \(c = a - 0\) или \(c = a + 0\) или \(c = \pm \infty\)}
+
+\subsubsection*{Хайне за \(f(x) \xto{c} \pm \infty\) при \(c = a \in R\) или \(c = a - 0\) или \(c = a + 0\) или \(c = \pm \infty\)}
+\(f: \D \to \R \spc f(x) \xto{c} \pm \infty\\
+\forall \seq{x} \nto c \spc x_n \in \D\\
+\implies \{f(x_n)\} \nto \pm \infty\)
+
+\subsubsection*{Коши за \(f(x) \xto{a \in \R} \pm \infty\)}
+\(f: \D \to \R \spc f(x) \xto{a} \pm \infty\\
+\forall A > 0 \; (A < 0) \; \exists \delta > 0, \; x \in \D \; : \; 0 < |x - a| < \delta\\
+\implies f(x) > A \; (f(x) < A)\)
+
+\subsubsection*{Коши за \(f(x) \xto{a \pm 0} \pm \infty\)}
+\(f: \D \to \R \spc f(x) \xto{a \pm 0} \pm \infty\\
+\forall A > 0 \; (A < 0) \; \exists \delta > 0, \; x \in \D \; : \; a < x < a + \delta \; (a - \delta < x < a)\\
+\implies f(x) > A \; (f(x) < A)\)
+
+\subsubsection*{Коши за \(f(x) \xto{\pm \infty} \pm \infty\)}
+\(f: \D \to \R \spc f(x) \xto{\pm \infty} \pm \infty\\
+\forall A > 0 \; (A < 0) \; \exists B > 0 \; (B < 0), \; x \in \D \; : \; x > B \; (x < B)\\
+\implies f(x) > A \; (f(x) < A)\)
+
+\section*{Отрицания на определения за граници на Функции}
+
+\subsection*{\(f(x) \nxto{x_0} A \in \R\)}
+\(\begin{aligned}[c]
+    \text{Хайне}\\
+    f: \D \to \R\\
+    f(x) \nxto{x_0} A \in \R\\
+    \exists \seq{x} \nto x_0, \; x_n \in \D, \; x_n \neq x_0\\
+    \nimplies \{f(x_n)\} \nto A 
+\end{aligned}
+\spc\spc
+\begin{aligned}[c]
+    \text{Коши}\\
+    f: \D \to \R\\
+    f(x) \nxto{x_0} A \in \R\\
+    \exists \e > 0 \; \forall \delta > 0, \; x \in \D \; : \;  0 < |x - x_0| < \delta\\
+    \implies |f(x) - A| \geq \e
+\end{aligned}\)
+
+\subsection*{Лява (Дясна) граница \\ \(f(x) \nxto{x_0 - 0 \; (x_0 + 0)} A\)}
+\(\begin{aligned}[c]
+    \text{Хайне}\\
+    f: \D \to \R\\
+    f(x) \nxto{x_0 - 0 \; (x_0 + 0)} A\\
+    \exists \seq{x} \nto x_0 - 0 \; (x_0 + 0),\\
+    x_n \in \D \; : \; x_n < x_0 \; (x_n > x_0)\\
+    \nimplies \{f(x_n)\} \nto A 
+\end{aligned}
+\spc\spc
+    \begin{aligned}[c]
+    \text{Коши}\\
+    f: \D \to \R\\
+    f(x) \nxto{x_0 - 0 \; (x_0 + 0)} A\\
+    \exists \e > 0 \; \forall \delta > 0, x \in \D;\\
+    x_0 - \delta < x_n < x_0 \; (x_0 < x_n < x_0 + \delta)\\
+    \implies |f(x) - A| \geq \e
+\end{aligned}\)
+
+\subsection*{\(f(x) \nxto{\pm \infty} A \in \R\)}
+\(\begin{aligned}[c]
+    \text{Хайне}\\
+    f: \D \to \R\\
+    f(x) \nxto{\pm \infty} A \in \R\\
+    \exists \seq{x} \nto \pm \infty, \; x_n \in \D\\
+    \nimplies \{f(x_n)\} \nto A 
+\end{aligned}
+\spc\spc
+\begin{aligned}[c]
+    \text{Коши}\\
+    f: \D \to \R\\
+    f(x) \nxto{\pm \infty} A \in \R\\
+    \exists \e > 0\; \forall M > 0 \; (M < 0), \; x \in \D \; : \; x > M \; (x < M)\\
+    \implies |f(x) - A| \geq \e
+\end{aligned}\)
+
+\subsection*{\(f(x) \nxto{c} \pm \infty\) при \(c = a \in R\) или \(c = a - 0\) или \(c = a + 0\) или \(c = \pm \infty\)}
+
+\subsubsection*{Хайне за \(f(x) \nxto{c} \pm \infty\) при \(c = a \in R\) или \(c = a - 0\) или \(c = a + 0\) или \(c = \pm \infty\)}
+\(f: \D \to \R \spc f(x) \nxto{c} \pm \infty\\
+\exists \seq{x} \nto c \spc x_n \in \D\\
+\nimplies \{f(x_n)\} \nto \pm \infty\)
+
+\subsubsection*{Коши за \(f(x) \nxto{a \in \R} \pm \infty\)}
+\(f: \D \to \R \spc f(x) \nxto{a} \pm \infty\\
+\exists A > 0 \; (A < 0) \; \forall \delta > 0, \; x \in \D \; : \; 0 < |x - a| < \delta\\
+\implies f(x) \leq A \; (f(x) \geq A)\)
+
+\subsubsection*{Коши за \(f(x) \nxto{a \pm 0} \pm \infty\)}
+\(f: \D \to \R \spc f(x) \nxto{a \pm 0} \pm \infty\\
+\exists A > 0 \; (A < 0) \; \forall \delta > 0, \; x \in \D \; : \; a < x < a + \delta \; (a - \delta < x < a)\\
+\implies f(x) \leq A \; (f(x) \geq A)\)
+
+\subsubsection*{Коши за \(f(x) \nxto{\pm \infty} \pm \infty\)}
+\(f: \D \to \R \spc f(x) \nxto{\pm \infty} \pm \infty\\
+\exists A > 0 \; (A < 0) \; \forall B > 0 \; (B < 0), x \in \D \; : \; x > B \; (x < B)\\
+\implies f(x) \leq A \; (f(x) \geq A)\)
+
+\section*{Аритметични действия със сходящи редици}
+
+\subsection*{\("+"\)}
+\(\seq{a} \nto a\\
+\seq{b} \nto b\\\\
+0 \leq |a_n + b_n - (a + b)| = |a_n - a + b_n - b| \leq |a_n - a| + |b_n - b|\\
+(|a_n - a| \nto 0, \; |b_n - b| \nto 0)\\\\
+\implies \seq{a_n + b} \nto a + b \qed\)
+
+\subsection*{\("\--"\)}
+\(\seq{a} \nto a\\
+\seq{b} \nto b\\\\
+0 \leq |a_n + b_n - (a + b)| = |a_n - a + b_n - b| \leq |a_n - a| + |b_n - b|\\
+(|a_n - a| \nto 0, \; |b_n - b| \nto 0)\\\\
+\implies \seq{a_n + b} \nto a + b \qed\\\\\\
+\seq{b} \nto b\\
+\implies \forall \e > 0 \; \exists \nu \in \N \; : \; \forall n \in \N \; : \; n > \nu \implies |b_n - b| = |-(b_n - b)| = |-b_n - (-b)| < \e\\
+\implies \seq{-b} \nto -b \qed\\\\
+\implies \seq{a_n + (-)b} = \seq{a_n - b} \nto a + (-b) = a - b\\
+\implies \seq{a_n - b} \nto a - b \qed\)
+
+\subsection*{\("*"\)}
+\(\seq{a} \nto a\\
+\seq{b} \nto b\\\\
+0 \leq |a_nb_n - ab| = |a_nb_n - ab \pm a_nb| =\\\\
+= |a_n(b_n - b) + b(a_n - a)| \leq |a_n||b_n - b| + |b||a_n - a|\\\\
+(|b_n - b| \nto 0, \; |a_n - a| \nto  0)\\\\
+\seq{a} \text{ e ограничена} \implies |a_n||b_n - b| \nto 0\\\\
+\implies |a_n||b_n - b| + |b||a_n - a| \nto 0 \implies |a_nb_n - ab| \nto 0\\\\
+\implies \seq{a_nb} \nto ab\)
+
+
+\subsection*{\("/"\)}
+\(\seq{a} \nto a\\
+\seq{b} \nto b\\\\
+0 \leq |a_nb_n - ab| = |a_nb_n - ab \pm a_nb| =\\\\
+= |a_n(b_n - b) + b(a_n - a)| \leq |a_n||b_n - b| + |b||a_n - a|\\\\
+|b_n - b| \nto 0, \; |a_n - a| \nto  0\\\\
+\seq{a} \text{ e ограничена} \implies |a_n||b_n - b| \nto 0\\\\
+\implies |a_n||b_n - b| + |b||a_n - a| \nto 0 \implies |a_nb_n - ab| \nto 0\\\\
+\implies \seq{a_nb} \nto ab \qed \\\\
+\text{БОО } b > 0 \implies \seq{b} \nto b > 0\\
+\implies \forall \e > 0 \; \exists \nu \in \N \; : \;  \forall n \in \N \; : \; n > \nu\\
+\implies |b_n - b| < \e \implies b_n \in (b - \e, \; b + \e)\\\\
+\e := \frac{b}{2} \implies  b_n \in (b - \frac{b}{2}, b + \frac{b}{2}) \implies b_n \in (\frac{b}{2}, \frac{3b}{2})\\\\
+\implies n < \nu \implies b_n \notin (\frac{b}{2}, \frac{3b}{2}) \implies n > \nu \implies b_n > \frac{b}{2} > 0\\\\
+\implies |\frac{1}{b_n} - \frac{1}{b}| = |\frac{b - b_n}{bb_n}| = \frac{|b - b_n|}{|b||b_n|}\\\\
+b_n > \frac{b}{2}, \; |b - b_n| \nto \e\\\\
+\implies \frac{|b - b_n|}{|b||b_n|} < \frac{2}{b^2}|b - b_n| \nto 0\\\\
+\implies \seq{\frac{1}{b}} \nto \frac{1}{b} \qed \\\\
+\implies \{a_n \frac{1}{b_n}\}_{n=1}^{\infty} \nto a\frac{1}{b} \implies \{\frac{a_n}{b_n}\}_{n=1}^{\infty} \nto \frac{a}{b} \qed\)
+
+\subsection*{Th \(\seq{a} \nto a, \; \forall n \in \mathbb{N} \; a_n > 0 \implies a \geq 0\)}
+\(\seq{a} \nto a \implies \forall \e > 0 \; \exists \nu \in \N \; : \; \forall n \in \N \; : \; n > \nu \implies |a_n - a| < \e\\\\
+\text{Допс. } a < 0 \implies (a_n - a) > 0 \implies |a_n - a| > \e \implies \cntrdcn(\seq{a} \nto a)\)\\\\
+\begin{tikzpicture}
+    \draw(0,0) -- (6,0);
+    \foreach \x in {1,2,3,4,5}
+        \draw (\x cm,3pt) -- (\x cm,-3pt);
+    \draw (1,0) node[below=3pt] {$ a - \e $};
+    \draw (2,0) node[below=3pt] {$ a $};
+    \draw (3,0) node[below=3pt] {$ a + \e $};
+    \draw (4,0) node[below=3pt] {$ 0 $};
+    \draw (5,0) node[below=3pt] {$ a_n $};
+\end{tikzpicture}
+
+ \subsection*{Th \(\seq{a} \nto a, \; \forall n \in \mathbb{N} \; a_n < 0 \implies a \leq 0\)}
+\(\seq{a} \nto a \implies \forall \forall \e > 0 \; \exists \nu \in \N \; : \; \forall n \in \N \; : \; n > \nu \implies |a_n - a| < \e\\\\
+\text{Допс. } a > 0 \implies (a_n - a) < 0 \implies |a_n - a| > \e \implies \cntrdcn(\seq{a} \nto a)\)\\\\
+\begin{tikzpicture}
+    \draw(0,0) -- (6,0);
+    \foreach \x in {1,2,3,4,5}
+        \draw (\x cm,3pt) -- (\x cm,-3pt);
+    \draw (3,0) node[below=3pt] {$ a - \e $};
+    \draw (4,0) node[below=3pt] {$ a $};
+    \draw (5,0) node[below=3pt] {$ a + \e $};
+    \draw (2,0) node[below=3pt] {$ 0 $};
+    \draw (1,0) node[below=3pt] {$ a_n $};
+\end{tikzpicture}
+
+\section*{Th(За непрекъснатите ф-ци)}
+Ако \(f(x)\) е непрекъсната в околност на \(x_0, \; f(x_0) > 0 \; (f(x_0) < 0)\) и \(f(x)\) е непрекъсната в \(x_0\)\\
+\(\exists \delta > 0 \; : \; \forall x \in (x_0 - \delta, \; x_0 + \delta) \; f(x) > \frac{f(x_0)}{2} \; (f(x) < \frac{f(x_0)}{2})\)
+\bigbreak
+Д-во:
+\(f(x)\) е непрекъсната в околност на \(x_0\\
+\implies \forall \e > 0 \; \exists \delta > 0 \; : \; |x - x_0| < \delta \implies |f(x) - f(x_0)| < \e\\\\
+\e := \frac{f(x_0)}{2} = y_0, \; \forall y_0 \; \exists \delta_{y_0} > 0 \; : \; |x - x_0| < \delta_{y_0}\\\\
+\implies |f(x) - f(x_0)| < y_0 \iff f(x_0) - y_0 < f(x) < f(x_0) + y_0\\\\
+\implies \frac{f(x_0)}{2} < f(x) < \frac{3f(x_0)}{2} \implies f(x) > \frac{f(x_0)}{2} \qed\)
+
+\section*{Th(Вайерщрас)}
+Нека \(f(x) \in C[a, \; b]\) то тя е ограничена и има НГС и НМС.
+\bigbreak
+Д-во:
+\(f(x)\) - ограничена \(\iff \exists M \in \R \; \forall x \in [a, \; b] \spc f(x) \leq M\)\\\\
+Доп., че \(f(x)\) e неограничена \(\implies \forall M \in \R \; \exists x_M \in [a, \; b] \; f(x_M) > M\\\\
+\implies \forall n \in \mathbb{N} \; \exists x_n \in [a, \; b] \; f(x_n) \geq n\\\\
+\text{От Th(Болцано-Вайерщрас за редици) }\\\\
+\implies \exists \{x_{n_k}\}_{k=1}^{\infty} - \text{сходяща подредица на } \seq{x}\\\\
+\text{и } x_{n_k} \kto x_0 \in [a, \; b]\text{.}\\\\
+\text{От } f(x) \in C[a, \; b] \implies \limk f(x_{n_k}) = f(x_0)\\\\
+f(x_0) \geq n \implies f(x_{n_k}) \geq n_k > k \; | \; \limk\\\\
+\limk f(x_{n_k}) \geq \limk k = \infty \implies \cntrdcn (\{f(x_{n_k})\} \text{ е ограничена}) \qed\)
+\bigbreak
+Нека \(M = sup\{f(x) \; | \; x \in [a, \; b]\}\)
+Доп., че \(\forall x \in [a, \; b] \spc f(x) < M\\\\
+g(x) = \frac{1}{M - f(x)}\)\\\\
+От аритметични действия с неп. функции \(\implies g(x)\) е непрекъсната\\\\
+\(\implies \exists C > 0 \; : \; \forall x \in [a, \; b] \spc g(x) \leq C\\\\
+\implies \frac{1}{M - f(x)} \leq C \; | \; \frac{M - f(x)}{C}\\\\
+\frac{1}{C} \leq M - f(x)\\\\
+f(x) \leq M - \frac{1}{C} \; \forall x \in [a, \; b] \implies \cntrdcn (M = sup\{f(x) \; | \; x \in [a, \; b]\})\\\\
+\implies \exists x_{max} \; f(x) \leq M \spc \forall x \in [a, \; b], \; f(x_{max}) = M \qed\)
+\bigbreak
+Нека \(m = inf\{f(x) \; | \; x \in [a, \; b]\}\)
+Доп., че \(\forall x \in [a, \; b] \spc f(x) > m\\\\
+h(x) = \frac{1}{f(x) - m}\)\\\\
+От аритметични действия с неп. функции \(\implies h(x)\) е непрекъсната\\\\
+\(\implies \frac{1}{f(x) - m} \leq C \; | \; \frac{f(x) - m}{C}\\\\
+\frac{1}{C} \leq f(x) - m\\\\
+\frac{1}{C} + m \leq f(x) \; \forall x \in [a, \; b] \implies \cntrdcn (m = inf\{f(x) \; | \; x \in [a, \; b]\})\\\\
+\implies \exists x_{min} \; f(x) \geq m \spc \forall x \in [a, \; b], \; f(x_{min}) = m \qed\)
+
+\section*{Th(Болцано)}
+Нека \(f(x) \in C[a, \; b], \; f(a)f(b) < 0 \implies \exists c \in (a, \; b) \; : \; f(c) = 0\)
+\bigbreak
+Д-во: БОО \(f(a) > 0, \; f(b) < 0\\
+\\A = \{\forall x \in [a, \; b]: f(x) > 0\} \subset [a, \; b] \implies A \text{ е ограчено}\\
+c = limsupA\)
+
+\subsection*{Допс. \(f(c) > 0\)}
+\(f(c) > 0 \implies \exists \delta > 0 \; : \; \forall x \in (c - \delta, ю; c + \delta) \; f(x) > \frac{f(c)}{2} > 0\\\\
+\forall x > c \; f(x) \leq 0 \implies \cntrdcn (f(c) > 0) \; (1)\)
+
+\subsection*{Допс. \(f(c) < 0\)}
+\(f(c) < 0 \implies \exists \e > 0 \; : \; \forall x \in (c - \e, ю; c + \e) \; f(x) < \frac{f(c)}{2} < 0\\\\
+\forall x > c \; f(x) \geq 0 \implies \cntrdcn (f(c) < 0) \; (2)\)
+\bigbreak
+От (1) и (2) \(\implies \exists c \in (a, \; b) \; f(c) = 0 \qed\)
+
+\section*{Th Болцано-Вайерщрас \\ (за междинните стойностии)}
+Нека \(f(x) \in C[a, \; b], \; m = minf(x) \text{ и } n = maxf(x)\\\\
+\implies \forall c \in [m, \; n] \; \exists x_c \in [a, \; b] \; : \; f(x_c) = c\)
+\\\\Д-во: \(h(x) = f(x) - c\)\\\\
+Ако \(c  = m\) или \(c  = n \implies \exists x_c \in [a, \; b] \; : \; f(x_c) = c\)\\\\
+Ако \(c \in (m, \; n) \spc d = min\{x_{min}, \; x_{max}\} \spc e = max\{x_{min}, \; x_{max}\}\\\\
+h(x): [d, \; e], \; h(d)h(e) < 0\\\\
+\text{От Th(Болцано) за \(h\) в } [d, \; e] \implies \exists x_c \; : \; h(x_c) = f(x_c) - c = 0\\\\
+\implies \exists x_c \in [a, \; b] \; : \; f(x_c) = c \qed\)
+
+\section*{Теоремки за средни стойности. Връзка между знак на първа производна и монотоност на функция. + Теоремка за константа функция}
+
+\section*{Th(Ферма)}
+Нека \(f(x)\) е дефинирна в околност на \(x_0\) - лок. екст. и \(f(x)\) е диференцируема в \(x_0\), тогава \(f'(x_0) = 0\)
+\bigbreak
+Д-во:
+
+\subsection*{Ако \(x_0\) е т. лок. макс.}
+\(\exists \delta > 0 \; :  \; \forall x \in (x_0 - \delta, \; x_0 + \delta) \spc f(x) \leq f(x_0)\\\\
+\implies f(x) - f(x_0) \leq 0 \spc \forall x \in (x_0 - \delta, \; x_0 + \delta)\)
+
+\subsubsection*{Ако \(x > x_0\)}
+\(x > x_0 \implies x - x_0 > 0 \spc \forall x \in (x_0 - \delta, \; x_0 + \delta)\\\\
+\implies \displaystyle\lim\limits_{\substack{x \to x_0 \\ x > x_0}} \frac{f(x) - f(x_0)}{x - x_0} \leq 0 \; (1)\)
+
+\subsubsection*{Ако \(x < x_0\)}
+\(x < x_0 \implies x - x_0 < 0 \spc \forall x \in (x_0 - \delta, \; x_0 + \delta)\\\\
+\implies \displaystyle\lim\limits_{\substack{x \to x_0 \\ x < x_0}} \frac{f(x) - f(x_0)}{x - x_0} \geq 0 \; (2)\)\\
+
+От (1) и (2) \(\implies \displaystyle\lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0) = 0\)
+
+\subsection*{Ако \(x_0\) е т. лок. мин.}
+\(\exists \delta > 0 \; : \; \forall x \in (x_0 - \delta, \; x_0 + \delta) \spc f(x) \geq f(x_0)\\\\
+\implies f(x) - f(x_0) \geq 0 \spc \forall x \in (x_0 - \delta, \; x_0 + \delta)\)
+
+\subsubsection*{Ако \(x > x_0\)}
+\(x > x_0 \implies x - x_0 > 0 \spc \forall x \in (x_0 - \delta, \; x_0 + \delta)\\\\
+\implies \displaystyle\lim\limits_{\substack{x \to x_0 \\ x > x_0}} \frac{f(x) - f(x_0)}{x - x_0} \geq 0 \; (3)\)
+
+\subsubsection*{Ако \(x < x_0\)}
+\(x < x_0 \implies x - x_0 < 0 \spc \forall x \in (x_0 - \delta, \; x_0 + \delta)\\\\
+\implies \displaystyle\lim\limits_{\substack{x \to x_0 \\ x < x_0}} \frac{f(x) - f(x_0)}{x - x_0} \leq 0 \; (4) \)\\\\
+От (3) и (4) \(\implies \displaystyle\lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0) = 0 \qed\)
+
+\section*{Th(Рол)}
+Нека \(f(x) \in C[a, \; b]\) и \(f(x)\) е диференцируема в \((a, \; b)\) и \(f(a) = f(b)\\
+\exists c \in (a, \; b) \; : \; f'(c) = 0\)
+\bigbreak
+Д-во:
+
+\subsection*{Ако \(f(x) \equiv const \implies f'(x) = 0\)}
+
+\subsection*{Нека \(f(x) \not\equiv const\)}
+От Th(Вайерщрас) \(\implies\)\\
+\(\exists x_{min}, \; x_{max} \in [a, \; b] \; :\\
+f(x_{max}) = max\{f(x) \; | \; x \in [a, \; b]\}\\
+f(x_{min}) = min\{f(x) \; | \; x \in [a, \; b]\}\)
+
+\subsubsection*{Ако \(x_{min}, \; x_{max} \notin (a, \; b)\)}
+\(x_{min} \neq x_{max}, f(a) = f(b) \implies minf(x) = maxf(x)\\
+\implies f(x) \equiv const \implies \cntrdcn (f(x) \not\equiv const)\)
+\subsubsection*{Ако поне една от \(x_{min}\) или \(x_{max} \in (a, \; b)\)}
+
+Ако \(x_{max} \in (a, \; b), \; c = x_{max}\) в противен случай \(c = x_{min}\\
+\implies c \in (a, \; b)\) - лок. екст. от Th(Ферма)\\
+\(\implies f'(c) = 0 \qed\)
+
+\section*{Th(За крайните нараствания на Лагранж)}
+Нека \(f(x) \in C[a, \; b]\) и \(f(x)\) е диференцируема в \((a, \; b)\). \\
+Тогава \(\exists c \in (a, \; b) \; : \; f(b) - (a) = f'(c)(b - a)\)
+\bigbreak
+Д-во:
+\bigbreak
+\(h(x) = f(x) - kx\\\\
+h(a) = f(a) - ka = f(b) - kb = h(b)\\\\
+k \; : \; f(a) - ka = f(b) - kb\\\\
+kb - ka = f(b) - f(a)\\\\
+k(b - a) = f(b) - f(a)\\\\
+k = \frac{f(b) - f(a)}{b - a}\\\\
+\text{От Th(Рол) за} \; h(x) \implies \exists c \in (a, \; b) \; : \; h'(c) = 0\\\\
+h'(c) = f'(c) - k = 0\\\\
+\implies f'(c) = k = \frac{f(b) - f(a)}{b - a}\\\\
+\implies f'(c)(b - a) = f(b) - f(a) \qed\)
+
+\section*{Обобщена Th(За крайните нараствания на Коши)}
+Нека \(f(x), \; g(x) \in C[a, \; b]\) и \(f(x), \; g(x)\) са диференцируеми в \((a, \; b),\\
+\text{като } g'(x) \neq 0 \; \forall x \in (a, \; b)\). Тогава 
+\(\exists c \in (a, \; b) \; : \; \frac{f(b) - (a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}\)
+\bigbreak
+Д-во:
+\bigbreak
+Коректност:
+\bigbreak
+Допс., че \(g(b) - g(a) = 0\) то от Th(Рол)\\
+\(\implies \exists c_2 \in (a, \; b) \; : \; g'(c_2) = 0\\\\
+\implies \cntrdcn (g'(x) \neq 0 \; \forall x \in (a, \; b)) \qed \\\\
+h(x) = f(x) - kg(x)\\\\
+k \; : \; h(a) = f(a) - kg(a) = f(b) - kg(b) = h(b)\\\\
+f(a) - kg(a) = f(b) - kg(b)\\\\
+kg(b) - kg(a) = f(b) - f(a)\\\\
+k(g(b) - g(a)) = f(b) - f(a)\\\\
+k = \frac{f(b) - f(a)}{g(b) - g(a)}\\\\
+\text{От Th(Рол) за} \; h(x) \implies \exists c \in (a, \; b) \; : \; h'(c) = 0\\\\
+h'(c) = f'(c) - kg'(x) = 0\\\\
+\implies f'(c) = kg'(c) = \frac{f(b) - f(a)}{g(b) - g(a)}g'(c)\\\\
+\implies \frac{f'(c)}{g'(c)} = \frac{f(b) - f(a)}{g(b) - g(a)} \qed\)
+
+\section*{Th(\(f(x)\uparrow \; \in C(a, \; b) \iff \forall x \in (a, \; b) \; f'(x) \geq 0\))}
+\subsection*{Th(\(f(x)\uparrow \; \in C(a, \; b) \implies \forall x \in (a, \; b) \; f'(x) \geq 0\))}
+Нека \(t \in (a, \; b)\)
+\subsubsection*{Ако \(x > t\)}
+\(x > t, \; f(x)\uparrow \implies f(x) \geq f(t) \\\\
+\implies f(x) - f(t) \geq 0, \; x - t > 0 \\\\
+\implies \displaystyle\lim_{x \to t} \frac{f(x) - f(t)}{x - t} = f'(t) \geq 0 \quad (1)\)
+\subsubsection*{Ако \(x < t\)}
+\(x < t, \; f(x)\uparrow \implies f(x) \leq f(t) \\\\
+\implies f(x) - f(t) \leq 0, \; x - t < 0 \\\\
+\implies \displaystyle\lim_{x \to t} \frac{f(x) - f(t)}{x - t} = f'(t) \geq 0 \quad (2)\) \\
+
+От (1) и (2) \(\implies \forall x \in (a, \; b) f'(x) \; \geq 0 \qed\)
+
+\subsection*{Th(\(f(x) \in C(a, \; b) \; : \; \forall x \in (a, \; b) \; f'(x) \geq 0 \implies f(x)\uparrow\))}
+\(f(x)\uparrow \implies \forall x_1, \; x_2 \in (a, \; b); \; x_1 < x_2 \implies f(x_1) \leq f(x_2)\) \\\\
+Доп., че \(\exists t_1, \; t_2 \in (a, \; b); \; t_1 < t_2; \; f(t_1) > f(t_2)\) \\\\
+От Th(Лагранж за крайните нараствания) \(\implies \\\\
+\exists c \in (t_1, \; t_2) \; : \; f(t_2) - f(t_1) = f'(c)(t_2 - t_1) \\\\
+f'(x) \geq 0 \; \forall x \in (a, \; b) \implies f'(c) \geq 0 \\\\
+t_1 < t_2 \implies t_2 - t_1 > 0 \\\\
+\implies f(t_2) - f(t_1) \geq 0 \implies f(t_2) \geq f(t_1) \implies \cntrdcn (f(t_1) > f(t_2)) \\\\
+f(x) \in C(a, \; b) \; : \; \forall x \in (a, \; b) \; f'(x) \geq 0 \implies f(x)\uparrow \qed\)
+
+\section*{Th(\(f(x)\downarrow \; \in C(a, \; b) \iff \forall x \in (a, \; b) \; f'(x) \leq 0\))}
+\subsection*{Th(\(f(x)\downarrow \; \in C(a, \; b) \implies \forall x \in (a, \; b) \; f'(x) \leq 0\))}
+Нека \(t \in (a, \; b)\)
+\subsubsection*{Ако \(x > t\)}
+\(x > t, \; f(x)\downarrow \implies f(x) \leq f(t) \\\\
+\implies f(x) - f(t) \leq 0, \; x - t > 0 \\\\
+\implies \displaystyle\lim_{x \to t} \frac{f(x) - f(t)}{x - t} = f'(t) \leq 0 \; (3)\)
+\subsubsection*{Ако \(x < t\)}
+\(x < t, \; f(x)\downarrow \implies f(x) \geq f(t) \\\\
+\implies f(x) - f(t) \geq 0, \; x - t < 0 \\\\
+\implies \displaystyle\lim_{x \to t} \frac{f(x) - f(t)}{x - t} = f'(t) \leq 0 \; (4)\) \\\\
+
+От (3) и (4) \(\implies \forall x \in (a, \; b) \; f'(x) \leq 0 \qed\)
+
+\subsection*{Th(\(f(x) \in C(a, \; b); \; f'(x) \leq 0 \; \forall x \in (a, \; b) \implies f(x)\downarrow\))}
+\(f(x)\downarrow \implies \forall x_1, \; x_2 \in (a, \;  b); \; x_1 < x_2 \implies f(x_1) \geq f(x_2)\) \\\\
+Доп., че \(\exists t_1, \; t_2 \in (a, \; b); \; t_1 < t_2; \; f(t_1) < f(t_2)\) \\\\
+От Th(Лагранж за крайните нараствания) \(\implies \\\\
+\exists c \in (t_1, \; t_2) \; : \; f(t_2) - f(t_1) = f'(c)(t_2 - t_1) \\\\
+f'(x) \leq 0 \; \forall x \in (a, \; b) \implies f'(c) \leq 0 \\\\
+t_1 < t_2 \implies t_2 - t_1 > 0 \\\\
+\implies f(t_2) - f(t_1) \leq 0 \implies f(t_2) \leq f(t_1) \implies \cntrdcn (f(t_1) < f(t_2)) \\\\
+\implies f(x) \in C(a, \; b); \; f'(x) \leq 0 \; \forall x \in (a, \; b) \implies f(x)\downarrow \qed\)
+
+\section*{Th \(\forall x \in (a, \; b) \; f'(x) = 0 \implies \forall x \in (a, \; b) \; f(x) \equiv const\)}
+Нека \(f(x)\) е дефинирна и диференцируема в \((a, \; b)\) и \\\\
+\(\forall x \in (a, \; b) \; f'(x) = 0 \implies \forall x \in (a, \; b) \; f(x) \equiv const\)
+\bigbreak
+Д-во:\\
+Нека \(x_0 \in (a, \; b)\) От Th(Лагранж за крайните нараствания) \\\\
+\(\implies \exists c \in (a, \; b) \; : \; \forall x \in (a, \; b) \; f(x) - f(x_0) = f'(c)(x - x_0) \\\\
+f'(x) = 0 \; \forall x \in (a, \; b) \implies f'(c) = 0 \implies f(x) - f(x_0) = 0 \\\\
+\implies \forall x \in (a, \; b) \; f(x) = f(x_0) \implies \forall x \in (a, \; b) \; f(x) \equiv const \qed\)
+
+\section*{Формула на Лайбниц за производна от по-висок ред на произведение на две функции}
+Нека функциите $f$ и $g$ са $n$ пъти диференцируеми. Тогава $n$-та производна на фунцкията $f.g$
+съществува и се дава с формулата: \\\\
+$(f.g)^{(n)} = \displaystyle\sum_{k = 0}^n \binom{n}{k} f^{(k)}.g^{(n - k)}$
+
+\section*{Уравнение на допирателна към графика на фунцкия}
+\subsection*{Полином на Тейлор}
+\((T_n(f, \; a))(x) = \displaystyle\sum_{k = 0}^n \frac{f^{(k)}(a)}{k!}(x - a)^k\)
+\subsection*{Уравнение на допирателна към графика на фунцкия}
+\(y = T_1(f, \; x_0) = f(x_0) + f'(x_0)(x - x_0)\) \\\\
+
+Нека \(f: (a, b) \to \R\)
+\section*{f е изпъкнала \(\smile\), ако:}
+\subsection*{\(\forall x, \; x_0 \in (a, \; b) \implies f(x) \geq f(x_0) + f'(x_0)(x - x_0)\)}
+\subsection*{\(\forall x_1, \; x_2 \in (a, \; b) \; : \; x_1 < x_2 \implies f'(x_1) \leq f'(x_2) \quad (f'\uparrow) \)}
+\subsection*{\(\forall x \in (a,\;  b) \implies f''(x) \geq 0\)}
+\section*{f е вдълбната \(\frown\), ако:}
+\subsection*{\(\forall x, \; x_0 \in (a, \; b) \implies f(x) \leq f(x_0) + f'(x_0)(x - x_0)\)}
+\subsection*{\(\forall x_1, \; x_2 \in (a, \; b) \; : \; x_1 < x_2 \implies f'(x_1) \geq f'(x_2) \quad (f'\downarrow) \)}
+\subsection*{\(\forall x \in (a, \; b) \implies f''(x) \leq 0\)}
+
+\section*{Задачи:}
+
+\subsection*{Задача 1.}
+
+Нека \(f: [0, 6) \to \R, \; f(0) = 2, \; f(1) = 1, \; \displaystyle\lim_{x \to 6 - 0} f(x) = 3\) \\\\
+Докажете, че \(\exists \min f(x), \; x \in [0, 6)\) \\\\
+Док-во: \\
+
+\(\exists \delta < 1 \; \forall x \in (6 - \delta, \; 6) \; f(x) \in (2,5, \; 3,5) \\\\
+x > 6 - \delta \implies f(x) > 2,5 \implies x \in [0,\;  6 - \delta] \; \exists \min f(x) \leq 1\) \\\\
+
+Дайте пример за графика на фунцкия, която няма максимум \\\\
+\begin{tikzpicture}
+    \draw(-1,0) -- (7,0);
+    \draw(0,-1) -- (0,4);
+    \draw(0,2) to[out=20,in=-90] (1,1);
+    \draw(1,1) to[out=20,in=-100] (6,3);
+    \node [circle,draw,inner sep=0pt,minimum width=0.3cm] at (6,3) {}; 
+    \draw [dashed] (-1,2.5) -- (7,2.5);
+    \draw [dashed] (-1,3) -- (7,3);
+    \draw [dashed] (-1,3.5) -- (7,3.5);
+    \draw [dashed] (5.5,-1) -- (5.5,4);
+    \draw [dashed] (6,-1) -- (6,4);
+    \foreach \x in {0,1,2,3,4,5,6}
+        \draw (\x cm,3pt) -- (\x cm,-3pt) (\x, 0) node[below=3pt] {$ \x $};
+    \foreach \x in {1,2,3}
+        \draw (-3pt, \x cm) -- (3pt, \x cm) (0, \x) node[left=3pt] {$ \x $};
+\end{tikzpicture}
+
+\subsection*{Задача 2.}
+
+Нека \(f: [0, 6) \to \R, \; f(0) = 4, \; f(4) = 2, \;  \displaystyle\lim_{x \to 6 - 0} f(x) = 1\) \\\\
+Докажете, че \(\exists \max f(x), \; x \in [1, 6)\) \\\\
+Док-во: \\
+
+\(\exists \delta < 1 \; \forall x \in (6 - \delta, \; 6) \; f(x) \in (0,5, \; 1,5) \\\\
+x > 6 - \delta \implies f(x) < 1,5 \implies x \in [0,\;  6 - \delta] \; \exists \max f(x) \geq 4\) \\\\
+
+Дайте пример за графика на фунцкия, която няма минимум \\\\
+\begin{tikzpicture}
+    \draw(-1,0) -- (7,0);
+    \draw(0,-1) -- (0,5);
+    \draw(0,4) to[out=20,in=-100] (4,2);
+    \draw(4,2) to[out=20,in=100] (6,1);
+    \node [circle,draw,inner sep=0pt,minimum width=0.3cm] at (6,1) {}; 
+    \draw [dashed] (-1,1.5) -- (7,1.5);
+    \draw [dashed] (-1,1) -- (7,1);
+    \draw [dashed] (-1,0.5) -- (7,0.5);
+    \draw [dashed] (5.5,-1) -- (5.5,5);
+    \draw [dashed] (6,-1) -- (6,5);
+    \foreach \x in {0,1,2,3,4,5,6}
+        \draw (\x cm,3pt) -- (\x cm,-3pt) (\x, 0) node[below=3pt] {$ \x $};
+    \foreach \x in {1,2,3,4}
+        \draw (-3pt, \x cm) -- (3pt, \x cm) (0, \x) node[left=3pt] {$ \x $};
+\end{tikzpicture}
+
+\section*{Използвана литература:}
+\subsection*{1. Записки от лекциите на доц. д-р. Първан Първанов от курса Диференциално и интегрално смятене 1, воден през зимния семестър на 2016г. на спец. Информатика във ФМИ към СУ "Св. Климент Охридкси"}
+\subsection*{2. П. Джаков Р. Малеев Р. Леви С. Троянски, Диференциално и интегрално смятане Функции на една променлива, Факултет по Математика и Информатика СУ "Св. Климент Охридкси", 2007 г.}
+\subsection*{3. Е. Любенова П. Недевски К. Николов Л. Николова В. Попов, РЪКОВОДСТВО ПО МАТЕМАТИЧЕСКИ АНАЛИЗ ПЪРВА ЧАСТ, СОФТЕХ София 2008}
+\end{document}
