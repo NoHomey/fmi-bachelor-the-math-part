@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage[T1,T2A]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -8,6 +9,7 @@
 \newcommand{\stkout}[1]{\ifmmode\text{\sout{\ensuremath{#1}}}\else\sout{#1}\fi}
 \newcommand{\x}[2]{\text{\tiny{\(#1 \times #2\)}}}
 \newcommand{\V}{\mathbb{V}}
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\W}{\mathbb{W}}
 \newcommand{\UV}{\mathbb{U}}
@@ -20,129 +22,187 @@
 \author{Иво Стратев}
 
 \begin{document}
-    \pagenumbering{gobble}
     \maketitle
     \section{Линейно изображение и линеен оператор}
     \subsection{Определение линеен оператор}
-    \(\V\) - Л.П над полето \(\F, \; dim\V = n\\
-    \varphi : \V \to \V, \; \varphi \in Hom\V\\
-    \n{v} \in \V, \; \n{\lambda}, \in \F\\
-    \implies \varphi(\sum_{i = n}^n \lambda_i v_i) = \sum_{i = n}^n \lambda_i \varphi(v_i) \in \V\)
+    Нека \(\V\) - Л.П над полето \(\F, \; \varphi : \V \to \V \\\\
+    \forall n \in \N, \; \forall \n{v} \in \V, \; \forall \n{\lambda} \in \F \\\\
+    \varphi\left(\displaystyle\sum_{i = n}^n \lambda_i v_i\right)
+    = \displaystyle\sum_{i = n}^n \lambda_i \varphi(v_i) \in \V \implies \varphi \in \mathrm{Hom}\V \)
     \subsection{Определение линейно изображение}
-    \(\V, \; \W\) - Л.П над полето \(\F, \; dim\V = n\\
-    \varphi : \V \to \W, \; \varphi \in Hom(\V,\W) \\
-    \n{v} \in \V, \; \n{\lambda}, \in \F\\
-    \implies \varphi(\sum_{i = n}^n \lambda_i v_i) = \sum_{i = n}^n \lambda_i \varphi(v_i) \in \W\)
-    \subsection{Th \(\exists! \; \varphi \in Hom(\V, \W)\)}
-    \(\V, \; \W\) - Л.П над полето \(\F, \; dim\V = n\\
-    \n{e} - \text{ базис на } \V\\
-    \n{w} - \text{ вектори от } \W\\
-    \implies \exists! \; \varphi \in Hom(\V, \W); \; \varphi(e_i) = w_i, \; \ieqn\)
-    \subsection{\(\V \cong \W \iff dim\V = dim\W\)}
+    Нека \(\V, \; \W\) - Л.П над полето \(\F, \; \varphi : \V \to \W \\\\
+    \forall n \in \N, \; \forall \n{v} \in \V, \; \forall \n{\lambda} \in \F \\\\
+    \varphi\left(\displaystyle\sum_{i = n}^n \lambda_i v_i\right)
+    = \displaystyle\sum_{i = n}^n \lambda_i \varphi(v_i) \in \V \implies \varphi \in \mathrm{Hom}(\V, \; \W) \)
+    \subsection{Теорема \(\exists! \; \varphi \in \mathrm{Hom}(\V, \; \W)\)}
+    Нека \(\V, \; \W\) - Л.П над полето \(\F, \; \mathrm{dim}\V = n \\\\
+    \n{e} - \; \text{ базис на } \V \\\\
+    \n{w} - \; \text{ произволни вектори от } \W \\\\
+    \implies \exists! \; \varphi \in \mathrm{Hom}(\V, \; \W) \; : \; \ieqn \quad \varphi(e_i) = w_i\)
+    \subsection{Определение за изоморфизъм на линейни пространства}
+    Нека \(\V, \; \W\) - Л.П над полето \(\F\) и \(\varphi \; : \; \V \to \W\) е изображение. \\\\
+    \(\varphi\) е изоморфизъм между \(\V\) и \(\W\) (\(\V \cong \W\)), ако: \\\\
+    1) \(\varphi \in  \mathrm{Hom}(\V, \; \W)\) (\(\varphi\) е лин. изображение) \\\\
+    2) \(\varphi\) е биекция
+    \subsection{Н.Д.У две крайно мерни Л.П. да са изоморфни}
+    Нека \(\V, \; \W\) - Л.П над полето \(\F\) \\\\
+    \(\V \cong \W \iff \mathrm{dim}\V = \mathrm{dim}\W \in \N\)
     \section{Доказателства за линейни изображения}
-    \subsection{\(\forall \; \varphi \in Hom(\UV, \V) \implies \varphi(\OV_\UV) = \OV_\V\)}
-    \(\OV_\V = 0\varphi(u) = \varphi(0u) = \varphi(\OV_\UV) \; u \in \UV\)
-    \subsection{\(\forall \; \varphi \in Hom(\UV, \V), \; \forall u \in \UV \implies \varphi(-u) = -\varphi(u)\)}
-    \(\varphi \in Hom(\UV, \V), \; \forall u \in \UV, \; \forall \lambda \in \F \implies \varphi(\lambda u) = \lambda \varphi(u)\\
-    \implies \lambda = -1 \implies \varphi(-1u) = -1\varphi(u) \implies \varphi(-u) = -\varphi(u)\)
-    \subsection{\(\forall \; \varphi \in HomV \implies \varphi(\OV) = \OV\)}
-    \(\varphi(\OV) = \varphi(\OV + \OV) = \varphi(\OV) + \varphi(\OV) \; | + (-\varphi(\OV))\\
-    \varphi(\OV) - \varphi(\OV) = \varphi(\OV) + \varphi(\OV) - \varphi(\OV)\\
-    \OV = \OV + \varphi(\OV) \implies \varphi(\OV) = \OV\)
-     \subsection{\(\forall \; \varphi \in Hom\V, \; \forall v \in \V \implies \varphi(-v) = -\varphi(v)\)}
-    \(\varphi \in Hom\V, \; \forall v \in \V, \; \forall \lambda \in \F \implies \varphi(\lambda v) = \lambda \varphi(v)\\
-    \implies \lambda = -1 \implies \varphi(-1v) = -1\varphi(v) \implies \varphi(-v) = -\varphi(v)\)
-    \subsection{Едно линейно изображение изпраща линейно зависими вектори в линейно зависими вектори)}
-    \(\V, \; \W\) - Л.П над полето \(\F, \; dim\V = n\\
-    \varphi \in Hom(\V,\W) \implies \varphi(\OV_\V) = \OV_\W\\
-    \n{e} - \text{ базис на } \V\\
-    v \in \V, \; \n{\lambda} \in \F; \; v = \sum_{i = 1}^n \lambda_i e_i = \OV_\V, \; (\n{\lambda}) \neq (0, \dots, 0)\\
-    v = \OV_\V \; |\varphi\\
-    \varphi(v) = \OV_\W\\
-    \varphi(\sum_{i = 1}^n \lambda_i e_i) = \OV_\W\\
-    \sum_{i = 1}^n \lambda_i \varphi(e_i) = \OV_\W, \; (\n{\lambda}) \neq (0, \dots, 0)\)
-    \subsection{Един линеен оператор изпраща линейно зависими вектори в линейно зависими вектори)}
-    \(\V\) - Л.П над полето \(\F, \; dim\V = n\\
-    \varphi \in Hom\V \implies \varphi(\OV) = \OV\\
-    \n{e} - \text{ един базис на } \V\\
-    v \in \V, \; \n{\lambda} \in \F; \; v = \sum_{i = 1}^n \lambda_i e_i = \OV, \; (\n{\lambda}) \neq (0, \dots, 0)\\
-    v = \OV \; |\varphi\\
-    \varphi(v) = \OV\\
-    \varphi(\sum_{i = 1}^n \lambda_i e_i) = \OV\\
-    \sum_{i = 1}^n \lambda_i \varphi(e_i) = \OV, \; (\n{\lambda}) \neq (0, \dots, 0)\)
+    \subsection{Докажете, че \(\forall \; \varphi \in \mathrm{Hom}(\UV, \; \V) \implies \varphi(\OV_\UV) = \OV_\V\)}
+    Доказателство 1: \\\\
+    Нека \(u \in \UV \; \OV_\V = 0\varphi(u) = \varphi(0u) = \varphi(\OV_\UV) \qed \) \\\\
+    Доказателство 2: \\\\
+    Нека \(u \in \UV \; \varphi(\OV_\UV) = \varphi(u - u) = \varphi(u + (-1)u) = \\\\
+    = \varphi(u) + (-1)\varphi(u) = \varphi(u) - \varphi(u) = \OV_\V \qed \) \\\\
+    Доказателство 3: \\\\
+    \(\varphi(\OV_\UV) = \varphi(\OV_\UV + \OV_\UV) = \varphi(\OV_\UV) + \varphi(\OV_\UV) \; | \; -\varphi(\OV_\UV) \implies \\\\
+    \varphi(\OV_\UV) - \varphi(\OV_\UV) = \varphi(\OV_\UV) + \varphi(\OV_\UV) - \varphi(\OV_\UV) \implies \\\\
+    \OV_\V = \varphi(\OV_\UV) \qed \)
+    \subsection{Докажете, че \(\forall \; \varphi \in \mathrm{Hom}(\UV, \; \V) \\
+    \forall u \in \UV \implies \varphi(-u) = -\varphi(u)\)}
+    Доказателство: \\\\
+    \(\forall \varphi \in \mathrm{Hom}(\UV, \; \V), \; \forall u \in \UV, \; \forall \lambda \in \F \implies \varphi(\lambda u) = \lambda \varphi(u) \\\\
+    \implies \lambda = -1 \implies \varphi(-u) = \varphi(-1u) = -1\varphi(u) = -\varphi(u) \\\\
+    \implies \varphi(-u) = -\varphi(u) \qed\)
+    \subsection{Докажете, че \(\forall \; \varphi \in \mathrm{Hom}(\V) \implies \varphi(\OV) = \OV\)}
+    Доказателство 1: \\\\
+    Нека \(v \in \V \; \OV = 0\varphi(v) = \varphi(0v) = \varphi(\OV) \qed \) \\\\
+    Доказателство 2: \\\\
+    Нека \(v \in \V \; \varphi(\OV) = \varphi(v - v) = \varphi(v + (-1)v) = \\\\
+    = \varphi(v) + (-1)\varphi(v) = \varphi(v) - \varphi(v) = \OV \qed \) \\\\
+    Доказателство 3: \\\\
+    \(\varphi(\OV) = \varphi(\OV + \OV) = \varphi(\OV) + \varphi(\OV) \; | \; -\varphi(\OV) \implies \\\\
+    \varphi(\OV) - \varphi(\OV) = \varphi(\OV) + \varphi(\OV) - \varphi(\OV) \implies \\\\
+    \OV = \varphi(\OV) \qed \)
+    \subsection{Докажете, че \(\forall \; \varphi \in \mathrm{Hom}(\V) \\
+    \forall v \in \V \implies \varphi(-v) = -\varphi(v)\)}
+    Доказателство: \\\\
+    \(\forall \varphi \in \mathrm{Hom}(\V), \; \forall v \in \V, \; \forall \lambda \in \F \implies \varphi(\lambda v) = \lambda \varphi(v) \\\\
+    \implies \lambda = -1 \implies \varphi(-v) = \varphi(-1v) = -1\varphi(v) = -\varphi(v) \\\\
+    \implies \varphi(-v) = -\varphi(v) \qed\)
+    \subsection{Докажете, че едно линейно изображение изпраща линейно зависими вектори в линейно зависими вектори}
+    Доказателство: \\\\
+    Нека \(\V, \; \W\) - Л.П над полето \(\F, \; \varphi \in \mathrm{Hom}(\V, \; \W)\) \\\\
+    Нека \(n \in \N\) и нека \(v_1, \; \dots, \; v_n \in \V\) - (линейно зависими) \\\\
+    \(\implies \exists \n{\lambda} \in \F \; : \;  (\n{\lambda}) \neq (0, \dots, 0) \; : \; \displaystyle\sum_{i = 1}^n \lambda_i v_i = \OV_\V\) \\\\
+    Нека \(v = \displaystyle\sum_{i = 1}^n \lambda_i v_i \implies v = \OV_\V \; | \;\varphi
+    \implies \varphi(v) = \varphi(\OV_\V) = \OV_\W \implies \\\\
+    \varphi(v) = \varphi\left(\displaystyle\sum_{i = 1}^n \lambda_i v_i\right) = \displaystyle\sum_{i = 1}^n \lambda_i \varphi(v_i) = \OV_\W \implies \\\\
+    \displaystyle\sum_{i = 1}^n \lambda_i \varphi(v_i) = \OV_\W, \; (\n{\lambda}) \neq (0, \dots, 0) \implies \) \\\\
+    Векторите \(\varphi(v_1), \; \dots, \; \varphi(v_n)\) (образите на векторите \(v_1, \; \dots, \; v_n\))
+    са линейно зависими \(\qed\) 
+    \subsection{Докажете, че един линеен оператор изпраща линейно зависими вектори в линейно зависими вектори)}
+    Доказателство: \\\\
+    Нека \(\V\) - Л.П над полето \(\F, \; \varphi \in \mathrm{Hom}(\V)\) \\\\
+    Нека \(n \in \N\) и нека \(v_1, \; \dots, \; v_n \in \V\) - (линейно зависими) \\\\
+    \(\implies \exists \n{\lambda} \in \F \; : \;  (\n{\lambda}) \neq (0, \dots, 0) \; : \; \displaystyle\sum_{i = 1}^n \lambda_i v_i = \OV\) \\\\
+    Нека \(v = \displaystyle\sum_{i = 1}^n \lambda_i v_i \implies v = \OV \; | \;\varphi
+    \implies \varphi(v) = \varphi(\OV) = \OV \implies \\\\
+    \varphi(v) = \varphi\left(\displaystyle\sum_{i = 1}^n \lambda_i v_i\right) = \displaystyle\sum_{i = 1}^n \lambda_i \varphi(v_i) = \OV \implies \\\\
+    \displaystyle\sum_{i = 1}^n \lambda_i \varphi(v_i) = \OV, \; (\n{\lambda}) \neq (0, \dots, 0) \implies \) \\\\
+    Векторите \(\varphi(v_1), \; \dots, \; \varphi(v_n)\) (образите на векторите \(v_1, \; \dots, \; v_n\))
+    са линейно зависими \(\qed\) 
     \section{Действия с линейни изображения}
     \subsection{Определение за сума на линейни изображения}
-    \(\V, \; \W\) - Л.П над полето \(\F, \; \varphi, \psi \in Hom(\V, \W)\\
-    \varphi + \psi : \V \to \W; \; \forall v \in \V (\varphi + \psi)(v) = \varphi(v) + \psi(v) \in \W\)
+    Нека \(\V, \; \W\) - Л.П над полето \(\F, \; \varphi, \psi \in \mathrm{Hom}(\V, \; \W) \\\\
+    \varphi + \psi : \V \to \W \; : \; \forall v \in \V \; (\varphi + \psi)(v) = \varphi(v) + \psi(v)\)
     \subsection{Определение за произведение на линейно изображение със скалар}
-    \(\V, \; \W\) - Л.П над полето \(\F, \; \varphi \in Hom(\V, \W), \; \lambda \in \F\\
-    \lambda\varphi : \V \to \W; \; \forall v \in \V (\lambda\varphi)(v) = \lambda\varphi(v) \in \W\)
+    Нека \(\V, \; \W\) - Л.П над полето \(\F, \; \varphi \in \mathrm{Hom}(\V, \; \W), \; \lambda \in \F \\\\
+    \lambda\varphi : \V \to \W \; : \; \forall v \in \V \; (\lambda\varphi)(v) = \lambda.\varphi(v)\)
     \subsection{Определение за произведение на линейни изображения}
-    \(\V, \; \W, \; \UV\) - Л.П над полето \(\F, \; \in Hom(\V, \W), \psi \in Hom(\W, \UV)\\
-    \psi\varphi : \V \to \UV; \; \forall v \in \V (\psi\varphi)(v) = (\psi \circ \varphi)(v) = \psi(\varphi(v)) \in \UV\)
+    \(\V, \; \W, \; \UV\) - Л.П над полето \(\F, \; \varphi \in \mathrm{Hom}(\V, \; \W), \psi \in \mathrm{Hom}(\W, \; \UV) \\\\
+    \psi\varphi : \V \to \UV \; : \; \forall v \in \V \; (\psi\varphi)(v) = (\psi \circ \varphi)(v) = \psi(\varphi(v))\)
     \subsection{Определението за матрица на линейно изображение}
-    \(\V, \; \W\) - Л.П над полето \(\F, \; \varphi \in Hom(\V, \W) , \; n = dim\V, \; m = dim\W\\
-    \n{e} = \text{ базис на } \V\\
-    \m{f} = \text{ базис на } \W\\
-    A = (\lambda_{ji})\x{m}{n} = M_{e \to f}(\varphi) \in \F\x{m}{n}\\
-    \varphi(e_i) = \sum_{j = 1}^m \lambda_{ji}f_j \in \W, \ieqn, \; \lambda_{ji} \in \F\)
+    Нека \(\V, \; \W\) - Л.П над полето \(\F, \; \varphi \in \mathrm{Hom}(\V, \; \W) , \; n = \mathrm{dim}\V, \; m = \mathrm{dim}\W \\\\
+    \n{e} - \text{ базис на } \V \\\\
+    \m{f} - \text{ базис на } \W \\\\
+    \ieqn \quad \varphi (e_i) = \displaystyle\sum_{j = 1}^m \lambda_{ji}f_j, \quad \lambda_{ji} \in \F \\\\
+    A = (\lambda_{ji})\x{m}{n} = M_{e \to f}(\varphi) \in \F\x{m}{n}\) - матрица на \(\varphi\) в базисите \(e, \; f\) \\\\
+    Тоест стълбовете на матрицата \(A\) са образите на векторите \(\n{e}\) \\\\
+    \(A = (\varphi(e_1) \; \dots \; \varphi(e_n))\)
     \subsection{изобразяване на координатите на образа\\
     на вектор под действието на линейно изображение\\
     чрез координатите на вектора и матрицата\\
     на линейното изображение}
-    \(\V, \; \W\) - КМЛП над полето \(\F, \; n = dim\V, \; m = dim\W\\
-    \n{e} - \text{ базис на } \V\\
-    \m{f} - \text{ базис на } \W\\
-    A = M_{e \to f}(\varphi) \in \F\x{m}{n}\\
-    v \in \V \implies v = \sum{i = 1}^n \lambda_i e_i, \; \lambda_i \in \F, \; \ieqn\\
-    (\n{\lambda}) - \text{ координатите на \(v\) спрямо базиса \(e\) на } \V\\
-    \implies \exists(\m{\mu}) \in \F^m - \text{ координатите на \(v\) спрямо базиса \(f\) на } \W\\
-    (\m{\mu})^t = A(\n{\lambda})^t\)
+    Нека \(\V, \; \W\) - К.М.Л.П над полето \(\F, \; \varphi \in \mathrm{Hom}(\V, \; \W) , \; n = \mathrm{dim}\V, \; m = \mathrm{dim}\W \\\\
+    \n{e} - \text{ базис на } \V \\\\
+    \m{f} - \text{ базис на } \W \\\\
+    A = (\lambda_{ji})\x{m}{n} = M_{e \to f}(\varphi) \in \F\x{m}{n}\) - матрица на \(\varphi\) в базисите \(e, \; f\) \\\\
+    Нека \(v \in \V \implies v = \displaystyle\sum_{i = 1}^n \lambda_i e_i, \quad \n{\lambda} \in \F\) \\\\
+    \((\n{\lambda})\) - координатите на \(v\) спрямо базиса \(e\) на \(\V\) \\\\
+    \(\varphi(v) \in \W \implies \exists(\m{\mu}) \in \F^m \; : \; \varphi(v)
+    = \displaystyle\sum_{i = 1}^n \lambda_i \varphi(e_i) = \displaystyle\sum_{i = 1}^m \mu_i f_i \) \\\\
+    \((\m{\mu})\) - координатите на образа на \(v\) спрямо базиса \(f\) на \(\W\) \\\\
+    Тогава \((\m{\mu})^t = A(\n{\lambda})^t\)
     \section{Матрици на линейни изображения, получени след действия с ЛИ}
     \subsection{Определение за сума на линейни изображения}
-    \(\V, \; \W\) - Л.П над полето \(\F, \; \varphi, \psi \in Hom(\V, \W)\\
-    \varphi + \psi : \V \to \W; \; \forall v \in \V (\varphi + \psi)(v) = \varphi(v) + \psi(v) \in \W\)
+    Нека \(\V, \; \W\) - Л.П над полето \(\F, \; \varphi, \psi \in \mathrm{Hom}(\V, \; \W) \\\\
+    \varphi + \psi : \V \to \W \; : \; \forall v \in \V \; (\varphi + \psi)(v) = \varphi(v) + \psi(v)\)
     \subsection{Определение за матрица на линейно изображение, което е сумата на две линейни изображения}
-    \(\V, \; \W\) - KMЛП над полето \(\F, \; \varphi, \psi \in Hom(\V, \W), \; n = dim\V, \; m = dim\W\\
-    \tau = \varphi + \psi \in Hom(\V, \W)\\
-    A = M(\varphi) \in \F\x{m}{n}\\
-    B = M(\psi) \in \F\x{m}{n}\\
-    \implies C = M(\tau) = M(\varphi + \psi) = M(\varphi) + M(\psi) = A + B \in \F\x{m}{n}\)
+    Нека \(\V, \; \W\) - K.M.Л.П над полето \(\F, \; \varphi, \; \psi \in \mathrm{Hom}(\V, \; \W), \; n = \mathrm{dim}\V, \; m = \mathrm{dim}\W\) \\\\
+    Нека \(\tau = \varphi + \psi \in \mathrm{Hom}(\V, \; \W)\) \\\\
+    Нека \(\n{e} - \text{ базис на } \V\) \\\\
+    Нека \(\m{f} - \text{ базис на } \W\) \\\\
+    Нека \(A = M_{e \to f}(\varphi) \in \F\x{m}{n}\) - матрицата на \(\varphi\) спрямо базисите \(e, \; f\) \\\\
+    Нека \(B = M_{e \to f}(\psi) \in \F\x{m}{n}\) - матрицата на \(\psi\) спрямо базисите \(e, \; f\) \\\\
+    Нека \(C = M_{e \to f}(\tau) = M_{e \to f}(\varphi + \psi) = M_{e \to f}(\varphi) + M_{e \to f}(\psi) = A + B \in \F\x{m}{n}\) \\\\
+    Тогава \(C\) е матрицата на \(\tau = \varphi + \psi\) спрямо базисите \(e, \; f\)
     \subsection{Определение за матрица на линейно изображение, което е произведение на линейно изображение със скалар}
-    \(\V, \; \W\) - KMЛП над полето \(\F, \; \varphi \in Hom(\V, \W), \; \lambda \in \F, \; n = dim\V, \; m = dim\W\\
-    \psi = \lambda\varphi \in Hom(\V, \W)\\
-    A = M(\varphi) \in \F\x{m}{n}\\
-    B = M(\psi) = M(\lambda\varphi) = \lambda M(\varphi) = \lambda A \in \F\x{m}{n}\)
+    Нека \(\V, \; \W\) - K.M.Л.П над полето \(\F, \; \lambda \in \F, \; \varphi \in \mathrm{Hom}(\V, \; \W), \; n = \mathrm{dim}\V, \; m = \mathrm{dim}\W\) \\\\
+    Нека \(\tau = \lambda\varphi \in \mathrm{Hom}(\V, \; \W)\) \\\\
+    Нека \(\n{e} - \text{ базис на } \V\) \\\\
+    Нека \(\m{f} - \text{ базис на } \W\) \\\\
+    Нека \(A = M_{e \to f}(\varphi) \in \F\x{m}{n}\) - матрицата на \(\varphi\) спрямо базисите \(e, \; f\) \\\\
+    Нека \(C = M_{e \to f}(\tau) = M_{e \to f}(\lambda\varphi) = \lambda.M_{e \to f}(\varphi) = \lambda.A \in \F\x{m}{n}\) \\\\
+    Тогава \(C\) е матрицата на \(\tau = \lambda.\varphi\) спрямо базисите \(e, \; f\)
     \subsection{Определение за матрица на линейно изображение, което е произведение на две линейни изображения}
-    \(\V, \; \W, \; \UV\) - KMЛП над полето \(\F, \; \varphi \in Hom(\V, \W), \psi \in Hom(\W, \UV)\\
-    n = dim\V, \; m = dim\W, \; k = dim\UV\\
-    \tau = \psi\varphi \in Hom(\V, \UV)\\
-    A = M(\varphi) \in \F\x{m}{n}\\
-    B = M(\psi) \in \F\x{k}{m}\\
-    \implies C = M(\tau) = M(\psi\varphi) = M(\psi)M(\varphi) = BA \in \F\x{k}{n}\)
-    \subsection{\(\V, \; \W\) - KMЛП над полето \(\F, \; n = dim\V, \; m = dim\W\\
-    dimHom(\V, \W) = m . n\)}
+    Нека \(\V, \; \W, \; \UV\) - K.M.Л.П над полето \(\F \\\\
+    \varphi \in \mathrm{Hom}(\V, \; \W), \; \psi \in \mathrm{Hom}(\W, \; \UV), \;  n = \mathrm{dim}\V, \; m = \mathrm{dim}\W, \; k = \mathrm{dim}\UV\) \\\\
+    Нека \(\tau = \psi\varphi \in \mathrm{Hom}(\V, \; \UV)\) \\\\
+    Нека \(\n{e} - \text{ базис на } \V\) \\\\
+    Нека \(\m{f} - \text{ базис на } \W\) \\\\
+    Нека \(g_1, \; \dots, \; g_k - \text{ базис на } \UV\) \\\\
+    Нека \(A = M_{e \to f}(\varphi) \in \F\x{m}{n}\) - матрицата на \(\varphi\) спрямо базисите \(e, \; f\) \\\\
+    Нека \(B = M_{f \to g}(\psi) \in \F\x{k}{m}\) - матрицата на \(\psi\) спрямо базисите \(f, \; g\) \\\\
+    Нека \(C = M_{e \to g}(\tau) = M_{e \to g}(\psi\varphi) = M_{e \to g}(\psi \circ \varphi) = \\\\
+    = M_{f \to g}(\psi).M_{e \to f}(\varphi) = B.A \in \F\x{k}{n}\) \\\\
+    Тогава \(C\) е матрицата на \(\tau = \psi\varphi\) спрямо базисите \(e, \; g\)
+    \subsection{Размерност на Л.П. на всички лин. изображения между две крайно мерни Л.П}
+    Нека \(\V, \; \W\) - K.M.Л.П над полето \(\F, \; n = \mathrm{dim}\V, \; m = \mathrm{dim}\W\) \\\\
+    Тогава \(\mathrm{dim}\mathrm{Hom}(\V, \; \W) = m . n\)
     \section{Ядро и Образ на Линейно изображение}
-    \(\V, \; \W\) - Л.П над полето \(\F, \; \varphi \in Hom(\V, \W)\)
-    \subsection{\(Ker \varphi = \{v \in \V \; | \; \varphi(v) =\OV\}\)}
-    \subsection{\(Im \varphi = \{\varphi(v) \; | \; v \in \V\}\)}
-    \subsection{\(r(\varphi) = dimIm\varphi\)}
-    \subsection{\(d(\varphi) = dimKer\varphi\)}
-    \subsection{Th За ранга и дефекта}
-    \(\UV, \; \mathbb{S}\) - KMЛП над полето \(\F, \; \psi \in Hom(\UV, \mathbb{S})\\
+    \(\V, \; \W\) - Л.П над полето \(\F, \; \varphi \in \mathrm{Hom}(\V, \W)\)
+    \subsection{Определение за ядро на лин. изображение}
+    \(\mathrm{Ker} \varphi = \{v \in \V \; | \; \varphi(v) =\OV\}\)
+    \subsection{Определение за образ за лин. изображение}
+    \(\mathrm{Im} \varphi = \{\varphi(v) \; | \; v \in \V\} = \{w \in \W \; | \; \exists v \in \V \; : \; \varphi(v) = w \}\)
+    \subsection{Определение за образ на подпространство}
+    Нека \(\mathbb{Y} \leq \V\), тогава образа на \(\mathbb{Y}\) под действието на \(\varphi\) се дефинира като: \\\\
+    \(\varphi(\mathbb{Y}) = \mathrm{Im}\varphi_{|\mathbb{Y}}
+    = \{\varphi(v) \; | \; v \in \mathbb{Y}\} = \{w \in \W \; | \; \exists y \in \mathbb{Y} \; : \; \varphi(y) = w \}\)
+    \subsection{Определение за ранг на лин. изображение}
+    \(r(\varphi) = \mathrm{dim}\mathrm{Im}\varphi\)
+    \subsection{Определение за дефект на лин. изображение}
+    \(d(\varphi) = \mathrm{dim}\mathrm{Ker}\varphi\)
+    \subsection{Теорема(За ранга и дефекта)}
+    \(\UV, \; \mathbb{S}\) - K.M.Л.П над полето \(\F, \; \psi \in \mathrm{Hom}(\UV, \; \mathbb{S}) \\\\
     dim\UV = p \implies r(\psi) + d(\psi) = p\)
-    \subsection{\(A = M(\varphi) \implies r(\varphi) = r(A)\)}
+    \subsection{Връзката между ранга на едно лин. изображение и ранга на една неговата матрица относно един всеки (в частност и един) базис е:}
+    Нека \(\n{e} - \text{ произволен базис на } \V\) \\\\
+    Нека \(\m{f} - \text{ произволен базис на } \W\) \\\\
+    Ако \(A = M_{e \to f}(\varphi) \implies r(\varphi) = r(A)\)
     \section{Обратомост на ЛИ и ЛО}
     \subsection{Определение за обратимо линейно изображение}
-    \(\V, \; \W\) - KMЛП над полето \(\F, \; \varphi \in Hom(\V, \W)\\
-    \exists \varphi^{-1} \in Hom(\W, \V); \; \varphi.\varphi^{-1} = \varphi^{-1}.\varphi = \varepsilon \iff \varphi \text{ е биекция}\)
+    Нека \(\V, \; \W\) - K.M.Л.П над полето \(\F, \; \varphi \in \mathrm{Hom}(\V, \; \W)\) \\\\
+    \(\varphi\) е обратимо Л.И, ако \(\exists \varphi^{-1} \in \mathrm{Hom}(\W, \; \V); \; \varphi.\varphi^{-1} = \varphi^{-1}.\varphi = \varepsilon\)
     \subsection{Определение за обратното линейно изображение на дадено линейно изображение}
-    \(\V, \; \W\) - KMЛП над полето \(\F, \; \varphi \in Hom(\V, \W)\\
-    \text{Ако } \varphi \text{ е обратимо ЛИ, то}\\
-    \implies \exists! \; \varphi^{-1} \in Hom(\W, \V); \; \varphi.\varphi^{-1} = \varphi^{-1}.\varphi = \varepsilon\\
-    \varphi^{-1} \text{ е обратното ЛИ на } \varphi\)
+    Нека \(\V, \; \W\) - K.M.Л.П над полето \(\F, \; \varphi \in \mathrm{Hom}(\V, \; \W)\) \\\\
+    Ако \(\varphi\) е обратимо Л.И, то \\\\
+    \(\exists! \; \varphi^{-1} \in \mathrm{Hom}(\W, \; \V) \; : \; \varphi.\varphi^{-1} = \varphi^{-1}.\varphi = \varepsilon \\\\
+    \varphi^{-1} \text{ е обратното Л.И. на } \varphi\) \\\\
+    \textbf{Редактирано до тук !!!}
     \subsection{Обратният на обратим линеен оператор също е обратим}
-    \(\V\) - KMЛП над полето \(\F, \; \varphi \in Hom\V\\
+    Нека \(\V\) - KMЛП над полето \(\F, \; \varphi \in \mathrm{Hom}\V\\
     \varphi \text{ - обратим ЛО } \implies \varphi \circ \varphi^{-1} = \varphi^{-1} \circ \varphi = \varepsilon_\V\\
     \implies\varphi^{-1} \circ (\varphi^{-1})^{-1} = (\varphi^{-1})^{-1} \circ \varphi^{-1} = \varepsilon_\V\\
     \implies (\varphi^{-1})^{-1} = \varphi\)
@@ -175,7 +235,7 @@
     \subsection{Промяна на координатите на вектор при смяна на базиса}
     \(\V\) - KMЛП над полето \(\F, \; dim\V = n \in \mathbb{N}\)\\
     Нека \(T = (\tau_{ji})\x{n}{n} \in M_n\) е матрицата на прехода от \(e \to f\\
-    v = \sum_{i = 1}^n \lambda_i e_i = \sum_{i = 1}^n \mu_i e_i \in \V, \; \lambda_i, \mu_u \in \F, \; \ieqn\\
+    v = \sum_{i = 1}^n \lambda_i e_i = \sum_{i = 1}^n \mu_i f_i \in \V, \; \lambda_i, \mu_u \in \F, \; \ieqn\\
     (\n{\lambda})^t = T(\n{\mu})^t\)
     \subsection{Промяна на матрицата на линейно изображение при смяна на базиса}
     \(\V, \; \W\) - KMЛП над полето \(\F, \; \varphi \in Hom(\V, \W), \; n = dim\V, \; m = dim\W\\
