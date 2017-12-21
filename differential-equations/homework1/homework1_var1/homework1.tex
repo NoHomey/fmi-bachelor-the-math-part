@@ -1,0 +1,120 @@
+\documentclass[12pt]{article}
+    
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+    
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+    
+\setlength{\parindent}{0mm}
+        
+\title{Домашна работа}
+\author{Иво Стратев}
+        
+\begin{document}
+\maketitle
+
+\section*{Задача 1.}
+Решете задачата на Коши \\
+
+$\begin{cases}
+    3(xyy' - y^2)\displaystyle\cos\left(\frac{y^2}{x^2} - 1\right) = 2x^2 \\
+    y(1) = -1
+\end{cases}$ \\\\
+
+$
+3(xyy' - y^2)\displaystyle\cos\left(\frac{y^2}{x^2} - 1\right) = 2x^2 \implies \\\\\\
+(xyy' - y^2)\displaystyle\cos\left(\frac{y^2}{x^2} - 1\right) = \frac{2}{3}x^2
+$ \\\\\
+
+Нека $
+\displaystyle\cos\left(\frac{y^2}{x^2} - 1\right) \neq 0 = \displaystyle\cos\left(\frac{\pi}{2} + 2k\pi\right) \implies \\\\\\
+\frac{y^2}{x^2} - 1 \neq \frac{\pi}{2} + 2k\pi \implies \\\\\\
+y^2 \neq x^2\left(1 + \frac{\pi}{2} + 2k\pi\right) \implies \\\\\\
+y \neq \pm |x|\displaystyle\sqrt{\left(1 + \frac{\pi}{2} + 2k\pi\right)}
+$ \\\\
+
+Ако $\displaystyle\cos\left(\frac{y^2}{x^2} - 1\right) = 0 \implies 0 = 2x^2 $ следователно \\\\
+
+$y = \pm |x|\displaystyle\sqrt{\left(1 + \frac{\pi}{2} + 2k\pi\right)}, \; y = \pm x\displaystyle\sqrt{\left(1 + \frac{\pi}{2} + 2k\pi\right)} $ не са решения \\\\
+
+$\implies xyy' - y^2 = \frac{2}{3}\displaystyle\frac{x^2}{\displaystyle\cos\left(\frac{y^2}{x^2} - 1\right)} \implies \\\\
+xyy' = y^2 + \frac{2}{3}\displaystyle\frac{x^2}{\displaystyle\cos\left(\frac{y^2}{x^2} - 1\right)}
+$ \\\\
+
+Ако $y \equiv 0 \implies 0 = \frac{2}{3}\frac{x^2}{\cos(-1)} = \frac{2}{3\cos(1)}x^2 \not\equiv 0 \implies y \equiv 0$ не е решение \\\\
+
+$\implies y' = \frac{y}{x} + \frac{2}{3}\frac{x}{y}\displaystyle\frac{1}{\displaystyle\cos\left(\frac{y^2}{x^2} - 1\right)}$ (уравнението е хомогенно) \\\\
+
+Полагаме $z = \frac{y}{x} \implies y = zx \implies y' = z'x + z \implies \\\\
+z'x + z = z + \frac{2}{3}\displaystyle\frac{1}{z\cos(z^2 - 1)} \implies \\\\\\
+z\cos(z^2 - 1)z' = \frac{2}{3}\frac{1}{x} \quad \Big| \quad \displaystyle\int \; \mathrm{d}x \implies \\\\\\
+\displaystyle\int z\cos(z^2 - 1)z' \; \mathrm{d}x = \displaystyle\int \frac{2}{3}\frac{1}{x} \; \mathrm{d}x \implies \\\\\\
+\displaystyle\int z\cos(z^2 - 1) \; \mathrm{d}z = \frac{2}{3}\displaystyle\int \frac{1}{x} \; \mathrm{d}x \implies \\\\\\
+\frac{1}{2} \displaystyle\int \cos(z^2 - 1) \; \mathrm{d}(z^2 - 1) = \frac{2}{3} \ln(x) + c \quad (c \in \R) \implies \\\\\\
+\frac{1}{2}\sin(z^2 - 1) = \frac{2}{3} \ln(x) + c \implies \\\\\\
+\sin(z^2 - 1) = \frac{4}{3} \ln(x) + c \quad | \quad \arcsin \implies \\\\\\
+z^2 - 1 = \arcsin\left(\frac{4}{3} \ln(x) + c\right) \implies \\\\\\
+z = \pm \displaystyle\sqrt{\arcsin\left(\frac{4}{3} \ln(x) + c\right) + 1} \implies \\\\\\
+y = \pm x \displaystyle\sqrt{\arcsin\left(\frac{4}{3} \ln(x) + c\right) + 1}, \quad c \in \R$ - общо решение \\\\\
+
+$y(1) = -1 = \pm 1.\displaystyle\sqrt{\arcsin\left(\frac{4}{3} \ln(1) + c\right) + 1} =
+\pm \displaystyle\sqrt{\arcsin\left(\frac{4}{3}.0 + c\right) + 1} \implies \\\\\\
+-1 = \pm \displaystyle\sqrt{\arcsin(c) + 1} \implies 1 = \displaystyle\sqrt{\arcsin(c) + 1} \implies 1 = \arcsin(c) + 1 \implies \\\\
+\arcsin(c) = 0 \implies c = 0 \implies y = x \displaystyle\sqrt{\arcsin\left(\frac{4}{3} \ln x\right) + 1}$ \\\\\\
+
+Отговор: Решението на дадената задача на Коши е: $y = x \displaystyle\sqrt{\arcsin\left(\frac{4}{3} \ln x\right) + 1}$
+
+\section*{Задача 2.}
+Решете уравнението: \\
+
+$(4x^3y^3 - y)\mathrm{d}x + (4x^4y^2 + y^2 - 2x)\mathrm{d}y = 0$ \\\\
+
+Нека $P(x, \; y) = 4x^3y^3 - y$ и $Q(x, \; y) = 4x^4y^2 + y^2 - 2x$ \\\\
+
+$P'_y(x, \; y) = (4x^3y^3 - y)'_y = 12x^3y^2 - 1$ \\\\
+
+$Q'_x(x, \; y) = (4x^4y^2 + y^2 - 2x)'x = 16x^3y^2 - 2 \implies Q'_x \neq P'_y$. \\\\
+
+Очевидно обаче $P, \; Q \in C^\infty(\R^2)$ \\\\
+
+Търсим интегриращ множител $\mu(x, \; y) \in C^1(D \subseteq \R^2)$, \\
+
+такъв че уравнението е пълен диференциял, тоест: $(\mu P)'_y = (\mu Q)'_x \implies \\\\
+\mu'_y P + \mu P'_y =  \mu'_x Q + \mu Q'_x$ \\ 
+
+Очевиден интегриращ множител е $\mu(x, \; y) = y$. Ще го докажем, трябва да проверим дали
+$\mu'_x = 0 \iff \mu'_y P + \mu P'_y = \mu Q'_x \iff \exists \psi \; : \; \mu'_y = \mu \frac{1}{P}(Q'_x - P'_y) = \mu \psi(y) $ \\\\
+
+$\frac{1}{P}(Q'_x - P'_y) = \frac{1}{4x^3y^3 - y}(16x^3y^2 - 2 - (12x^3y^2 - 1)) =
+\frac{4x^3y^2 - 1}{4x^3y^3 - y} = \frac{1}{y}\frac{4x^3y^2 - 1}{4x^3y^2 - 1} = \frac{1}{y} \implies \\\\
+\psi(y) = \frac{1}{y} \implies \mu'_y = \mu\frac{1}{y}
+\implies \frac{1}{\mu}\mu'_y = \frac{1}{y} \quad \Big| \quad \displaystyle\int \; \mathrm{d}y \implies
+\displaystyle\int \frac{1}{\mu}\mu'_y \; \mathrm{d}y = \displaystyle\int \frac{1}{y}  \; \mathrm{d}y \implies \\\\
+\displaystyle\int \frac{1}{\mu} \; \mathrm{d}\mu = \ln y + c \implies \ln|\mu| = \ln y + c \; | \; e \implies \\\\
+e^{\ln|\mu|} = e^{\ln y + c} = e^{c + \ln y} = e^ce^{\ln y} \implies |\mu| = e^cy \implies \mu = cy \; (c \in \R\backslash\{0\})$ \\
+
+Фиксираме константата $c = 1 \implies \mu(x, \; y) = y$ \\
+
+Проверяваме, че найстина стигаме до уравнение, което е пълен диференциял: \\
+
+Нека $G(x, \; y) = \mu(x, \; y)P(x, \; y) = y(4x^3y^3 - y) = 4x^3y^4 - y^2 \in C^\infty(\R^2)$ и нека \\
+
+$H(x, \; y) = \mu(x, \; y)Q(x, \; y) = y(4x^4y^2 + y^2 - 2x) = 4x^4y^3 + y^3 -2xy \in C^\infty(\R^2)$ \\
+
+$G(x, \; y)'_y = 16x^3y^3 - 2y, \; H(x, \; y)'_x = 16x^3y^3 - 2y \implies G'_y = H'_x \implies \\\\
+G\mathrm{d}x + H\mathrm{d}y = 0$ е пълен диференциял. Следователно $\exists U \; : \; U'_x = G, \; U'_y = H \\\\
+\implies U = \displaystyle\int G \; \mathrm{d}x = \displaystyle\int (4x^3y^4 - y^2) \; \mathrm{d}x = x^4y^4 -y^2x + t(y) \\\\
+U'_y = H \implies (x^4y^4 -y^2x + t(y))'_y = 4x^4y^3 + y^3 -2xy \implies \\\\
+4x^4y^3 2xy + t'_y(y) = 4x^4y^3 + y^3 -2xy \implies t'(y) = y^3 \implies \\\\
+t = \displaystyle\int y^3 \; \mathrm{d}y = \frac{1}{4}y^4 + r \implies U(x, \; y) = x^4y^4 -y^2x + \frac{1}{4}y^4 + r, \; r \in \R$ \\\\
+
+Отговор: Решение на даденото уравнение е: $x^4y^4 -y^2x + \frac{1}{4}y^4 = - r, \; r \in \R$
+
+\end{document}

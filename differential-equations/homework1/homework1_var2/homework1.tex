@@ -1,0 +1,113 @@
+\documentclass[12pt]{article}
+    
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+    
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+    
+\setlength{\parindent}{0mm}
+        
+\title{Домашна работа}
+\author{Иво Стратев, Група 3, № 45342}
+        
+\begin{document}
+\maketitle
+
+\section*{Задача 1.}
+Да се реши задачата на Коши: \\
+
+$\begin{cases}
+    2x^3y' = xy^3 - x^2y + y^5 \\
+    y(2) = 1
+\end{cases}$ \\\\
+
+Очевидно $y \equiv 0$ е решение на $2x^3y' = xy^3 - x^2y + y^5$, но $0(2) = 0 \neq 1 \implies \\\\
+y \equiv 0$ не е решение на дадената задача на Коши. \\ 
+
+Полагаме $y = z^m \implies y' = mz^{m - 1}z' \implies 2x^3mz^{m - 1}z' = xz^{3m} - x^2z^m + z^{5m} \implies \\\\
+3 + m - 1 = 3m + 1 = m + 2 = 5m \implies m + 2 = 3m + 1 = 5m \implies m = \frac{1}{2} \implies \\\\
+x^3z^\frac{-1}{2}z' = xz^\frac{3}{2} - x^2z^\frac{1}{2} + z^\frac{5}{2} \implies z' = \left(\frac{z}{x}\right)^2 - \frac{z}{x} + \left(\frac{z}{x}\right)^3 $ \\
+
+Полагаме $t = \frac{z}{x} \implies z = tx \implies z' = t'x + t \implies \\\\
+t'x + t = t^2 - t + t^3 \implies t'x = t^3 + t^2 -2t \implies \frac{t'}{t(t^2 + t - 2)} = \frac{1}{x} \quad \Big| \quad \displaystyle\int \; \mathrm{d}x \implies \\\\
+\displaystyle\int \frac{t'}{t(t + 2)(t - 1)} \; \mathrm{d}x = \displaystyle\int \frac{1}{x} \; \mathrm{d}x \implies \\\\\\
+I = \displaystyle\int \frac{1}{t(t + 2)(t - 1)} \; \mathrm{d}t = \ln x + c, \; c \in \R \\\\\\
+I = \displaystyle\int \frac{1}{t(t + 2)(t - 1)} \; \mathrm{d}t
+= \displaystyle\int \frac{A}{t} + \frac{B}{t + 2} + \frac{C}{t - 1} \; \mathrm{d}t = \\\\\\
+= A\displaystyle\int \frac{1}{t} \; \mathrm{d}t + B\displaystyle\int \frac{1}{t + 2} \; \mathrm{d}t + C\displaystyle\int \frac{1}{t - 1} \; \mathrm{d}t =
+A\ln|t| + B\ln|t + 2| + C\ln|t - 1| \\\\\\
+\frac{1}{t(t + 2)(t - 1)} = \frac{A}{t} + \frac{B}{t + 2} + \frac{C}{t - 1} = \frac{A(t + 2)(t - 1) + Bt(t - 1) + Ct(t + 2)}{t(t + 2)(t - 1)} \\\\\\
+\implies 1 = A(t + 2)(t - 1) + Bt(t - 1) + Ct(t + 2) \implies \\\\\\
+\begin{cases}
+    1 = -2A, & t = 0\\
+    1 = 6B, & t = -2\\
+    1 = 3C, & t = 1
+\end{cases} \implies \begin{cases}
+    A = -\frac{1}{2} \\
+    B = \frac{1}{6} \\
+    C = \frac{1}{3}
+\end{cases} \implies \\\\\\
+I = -\frac{1}{2}\ln|t| + \frac{1}{6}\ln|t + 2| + \frac{1}{3}\ln|t - 1| = \ln x + c \\\\
+y = \sqrt{z} \implies z = y^2 \implies t = \frac{z}{x} = \frac{y^2}{x} \implies \\\\\\
+-\frac{1}{2}\ln\left|\frac{y^2}{x}\right| + \frac{1}{6}\ln\left|\frac{y^2 + 2x}{x}\right| + \frac{1}{3}\ln\left|\frac{y^2 - x}{x}\right| = \ln x + c \\\\\\
+y(2) = 1 \implies \exists \delta \in \R \; : \; y \; : \; (2 - \delta, \; 2 + \delta) \to \R \implies \\\\
+-\frac{1}{2}\ln\left|\frac{y(2)^2}{2}\right| + \frac{1}{6}\ln\left|\frac{y(2)^2 + 2.2}{2}\right| + \frac{1}{3}\ln\left|\frac{y(2)^2 - 2}{2}\right| = \ln 2 + c \implies \\\\\\
+-\frac{1}{2}\ln\left|\frac{1}{2}\right| + \frac{1}{6}\ln\left|\frac{5}{2}\right| + \frac{1}{3}\ln\left|-\frac{1}{2}\right| = \ln 2 + c \implies \\\\\\
+-\frac{1}{2}\ln\left(\frac{1}{2}\right) + \frac{1}{6}\ln\left(\frac{5}{2}\right) + \frac{1}{3}\ln\left(-(-\frac{1}{2}\right) = \ln 2 + c \implies \\\\\\
+\ln(\sqrt{2}) + \ln\left(\displaystyle\sqrt[6]{\frac{5}{2}}\right) + \ln\left(\displaystyle\sqrt[3]{\frac{1}{2}}\right) = \ln(2) + c \implies \\\\\\
+c = \ln(\sqrt{2}) + \ln(\sqrt{2}) + \ln\left(\displaystyle\sqrt[6]{\frac{5}{2}}\right) + \ln\left(\displaystyle\sqrt[3]{\frac{1}{2}}\right) -\ln(2) \implies \\\\\
+c = \ln\left(\frac{1}{2}\right) + \ln(\sqrt{2}) + \ln\left(\displaystyle\sqrt[6]{\frac{5}{2}}\right) + \ln\left(\displaystyle\sqrt[3]{\frac{1}{2}}\right) \implies \\\\\\
+-\frac{1}{2}\ln\left(\frac{y^2}{x}\right) + \frac{1}{6}\ln\left(\frac{y^2 + 2x}{x}\right) + \frac{1}{3}\ln\left(\frac{x - y^2}{x}\right) = \\\\
+= \ln x + \ln\left(\frac{1}{2}\right) + \ln(\sqrt{2}) + \ln\left(\displaystyle\sqrt[6]{\frac{5}{2}}\right) + \ln\left(\displaystyle\sqrt[3]{\frac{1}{2}}\right) \\\\\\
+\implies \ln\left(\displaystyle\sqrt{\frac{x}{y^2}}\right) + \ln\left(\displaystyle\sqrt[6]{\frac{y^2 + 2x}{x}}\right) + \ln\left(\displaystyle\sqrt[3]{\frac{x - y^2}{x}}\right) = \\\\
+= \ln x + \ln\left(\frac{1}{2}\right) + \ln(\sqrt{2}) + \ln\left(\displaystyle\sqrt[6]{\frac{5}{2}}\right) + \ln\left(\displaystyle\sqrt[3]{\frac{1}{2}}\right) \implies \\\\\\
+\displaystyle\sqrt{\frac{x}{y^2}}\displaystyle\sqrt[6]{\frac{y^2 + 2x}{x}}\displaystyle\sqrt[3]{\frac{x - y^2}{x}} = \frac{1}{2}\sqrt{2}\displaystyle\sqrt[6]{\frac{5}{2}}\displaystyle\sqrt[3]{\frac{1}{2}}x \quad | \quad ()^2 \implies \\\\\\
+\left(\frac{x}{y^2}\right)^3\frac{y^2 + 2x}{x}\left(\frac{x - y^2}{x}\right)^2 = \frac{1}{64}.8\frac{5}{2}\frac{1}{4}x^6 \implies \\\\\\
+\frac{y^2 + 2x}{y^6}(x - y^2)^2 = \frac{x^6}{64} \implies \\\\\\
+\frac{(y^2 + 2x)(x^2 - 2xy^2 + y^4)}{y^6} = \frac{x^6}{64} \implies \\\\\\
+\frac{y^2x^2 - 2xy^4 + y^6 + 2x^3 - 4x^2y^2 + 2xy^4}{y^6} = \frac{x^6}{64} \implies \\\\\\
+\frac{y^6 + 2x^3 - 3x^2y^2}{y^6} = \frac{x^6}{64} \implies \frac{64}{x^6} + \frac{128}{x^3y^6} - \frac{192}{x^4y^4} = 1\\\\\\
+$
+
+\section*{Задача 2.}
+Да се намери общото решение на диференциалното уравнение: \\
+
+$(1 - x^2y)\mathrm{d}x + (yx^2 - x^3)\mathrm{d}y$ използвайки подходящ интегриращ множител. \\\\
+
+Решение: \\
+
+Нека $P(x, \; y) = 1 - x^2y$ и $Q(x, \; y) = yx^2 - x^3 \in C^\infty(\R^2)$. Търсим $\mu(x, \; y)$, такова че 
+уравнението $\mu P\mathrm{d}x + \mu Q\mathrm{d}y = 0$ е пълен диференциал. \\
+
+Тоест $ (\mu P)'_y = (\mu Q)'_x \implies \mu'_yP + \mu P'_y = \mu'_xQ + \mu Q'_x$ \\
+
+Очевиден интегриращ множител е $x^{-2}$, за това ще търсим интегриращ множител от видa $\mu(x, \; y) = \varphi(x)$,
+което е изпълнено, ако $\mu'_y(x, \; y) \equiv 0 \implies \\\\
+\mu P'_y = \mu'_xQ + \mu Q'_y \implies \mu(P'_y - Q'_x) = Q\mu'_x \implies \\\\
+\mu'_x = \mu \frac{P'_y - Q'_x}{Q} \iff \exists \psi(x) \; : \; \frac{P'_y - Q'_x}{Q} = \psi(x) \\\\
+\frac{P'_y - Q'_x}{Q} = \frac{-x^2 - (2yx - 3x^2)}{yx^2 - x^3} = \frac{2x(x - y)}{x^2(y - x)} = -\frac{2}{x} = \psi(x) \implies \mu'_x = -\frac{2}{x}\mu \implies \\\\
+\frac{1}{\mu}\mu'_x = -\frac{2}{x} \; \Big| \; \displaystyle\int \; \mathrm{d}x \implies \displaystyle\int \frac{1}{\mu}\mu'_x \; \mathrm{d}x = \displaystyle\int -\frac{2}{x} \; \mathrm{d}x \implies \\\\
+\displaystyle\int \frac{1}{\mu} \; \mathrm{d}\mu = -2\displaystyle\int \frac{1}{x} \; \mathrm{d}x \implies \ln|\mu| = -2\ln x + c \implies \\\\
+\ln|\mu| = \ln(x^{-2}) + c \implies |\mu| = e^cx^{-2} \implies \mu = tx^{-2}, \; t \in \R\backslash\{0\}$ \\\\
+При $t = 1 \implies \mu(x, \; y) = x^{-2} \implies (x^{-2} - y)\mathrm{d}x + (y - x)\mathrm{d}y = 0$ \\\\
+
+Нека $G(x, \; y) = x^{-2} - y$ и $H(x, \; y) = y - x \in C^\infty(\R^2)$ \\
+
+$G'_y(x, \; y) = (x^{-2} - y)'_y = - 1 = (y - x)'_x = H'_x(x, \; y) \implies \\\\
+\exists U(x, \; y) \; : \; U'_x = G, \; U'_y = H \implies \\\\
+U = \displaystyle\int G \; \mathrm{d}x = \displaystyle\int (x^{-2} - y) \; \mathrm{d}x = \displaystyle\int (x^{-2} - y) \; \mathrm{d}x  = -\frac{1}{x} - yx + c(y) \\\\
+U'_y = H \implies \left(-\frac{1}{x} - yx + c(y)\right)'_y = y - x \implies -x + c'_y(y) = y - x \implies \\\\
+c(y) = \displaystyle\int y \; \mathrm{d}y = \frac{1}{2}y^2 + r, \; r \in \R \implies U(x, \; y) = -\frac{1}{x} - yx + \frac{1}{2}y^2 + r$ \\\\
+
+Отговор: Общото решение на даденото диференциално уравнение е: \\
+
+$\frac{1}{2}y^2 -\frac{1}{x} - yx = -r, \; r \in \R$
+
+\end{document}
