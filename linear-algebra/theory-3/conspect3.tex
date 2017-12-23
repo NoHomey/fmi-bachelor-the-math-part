@@ -6,183 +6,188 @@
 \usepackage[bulgarian]{babel}
 \usepackage[normalem]{ulem}
 \newcommand{\stkout}[1]{\ifmmode\text{\sout{\ensuremath{#1}}}\else\sout{#1}\fi}
-\newcommand{\x}[2]{\text{\tiny{\(#1 \times #2\)}}}
 \newcommand{\V}{\mathbb{V}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\W}{\mathbb{W}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\UV}{\mathbb{U}}
-\newcommand{\n}[1]{#1_1, \dots, #1_n}
-\newcommand{\nplusone}[1]{#1_1, \dots, #1_{n + 1}}
-\newcommand{\m}[1]{#1_1, \dots, #1_m}
+\newcommand{\n}[1]{#1_1, \; \dots, \; #1_n}
+\newcommand{\nplusone}[1]{#1_1, \; \dots, \; #1_{n + 1}}
+\newcommand{\m}[1]{#1_1, \; \dots, \; #1_m}
 \newcommand{\OV}{\theta}
-\newcommand{\ieqn}{i = 1, \dots, n}
-\newcommand{\forallij}{\forall i, j; \; 1 \leq i \neq j \leq n}
+\newcommand{\ieqn}{i = 1, \; \dots, \; n}
+\newcommand{\iandj}{i, \; j \; : \; 1 \leq i \neq j \leq n}
+\newcommand{\forallij}{\forall \iandj}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\inv}{[\sigma]}
-\newcommand{\aij}{(a_{11}, \dots, a_{1n})^t, \dots, (a_{n1}, \dots, a_{nn})^t \in \F^n}
-\newcommand{\arows}{Нека \(a_1 = (a_{11}, \dots, a_{1n}), \dots, a_n = (a_{n1}, \dots, a_{nn})\) са редовете на \(A\)\\ Тогава }
-\newcommand{\acols}{Нека \(a_1 = (a_{11}, \dots, a_{1n})^t, \dots, a_n = (a_{n1}, \dots, a_{nn})^t\) са стълбовете на \(A\)\\ Тогава }
+\newcommand{\aij}{(a_{11}, \; \dots, \; a_{1n}), \; \dots, \; (a_{n1}, \; \dots, \; a_{nn}) \in \F^n}
+\newcommand{\arows}{Нека \(a_1 = (a_{11}, \; \dots, \; a_{1n}), \; \dots, \; a_n = (a_{n1}, \; \dots, \; a_{nn})\) са редовете на \(A\) \\\\ Тогава }
+\newcommand{\acols}{Нека \(a_1 = (a_{11}, \; \dots, \; a_{n1})^t, \; \dots, \; a_n = (a_{1n}, \; \dots, \; a_{nn})^t\) са стълбовете на \(A\) \\\\ Тогава }
 \newcommand{\leta}{\(\F\) - числово поле и \(A \in M_n(\F)\)}
 
 \title{Теоритично контролно №3 1, I, Информатика}
 \author{Иво Стратев}
 
 \begin{document}
-    \pagenumbering{gobble}
     \maketitle
     \section{}
     \subsection{Определение за полилинейна фунцкия}
-    \(\V\) - ЛП над числовото поле \(\F, \; dim\V = n\\
-    f: \V \times \V, \dots \times \V \to \F \; (f : \V^n \to \F)\\
-    f \text{ е полилинейна ако } \ieqn\\
-    \forall v_1, \dots, v_{i - 1}, v_{i + 1}, \dots, v_n, v', v'' \in \V\\
-    \forall \lambda, \mu \in \F; \; v_i = \lambda v' + \mu v''\\\\
+    \(\V\) - Л.П. над числовото поле \(\F, \; dim\V = n \in \N \\\\
+    f: \V \times \V \times \dots \times \V \to \F \quad (f : \V^n \to \F) \\\\
+    f \text{ е полилинейна ако } \forall i \in \{1, \; \dots, \; n\} \\\\
+    \forall v_1, \; \dots, \; v_{i - 1}, \; v_{i + 1}, \; \dots, \; v_n, \; v', \; v'' \in \V \\\\
+    \forall \lambda, \; \mu \in \F \; : \; v_i = \lambda v' + \mu v''\\\\
     f(\n{v}) = \begin{array}{l}
-        \lambda f(v_1, \dots, v_{i - 1}, v', v_{i + 1}, \dots, v_n)\\
+        \lambda f(v_1, \; \dots, \; v_{i - 1}, \; v', \; v_{i + 1}, \; \dots, \; v_n)\\
         +\\
-        \mu f(v_1, \dots, v_{i - 1}, v'', v_{i + 1}, \dots, v_n)
+        \mu f(v_1, \; \dots, \; v_{i - 1}, \; v'', \; v_{i + 1}, \; \dots, \; v_n)
     \end{array}\)
     \subsection{Определение за антисиметрична фунцкия}
-    \(\V\) - ЛП над числовото поле \(\F, \; dim\V = n\\
-    f: \V \times \V, \dots \times \V \to \F \; (f : \V^n \to \F)\\
-    f \text{ е антисиметрична ако } \forallij\\
-    \forall v_1, \dots, v_i, \dots, v_j, \dots, v_n \in \V\\\\
-    f(v_1, \dots, v_i, \dots, v_j, \dots, v_n) = -f(v_1, \dots, v_j, \dots, v_i, \dots, v_n)\)
+    \(\V\) - Л.П. над числовото поле \(\F, \; dim\V = n \in \N \\\\
+    f: \V \times \V \times \dots \times \V \to \F \quad (f : \V^n \to \F) \\\\
+    f \text{ е антисиметрична ако } \forallij \\\\
+    \forall v_1, \; \dots, \; v_i, \; \dots, \; v_j, \; \dots, \; v_n \in \V \\\\
+    f(v_1, \; \dots, \; v_i, \; \dots, \; v_j, \; \dots, \; v_n) = -f(v_1, \; \dots, \; v_j, \; \dots, \; v_i, \; \dots, \; v_n)\)
     \subsection{Необходимо и достатъчно условие една полилинейна функция да е антисиметрична}
-    \(\V\) - ЛП над числовото поле \(\F, \; dim\V = n\\
-    f: \V \times \V, \dots \times \V \to \F \text{ е полилинейна функция}\\
-    f \text{ е антисиметрична } \iff \forallij\\
-    \forall v_1, \dots, v_{i - 1}, v_{i + 1}, \dots, v_{j - 1}, v_{j + 1}, \dots, v_n, v \in \V\\\\
-    f( v_1, \dots, v_{i - 1}, v, v_{i + 1}, \dots, v_{j - 1}, v, v_{j + 1}, \dots, v_n) = 0\)
+    \(\V\) - Л.П. над числовото поле \(\F, \; dim\V = n \in \N \\\\
+    f: \V \times \V \times \dots \times \V \to \F \quad (f : \V^n \to \F) \text{ е полилинейна функция} \\\\
+    f \text{ е антисиметрична } \iff \forallij \\\\
+    \forall v_1, \; \dots, \; v_{i - 1}, \; v_{i + 1}, \; \dots, \; v_{j - 1}, \; v_{j + 1}, \; \dots, \; v_n, \; v \in \V\\\\
+    f(v_1, \; \dots, \; v_{i - 1}, \; v, \; v_{i + 1}, \; \dots, \; v_{j - 1}, \; v, \; v_{j + 1}, \; \dots, \; v_n) = 0\)
     \subsection{Определение за пермутация}
-    Нека \(\Omega_n = \{1, 2, \dots, n\}, \; n \in \N\\
-    S(\Omega_n) = \{\sigma : \Omega_n \to \Omega_n \; | \; \sigma \text{ е биекция}\}\\
-    \forall \sigma \in S(\Omega_n), \; \sigma \text{ е пермутация}\\
+    Нека \( n \in \N, \; \Omega_n = \{1, \; 2, \; \dots, \; n\} \\\\
+    S(\Omega_n) = \{\sigma \; : \; \Omega_n \to \Omega_n \; | \; \sigma \text{ е биекция}\} \\\\
+    \forall \sigma \in S(\Omega_n), \; \sigma \text{ е пермутация} \\\\
     |S(\Omega_n)| = n!\)    
     \subsection{Определение за инверсия в пермутация}
-    \(\sigma \in S(\Omega_n), \; \forallij \in \Omega_n\\
-    \sigma(i), \sigma(j) \text{ образуват инверсия} \iff \sigma(i) > \sigma(j), \text{ но } i < j\\
+    \(\sigma \in S(\Omega_n), \; \forallij \in \Omega_n \\\\
+    \sigma(i), \; \sigma(j) \text{ образуват инверсия} \iff \sigma(i) > \sigma(j), \text{ но } i < j \\\\
     \inv \text{ - брой инверсии} \implies 1 \leq \inv \leq n\)
     \subsection{Определение за транспозиция}
-    \(\sigma \in S(\Omega_n), \; \forallij \in \Omega_n\\
-    \sigma \in S(\Omega_n) \implies \sigma = \{\sigma(1), \dots, \sigma(i), \dots, \sigma(j), \dots, \sigma(n)\}\\
-    \sigma_t \in S(\Omega_n) \text{ е транспозиция} \iff \sigma_t = \{\sigma(1), \dots, \sigma(j), \dots, \sigma(i), \dots, \sigma(n)\}\)
+    \(\sigma \in S(\Omega_n), \; \forallij \in \Omega_n \\\\
+    \sigma \in S(\Omega_n) \implies \sigma = \{\sigma(1), \; \dots, \; \sigma(i), \; \dots, \; \sigma(j), \; \dots, \; \sigma(n)\} \\\\
+    \sigma_t \in S(\Omega_n) \text{ е транспозиция} \iff \sigma_t = \{\sigma(1), \; \dots, \; \sigma(j), \; \dots, \; \sigma(i), \; \dots, \; \sigma(n)\}\)
     \subsection{Определение за четност на пермутация}
-    \(\sigma \in S(\Omega_n)\\
+    \(\sigma \in S(\Omega_n) \\\\
     \sigma \begin{cases}
         \text{четна} & \inv \mod 2 = 0\\
         \text{нечетна} & \inv \mod 2 = 1
-    \end{cases}\\
+    \end{cases} \\\\
     sign\sigma = \begin{cases}
         1 & \text{четна}\\
         -1 & \text{нечетна}
     \end{cases} = (-1)^{\inv}\)
     \subsection{Определение за детерминантна функция}
-    \(f : \F^n \times \F^n, \dots \times \F^n \to \F \; (f : (\F^n)^n \to \F)\\
-    f \text{ е детерминантна функция, ако е полилинейна, антисиметрична и}\\
-    f(\n{e}) = 1, \; \n{e} \text{ е стандартния базис на } \F^n\)
+    \(f \; : \; \F^n \times \F^n \times \dots \times \F^n \to \F \quad (f : (\F^n)^n \to \F) \\\\
+    f \text{ е детерминантна функция, ако е полилинейна, антисиметрична и} \\\\
+    f(\n{e}) = 1, \quad \{\n{e}\} \text{ е стандартният базис на } \F^n\)
     \section{Детерминанта и нейните свойства}
     \subsection{Определение за Детерминанта}
-    \(F\) е числово поле, \(A \in M_n(\F) \; detA\)\\
-    е стойността на единствената детерминантна фунцкия:\\
-    \(D : \F^n \times \F^n, \dots \times \F^n \to \F \; (f : (\F^n)^n \to \F)\)\\
+    \(F\) е числово поле, \(A \in M_n(\F) \; \det A\) \\\\
+    е стойността на единствената детерминантна фунцкия: \\\\
+    \(D : \F^n \times \F^n \times \dots \times \F^n \to \F \quad (f : (\F^n)^n \to \F)\) \\\\
     на редовете на \(A : \; \aij\)
     \subsection{Формула за пресмятане на Детерминанта}
-    \(\F\) - числово поле, \(A \in M_n(\F), \; A = (a_{ij})\x{n}{n}\\\\
-    detA = \sum_{\sigma \in S(\Omega_n)} sign\sigma \prod_{i = 1}^n a_{i \sigma(i)}\)
+    \(\F\) - числово поле, \(A \in M_n(\F), \; A = (a_{ij})_{n \times n} \\\\
+    \det A = \displaystyle\sum_{\sigma \in S(\Omega_n)} sign\sigma \displaystyle\prod_{i = 1}^n a_{i \sigma(i)}\)
     \subsection{Връзката между детерминантите на една матрица и транспонираната й матрица}
-    \(detA = detA^t\)
+    \(\det A = \det A^t\)
     \subsection{Промяна на детерминантата на една матрица, ако заменим един нейн ред с нулев ред}
-    \leta\\
-    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \forall \ieqn, \; a_i = (0. \dots, 0) \implies detA = 0\)
+    \leta \\\\
+    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \quad i \in \{1, \; \dots, \; n\}, \; a_i = (0. \; \dots, \; 0) \implies \det A = 0\)
     \subsection{Промяна на детерминантата на една матрица, ако заменим един нейн стълб с нулев стълб}
-    \leta\\
-    \acols \(A = (a_1 \; \dots \; a_n) \; \forall \ieqn, \; a_i = (0. \dots, 0)^t \implies detA = 0\)
+    \leta \\\\
+    \acols \(A = (a_1 \; \dots \; a_n) \quad i \in \{1, \; \dots, \; n\}, \; a_i = (0. \; \dots, \; 0)^t \implies \det A = 0\)
     \subsection{Промяна на детерминантата на една матрица, ако разменим два нейни реда}
-    \leta\\
-    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \forallij\\
-    det\begin{pmatrix} a_1\\ \vdots\\ a_i\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} = -det\begin{pmatrix} a_j\\ \vdots\\ a_j\\ \vdots\\ a_i\\ \vdots\\ a_n \end{pmatrix}\)
+    \leta \\\\
+    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \; \text{ и нека } \iandj \\\\
+    \det\begin{pmatrix} a_1\\ \vdots\\ a_i\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} = -\det\begin{pmatrix} a_j\\ \vdots\\ a_j\\ \vdots\\ a_i\\ \vdots\\ a_n \end{pmatrix}\)
     \subsection{Промяна на детерминантата на една матрица, ако разменим два нейни стълба}
-    \leta\\
-    \acols \(A = (a_1 \; \dots \; a_n) \; \forallij\\
-    det(a_1 \; \dots \; a_i \; \dots \; a_j \; \dots \; a_n) = -det(a_1 \; \dots \; a_i \; \dots \; a_j \; \dots \; a_n)\)
+    \leta \\\\
+    \acols \(A = (a_1 \; \dots \; a_n) \;\text{ и нека } \iandj \\\\
+    \det(a_1 \; \dots \; a_i \; \dots \; a_j \; \dots \; a_n) = -\det(a_1 \; \dots \; a_i \; \dots \; a_j \; \dots \; a_n)\)
     \subsection{Промяна на детерминантата на една матрица, ако умножим един нейн ред с някакво число}
-    \leta\\
-    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \forall \ieqn, \; \forall \lambda \in \F\\
-    det\begin{pmatrix} a_1\\ \vdots\\ \lambda a_i\\  \vdots\\ a_n \end{pmatrix} = \lambda det\begin{pmatrix} a_1\\ \vdots\\ a_i\\  \vdots\\ a_n \end{pmatrix}\)
+    \leta\\\\
+    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \quad i \in \{1, \; \dots, \; n\}, \; \lambda \in \F \\\\
+    \det\begin{pmatrix} a_1\\ \vdots\\ \lambda a_i\\  \vdots\\ a_n \end{pmatrix} = \lambda \det\begin{pmatrix} a_1\\ \vdots\\ a_i\\  \vdots\\ a_n \end{pmatrix}\)
     \subsection{Промяна на детерминантата на една матрица, ако умножим един нейн стълб с някакво число}
-    \leta\\
-    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \; \forall \ieqn, \; \forall \lambda \in \F\\
-    det(a_1 \; \dots \; \lambda a_i \; \dots \; a_n) = \lambda det(a_1 \; \dots \; a_i \; \dots \; a_n)\)
+    \leta \\\\
+    \acols \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \quad i \in \{1, \; \dots, \; n\}, \; \lambda \in \F \\\\
+    \det(a_1 \; \dots \; \lambda a_i \; \dots \; a_n) = \lambda \det(a_1 \; \dots \; a_i \; \dots \; a_n)\)
     \subsection{Промяна на детерминантата на една матрица, ако един нейн ред заменим с друг, различен от него, ред}
-    \leta\\
-    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \forallij\\
-    a_i := a_j \implies det\begin{pmatrix} a_1\\ \vdots\\ a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} = 0\)
+    \leta \\\\
+    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \; \text{ и нека } \iandj \\\\
+    a_i := a_j \implies \det\begin{pmatrix} a_1\\ \vdots\\ a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} = 0\)
     \subsection{Промяна на детерминантата на една матрица, ако един нейн стълб заменим с друг, различен от него, стълб}
-    \leta\\
-    \acols \(A = (a_1 \; \dots \; a_n) \; \forallij\\
-    a_i := a_j \implies det(a_1 \; \dots \; a_j \; \dots \; a_j \; \dots \; a_n) = 0\)
+    \leta \\\\
+    \acols \(A = (a_1 \; \dots \; a_n) \; \text{ и нека } \iandj \\\\
+    a_i := a_j \implies \det(a_1 \; \dots \; a_j \; \dots \; a_j \; \dots \; a_n) = 0\)
     \subsection{Промяна на детерминантата на една матрица, ако един нейн ред заменим с умножен с число друг, различен от него, ред}
-    \leta\\
-    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \forallij, \; \forall \lambda \in \F\\
-    a_i := \lambda a_j \implies det\begin{pmatrix} a_1\\ \vdots\\ \lambda a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix}
-    = \lambda det\begin{pmatrix} a_1\\ \vdots\\ a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} = \lambda 0 = 0\)
+    \leta\\\\
+    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \; \text{ и нека } \iandj, \; \lambda \in \F \\\\
+    a_i := \lambda a_j \implies \det\begin{pmatrix} a_1\\ \vdots\\ \lambda a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix}
+    = \lambda \det\begin{pmatrix} a_1\\ \vdots\\ a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} = \lambda 0 = 0\)
     \subsection{Промяна на детерминантата на една матрица, ако един нейн стълб заменим с умножен с число друг, различен от него, стълб}
-    \leta\\
-    \acols \(A = (a_1 \; \dots \; a_n) \; \forallij, \; \forall \lambda \in \F\\
-    a_i := \lambda a_j \implies det(a_1 \; \dots \; \lambda a_j \; \dots \; a_j \; \dots \; a_n) =\\
-    = \lambda det(a_1 \; \dots \; a_j \; \dots \; a_j \; \dots \; a_n) = \lambda 0 = 0\)
+    \leta \\\\
+    \acols \(A = (a_1 \; \dots \; a_n) \; \text{ и нека } \iandj, \; \lambda \in \F \\\\
+    a_i := \lambda a_j \implies \det(a_1 \; \dots \; \lambda a_j \; \dots \; a_j \; \dots \; a_n) = \\\\
+    = \lambda \det(a_1 \; \dots \; a_j \; \dots \; a_j \; \dots \; a_n) = \lambda 0 = 0\)
     \subsection{Промяна на детерминантата на една матрица, ако към един нейн ред прибавим друг, различен от него, ред}
-    \leta\\
-    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \forallij\\
-    a_i := a_i + a_j \implies det\begin{pmatrix} a_1\\ \vdots\\ a_i + a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix}
-    = det\begin{pmatrix} a_1\\ \vdots\\ a_i\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} +  det\begin{pmatrix} a_1\\ \vdots\\ a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix}
-    = detA + 0 = detA\)
+    \leta \\\\
+    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \; \text{ и нека } \iandj \\\\
+    a_i := a_i + a_j \implies \det\begin{pmatrix} a_1\\ \vdots\\ a_i + a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix}
+    = \det\begin{pmatrix} a_1\\ \vdots\\ a_i\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} +  \det\begin{pmatrix} a_1\\ \vdots\\ a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix}
+    = \det A + 0 = \det A\)
     \subsection{Промяна на детерминантата на една матрица, ако един нейн стълб прибавим друг, различен от него, стълб}
-    \leta\\
-    \acols \(A = (a_1 \; \dots \; a_n) \; \forallij\\
-    a_i := a_i + a_j \implies det(a_1 \; \dots \; a_i + a_j \; \dots \; a_j \; \dots \; a_n) =\\
-    = det(a_1 \; \dots \; a_i \; \dots \; a_j \; \dots \; a_n) + det(a_1 \; \dots \; a_j \; \dots \; a_j \; \dots \; a_n) = detA + 0 = detA\)
+    \leta \\\\
+    \acols \(A = (a_1 \; \dots \; a_n) \; \text{ и нека } \iandj \\\\
+    a_i := a_i + a_j \implies \det(a_1 \; \dots \; a_i + a_j \; \dots \; a_j \; \dots \; a_n) = \\\\
+    = \det(a_1 \; \dots \; a_i \; \dots \; a_j \; \dots \; a_n) + \det(a_1 \; \dots \; a_j \; \dots \; a_j \; \dots \; a_n) = \det A + 0 = \det A\)
     \subsection{Промяна на детерминантата на една матрица, ако към един нейн ред прибавим м умножен с число друг, различен от него, ред}
-    \leta\\
-    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \forallij, \; \forall \lambda \in \F\\
-    a_i := a_i + \lambda a_j \implies det\begin{pmatrix} a_1\\ \vdots\\ a_i + \lambda a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix}
-    = det\begin{pmatrix} a_1\\ \vdots\\ a_i\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} +
-    det\begin{pmatrix} a_1\\ \vdots\\ \lambda a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} =\\
-    = detA + \lambda det\begin{pmatrix} a_1\\ \vdots\\ a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} = detA + \lambda 0 = detA + 0 = detA\)
+    \leta \\\\
+    \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \; \text{ и нека } \iandj, \; \lambda \in \F \\\\
+    a_i := a_i + \lambda a_j \implies \det\begin{pmatrix} a_1\\ \vdots\\ a_i + \lambda a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix}
+    = \det\begin{pmatrix} a_1\\ \vdots\\ a_i\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} +
+    \det\begin{pmatrix} a_1\\ \vdots\\ \lambda a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} =\ \\\\
+    = \det A + \lambda \det\begin{pmatrix} a_1\\ \vdots\\ a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} = \det A + \lambda 0 = \det A + 0 = \det A\)
     \subsection{Промяна на детерминантата на една матрица, ако един нейн стълб прибавим м умножен с число друг, различен от него, стълб}
-    \leta\\
-    \acols \(A = (a_1 \; \dots \; a_n) \; \forallij, \; \forall \lambda \in \F\\
-    a_i := a_i + \lambda a_j \implies det(a_1 \; \dots \; a_i + \lambda a_j \; \dots \; a_j \; \dots \; a_n) =\\
-    = det(a_1 \; \dots \; a_i \; \dots \; a_j \; \dots \; a_n) + det(a_1 \; \dots \; \lambda a_j \; \dots \; a_j \; \dots \; a_n) =\\
-    = detA + \lambda det(a_1 \; \dots \; a_j \; \dots \; a_j \; \dots \; a_n) = detA + \lambda 0 = detA + 0 = detA\)
-    \subsection{\(detA = 0 \iff\) редовете на \(A\) са линейно зависими}
-    \section{\(A \in M_n, \; detA = 3\)}
-    \subsection{\(B = A^t \implies detB = detA = 3\)}
-    \subsection{\(B = A := a_{i,*} = (0, \dots, 0) \implies detB = 0\)}
-    \subsection{\(B = A := a_{*,i} = (0, \dots, 0)^t \implies detB = 0\)}
-    \subsection{\(B = A := a_{i,*} = a_{j,*} + a_{k,*} \implies detB = 0\)}
-    \subsection{\(B = A := a_{*,i} = a_{*,j} + a_{*,k} \implies detB = 0\)}
-    \subsection{\(B = A := a_{i,*} = 4a_{i,*} \implies detB = 4detA = 4.3 = 12\)}
-    \subsection{\(B = A := a_{*,i} = -4a_{*,i} \implies detB = -4detA = -4.3 = -12\)}
-    \subsection{\(B = A := a_{i,*} = a_{j,*} \implies detB = 0\)}
-    \subsection{\(B = A := a_{*,i} = a_{*,j} \implies detB = 0\)}
-    \subsection{\(B = A := a_{i,*} = 8a_{j,*} \implies detB = 8.0 = 0\)}
-    \subsection{\(B = A := a_{*,i} = 6a_{*,j} \implies detB = 6.0 = 0\)}
-    \subsection{\(B = A := a_{i,*} + 5a_{j,*} \implies detB = detA + 5.0 = detA + 0 = detA\)}
-    \subsection{\(B = A := a_{*,i} + 4a_{*,j} \implies detB = detA + 4.0 = detA + 0 = detA\)}
-    \subsection{\(B = A := a_{i,*} = a_{j,*}, \; a_{j,*} = a_{i,*}  \implies detB = -detA\)}
-    \subsection{\(B = A := a_{*,i} = a_{*,j}, \; a_{*,j} = a_{*,i}  \implies detB = -detA\)}
-    \subsection{\(B = A := a_{i,*} = \sum_{j = 1, \; j \neq i}^n a_{j,*} \implies detB = 0\)}
-    \subsection{\(B = A := a_{*,i} = \sum_{j = 1, \; j \neq i}^n a_{*,j} \implies detB = 0\)}
+    \leta \\\\
+    \acols \(A = (a_1 \; \dots \; a_n) \; \text{ и нека } \iandj, \; \lambda \in \F \\\\
+    a_i := a_i + \lambda a_j \implies \det(a_1 \; \dots \; a_i + \lambda a_j \; \dots \; a_j \; \dots \; a_n) = \\\\
+    = \det(a_1 \; \dots \; a_i \; \dots \; a_j \; \dots \; a_n) + \det(a_1 \; \dots \; \lambda a_j \; \dots \; a_j \; \dots \; a_n) = \\\\
+    = \det A + \lambda \det(a_1 \; \dots \; a_j \; \dots \; a_j \; \dots \; a_n) = \det A + \lambda 0 = \det A + 0 = \det A\)
+    \subsection{\(\det A = 0 \iff\) редовете на \(A\) са линейно зависими}
+    \subsection{\(\det A = 0 \iff\) стълбовете на \(A\) са линейно зависими}
+    \section{\(A \in M_n, \; \det A = 3\)}
+    \subsection{\(B = A^t \implies \det B = \det A = 3\)}
+    \subsection{\(B = A := a_{i,*} = (0, \; \dots, \; 0) \implies \det B = 0\)}
+    \subsection{\(B = A := a_{*,i} = (0, \; \dots, \; 0)^t \implies \det B = 0\)}
+    \subsection{\(B = A := a_{i,*} = a_{j,*} + a_{k,*} \implies \det B = 0\)}
+    \subsection{\(B = A := a_{*,i} = a_{*,j} + a_{*,k} \implies \det B = 0\)}
+    \subsection{\(B = A := a_{i,*} = 4a_{i,*} \implies \det B = 4\det A = 4.3 = 12\)}
+    \subsection{\(B = A := a_{*,i} = -4a_{*,i} \implies \det B = -4\det A = -4.3 = -12\)}
+    \subsection{\(B = A := a_{i,*} = a_{j,*} \implies \det B = 0\)}
+    \subsection{\(B = A := a_{*,i} = a_{*,j} \implies \det B = 0\)}
+    \subsection{\(B = A := a_{i,*} = 8a_{j,*} \implies \det B = 8.0 = 0\)}
+    \subsection{\(B = A := a_{*,i} = 6a_{*,j} \implies \det B = 6.0 = 0\)}
+    \subsection{\(B = A := a_{i,*} + 5a_{j,*} \implies \det B = \det A + 5.0 = \det A + 0 = \det A\)}
+    \subsection{\(B = A := a_{*,i} + 4a_{*,j} \implies \det B = \det A + 4.0 = \det A + 0 = \det A\)}
+    \subsection{\(B = A := a_{i,*} = a_{j,*}, \; a_{j,*} = a_{i,*}  \implies \det B = -\det A\)}
+    \subsection{\(B = A := a_{*,i} = a_{*,j}, \; a_{*,j} = a_{*,i}  \implies \det B = -\det A\)}
+    \subsection{\(B = A := a_{i,*} = \displaystyle\sum_{j = 1, \; j \neq i}^n a_{j,*} \implies \det B = 0\)}
+    \subsection{\(B = A := a_{*,i} = \displaystyle\sum_{j = 1, \; j \neq i}^n a_{*,j} \implies \det B = 0\)}
     \section{}
-    \subsection{\(A \in M_{n \geq 8} \; \sum_{k = 1}^n a_{8k}A_{1k} = \delta_{81}detA = 0detA = 0\)}
-    \subsection{\(A \in M_{n \geq 8} \; \sum_{k = 1}^n a_{k8}A_{k1} = \delta_{81}detA = 0detA = 0\)}
-    \subsection{\(A, B \in M_n, \; detA = 8, \; detB = 1\\ detAB = detAdetB = 8.1 = 8\)}
-    \subsection{\(A, B \in M_n, \; detA = 8, \; detB = 1\\ det(AB)^t = detAB = detAdetB = 8.1 = 8\)}
-    \subsection{\(A, B \in M_{n \geq 8}, \; detA = 9, \; detB = 1\\ A, B \) се различават само по 8-мия си ред/стълб\\
-    \(det(A = B) = 2^{n - 1}(detA + detB) =\\=2^{n - 1}(9 + 1) = 2^{n - 1}.10 = 5.2^n\)}
+    \subsection{}
+    \(A \in M_{n \geq 8} \; \displaystyle\sum_{k = 1}^n a_{8k}A_{1k} = \delta_{81}\det A = 0.\det A = 0\)
+    \subsection{}
+    \(A \in M_{n \geq 8} \; \displaystyle\sum_{k = 1}^n a_{k8}A_{k1} = \delta_{81}\det A = 0.\det A = 0\)
+    \subsection{}
+    \(A, B \in M_n, \; \det A = 8, \; \det B = 1 \\\\ \det AB = \det A\det B = 8.1 = 8\)
+    \subsection{}
+    \(A, B \in M_n, \; \det A = 8, \; \det B = 1 \\\\ \det(AB)^t = \det AB = \det A\det B = 8.1 = 8\)
+    \subsection{}
+    \(A, B \in M_{n \geq 8}, \; \det A = 9, \; \det B = 1 \\\\ A, B \) се различават само по 8-мия си ред/стълб \\\\
+    \(\det(A + B) = 2^{n - 1}(\det A + \det B) = \\\\ =2^{n - 1}(9 + 1) = 2^{n - 1}.10 = 5.2^n\)
     \section{Развитие на детерминанта по ред/стълб на}
     \(\Delta = \begin{vmatrix}
         -9 & -8 & 6 & 5\\
@@ -191,86 +196,94 @@
         1 & 9 & 5 & -6
     \end{vmatrix}\)
     \subsection{Развитие по първи ред}
-    \(\Delta = -9 \begin{vmatrix}
+    \(\Delta = -9.(-1)^{1 + 1} \begin{vmatrix}
         -2 & 6 & 1\\
         -2 & 1 & 5\\
          9 & 5 & -6
-    \end{vmatrix} + 8 \begin{vmatrix}
+    \end{vmatrix} - 8.(-1)^{1 + 2} \begin{vmatrix}
         7 & 6 & 1\\
         0 & 1 & 5\\
         1 & 5 & -6
-    \end{vmatrix} + 6 \begin{vmatrix}
+    \end{vmatrix} \\\\\\
+    + 6.(-1)^{1 + 3} \begin{vmatrix}
         7 & -2 & 1\\
         0 & -2 & 5\\
         1 & 9 & -6
-    \end{vmatrix} - 5 \begin{vmatrix}
+    \end{vmatrix} + 5.(-1)^{1 + 4} \begin{vmatrix}
         7 & -2 & 6\\
         0 & -2 & 1\\
         1 & 9 & 5
     \end{vmatrix}\)
     \subsection{Развитие по първи стълб}
-    \(\Delta = -9 \begin{vmatrix}
+    \(\Delta = -9.(-1)^{1 + 1} \begin{vmatrix}
         -2 & 6 & 1\\
         -2 & 1 & 5\\
         9 & 5 & -6
-    \end{vmatrix} -7 \begin{vmatrix}
+    \end{vmatrix} + 7.(-1)^{2 + 1} \begin{vmatrix}
         -8 & 6 & 5\\
         -2 & 1 & 5\\
         9 & 5 & -6
-    \end{vmatrix} - \begin{vmatrix}
+    \end{vmatrix} \\\\\\
+    + 0.(-1)^{3 + 1} \begin{vmatrix}
+        -8 & 6 & 5\\
+        -2 & 6 & 1\\
+        9 & 5 & -6
+    \end{vmatrix} + 1.(-1)^{4 + 1} \begin{vmatrix}
         -8 & 6 & 5\\
         -2 & 6 & 1\\
         -2 & 1 & 5\\
     \end{vmatrix}\)
     \subsection{Развитие по втори ред}
-    \(\Delta = 7 \begin{vmatrix}
+    \(\Delta = 7.(-1)^{2 + 1} \begin{vmatrix}
         -8 & 6 & 5\\
         -2 & 1 & 5\\
         9 & 5 & -6
-    \end{vmatrix} + 2 \begin{vmatrix}
+    \end{vmatrix} - 2.(-1)^{2 + 2} \begin{vmatrix}
         -9 & 6 & 5\\
         0 & 1 & 5\\
         1 & 5 & -6
-    \end{vmatrix} + 6 \begin{vmatrix}
+    \end{vmatrix} \\\\\\
+    + 6.(-1)^{2 + 3} \begin{vmatrix}
         -9 & -8 & 5\\
         0 & -2 & 5\\
         1 & 9 & -6
-    \end{vmatrix} - \begin{vmatrix}
+    \end{vmatrix} + 1.(-1)^{2 + 4} \begin{vmatrix}
         -9 & -8 & 6\\
         0 & -2 & 1\\
         1 & 9 & 5
     \end{vmatrix}\)
     \subsection{Развитие по втори стълб}
-    \(\Delta = -8 \begin{vmatrix}
+    \(\Delta = -8.(-1)^{1 + 2} \begin{vmatrix}
         7 & 6 & 1\\
         0 & 1 & 5\\
         1 & 5 & -6
-    \end{vmatrix} + 2 \begin{vmatrix}
+    \end{vmatrix} - 2.(-1)^{2 + 2} \begin{vmatrix}
         -9 & 6 & 5\\
         0 & 1 & 5\\
         1 & 5 & -6
-    \end{vmatrix} - 2 \begin{vmatrix}
+    \end{vmatrix} \\\\\\
+    - 2.(-1)^{3 + 2} \begin{vmatrix}
         -9 & 6 & 5\\
         7 & 6 & 1\\
         1 & 5 & -6
-    \end{vmatrix} - 9 \begin{vmatrix}
+    \end{vmatrix} + 9.(-1)^{4 + 2} \begin{vmatrix}
         -9 & 6 & 5\\
         7 & 6 & 1\\
         0 & 1 & 5
     \end{vmatrix}\)
     \section{Формули на Крамер}
-    \(\begin{array}{lcr}
+    \(\begin{array}{|lcr}
         -5x_1 & -2x_2 = & 2\\
         8x_1 & -7x_2 = & - 5
     \end{array}\\\\
-    x_i = \frac{\Delta_{i}}{\Delta}\\\\
-    x_1 = \frac{\begin{vmatrix}
+    x_i = \displaystyle\frac{\Delta_{i}}{\Delta}\\\\
+    x_1 = \displaystyle\frac{\begin{vmatrix}
         2 & -2\\
         -5 & -7
     \end{vmatrix}}{\begin{vmatrix}
         -5 & -2\\
         8 & -7
-    \end{vmatrix}}, \quad  x_2 = \frac{\begin{vmatrix}
+    \end{vmatrix}}, \quad  x_2 = \displaystyle\frac{\begin{vmatrix}
         -5 & 2\\
         8 & -5
     \end{vmatrix}}{\begin{vmatrix}
@@ -279,72 +292,73 @@
     \end{vmatrix}}\)
     \section{}
     \subsection{Определение за обратима матрица}
-    \(A \in M_n, \; A \text{ е обратима } \iff \exists A^{-1}; \; AA^{-1} = A^{-1}A = E\)
+    Нека \(\F\) е поле и \(A \in M_n(\F), \; A \text{ е обратима } \\\\
+    \iff \exists B \in M_n(\F) \; : \; AB = BA = E\)
     \subsection{Неособена матрица}
-    \(A \in M_n, \; A \text{ е неособена } \iff detA \neq 0\)
+    Нека \(\F\) е поле и \(A \in M_n(\F), \; A \text{ е неособена } \iff \det A \neq 0\)
     \subsection{Формула за обратна матрица на неособена матрица}
-    \(A \in M_n, \; A \text{ е неособена } A^{-1} = \frac{1}{detA} A_{ji} = \frac{1}{detA} (-1)^{j + i}\Delta_{ji}\)
+    Нека \(\F\) е поле и \(A \in M_n(\F), \; A \text{ е неособена, тогава } A^{-1} = \frac{1}{\det A} (A_{ji}) = \frac{1}{\det A} ((-1)^{j + i}\Delta_{ji})\)
     \subsection{Определение за ранг на матрица}
-    \(A \in M_n, \; r(A) = rr(A) = rc(A)\)
+    Нека \(\F\) е поле и \(A \in M_n(\F), \; r(A) = rr(A) = rc(A)\)
     \subsection{Втора теорема за ранг на матрица}
-    \(A \in M_n, \; r(A) = r \iff \exists r;\\
-    \exists 1 \leq i_1 < i_2 < \dots < i_r \leq n\\
-    \exists 1 \leq j_1 < j_2 < \dots < j_r \leq n;\\
-    \exists \begin{vmatrix}
+    Нека \(\F\) е поле и \(A \in M_n(\F), \; r(A) = r \iff \exists r \in \N \; : \\\\
+    \exists \; 1 \leq i_1 < i_2 < \dots < i_r \leq n \\\\
+    \exists \; 1 \leq j_1 < j_2 < \dots < j_r \leq n \; : \\\\
+    \exists \; \begin{vmatrix}
         i_1j_1 & \cdots & i_1j_n\\
         \vdots & \ddots & \vdots\\
         i_nj_1 & \cdots & i_nj_n
-    \end{vmatrix} \neq 0\\
-    \forall k; \; r < k \leq n \begin{vmatrix}
+    \end{vmatrix} \neq 0 \\\\
+    \forall \; k \in \N \; : \; r < k \leq n \; \begin{vmatrix}
         i_1j_1 & \cdots & i_1j_k\\
         \vdots & \ddots & \vdots\\
         i_kj_1 & \cdots & i_kj_k
     \end{vmatrix} = 0\)
     \section{}
-    \subsection{\(A \in M_5, \; detA = 0 \implies 0 \leq r(A) < 5\)}
+    Нека \(\F\) е поле и \subsection{\(A \in M_5(\F), \; \det A = 0 \implies 0 \leq r(A) < 5\)}
     \subsection{Th Руше}
-    \(A \in M_n(\F), \; B \in F^n \; Ax = B \text{ има решение} \iff r(A) = r(A|B)\)
-    \subsection{\(x \in \F^n, \; Ax = B, \; r = r(A) = r(A|B)\\\implies \text{броя на неизвестните е } n - r\)}
-    \subsection{Една хомогенна система с равен брой неизвестни и уравнения \(Ax = 0, \; A \in M_n\), която има ненулево решение е с \( detA = 0\) (непълен ранг)}
-    \subsection{Една хомогенна система с квадратна матрица на \(Ax = 0, \; A \in M_n\), има ненулево решение \(\iff detA = 0\) (пълен ранг)}
+    \(A \in \F_{m \times n}, \; B \in F^m \; Ax = B \text{ има решение} \iff r(A) = r(A|B)\)
+    \subsection{\(x \in \F^n, \; Ax = B, \; r = r(A) = r(A|B) \\\\
+    \implies \text{броя на неизвестните е } n - r\)}
+    \subsection{Една хомогенна система с равен брой неизвестни и уравнения \(Ax = 0, \; A \in M_n(\F)\), която има ненулево решение е с \( \det A = 0\) (непълен ранг)}
+    \subsection{Една хомогенна система с квадратна матрица на \(Ax = 0, \; A \in M_n(\F)\), има единствено решение \(\iff \det A \neq 0\) (пълен ранг)}
     \subsection{Определение за Фундаментална система решения на хомогенна система уравнения}
-    \(\F\) - числово поле, \(A \in M_n(\F)\)\\
-    ФСР е \(\forall\) базис на пространството \(\{x \in F^n \; | \; Ax = \OV\}\)
+    \(\F\) - числово поле, \(A \in M_n(\F)\)\\\\
+    Ф.С.Р. е всеки базис на пространството \(\{x \in \F^n \; | \; Ax = \OV\}\)
     \subsection{Размерността на множеството от решения\\на хомогенна система линейни уравнения,\\
     ако общият брой на неизвестните е \(n\) и рангът\\ на матрицата на системата е равен на \(r\)}
-    \(\F\) - числово поле, \(A \in M_n(\F) \\
-    dim \{x \in F^n \; | \; Ax = \OV\} = n - r(A) = n - r\)
+    \(\F\) - числово поле, \(A \in M_n(\F) \\\\
+    dim \{x \in \F^n \; | \; Ax = \OV\} = n - r(A) = n - r\)
     \section{}
     \subsection{Подобни матрици}
-    \(\F\) - числово поле, \(A, B \in M_n(\F)\\
-    A \sim B \iff \exists T \in M_n(\F); \; detT \neq 0, \; B = T^{-1}AT\)
+    Нека \(\F\) - числово поле и \(A, \; B \in M_n(\F) \\\\
+    A \sim B \iff \exists \; T \in M_n(\F) \; : \; \det T \neq 0, \; B = T^{-1}.A.T\)
     \subsection{Определение за характеристичен полином на матрица}
-    \(\F\) - числово поле, \(A \in M_n(\F)\\
-    f_A(\lambda) = det(A - \lambda E) \text{ - характеристичен полином на матрицата } A\)
+    Нека \(\F\) - числово поле и \(A \in M_n(\F) \\\\
+    f_A(\lambda) = \det(A - \lambda E) \text{ - характеристичен полином на матрицата } A\)
     \subsection{Определение за характеристичен полином на линеен оператор}
-    \(\V\) - KMЛП над числовото поле \(\F, \; dim\V = n\)\\
-    Нека \(\varphi \in Hom\V, \; A = M(\varphi) \in M_n(\F) \text{ е матрицата на } \varphi \text{, в кой да е базис на } \V\\
-    \implies f_\varphi(\lambda) = f_A(\lambda) = det(A - \lambda E) \text{ - характеристичен полином на ЛО } \varphi\)
+    Нека \(\V\) - K.M.Л.П. над числовото поле \(\F, \; dim\V = n\) \\\\
+    Нека \(\varphi \in Hom\V, \; A = M(\varphi) \in M_n(\F) \text{ е матрицата на } \varphi \text{, в кой да е базис на } \V \\\\
+    \implies f_\varphi(\lambda) = f_A(\lambda) = \det(A - \lambda E) \text{ - характеристичен полином на Л.О. } \varphi\)
     \subsection{Определение за характеристичен корен}
-    \(\F\) - числово поле, \(A \in M_n(\F)\\
-    \forall \lambda_0; \; f_A(\lambda_0) = det(A - \lambda_0 E) = 0\\
-    \lambda_0 \text{ - характеристичен корен на характеристичния полином на } A\)
+    Нека \(\F\) - числово поле и \(A \in M_n(\F) \\\\
+    \lambda_0 \text{ - характеристичен корен на характеристичния полином на } A \\\\
+    \iff f_A(\lambda_0) = \det(A - \lambda_0 E) = 0\)
     \subsection{Определение за собствена стойност на линеен оператор}
-    \(\V\) - KMЛП над числовото поле \(\F\)\\
-    Нека \(\varphi \in Hom\V\\
-    \forall \lambda_0 \in \F; \; f_\varphi(\lambda_0) = det(M(\varphi) - \lambda_0 E) = 0\\
-    \lambda_0 \text{ - собствена стойност на } \varphi\)
+    Нека \(\V\) - K.M.Л.П. над числовото поле \(\F\) \\\\
+    Нека \(\varphi \in Hom\V \\\\
+    \lambda_0 \in \F \text{ - собствена стойност на } \varphi \iff f_\varphi(\lambda_0) = \det(M(\varphi) - \lambda_0 E) = 0\)
     \subsection{Определение за собствен вектор на линеен оператор}
-    \(\V\) - KMЛП над числовото поле \(\F\)\\
-    Нека \(\varphi \in Hom\V\\
-    \forall v_{\lambda_0} \in \V, \; \exists \lambda_0 \in \F; \; f_\varphi(\lambda_0) = det(M(\varphi) - \lambda_0 E) = 0, \; \varphi(v_0) = \lambda_0 v_{\lambda_0}\\
-    v_{\lambda_0} \text{ - собствен вектор на } \varphi\)
-    \subsection{Всички собствени стойности са характеристични корени на даден линеен оператор}
+    Нека \(\V\) - K.M.Л.П. над числовото поле \(\F\) \\\\
+    Нека \(\varphi \in Hom\V \\\\
+    v_{\lambda_0} \in \V \text{ - собствен вектор на } \varphi \\\\
+    \iff v_{\lambda_0} \neq \OV \; \land \; \exists \lambda_0 \in \F \; : \; f_\varphi(\lambda_0) = \det(M(\varphi) - \lambda_0 E) = 0\)
+    \subsection{Всички собствени стойности, които са част от полето над, което е дефинирано линейното пространство, за което даденото линейно изображение е линеен оператор са негови характеристични корени}
     \subsection{Всички характеристични корени, които са част от полето над, което е дефинирано линейното пространство, за което даденото линейно изображение е линеен оператор са негови собствени стойности}
     \subsection{Векторите съотвестващи на различни собствени стойности на даден линеен оператор са линейно независими}
-    \(\V\) - KMЛП над числовото поле \(\F, \; dim\V = n\)\\
-    Нека \(\varphi \in Hom\V, \; \varphi\) има \(n\) на брой различни собствени стойности \(\n{\lambda}\),\\
-    то \(\exists\) базис \(\n{v}\) на \(\varphi\), в който \(\varphi\) има диагонална матрица,\\
+    Нека \(\V\) - K.M.Л.П. над числовото поле \(\F, \; dim\V = n\) \\\\
+    Нека \(\varphi \in Hom\V, \; \varphi\) има \(n\) на брой различни собствени стойности \(\n{\lambda}\), \\\\
+    тогава \(\exists\) базис \(\n{v}\) на \(\V\), в който \(\varphi\) има диагонална матрица, \\\\
     \(M_v(\varphi) = \begin{pmatrix}
         \lambda_1 & 0 & 0& \dots & 0\\
         0 & \lambda_2 & 0 & \dots & 0\\
@@ -352,96 +366,106 @@
         0 & 0 & \dots & 0 & \lambda_n
     \end{pmatrix}\)
     \subsection{Връзка между степен на характеристичен полином на линеен оператор и размерност на пространството}
-    \(\V\) - KMЛП над числовото поле \(\F\)\\
-    Нека \(\varphi \in Hom\V \implies deg(f_\varphi(\lambda)) = dim\V\)
+    Нека \(\V\) - K.M.Л.П. над числовото поле \(\F\) \\\\
+    Нека \(\varphi \in Hom\V \implies \deg(f_\varphi(\lambda)) = \dim\V\)
     \subsection{Връзка между степен на характеристичен полином на линеен оператор и брой различни собствени стойности}
-    \(\V\) - KMЛП над числовото поле \(\F\) Нека \(\varphi \in Hom\V\\
-    \implies deg(f_\varphi(\lambda)) \geq \text{ брой различни собствени стойности } \geq 0\)
+    Нека \(\V\) - K.M.Л.П. над числовото поле \(\F\) и нека \(\varphi \in Hom\V \\\\
+    \implies \deg(f_\varphi(\lambda)) \geq \text{ брой различни собствени стойности } \geq 0\)
     \subsection{Връзка между броя на различните характеристични корени на линеен оператор и размерността на пространството}
-    \(\V\) - KMЛП над числовото поле \(\F\) Нека \(\varphi \in Hom\V\\
-    \implies dim\V \geq \text{ брой различни характеристични корени } \geq 1\)
+    Нека \(\V\) - K.M.Л.П. над числовото поле \(\F\) и нека \(\varphi \in Hom\V \\\\
+    \implies \dim\V \geq \text{ брой различни характеристични корени } \geq 0\)
     \subsection{Матрицата на линеен оператор в базис от собствени вектори е диагонална}
     \section{}
     \subsection{Определение за евклидово пространство}
-    ЛП \(\V\) над \(\R\) се нарича евклидово пространство,\\
+    Л.П. \(\V\) над \(\R\) се нарича евклидово пространство,\\
     ако в него е въведено скаларно произведение,\\
-    тоест изображение \(( \; , \; ) : \V \times \V \to \R\), имащо свойствата:\\
-    \(\\1. \; \forall a, b, c \in \V \; ( a + b, c ) = ( a, c ) + ( b, c )\\
-    \\2. \; \forall a, b \in \V \;, \forall \lambda \in \R \; ( \lambda a, b ) = \lambda ( a, b )\\
-    \\3. \; \forall a, b \in \V \; ( a, b ) = ( b, a )\\
-    \\4. \; \forall a \in \V \; ( a, a ) \geq 0, \; ( a, a ) = 0 \iff a = \OV\)
+    тоест изображение \(( \; , \; ) : \V \times \V \to \R\), имащо свойствата:\\\\
+    \(1. \; \forall a, \;  b, \; c \in \V \; ( a + b, \; c ) = ( a, \; c ) + ( b, \; c )\\
+    \\2. \; \forall a, \; b \in \V, \; \forall \lambda \in \R \; ( \lambda a, \; b ) = \lambda ( a, \; b )\\
+    \\3. \; \forall a, \; b \in \V \; ( a, \; b ) = ( b, \; a )\\
+    \\4. \; \forall a \in \V \; ( a, \; a ) \geq 0, \; ( a, \; a ) = 0 \iff a = \OV\)
     \subsection{Определение за скаларно произведение}
-    Нека \(\V\) е eвклидово пространство.\\
+    Нека \(\V\) е eвклидово пространство.\\\\
     Скаларно произведение е изображение \(( \; , \; ) : \V \times \V \to \R\), имащо свойствата:\\
-    \(\\1. \; \forall a, b, c \in \V \; ( a + b, c ) = ( a, c ) + ( b, c )\\
-    \\2. \; \forall a, b \in \V \;, \forall \lambda \in \R \; ( \lambda a, b ) = \lambda ( a, b )\\
-    \\3. \; \forall a, b \in \V \; ( a, b ) = ( b, a )\\
-    \\4. \; \forall a \in \V \; ( a, a ) \geq 0, \; ( a, a ) = 0 \iff a = \OV\)
+    \(1. \; \forall a, \;  b, \; c \in \V \; ( a + b, \; c ) = ( a, \; c ) + ( b, \; c )\\
+    \\2. \; \forall a, \; b \in \V, \; \forall \lambda \in \R \; ( \lambda a, \; b ) = \lambda ( a, \; b )\\
+    \\3. \; \forall a, \; b \in \V \; ( a, \; b ) = ( b, \; a )\\
+    \\4. \; \forall a \in \V \; ( a, \; a ) \geq 0, \; ( a, \; a ) = 0 \iff a = \OV\)
     \subsection{Определение за дължина на вектор}
-    Нека \(\V\) е eвклидово пространство.\\
-    Нека \(a \in \V \implies |a| = \sqrt{(a, a)}\) е дължина на вектора \(a\)
+    Нека \(\V\) е eвклидово пространство.\\\\
+    Нека \(a \in \V \implies |a| = \sqrt{(a, \; a)}\) е дължината на вектора \(a\)
     \subsection{Определение за ортогонални вектори}
-    Нека \(\V\) е евклидово пространство.\\
-    Нека \(a, b \in \V, \; a, b\) са ортогонални \((a \perp b) \iff (a, b) = 0 \;\)
+    Нека \(\V\) е евклидово пространство.\\\\
+    Нека \(a, b \in \V, \; a, \; b\) са ортогонални \((a \perp b) \iff (a, \; b) = 0 \)
     \subsection{Определение за ортогонален базис}
-    Нека \(\V\) е евклидово пространство. \(dim\V = n\)\\
-    Базисът \(\n{v} \in \V\) е ортогонален \(\iff \forallij \; (v_i, v_j) = 0\)
+    Нека \(\V\) е евклидово пространство. \(dim\V = n\) \\\\
+    Базисът \(\n{v} \in \V\) е ортогонален \\\\
+    \(\iff \forallij \; (v_i, \; v_j) = 0\)
     \subsection{Определение за ортонормиран базис}
-    Нека \(\V\) е евклидово пространство. \(dim\V = n\)\\
-    Базисът \(\n{e} \in \V\) е ортонормиран \(\iff \forall j , \ieqn \; (e_i, e_j) = \delta_{ij}\)
+    Нека \(\V\) е евклидово пространство. \(dim\V = n\) \\\\
+    Базисът \(\n{e} \in \V\) е ортонормиран \\\\
+    \(\iff \forall i, \; j \in \{1, \; \dots, \; n\} \; (e_i, \; e_j) = \delta_{ij}\)
     \subsection{Ортогонални по между си и ненулеви вектори в евклидово пространство са линейно независими}
     \subsection{Определение за ортогонално допълнение на линейно подпространство в евклидово пространство}
-    Нека \(\V\) е КМЕП, \(U < V \implies U^\perp = \{\forall v \in \V \; | \; \forall u \in \UV \; (u, v) = 0\}\)
+    Нека \(\V\) е К.М.Е.П. и \(U < V \implies U^\perp = \{\forall v \in \V \; | \; \forall u \in \UV \; (u, \; v) = 0\}\)
     \subsection{Th(Питагор)}
-    Ако векторите \(\n{a}\) са два по два ортогонални, то \(|\sum_{i = 1}^n a_i|^2 = \sum_{i = 1}^n |a_i|^2\)
+    Ако векторите \(\n{a}\) са два по два ортогонални, то \(\left|\displaystyle\sum_{i = 1}^n a_i\right|^2 = \displaystyle\sum_{i = 1}^n |a_i|^2\)
     \subsection{Метод на Грам-Шмид}
-    Нека векторите \(\n{e}\) са ортогонални и ненулеви вектори\\
-    и нека вектора \(a \notin l(\n{e})\).\\
-    Тогава \(\exists \n{\lambda} \in \F ; \; e_{n + 1} = a + \sum_{j = 1}^n \lambda_j e_j\\
-    \implies \nplusone{e}\) са ортогонални и ненулеви вектори\\
+    Нека векторите \(\n{e}\) са ортогонални и ненулеви вектори \\\\
+    и нека вектора \(a \notin l(\n{e})\). \\\\
+    Тогава \(\exists \n{\lambda} \in \F \; : \; e_{n + 1} = a + \displaystyle\sum_{j = 1}^n \lambda_j e_j \\\\
+    \implies \nplusone{e}\) са ортогонални и ненулеви вектори \\\\
     и \(l(\n{e}, a) = l(\nplusone{e})\)
     \section{}
     \subsection{Детерминанта на Грам}
-    Нека \(\V\) е ЕП, \(\m{a} \in \V\\\\
+    Нека \(\V\) е Е.П. и \(\m{a} \in \V\\\\
     \Gamma(\m{a}) = \begin{vmatrix}
-        (a_1, a_1) & (a_1, a_2) & \dots & (a_1, a_m)\\
-        (a_2, a_1) & (a_2, a_2) & \dots & (a_2, a_m)\\
+        (a_1, \; a_1) & (a_1, \; a_2) & \dots & (a_1, \; a_m)\\
+        (a_2, \; a_1) & (a_2, \; a_2) & \dots & (a_2, \; a_m)\\
         \vdots & \vdots & \dots & \vdots\\
-        (a_m, a_1) & (a_m, a_2) & \dots & (a_m, a_m)\\ 
+        (a_m, \; a_1) & (a_m, \; a_2) & \dots & (a_m, \; a_m)\\ 
     \end{vmatrix}\)
     \subsection{\(\Gamma(\m{a}) = 0 \iff \m{a}\) са линейно зависими}
     \subsection{Неравенството на Коши-Буняковски}
-    Нека \(\V\) е ЕП, \(a, b \in \V \implies |(a, b)| \leq |a||b|\\
-    |(a, b)| = |a||b| \iff a, b\) са линейно зависими
-    \subsection{\(\V\) е ЕП, \(a, b \in \V \implies \cos\measuredangle(a, b) = \frac{(a, b)}{|a||b|}\\
-    \implies \measuredangle(a, b) = \arccos\frac{(a, b)}{|a||b|}\)}
+    Нека \(\V\) е Е.П. и \(a, \; b \in \V \implies |(a, \; b)| \leq |a|.|b| \\\\
+    |(a, \; b)| = |a|.|b| \iff a, \; b\) са линейно зависими.
+    \subsubsection{Координатна форма на неравенството на Коши-Буняковски}
+    Нека \(a = (\n{a}), \; b = (\n{b}) \in \R^n\). Тогава \\\\
+    \(\left(\displaystyle\sum_{i = 1}^n a_ib_i \right)^2 \leq \left(\displaystyle\sum_{i = 1}^n a_i^2\right) \left(\displaystyle\sum_{i = 1}^n b_i^2\right) \)
+    \subsubsection{Интегрална форма на неравенството на Коши-Буняковски}
+    Нека \(a, \; b \in R \; : \; a < b\) и \(f, \; g \in C[a, \; b]\). Тогава \\\\
+    \(\left(\displaystyle\int_a^b f(x)g(x) \; dx\right)^2 \leq \displaystyle\int_a^b f^2(x) \; dx.\displaystyle\int_a^b g^2(x) \; dx \)
+    \subsection{Нека \(\V\) е Е.П., \(a, \; b \in \V \implies \cos\measuredangle(a, \; b) = \frac{(a, \; b)}{|a||b|} \\\\
+    \implies \measuredangle(a, \; b) = \arccos\frac{(a, \; b)}{|a||b|}\)}
     \subsection{Неравенство на триъгълника за вектори в евклидово пространство}
-    \(\V\) е ЕП, \(a, b \in \V \implies |a + b| \leq |a| + |b|\\
+    Нека \(\V\) е Е.П. и \(a, \; b \in \V \implies |a + b| \leq |a| + |b| \\\\
     |a + b| = |a| + |b| \iff a \uparrow \uparrow b \text{ или } a = \OV \text{ или } b = \OV\)
     \section{Симетричен Линеен оператор}
     \subsection{Симетрична матрица}
-    \(A \in M_n(\R), \; A \text{ е симетрична} \iff A^t = A\)
+    Нека \(A \in M_n(\R), \; A \text{ е симетрична} \iff A^t = A\)
     \subsection{Определение за симетричен оператор}
-    \(\V\) е ЕП, \(\varphi \in Hom\V, \; \varphi \text{ е симетричен} \iff \forall u, v \in \V \; (\varphi(v), u) = (v, \varphi(u))\)
+    Нека \(\V\) е Е.П. и \(\varphi \in Hom\V, \; \varphi \text{ е симетричен} \\\\
+    \iff \forall u, \; v \in \V \; (\varphi(v), \; u) = (v, \; \varphi(u))\)
     \subsection{Mатрицата на симетричен оператор в ортонормиран базис е симетрична}
     \subsection{Собствените стойности на симетричен оператор са реални и съвпадат с характеристичните му корени}
     \subsection{Собствените вектори на симетричен оператор, съответстващи на различни собствени стойности са ортогонални помежду си}
     \subsection{Основна Теорема за симетричен оператор}
-    \(\V\) е ЕП, \(\varphi \in Hom\V, \; \varphi\) е симетричен оператор\\
-    \(\implies \exists \n{v} \in \V\) ортонормиран базис на \(\V\),\\
-    в който матрицата на \(\varphi\) е диагонална\\
-    и по главния диагонал са собствените стойности на \(\varphi\) 
+    Нека \(\V\) е Е.П. и \(\varphi \in Hom\V, \; \varphi\) е симетричен оператор \\\\
+    \(\implies \exists \n{v} \in \V\) ортонормиран базис на \(\V\), \\\\
+    в който матрицата на \(\varphi\) е диагонална \\\\
+    и по главния диагонал са собствените стойности на \(\varphi\).
     \section{Ортогонален Линеен оператор}
     \subsection{Ортогонална матрица}
-    \(A \in M_n(\R), \; A \text{ е ортогонална} \iff AA^t = E\)
+    Нека \(A \in M_n(\R), \; A \text{ е ортогонална} \iff AA^t = E\)
     \subsection{Определение за ортогонален оператор}
-    \(\V\) е ЕП, \(\varphi \in Hom\V, \; \varphi \text{ е ортогонален} \iff \forall u, v \in \V \; (\varphi(v), \varphi(u)) = (v, u)\)
+    Нека \(\V\) е Е.П. и \(\varphi \in Hom\V, \; \varphi \text{ е ортогонален} \\\\
+    \iff \forall u, \; v \in \V \; (\varphi(v), \varphi(u)) = (v, u)\)
     \subsection{Необходимото и достатъчно условие един оператор да е ортогонален е той да изпраща един ортнормиран базис в друг ортнормиран базис}
     \subsection{Mатрицата на ортогонален оператор в ортонормиран базис е ортогонална}
     \subsection{Собствените стойности на ортогонален оператор са равни на \(\pm 1\)}
     \subsection{Собствените вектори на ортогонален оператор, съответстващи на различни собствени стойности са ортогонални помежду си}
     \subsection{Основна Теорема за ортогонален оператор}
-    \(\V\) е ЕП, \(\varphi \in Hom\V, \; \varphi\) е ортогонален оператор\\
-    \(\implies \exists \n{v} \in \V\) ортонормиран базис на \(\V\),\\
-    в който матрицата на \(\varphi\) е клетачно диагонална
+    Нека \(\V\) е Е.П. и \(\varphi \in Hom\V, \; \varphi\) е ортогонален оператор \\\\
+    \(\implies \exists \n{v} \in \V\) ортонормиран базис на \(\V\), \\\\
+    в който матрицата на \(\varphi\) е клетачно диагонална.
 \end{document}
