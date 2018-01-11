@@ -1,0 +1,197 @@
+\documentclass[12pt]{article}
+    
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{qtree}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\newcommand{\Lang}{\mathcal{L}}
+\newcommand{\N}{\mathbb{N}}
+    
+\setlength{\parindent}{0mm}
+            
+\title{Езици и автомати. Решения на теоретично контролно вариант 1 от 19.01.2017г.}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+\section{Задача 1.}
+
+\subsection{Дайте дефиниция за контекстно-свободна граматика.}
+
+Нека $G = (V, \; \Sigma, \; P, \; S)$, където: \\
+
+\begin{itemize}
+    \item $V$ е крайно множество от променливи (нетерминали)
+    \item $\Sigma$ е азбука (крайно множество от терминали) и $\Sigma \cap V = \emptyset$
+    \item $P \subseteq (V \cup \Sigma)^+ \times (V \cup \Sigma)^*$ е крайно множество от правила
+    \item $S \in V$ е началната променлива
+\end{itemize}
+
+$G$ е контекстно-свободна граматика, ако $P \subseteq V \times (V \cup \Sigma)^*$
+
+\subsection{Дефинирайте кога една дума $u \in (V \cup \Sigma)^*$ е изводима от думата $v \in (V \cup \Sigma)^*$ с граматиката $G \quad (v \overset{*}{\implies} u)$.}
+
+Нека $\Lambda = (V \cup \Sigma)^*$ \\
+
+Нека $R_{\underset{G}{\to}} \; = \; \left\{(w, \; w') \in \Lambda^2 \; | \; \exists \alpha, \; \beta, \; \beta', \; \gamma \in  \; \Lambda \; : \;
+w = \alpha\beta\gamma \land \; w' = \alpha\beta'\gamma \land \exists \; \beta \to \beta' \in P\right\}$ \\\\
+
+и нека $R_{\overset{n}{\underset{G}{\to}}} = \begin{cases}
+    R_{\underset{G}{\to}} & , n = 0 \\
+    \left\{(\alpha, \; \gamma) \in \Lambda^2\; | \; \exists \beta \in \Lambda, \; \exists m \in \N \; : \; m < n \land (\alpha, \; \beta), \; (\beta, \; \gamma) \in R_{\overset{m}{\underset{G}{\to}}}\right\} & , n > 0
+\end{cases}$ \\\\
+
+Тогава $R_{\overset{*}{\implies}} \; = \; \{(w, \; w) \; | \; w \in \Lambda\} \; \cup \; \displaystyle\bigcup_{n \in \N} R_{\overset{n}{\underset{G}{\to}}}$ \\\\
+
+тоест $R_{\overset{*}{\implies}}$ е рефлексивното и транзитивното затваряне на $R_{\underset{G}{\to}}$.\\\\
+
+$v \overset{*}{\implies} u \iff (v, \; u) \in R_{\overset{*}{\implies}}$
+
+\subsection{$G$ е контекстно-свободна граматика определете езика $\Lang(G)$}
+
+$\Lang(G) = \{w \in \Sigma^* \; | \; S \overset{*}{\implies} w\}$
+
+\subsection{}
+
+Нека $G = (\{S, \; A, \; B\}, \; \{a, \; b\}, \; \{S \to ABBa, \; A \to aA \; | \; a, \; B \to bBb \; | \; b\}, \; S)$
+
+\subsubsection{Покажете, че думите $abba$ и $aabbbba$ са изводими от $G$ и покажете синтактично дърво за тях.}
+
+За $abba$: \\
+
+$S \implies (S \to ABBa) \\\\
+ABBa \implies (A \to a) \\\\
+aBBa \implies (B \to b) \\\\
+abBa \implies (B \to b) \\\\
+abba$ \\
+
+\Tree [.S [.A [ a ] ] [.B [ b ] ] [.B [ b ] ] a ] \\\\
+
+За $aabbbba$: \\
+
+$S \implies (S \to ABBa) \\\\
+ABBa \implies (A \to aA) \\\\
+aABBa \implies (A \to a) \\\\
+aaBBa \implies (B \to bBb) \\\\
+aabBbBa \implies (B \to b) \\\\
+aabbbBa \implies (B \to b) \\\\
+aabbbba$ \\
+
+\Tree [.S [.A [ a [.A [ a ] ] ] ] [.B [ b [.B [ b ] ] b ] ] [.B [ b ] ] a ] \\\\
+
+\subsubsection{Вярно ли е, че езикът $\Lang(G) \cap \{a^{2n}b^{2k}a \; | \; n, \; k \in \N\}$ е контекстно-свободен?}
+
+Лесно се вижда, че $\Lang(G) = \{a^nb^{2k}a \; | \; n, \; k \in \N\backslash\{0\}\}$ следователно\\
+
+$\Lang(G) \cap \{a^{2n}b^{2k}a \; | \; n, \; k \in \N\} = \{a^{2n}b^{2k}a \; | \; n, \; k \in \N\backslash\{0\}\}$ \\
+
+Една граматика, която описва $\{a^{2n}b^{2k}a \; | \; n, \; k \in \N\backslash\{0\}\}$ е: \\
+
+$(\{S, \; A, \; B\}, \; \{a, \; b\}, \; \{S \to AABBa, \; A \to aAa \; | \; a, \; B \to bBb \; | \; b\}, \; S)$ \\
+
+Следователно $\Lang(G) \cap \{a^{2n}b^{2k}a \; | \; n, \; k \in \N\}$ е контекстно-свободен.
+
+\subsubsection{Вярно ли е, че езикът $\{a, \; b\}^* \backslash \Lang(G)$ е контекстно-свободен?}
+
+Лесно се вижда, че $\Lang(G) = \Lang(a^+(bb)^+a)$, тоест че $\Lang(G)$ всъщност е регулярен език. \\
+
+Ние знаем, че допълнението на всеки регулярен език е регулярен език, тоест $\{a, \; b\}^* \backslash \Lang(G)$ е регулярен. \\
+
+Също така знаем, че всеки регулярен език е контекстно-свободен език, тогава $\{a, \; b\}^* \backslash \Lang(G)$ е контекстно-свободен.
+
+\section{Задача 2.}
+
+Нека $G_1 = (V_1, \; \Sigma, \; P_1, \; S_1)$ и $G_2 = (V_2, \; \Sigma, \; P_2, \; S_2)$
+са контекстно-свободни граматики, за които $V_1 \cap V_2 = \emptyset$. Опишете
+контрукция за построяването на контекстно-свободна граматика $G = (V, \; \Sigma, \; P, \; S)$ с език
+
+\subsection{$\Lang(G) = \Lang(G_1).\Lang(G_2)$}
+
+$S \notin V_1 \cup V_2, \; S \notin \Sigma, \; G = (\{S\} \cup V_1 \cup V_2, \; \Sigma, \{S \to S_1S_2\} \cup P_1 \cup P_2, \; S)$
+
+\subsection{$\Lang(G) = \Lang(G_1)^*$}
+
+$S \notin V_1, \; S \notin \Sigma, \; G = (\{S\} \cup V_1, \; \Sigma, \{S \to S_1S \: | \; \varepsilon\} \cup P_1, \; S)$
+
+\section{Задача 3.}
+
+Постройте краен недетерминиран автомат $A$, за който $\Lang(A) = \Lang(G)$ \\
+
+за $G = (\{S, \; A, \; B\}, \; \{a, \; b\}, \; \{S \to \varepsilon \; | \; aB, \; A \to a \; | \; aB, \; B \to bS \; | \; bA\}, \; S) \})$ \\
+
+\subsection{Общ вид на конструкцията}
+
+Нека $G = (V, \; \Sigma, \; P, \; S)$ е регулярна граматика. Тогава \\
+
+$F \notin V, \; F \notin \Sigma,  \; A = (V \cup \{F\}, \; \Sigma, \; \Delta, \; S, \; \{F\} \cup \{T \in V \; | \; T \to \epsilon \in P \})$ \\
+
+$\Delta = \{((T, \; a), \; \{Y \in V \; | \; T \to aY \in P\} \cup \{F \; | \; T \to a \in P\}) \; | \; T \in V, \; a \in \Sigma\}$ \\\\
+
+Обратно на задачата:
+
+$A = (\{S, \; A, \; B, \; F\}, \; \{a, \; b\}, \; \Delta, \; S, \; \{F, \; S\})$ \\\\
+
+$\Delta = \{((S, \; a), \; \{B\}), \; ((A, \; a), \; \{B, \; F\}), \; ((B, \; b), \; \{S, \; A\})\}$ или \\\\
+
+$\Delta(S, \; a) = \{B\} \\\\
+\Delta(S, \; b) = \emptyset \\\\
+\Delta(A, \; a) = \{B, \; F\} \\\\
+\Delta(A, \; b) = \emptyset \\\\
+\Delta(B, \; a) = \emptyset \\\\
+\Delta(B, \; b) = \{S, \; A\}$ \\
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+    \node[state,initial,accepting] (S) {S};
+    \node[state] (B) [right=of S] {B};
+    \node[state] (A) [right=of B] {A};
+    \node[state, accepting] (F) [right=of A] {F};
+    \path[->]
+        (S) edge[bend left=30] node {$a$} (B)
+        (B) edge[bend left=30] node {$b$} (S)
+        (B) edge[bend left=30] node {$b$} (A)
+        (A) edge[bend left=30] node {$a$} (B)
+        (A) edge node {$a$} (F);
+\end{tikzpicture}
+
+\section{Задача 4.}
+
+Нека $G = (V, \; \Sigma, \; P, \; S)$ е контекстно-свободна граматика.
+Дефинирайте стеков автомат $M$, завърващ с празен стек, за който $\Lang(M) = \Lang(G)$. \\
+
+$M = (\{q\}, \; \Sigma, \; \Sigma \cup V, \; S, \; q, \; \Delta, \; \emptyset) \\\\
+\forall A \in V \; \Delta(q, \; \varepsilon, \; A) = \{(q, \; \alpha) \; | \; A \to \alpha \in P\} \\\\
+\forall a \in \Sigma \; \Delta(q, \; a, \; a) = \{(q, \; \varepsilon)\}$
+
+
+\subsection{Дефинирайте стеков автомат $M$ с горното свойство за $G$ от Задача 1.}
+
+$M = (\{q\}, \; \{a, \; b\}, \; \{a, \; b, \; S, \; A, \; B\}, \; S, \; q, \; \Delta, \; \emptyset) \\\\
+\Delta(q, \; \varepsilon, \; S) = \{(q, \; ABBa)\} \\\\
+\Delta(q, \; \varepsilon, \; A) = \{(q, \; aA), \; (q, \; a)\} \\\\
+\Delta(q, \; \varepsilon, \; B) = \{(q, \; bBb), \; (q, \; b)\} \\\\
+\Delta(q, \; a, \; a) = \{(q, \; \varepsilon)\} \\\\
+\Delta(q, \; b, \; b) = \{(q, \; \varepsilon)\}$
+
+\section{Задача 5.}
+
+Формулирайте Лемата за покачването (The Pumping Lemma) за контекстно-свободни езици. \\
+
+Ако $L$ е контекстно-свободен език то \\
+
+$\exists p \in \N \backslash \{0\} \; : \; \forall \alpha \in L \; : \; |\alpha| \geq p \; \exists x, \; y, \; u, \; v, \; z \; : \; \alpha = xyuvz \land |yv| \geq 1 \land |yuv| \leq p \; \land \\
+\forall i \in \N \; xy^iuv^iz \in L$. \\\\
+
+Контра позиция на лемата: Ако \\
+
+$\forall p \in \N \backslash \{0\} \; : \; \exists \alpha \in L \; : \; |\alpha| \geq p \; \forall x, \; y, \; u, \; v, \; z \; : \; \alpha = xyuvz \land |yv| \geq 1 \land |yuv| \leq p \; \land \\
+\exists i \in \N \; xy^iuv^iz \notin L$ то $L$ не е контекстно-свободен език.
+
+\end{document}

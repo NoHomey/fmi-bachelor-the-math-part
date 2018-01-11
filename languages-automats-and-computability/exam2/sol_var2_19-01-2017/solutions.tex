@@ -1,0 +1,196 @@
+\documentclass[12pt]{article}
+    
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{qtree}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\newcommand{\Lang}{\mathcal{L}}
+\newcommand{\N}{\mathbb{N}}
+    
+\setlength{\parindent}{0mm}
+            
+\title{Езици и автомати. Решения на теоретично контролно вариант 1 от 19.01.2017г.}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+\section{Задача 1.}
+
+\subsection{Дайте дефиниция за контекстно-свободна граматика.}
+
+Нека $G = (V, \; \Sigma, \; P, \; S)$, където: \\
+
+\begin{itemize}
+    \item $V$ е крайно множество от променливи (нетерминали)
+    \item $\Sigma$ е азбука (крайно множество от терминали) и $\Sigma \cap V = \emptyset$
+    \item $P \subseteq (V \cup \Sigma)^+ \times (V \cup \Sigma)^*$ е крайно множество от правила
+    \item $S \in V$ е началната променлива
+\end{itemize}
+
+$G$ е контекстно-свободна граматика, ако $P \subseteq V \times (V \cup \Sigma)^*$
+
+\subsection{Дефинирайте кога една дума $u \in (V \cup \Sigma)^*$ е изводима от думата $v \in (V \cup \Sigma)^*$ с граматиката $G \quad (v \overset{*}{\implies} u)$.}
+
+Нека $\Lambda = (V \cup \Sigma)^*$ \\
+
+Нека $R_{\underset{G}{\to}} \; = \; \left\{(w, \; w') \in \Lambda^2 \; | \; \exists \alpha, \; \beta, \; \beta', \; \gamma \in  \; \Lambda \; : \;
+w = \alpha\beta\gamma \land \; w' = \alpha\beta'\gamma \land \exists \; \beta \to \beta' \in P\right\}$ \\\\
+
+и нека $R_{\overset{n}{\underset{G}{\to}}} = \begin{cases}
+    R_{\underset{G}{\to}} & , n = 0 \\
+    \left\{(\alpha, \; \gamma) \in \Lambda^2\; | \; \exists \beta \in \Lambda, \; \exists m \in \N \; : \; m < n \land (\alpha, \; \beta), \; (\beta, \; \gamma) \in R_{\overset{m}{\underset{G}{\to}}}\right\} & , n > 0
+\end{cases}$ \\\\
+
+Тогава $R_{\overset{*}{\implies}} \; = \; \{(w, \; w) \; | \; w \in \Lambda\} \; \cup \; \displaystyle\bigcup_{n \in \N} R_{\overset{n}{\underset{G}{\to}}}$ \\\\
+
+тоест $R_{\overset{*}{\implies}}$ е рефлексивното и транзитивното затваряне на $R_{\underset{G}{\to}}$.\\\\
+
+$v \overset{*}{\implies} u \iff (v, \; u) \in R_{\overset{*}{\implies}}$
+
+\subsection{$G$ е контекстно-свободна граматика определете езика $\Lang(G)$}
+
+$\Lang(G) = \{w \in \Sigma^* \; | \; S \overset{*}{\implies} w\}$
+
+\subsection{}
+
+Нека $G = (\{S, \; A, \; B\}, \; \{a, \; b\}, \; \{S \to ABA \; | \; ab, \; A \to aA \; | \; a, \; B \to bBb \; | \; b\}, \; S)$
+
+\subsubsection{Покажете, че думите $aaba$ и $abbba$ са изводими от $G$ и покажете синтактично дърво за тях.}
+
+За $aaba$: \\
+
+$S \implies (S \to ABA) \\\\
+ABBA \implies (A \to aA) \\\\
+aABA \implies (A \to a) \\\\
+aaBA \implies (B \to b) \\\\
+aabA \implies (A \to a) \\\\
+aaba$  \\
+
+\Tree [.S [.A [a [.A [ a ] ] ] ] [.B [ b ] ] [.A [ a ] ] ] \\\\
+
+За $abbba$: \\
+
+$S \implies (S \to ABA) \\\\
+ABA \implies (A \to a) \\\\
+aBA \implies (B \to bBb) \\\\
+abBbA \implies (B \to b) \\\\
+abbbA \implies (A \to a) \\\\
+abbba$ \\
+
+\Tree [.S [.A [ a ] ] [.B [ b [.B [ b ] ] b ] ] [.A [ a ] ] ] \\\\
+
+\subsubsection{Вярно ли е, че езикът $\Lang(G) \cap \{a^{2n}b^{2k + 1}a \; | \; n, \; k \in \N\}$ е контекстно-свободен?}
+
+Лесно се вижда, че $\Lang(G) = \{a^{n}b^{2k - 1}a^{m} \; | \; n, \; k, \; m \in \N\backslash\{0\}\}$ следователно\\
+
+$\Lang(G) \cap \{a^{2n}b^{2k + 1}a \; | \; n, \; k \in \N\} = \{a^{2n}b^{2k - 1}a \; | \; n, \; k \in \N\backslash\{0\}\}$ \\
+
+Една граматика, която описва $\{a^{2n}b^{2k - 1}a \; | \; n, \; k \in \N\backslash\{0\}\}$ е: \\
+
+$(\{S, \; A, \; B\}, \; \{a, \; b\}, \; \{S \to AABa, \; A \to aAa \; | \; a, \; B \to bBb \; | \; b\}, \; S)$ \\
+
+Следователно $\Lang(G) \cap \{a^{2n}b^{2k}a \; | \; n, \; k \in \N\}$ е контекстно-свободен.
+
+\subsubsection{Вярно ли е, че езикът $\{a, \; b\}^* \backslash \Lang(G)$ е контекстно-свободен?}
+
+Лесно се вижда, че $\Lang(G) = \Lang(a^+(bbb \; + \; b)^+a^+)$, тоест че $\Lang(G)$ всъщност е регулярен език. \\
+
+Ние знаем, че допълнението на всеки регулярен език е регулярен език, тоест $\{a, \; b\}^* \backslash \Lang(G)$ е регулярен. \\
+
+Също така знаем, че всеки регулярен език е контекстно-свободен език, тогава $\{a, \; b\}^* \backslash \Lang(G)$ е контекстно-свободен.
+
+\section{Задача 2.}
+
+Нека $G_1 = (V_1, \; \Sigma, \; P_1, \; S_1)$ и $G_2 = (V_2, \; \Sigma, \; P_2, \; S_2)$
+са контекстно-свободни граматики, за които $V_1 \cap V_2 = \emptyset$. Опишете
+контрукция за построяването на контекстно-свободна граматика $G = (V, \; \Sigma, \; P, \; S)$ с език
+
+\subsection{$\Lang(G) = \Lang(G_1) \cup \Lang(G_2)$}
+
+$S \notin V_1 \cup V_2, \; S \notin \Sigma, \; G = (\{S\} \cup V_1 \cup V_2, \; \Sigma, \{S \to S_1 \; | \; S_2\} \cup P_1 \cup P_2, \; S)$
+
+\subsection{$\Lang(G) = \Lang(G_1)^*$}
+
+$S \notin V_1, \; S \notin \Sigma, \; G = (\{S\} \cup V_1, \; \Sigma, \{S \to S_1S \: | \; \varepsilon\} \cup P_1, \; S)$
+
+\section{Задача 3.}
+
+Постройте граматика $G$, за която $\Lang(G) = \Lang(A)$ \\
+
+за крайният автомат $A = (\{s, \; p, \; q\}, \; \{a, \; b\}, \; \delta, \; s, \; \{q\})$ за \\
+
+$\delta(s, \; a) = p \\\\
+\delta(s, \; b) = s \\\\
+\delta(p, \; a) = p \\\\
+\delta(p, \; b) = q \\\\
+\delta(q, \; a) = p \\\\
+\delta(q, \; b) = s$ \\
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+    \node[state,initial] (s) {s};
+    \node[state] (p) [right=of s] {p};
+    \node[state, accepting] (q) [right=of p] {q};
+    \path[->]
+        (s) edge[bend left=30] node {$a$} (p)
+        (s) edge[loop above] node {$b$} ()
+        (p) edge[loop above] node {$a$} ()
+        (p) edge[bend left=30] node {$b$} (q)
+        (q) edge[bend left=30] node {$a$} (p)
+        (q) edge[bend left=60] node {$b$} (s);
+\end{tikzpicture}
+
+\subsection{Общ вид на конструкцията}
+
+Нека $A = (Q, \; \Sigma, \; \delta, \; s, \; F)$ е краен автомат. Тогава \\
+
+$G = (Q, \; \Sigma, \; P, \; s)$ е регулярна граматика. \\
+
+$P = \{q \to ap \; | \; a \in \Sigma, \; \delta(q, \; a) = p\} \cup \{q \to a \; | \; a \in \Sigma, \; \delta(q, \; a) = p \in F\} \cup \\
+\{f \to \varepsilon \; | \; f \in F\} $ \\\\
+
+Обратно на задачата:
+
+$G = (\{s, \; p, \; q\}, \; \{a, \; b\}, \; \{s \to bs \; | \; ap, \; p \to ap \; | \; bq \; | \; b, \; q \to ap \; | \;  bs \}, \; s)$ 
+
+\section{Задача 4.}
+
+Нека $G = (V, \; \Sigma, \; P, \; S)$ е контекстно-свободна граматика.
+Дефинирайте стеков автомат $M$, завърващ с празен стек, за който $\Lang(M) = \Lang(G)$. \\
+
+$M = (\{q\}, \; \Sigma, \; \Sigma \cup V, \; S, \; q, \; \Delta, \; \emptyset) \\\\
+\forall A \in V \; \Delta(q, \; \varepsilon, \; A) = \{(q, \; \alpha) \; | \; A \to \alpha \in P\} \\\\
+\forall a \in \Sigma \; \Delta(q, \; a, \; a) = \{(q, \; \varepsilon)\}$
+
+
+\subsection{Дефинирайте стеков автомат $M$ с горното свойство за $G$ от Задача 1.}
+
+$M = (\{q\}, \; \{a, \; b\}, \; \{a, \; b, \; S, \; A, \; B\}, \; S, \; q, \; \Delta, \; \emptyset) \\\\
+\Delta(q, \; \varepsilon, \; S) = \{(q, \; ABA), \; (q, \; ab)\} \\\\
+\Delta(q, \; \varepsilon, \; A) = \{(q, \; aA), \; (q, \; a)\} \\\\
+\Delta(q, \; \varepsilon, \; B) = \{(q, \; bBb), \; (q, \; b)\} \\\\
+\Delta(q, \; a, \; a) = \{(q, \; \varepsilon)\} \\\\
+\Delta(q, \; b, \; b) = \{(q, \; \varepsilon)\}$
+
+\section{Задача 5.}
+
+Формулирайте Лемата за покачването (The Pumping Lemma) за контекстно-свободни езици. \\
+
+Ако $L$ е контекстно-свободен език то \\
+
+$\exists p \in \N \backslash \{0\} \; : \; \forall \alpha \in L \; : \; |\alpha| \geq p \; \exists x, \; y, \; u, \; v, \; z \; : \; \alpha = xyuvz \land |yv| \geq 1 \land |yuv| \leq p \; \land \\
+\forall i \in \N \; xy^iuv^iz \in L$. \\\\
+
+Контра позиция на лемата: Ако \\
+
+$\forall p \in \N \backslash \{0\} \; : \; \exists \alpha \in L \; : \; |\alpha| \geq p \; \forall x, \; y, \; u, \; v, \; z \; : \; \alpha = xyuvz \land |yv| \geq 1 \land |yuv| \leq p \; \land \\
+\exists i \in \N \; xy^iuv^iz \notin L$ то $L$ не е контекстно-свободен език.
+
+\end{document}
