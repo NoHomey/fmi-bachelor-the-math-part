@@ -1,3 +1,8 @@
+% plots the first, third and fifth approximations by using Picard method
+% for the Cauchy problem:
+% xdy/dx = 5y + 3x, y(2) = 1
+% in blue, green, red color for x in [1; 3]
+% than solves numerically the given problem and plots the solution in black
 function Picard
     % x for all plots is in the interval [1; 3]
     xmin = 1;
@@ -12,7 +17,7 @@ function Picard
     x0 = 2;
     y0 = 1;
     
-    %draw x-axis for x in [xmin; xmax] and y-axis for y in [ymin; ymax]
+    % draw x-axis for x in [xmin; xmax] and y-axis for y in [ymin; ymax]
     axis([xmin xmax ymin ymax]);
     % ensure all plots remain
     hold on;
@@ -46,9 +51,10 @@ function Picard
     yleftPrev = y0left;
     yrightPrev = y0right;
     
-    % the right hand side of the given equation rewritten as
-    % dy/dx = 5(y/x) + 3 when x /= 0
-    %(0 is not in our interval so no point is missed) 
+    % the right hand side of the given equation
+    % xdy/dx = 5y + 3x
+    % rewritten as dy/dx = 5(y/x) + 3 when x /= 0
+    % (0 is not in our interval so no point is missed) 
     f = @(x, y) (5 * (y / x) + 3);
     
     % colors for the first (blue), third (green) and fifth (red)
@@ -92,6 +98,6 @@ function Picard
     % solve numerically the given equation for x-es right to x0
     [xright, yright] = ode45(f, [x0 xmax], y0);
     % plot the numeric solution by ploting both the one
-    % for x-es left to x0 and right to x0
+    % for x-es left to x0 and right to x0 in black
     plot(xleft, yleft, 'k', xright, yright, 'k');
 end
