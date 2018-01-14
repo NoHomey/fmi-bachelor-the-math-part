@@ -1,3 +1,13 @@
+% plots the fixed points of the system of ODEs:
+% dx/dt = -2x + 4y, dy/dt = x^2 + 4x
+% plays animation of point moving in the phase plane
+% at the curve starting at (x(0), y(0)) = (x0, y0),
+% which are inputed via mouse click
+% the curve ends at (x(8), y(8)) (t is in [0, 8])
+% the curve is actually the solution of the given system
+% with inital conditions (x(0), y(0)) = (x0, y0)
+% the system is time independent (Autonomous system) and it's solved
+% numerically with ode15s
 function PointMovementInPhasePlane
     % maximum t, t is in [0, 8];
     tmax = 8;
@@ -47,7 +57,8 @@ function PointMovementInPhasePlane
     Q = f2(X, Y);
     % calculate each velocity vector length (threat them as radius vectors)
     Length = sqrt(P.^2 + Q.^2);
-    % plot each normalizate velocity vector using quiver and scale them 
+    % plot each normalizate velocity vector using quiver and scale them
+    % each radius vector (P(k), Q(k)) is transition at (X(k), Y(k))
     quiver(X, Y, P ./ Length, Q ./ Length, 0.42, 'Color', [0, 0.5, 1]);
     
     % clear varaibles that are no longer needed (only array ones)
