@@ -98,7 +98,7 @@ function Picard
     end
     
     % solve the given equation numerically with ode45
-    % (the given equation is, is nonstiff so it's OK)
+    % (the given equation is nonstiff so it's OK)
     % ode45 solves dy/dx = f(x, y) from x0 to xmax and requires the
     % required number of initial conditions (in this case only one)
     % at the x0 this is why a split to left x-es and right x-es is
