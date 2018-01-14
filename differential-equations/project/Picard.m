@@ -63,6 +63,9 @@ function Picard
     % starting with the color for first approximation to plot
     c = 1;
     
+    % preallocate memory for graph handles
+    g = gobjects(1, 4);
+    
     % since we want to plot only the first, third and fifth approximations
     % we can calculate only the first five approximations
     for k=1:5
@@ -78,7 +81,13 @@ function Picard
         if mod(k, 2) == 1
             % plot-ing both the points left to x0 and right to x0 in the
             % same color
-            plot(xleft, yleftk, colors(c), xright, yrightk, colors(c));
+            p = plot(xleft, yleftk, colors(c), xright, yrightk, colors(c));
+            % make line thicker
+            p(1).LineWidth = 2;
+            % make line thicker
+            p(2).LineWidth = 2;
+            % save the graph handle for the graph of x-es left of x0
+            g(c) = p(1);
             % switch color for the next plot
             c = c + 1;
         end
@@ -92,12 +101,29 @@ function Picard
     % (the given equation is, is nonstiff so it's OK)
     % ode45 solves dy/dx = f(x, y) from x0 to xmax and requires the
     % required number of initial conditions (in this case only one)
-    % at the x0 this is why a split to left x-es and right x-es is required
+    % at the x0 this is why a split to left x-es and right x-es is
+    % required
     % solve numerically the given equation for x-es left to x0 
     [xleft, yleft] = ode45(f, [x0 xmin], y0);
     % solve numerically the given equation for x-es right to x0
     [xright, yright] = ode45(f, [x0 xmax], y0);
     % plot the numeric solution by ploting both the one
     % for x-es left to x0 and right to x0 in black
-    plot(xleft, yleft, 'k', xright, yright, 'k');
+    p =  plot(xleft, yleft, 'k', xright, yright, 'k');
+    % make line thicker
+    p(1).LineWidth = 2;
+    % make line thicker
+    p(2).LineWidth = 2;
+    % save the graph handle for the graph of x-es left of x0
+    g(c) = p(1);
+    % draw legend for the four graphs
+    % match colors from the graph handles
+    % set legend location to the down-right corner
+    % and increase the font size
+    legend(g, {'y1', 'y3', 'y5', 'y'}, 'Location', 'southeast', 'FontSize', 14);
+    % ading text for each plot
+    text(2.7, 3.85, 'y1', 'Color', 'blue', 'FontSize', 18);
+    text(2.75, 8.55, 'y3', 'Color', 'green', 'FontSize', 18);
+    text(2.95, 14.52, 'y5', 'Color', 'red', 'FontSize', 18);
+    text(2.85, 14, 'y', 'Color', 'black', 'FontSize', 18);
 end
