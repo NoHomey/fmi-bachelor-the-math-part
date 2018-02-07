@@ -1,0 +1,203 @@
+\documentclass[12pt]{article}
+    
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+     
+\urlstyle{same}
+    
+\newcommand{\Lang}{\mathcal{L}}
+\newcommand{\N}{\mathbb{N}}
+    
+\setlength{\parindent}{0mm}
+            
+\title{Езици и автомати}
+\author{Иво Стратев}
+            
+\begin{document}
+\maketitle
+
+%\tableofcontents
+
+\section{Твърдение. За всеки нетотален ДКА съществува еквивалентен на него тотален ДКА}
+
+Нека $A = <Q, \; \Sigma, \; \delta, \; s, \; F>$ е нетотален ДКА и нека $q_e \notin Q$. Тогава
+
+$A' = <Q \cup \{q_e\}, \; \Sigma, \; \delta' , \; s, \; F>$ където
+
+$\delta' = \delta \cup \{((q_e, \; a), \; q_e) \; | \; a \in \Sigma\} \cup \{((q, \; a), \; q_e) \; | \; q \in Q, \; a \in \Sigma \; : \; \forall p \in Q \; ((q, \; a), \; p) \notin \delta\}$
+е тотален и еквивалентен на $A$, тоест $\Lang(A') = \Lang(A)$. \\
+
+Първо ще докажем, че $\delta'$ е тотална функция, тоест
+
+$\forall q \in Q \cup \{q_e\}, \; \forall a \in \Sigma \; \exists! p \in Q \cup \{q_e\} \; : \; \delta'(q, \; a) = p$. \\
+
+Нека $q \in Q \cup \{q_e\}$ и нека $a \in \Sigma$.\\
+
+Ако $q = q_e$ то от дефиницята на $\delta'$ имаме,
+че ако $p \in Q \cup \{q_e\} \land ((q_e, a), p) \in \delta'$ то
+$p = q_e$, защото $q_e \notin Q \implies ((q_e, a), q_e) \notin \delta$
+и единствените преходи от $q_e$, са дефинирани от $\{((q_e, \; a), \; q_e) \; | \; a \in \Sigma\}$. \\
+
+Ако $q \in Q$ то за всяко $p$ от $Q \cup \{q_e\}$ има два случая $((q, a), p) \in \delta$ или $((q, a), p) \notin \delta$.
+Ако $((q, a), p) \in \delta$ тогава $\delta'(q, \; a) = p$, което лесно се вижда от дефиницията на $\delta'$.
+Ако $((q, a), p) \notin \delta$ тогава $p = q_e$, което отново лесно се съобразява от дефиницията на $\delta'$, следователно $\delta(q, \; a) = p$.
+Следователно $\delta'$ е тотална функия и значи $A'$ е тотален ДКА. Остава да докажем, че $\Lang(A) = \Lang(A')$. \\
+
+Първо ще докажем, че $\Lang(A) \subseteq \Lang(A')$. Нека $\omega \in \Lang(A)$ е произволна дума.
+Тогава $\exists a_1, \; \dots, a_{|\omega|} \in \Sigma \; : \; \omega = \displaystyle\prod_{i = 1}^{|\omega|} a_i \in \Lang(A)
+\implies \delta^*(s, \; \omega) \in F \implies \\\\
+\exists q_1, \; \dots, \; q_{|\omega|} \in Q \; : \;
+\delta(s, a_1) = q_1, \; \forall i \in \{1, \; \dots, \; |\omega| - 1\} \; \delta(q_i, \; a_{i + 1}) = q_{i + 1}, \\\\
+q_{|\omega|} \in F \implies \delta'(s, a_1) = q_1, \; \forall i \in \{1, \; \dots, \; |\omega| - 1\} \; \delta'(q_i, \; a_{i + 1}) = q_{i + 1} \\\\
+\implies \delta'^*(s, \; \omega) \in F \implies \omega \in \Lang(A') \implies \forall \alpha \in \Lang(A) \; \alpha \in \Lang(A')
+\implies \Lang(A) \subseteq \Lang(A')$. \\
+
+Нека сега $\beta \in \Lang(A')$ е произволна дума. Тогава \\
+$\exists b_1, \; \dots, b_{|\beta|} \in \Sigma \; : \;
+\beta = \displaystyle\prod_{i = 1}^{|\beta|} b_i \in \Lang(A') \implies \delta'^*(s, \; \beta) \in F \implies \\\\
+\exists q_1, \; \dots, \; q_{|\beta|} \in Q \cup \{q_e\} \; : \;
+\delta'(s, b_1) = q_1, \; \forall i \in \{1, \; \dots, \; |\beta| - 1\} \; \delta'(q_i, \; b_{i + 1}) = q_{i + 1}, \\\\
+q_{|\beta|} \in F$. Да допуснем, че $i \in \{1, \; \dots, \; |\beta| - 1\} \; : \; q_i = q_e, \;
+\forall b \in \Sigma \delta'(q_e, \; b) = q_e \\\\
+\implies \forall j \in \{i, \; \dots, \; |\beta|\} \; q_j = q_e \\\\
+\implies q_{|\beta|} = q_e \notin Q \implies q_{|\beta|} \notin F \implies \beta \notin \Lang(A') \implies \lightning \\\\
+\implies \forall k \in \{1, \; \dots, \; |\beta|\} \; q_j \in Q \implies
+\delta(s, b_1) = q_1, \; \delta(q_k, \; b_{k + 1}) = q_{k + 1} \\\\
+\implies \delta^*(s, \beta) = q_{|\beta|} \in F \implies \beta \in \Lang(A)
+\implies \forall \gamma \in \Lang(A') \; \gamma \in \Lang(A) \\\\
+\implies \Lang(A') \subseteq \Lang(A) \implies \Lang(A') = \Lang(A) \qed$ \\
+
+Следствие: БОО можем да разглеждаме само тотални ДКА.
+ 
+\section{Затвореност на езиците разпознавани от ДКА относно операцията обединие}
+
+Нека $\Sigma$ е азбука и $A_1 = <Q_1, \; \Sigma, \; \delta_1, \; s_1, \; F_1>$
+и $A_2 = <Q_2, \; \Sigma, \; \delta_2, \; s_2, \; F_2>$ са тотални ДКА. Тогава нека
+$A = <Q_1 \times Q_2, \; \Sigma, \; \delta, \; (s_1, \; s_2), \; (Q_1 \times F_2) \cup (F_1 \times Q_2)>$.
+
+Където $\delta \; : \; (Q_1 \times Q_2) \times \Sigma \to Q_1 \times Q_2$ и \\
+
+$\delta = \{(((q_1, \; q_2), \; a), \; (\delta_1(q_1, \; a), \; \delta_2(q_2, \; a))) \; | \; q_1 \in Q_1, \; q_2 \in Q_2, \; a \in \Sigma\}$ \\
+
+Идеята на конструкцията е да симулираме двата автомата едновременно, тоест правим паралелни изчисления,
+за това налагаме изискването автоматите да са тотални. Автомата разпознава дума, точно когато поне едно
+от двете излисления завърши във финално състояние. \\
+
+Ще докажем, че $\forall q_1 \in  Q_1, \; \forall q_2 \in Q_2, \; \forall \alpha \in \Sigma^* \;
+\delta^*((q_1, \; q_2), \alpha) = (\delta_1^*(q_1, \; \alpha), \; \delta_2^*(q_2, \; \alpha))$ \\\\
+
+$\forall q_1 \in  Q_1, \; \forall q_2 \in Q_2, \; \forall a \in \Sigma \delta^*((q_1, \; q_2), a) = \delta((q_1, \; q_2), a) = \\
+= (\delta_1(q_1, \; \alpha), \; \delta_2(q_2, \; \alpha)) = (\delta_1^*(q_1, \; \alpha), \; \delta_2^*(q_2, \; \alpha))$ \\\\
+
+Нека $\exists n \in \N^+ \; : \; \forall q_1 \in  Q_1, \; \forall q_2 \in Q_2, \; \forall \alpha \in \Sigma^* \; : \; |\alpha| = n \\
+\delta^*((q_1, \; q_2), \alpha) = (\delta_1^*(q_1, \; \alpha), \; \delta_2^*(q_2, \; \alpha))$ \\\\
+
+Нека $q_1 \in Q_1, \; q_2 \in Q_2, \; \beta \in \Sigma^* \; : \; |\beta| = n + 1 \implies \exists \alpha \in \Sigma^*, \; a \in \Sigma \; : \; \beta = \alpha.a \implies \\
+\delta^*((q_1, q_2), \; \beta) = \delta^*((q_1, q_2), \; \alpha.a) = \delta(\delta^*((q_1, q_2), \; \alpha), \; a)
+= \delta((\delta_1^*(q_1, \; \alpha), \; \delta_2^*(q_2, \; \alpha), \; a) = (\delta_1(\delta_1^*(q_1, \; \alpha), \; a), \; \delta_2(\delta_2^*(q_2, \; \alpha), \; a))
+= (\delta_1^*(q_1, \; \alpha.a), \; \delta_2^*(q_2, \; \alpha.a)) = (\delta_1^*(q_1, \; \beta), \; \delta_2^*(q_2, \; \beta))$ \\\\
+
+$\implies \forall t_1 \in  Q_1, \; \forall t_2 \in Q_2, \; \forall \gamma \in \Sigma^* \;
+\delta^*((t_1, \; t_2), \gamma) = (\delta_1^*(t_1, \; \gamma), \; \delta_2^*(t_2, \; \gamma)) \qed$ \\\\
+
+Ще покажем, че $\Lang(A) = \Lang(A_1) \cup \Lang(A_2)$. \\
+
+Нека $\omega \in \Lang(A)$ е произволна дума следователно от дефиницията за език на ДКА\\
+
+$\delta^*((s_1, \; s_2), \; \omega) = (\delta_1^*(s_1, \; \omega), \; \delta_2^*(s_2, \; \omega)) \in (Q_1 \times F_2) \cup (F_1 \times  Q_2) \iff \\\\
+(\delta_1^*(s_1, \; \omega), \; \delta_2^*(s_2, \; \omega)) \in Q_1 \times F_2 \lor (\delta_1^*(s_1, \; \omega), \; \delta_2^*(s_2, \; \omega)) \in F_1 \times Q_2 \iff \\\\
+\delta_2^*(s_2, \; \omega) \in F_2 \lor \delta_1^*(s_1, \; \omega) \in F_1 \iff \omega \in \Lang(A_2) \lor \omega \in \Lang(A_1) \iff \omega \in \Lang(A_1) \cup \Lang(A_2) \\\\
+\implies \forall \alpha \in \Lang(A) \iff \alpha \in \Lang(A_1) \cup \Lang(A_2) \implies \Lang(A) = \Lang(A_1) \cup \Lang(A_2) \qed$
+
+\section{Затвореност на езиците разпознавни от ДКА относно операцията сечение}
+
+Нека $\Sigma$ е азбука и $A_1 = <Q_1, \; \Sigma, \; \delta_1, \; s_1, \; F_1>$
+и $A_2 = <Q_2, \; \Sigma, \; \delta_2, \; s_2, \; F_2>$ са тотални ДКА. Тогава нека
+$A = <Q_1 \times Q_2, \; \Sigma, \; \delta, \; (s_1, \; s_2), \; F_1 \times F_2>$.
+
+$\delta = \{(((q_1, \; q_2), \; a), \; (\delta_1(q_1, \; a), \; \delta_2(q_2, \; a))) \; | \; q_1 \in Q_1, \; q_2 \in Q_2, \; a \in \Sigma\}$ \\
+
+Конструкцията е същата, като на автомата разпознаващ обединението на двата езика с изключение на финалните състояния,
+тук ще искаме думата да бъде разпонзата и от двата автомата едновременно за да кажем, че е разпозната от конструирания автомат. \\
+
+Ще покажем, че $\Lang(A) = \Lang(A_1) \cap \Lang(A_2)$. \\
+
+Нека $\omega \in \Lang(A)$ е произволна дума следователно от дефиницията за език на ДКА\\
+
+$\delta^*((s_1, \; s_2), \; \omega) = (\delta_1^*(s_1, \; \omega), \; \delta_2^*(s_2, \; \omega)) \in F_1 \times F_2 \iff \\\\
+\delta_1^*(s_1, \; \omega) \in F_1 \land \delta_2^*(s_2, \; \omega) \in F_2 \iff \omega \in \Lang(A_1) \land \omega \in \Lang(A_2) \iff \omega \in \Lang(A_1) \cap \Lang(A_2) \\\\
+\implies \forall \alpha \in \Lang(A) \iff \alpha \in \Lang(A_1) \cap \Lang(A_2) \implies \Lang(A) = \Lang(A_1) \cap \Lang(A_2) \qed$
+
+\section{Допълнението на език разпознаван от ДКА е също език разпонзаван от ДКА}
+Нека $A = <Q, \; \Sigma, \; \delta, \; s, \; F>$ е тотален ДКА, знаем че БОО можем да го изискаме,
+налагаме го като изискване, защото всяка дума, за която не е дефиниран преход считаме, че не е в езика
+на автомата, но тя е в допълнението на езика и ни трябва начин, по който да разпознаем цялата дума,
+това може да стане като си поискаме автомата да е тотален, защото стигайки до състоянието на грешка,
+автомата след това автоматично прочита остатъка на дума и не променя своето състояние. \\
+
+Нека $A' = <Q, \; \Sigma, \; \delta, \; s, \; Q \backslash F>$. Ще докажем, че $\Lang(A') = \overline{\Lang(A)}$. \\
+
+Идеята е на построеният автомат е че за думите, за които изчислението не завършва във финално състояние не се
+разпознават от автомата, тоест не са в неговия език, значи са в допълнителния език. На строго математически \\
+$\overline{\Lang(A)} = \{\omega \in \Sigma^* \; | \; \delta^*(s, \; \omega) \notin F \} = \{\omega \in \Sigma^* \; | \; \delta^*(s, \; \omega) \in Q \backslash F \}$ \\
+
+Първо нека $\omega \in \Lang(A')$ е произволна дума. $\omega \in \Lang(A') \implies \delta^*(s, \; \omega) \in Q \backslash F \\\\
+\implies \delta^*(s, \; \omega) \notin F \implies \omega \notin \Lang(A) \implies \omega \in \overline{\Lang(A)}
+\implies \forall \alpha \in \Lang(A') \; \alpha \in \overline{\Lang(A)} \\\\
+\implies \Lang(A') \subseteq \overline{\Lang(A)}$ \\\\
+
+След това нека вземем произволна дума $\beta \in \overline{\Lang(A)} \implies \beta \notin \Lang(A) \implies \\\\
+\lnot(\delta^*(s, \; \beta) \in F) = \delta^*(s, \; \beta) \notin F \implies \delta^*(s, \; \beta) \in Q \backslash F \implies \beta \in \Lang(A') \implies \\\\
+\forall \gamma \in \overline{\Lang(A)} \; \gamma \in \Lang(A') \implies \overline{\Lang(A)} \subseteq \Lang(A') \implies \Lang(A') = \overline{\Lang(A)} \qed$
+
+\section{За всеки НКА същестува еквивалентен на него НКА със само едно финално състояние}
+
+\section{За всеки език $L$ разпознаван от краен автомат съществува НКА, който разпознава $L^{rev}$}
+
+\section{За всеки НКА съществува еквивалентен на него ДКА}
+
+\section{Еквивалентност на класа от автоматни езици с класа на регулярни езици}
+
+\subsection{Теорема на Клини (За всеки автоматен език съществува регулярен израз, който го описва)}
+
+\subsection{За всеки регулярен израз съществува краен автомат, който описва същия език}
+
+\subsubsection{Изконни езици}
+
+\subsubsection{Затвореност относно конкатенация}
+
+\subsubsection{Затвореност относно обединение}
+
+\subsubsection{Затвореност относно операцията звезда на Клини}
+
+\subsubsection{Заключение}
+
+\section{Лема за покачването (за регулярни езици)}
+
+\subsection{Следствия}
+
+\subsubsection{Проверка дали един регулярен език е празен}
+
+\subsubsection{Проверка дали два регулярни езика съвпадат}
+
+\subsubsection{Проверка дали един регулярен език е краен или безкраен}
+
+\section{Теорема на Майхил-Нероуд}
+
+\section{Алгоритъм за минимализация на автомат}
+
+\end{document}
