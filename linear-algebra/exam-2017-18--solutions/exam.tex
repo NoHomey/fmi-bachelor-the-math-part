@@ -1,0 +1,919 @@
+\documentclass[12pt]{article}
+    
+\usepackage[left=2cm,right=2cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\V}{\mathbb{V}}
+        
+\setlength{\parindent}{0mm}
+                
+\title{Решения на задачи от Писмения изпит по Линейна алгебра на спец. на Информатика 2017/18г.}
+\author{Иво Стратев}
+    
+\begin{document}
+\maketitle
+
+\section*{Задача 1.}
+Нека $\mathbb{P} = \{ax^3 + bx^2 + cx + d \; | \; a, \; b, \; c, \; d \in \R\}$ е линейното пространство на
+полиномите от степен строго по-ниска от $4$ с коефициенти реални числа
+и нека $\psi \; : \; \mathbb{P} \to \mathbb{P}$ действа по правилото $\forall p \in \mathbb{P} \; \psi(p) = p'' -3p'$,
+където $' = \frac{d}{dx}$ и $'' = \frac{d^2}{dx^2}$ (тоест операторите на диференциране, които познавате). \\
+
+a) Докажете, че $\psi$ е линеен оператор за $\mathbb{P}$. \\
+
+Решение: \\
+
+$\forall p, \; q \in \mathbb{P} \; \; \psi(p + q) = (p + q)'' -3(p + q) = p'' + q'' -3p' - 3q' = (p'' - 3p') + (q'' - 3q') = \psi(p) + \psi(q)$ \\
+
+$\forall p \in \mathbb{P} \; \forall \lambda \in \R \; \; \psi(\lambda p) = (\lambda p)'' - 3(\lambda p)' = \lambda p'' - 3\lambda p' = \lambda(p'' - 3p') = \lambda\psi(p)$ \\
+
+$\implies \psi \in \mathrm{Hom}(\mathbb{P})$ \\
+
+б) Напишете матрицата на $\psi$ спрямо стандартния базис $S = \{1, \; x, \; x^2, \; x^3\}$ на $\mathbb{P}$. \\
+
+Решение:
+\begin{align*}
+\varphi(1) = 1'' - 3.1' = 0 - 0 = 0 = 0 + 0x + 0x^2 + 0x^3 \\\\
+\varphi(x) = x'' - 3x' = 0 - 3 = -3 = -3 + 0x + 0x^2 + 0x^3 \\\\
+\varphi(x^2) = (x^2)'' - 3(x^2)' = 2 - 6x = 2 - 6x + 0x^2 + 0x^3 \\\\
+\varphi(x^3) = (x^3)'' - 3(x^3)' = 6x - 9x^2 = 0 + 6x - 9x^2 + 0x^3
+\end{align*} \\
+
+$\implies M_S(\psi) = \begin{pmatrix}
+    0 & -3 &  2 &  0 \\
+    0 &  0 & -6 &  6 \\
+    0 &  0 &  0 & -9 \\
+    0 &  0 &  0 &  0
+\end{pmatrix}$ \\\\
+
+в) Напишете дефиницията за ядро на $\psi$. \\
+
+Решение: \\
+
+$\mathrm{Ker}\psi = \{p \in \mathbb{P} \; | \; \psi(p) = 0\}$ \\
+
+г) Докажете, че ядро на $\psi$ е линейно пространство над $\R$. \\
+
+$\psi(0) = 0'' - 3.0' = 0 - 0 = 0$ \\
+
+$\forall p, \; q \in \mathrm{Ker}\psi \quad \psi(p) = 0 \land \psi(q) = 0 \implies \psi(p + q) = \psi(p) + \psi(q) = 0 + 0 = 0 \implies p + q \in \mathrm{Ker}\psi$ \\
+
+$\forall \lambda \in \R \; \forall p \in \mathrm{Ker}\psi \quad \psi(p) = 0 \implies \psi(\lambda p) = \lambda \psi(p) = \lambda 0 = 0 \implies \lambda p \in \mathrm{Ker}\psi$ \\
+
+$\implies \mathrm{Ker}\psi \leq \mathbb{P}$ \\
+
+д) Намерете базиси на ядрото и образа на $\psi$. \\
+
+Решение: \\
+
+Базис на $\mathrm{Ker}\psi$ \\
+
+$M_S(\psi) = \begin{pmatrix}
+    0 & -3 &  2 &  0 \\
+    0 &  0 & -6 &  6 \\
+    0 &  0 &  0 & -9 \\
+    0 &  0 &  0 &  0
+\end{pmatrix} \to \begin{pmatrix}
+    0 & -3 &  2 & 0 \\
+    0 &  0 & -1 & 1 \\
+    0 &  0 &  0 & 1
+\end{pmatrix} \to \begin{pmatrix}
+    0 & -3 &  2 & 0 \\
+    0 &  0 & -1 & 0 \\
+    0 &  0 &  0 & 1
+\end{pmatrix} \to \begin{pmatrix}
+    0 & -3 &  0 & 0 \\
+    0 &  0 & -1 & 1 \\
+    0 &  0 &  0 & 1
+\end{pmatrix} \to \\\\
+\to \begin{pmatrix}
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1
+\end{pmatrix} \implies \mathrm{Ker}\psi = \left\{p = a + bx + cx^2 + dx^3 \in \mathbb{P} \; \Bigg| \; \begin{cases}
+    a \in \R \\
+    b = 0 \\
+    c = 0 \\
+    d = 0
+\end{cases}\right\} = \\\\\\
+= \{p \in \mathbb{P} \; | \; \exists c \in \R \; : \; \forall x \in \R \; p(x) = c\} = l(1) $ \\
+
+Отговор: един базис на $\mathrm{Ker}\psi$ е $\{1\}$ - константния полином $1$.  \\
+
+Базис на $\mathrm{Im}\psi$ \\
+
+$[M_S(\psi)]^t = \begin{pmatrix}
+     0 &  0 &  0 & 0 \\
+    -3 &  0 &  0 & 0 \\
+     2 & -6 &  0 & 0 \\
+     0 &  6 & -9 & 0
+\end{pmatrix} \to \begin{pmatrix}
+   -3 &  0 &  0 & 0 \\
+    2 & -6 &  0 & 0 \\
+    0 &  6 & -9 & 0
+\end{pmatrix} \to \begin{pmatrix}
+ 1 &  0 &  0 & 0 \\
+ 1 & -3 &  0 & 0 \\
+ 0 &  2 & -3 & 0
+\end{pmatrix} \to \begin{pmatrix}
+    1 &  0 &  0 & 0 \\
+    0 & -3 &  0 & 0 \\
+    0 &  2 & -3 & 0
+\end{pmatrix} \to \\\\
+\to \begin{pmatrix}
+    1 & 0 &  0 & 0 \\
+    0 & 1 &  0 & 0 \\
+    0 & 2 & -3 & 0
+\end{pmatrix} \to \begin{pmatrix}
+    1 & 0 &  0 & 0 \\
+    0 & 1 &  0 & 0 \\
+    0 & 0 & -3 & 0
+\end{pmatrix} \to \begin{pmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0
+\end{pmatrix} \implies \mathrm{Im}\psi = l(1, \; x, \; x^2)$ \\\\
+
+Отговор: един базис на $\mathrm{Im}\psi$ е $\{1, \; x, \; x^2\}$. \\
+
+Нека $\mathbb{D} = \\
+\{d_1x^3 + d_2x^2 + d_3x + d_4 \in \mathbb{P} \; | \; \forall p = ax^3 + bx^2 + cx + d \in \mathbb{P}, \; ad_1 + bd_2 + cd_3 + dd_4 = 0\}$ \\
+
+е) Докажете, че $\mathbb{D}$ е линейно пространство над $\R$. \\
+
+Решение: \\
+
+Нека разгледаме, кои полиноми са в множеството $\mathbb{D}$
+преди да тръгнем да доказваме, че е линейно пространство над $\R$.
+Сещаме се да направим това разглеждане, заради универсалния квантор $\forall$,
+участващ в дефиницията на множеството $\mathbb{D}$. \\
+
+Нека вземем един произволен полином от $\mathbb{D}$,
+$d = d_1x^3 + d_2x^2 + d_3x + d_4 \in \mathbb{D}$,
+тогава за него е изпълнено $\forall p = ax^3 + bx^2 + cx + d \in \mathbb{P}, \; ad_1 + bd_2 + cd_3 + dd_4 = 0$.
+В частност това е изпълнено и за базиса $S = \{1, \; x, \; x^2, \; x^3\}$, тоест: \\
+
+$\begin{cases}
+    0d_1 + 0d_2 + 0d_3 + 1d_4 = 0 \\
+    0d_1 + 0d_2 + 1d_3 + 0d_4 = 0 \\
+    0d_1 + 1d_2 + 0d_3 + 0d_4 = 0 \\
+    1d_1 + 0d_2 + 0d_3 + 0d_4 = 0
+\end{cases} \implies \begin{cases}
+    d_4 = 0 \\
+    d_3 = 0 \\
+    d_2 = 0 \\
+    d_1 = 0
+\end{cases} \implies d = 0 \implies \mathbb{D} \subseteq \{0\}$. \\\\
+
+Включването $\{0\} \subseteq \mathbb{D}$ е очевидно. Тогава $\mathbb{D} = \{0\}$.
+Тоест $\mathbb{D}$ е нулевото подпространство на $\mathbb{P}$.
+Следователно $\mathbb{D}$ е линейно пространство над $\R$, защото $\mathbb{D} = \{0\} < \mathbb{P}$. \\
+
+ж) Определете размерността на $\mathbb{D}$. \\
+
+Решение: \\
+
+В предната подточка получихме, че $\mathbb{D} = \{0\} \implies \mathrm{dim}\mathbb{D} = \mathrm{dim}\{0\} = 0$. \\
+
+з) Конструирайте линеен оператор $\gamma$, такъв че
+ядрото на $\gamma$ да съвпада с образа на $\psi$ и 
+образа на $\gamma$ да съвпада с ядрото на $\psi$. \\
+
+Решение: \\
+
+Искаме да констуираме линеен оператор $\gamma$, такъв че \\
+
+$\mathrm{Ker}\gamma = \mathrm{Im}\psi = l(1, \; x, \; x^2)$ и
+$\mathrm{Im}\gamma = \mathrm{Ker}\psi = l(1)$.  \\
+
+$\mathrm{Ker}\gamma = l(1, \; x, \; x^2) = \{a + bx + cx^2 \; | \; a, \; b, \; c \in \R \}
+= \left\{a + bx + cx^2 + dx^3 \in \mathbb{P} \; \Bigg| \; \begin{cases}
+    a \in \R \\
+    b \in \R \\
+    c \in \R \\
+    d = 0
+\end{cases}\right\}$. Тогава $M_S(\gamma)$ трябва да съдържа например реда $\begin{pmatrix} 0 & 0 & 0 & 1\end{pmatrix}$
+и всички останали редове трябва да представляват координатни вектори, линейно зависими с координатния вектор $(0, \; 0, \; 0, \; 1)$.
+От условието $\mathrm{Im}\gamma = l(1)$ следва, че $M_S(\gamma)$ трябва да съдържа например стълба $\begin{pmatrix}1 \\ 0 \\ 0 \\ 0 \end{pmatrix}$
+и всички останали стълбове трябва да представляват координатни вектори, линейно зависими с координатния вектор $(1, \; 0, \; 0, \; 0)$.
+От полученото досега имаме $M_S(\gamma) = \begin{pmatrix}
+    0   & 0   & 0   & 1 \\
+    m_1 & m_2 & m_3 & 0 \\
+    m_4 & m_5 & m_6 & 0 \\
+    m_7 & m_8 & m_8 & 0
+\end{pmatrix}$. Ние знаем, че нулевия координатен вектор $(0, \; 0, \; 0, \; 0)$ е линейно зависим със всеки друг.
+Тогава лесно се съобразява, че ако изберем всичките неизвестни $m_i = 0, \; i = 1, \; \; \dots, \; 7$.
+Условията, които получихме за редовете и стълбовете на $M_S(\gamma)$ са изпълнени.
+Следователно търсения линеен оператор $\gamma$ е определен само от матрицата си спрямо стандартния базис, която получихме $M_S(\gamma) = \begin{pmatrix}
+    0 & 0 & 0 & 1 \\
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0
+\end{pmatrix}$. \\\\
+
+и) Конструирайте линеен оператор $\delta$, такъв че
+ядрото на $\delta$ да съвпада с $\mathbb{D}$ и 
+образа на $\delta$ да съвпада с ядрото на $\psi$. \\
+
+Решение: \\
+
+Знаем, че за линейните изображения (оператор) е изпълнена теоремата за
+ранга и дефекта. Тоест ако $\delta \in \mathrm{Hom}(\mathbb{P})$, то
+$\mathrm{dim}\mathrm{Ker}\delta + \mathrm{dim}\mathrm{Im}\delta = \mathrm{dim}\mathbb{P}$.
+В случая $\mathrm{Ker}\delta = \mathbb{D} \implies \mathrm{dim}\mathrm{Ker}\delta = \mathrm{dim}\mathbb{D} = 0$.
+$\mathrm{Im}\delta = \mathrm{Ker}\psi = l(1) \implies \mathrm{dim}\mathrm{Ker}\gamma = \mathrm{dim}l(1) = 1$.
+Тогава $0 + 1 \neq 4$, което е противоречие и следователно не съществува линеен оператор с търсените свойства. \\
+
+Отговор: търсения ленеен опратор не може да бъде конструиран.
+
+\section*{Задача 2.}
+Нека спрямо стандартния базис на $\R^3$ линейният оператор
+$\phi$ има матрица
+\begin{align*}
+    A = \begin{pmatrix}
+        -2 &  2 & -2 \\
+         2 &  1 & -4 \\
+        -2 & -4 &  1
+    \end{pmatrix}
+\end{align*}
+
+а) Намерете собствените стойности и вектори на оператора $\phi$. \\
+
+Решение: \\
+
+$\mathrm{det}(A - \lambda E) = \begin{vmatrix}
+    -2 - \lambda &           2 &          -2 \\
+               2 & 1 - \lambda &          -4 \\
+              -2 &          -4 & 1 - \lambda
+\end{vmatrix} = \begin{vmatrix}
+    -2 - \lambda &            2 &           -2 \\
+               2 &  1 - \lambda &           -4 \\
+               0 & -3 - \lambda & -3 - \lambda
+\end{vmatrix} = -(\lambda + 3) \begin{vmatrix}
+    -2 - \lambda &           2 & -2 \\
+               2 & 1 - \lambda & -4 \\
+               0 &           1 &  1
+\end{vmatrix} = \\\\
+= -(\lambda + 3) \begin{vmatrix}
+    -2 - \lambda &           4 & 0 \\
+               2 & 5 - \lambda & 0 \\
+               0 &           1 & 1
+\end{vmatrix} = -(\lambda + 3).(-1)^{3 + 3}.1.\begin{vmatrix}
+    -2 - \lambda &           4 \\
+               2 & 5 - \lambda \\
+\end{vmatrix} = \\\\
+= -(\lambda + 3)[(\lambda - 5)(\lambda + 2) - 8]
+= -(\lambda + 3)(\lambda^2 -3\lambda - 18) = -(\lambda + 3)(\lambda - 6)(\lambda + 3) = -(\lambda - 6)(\lambda + 3)^2$ \\
+
+Следователно собствените стойности са $\lambda_1 = 6, \; \lambda_{2, \; 3} = -3$. \\
+
+Търсим собствен вектор за $\lambda = 6$, тоест търсим решение на уравнението $\phi(v) = A.v = 6.v$,
+което е еквивалентно да търсим ненулево решение на хомогенната система $(A - 6E).v = \theta$. \\
+
+$\begin{pmatrix}
+    -8 &  2 & -2 \\
+     2 & -5 & -4 \\
+    -2 & -4 & -5
+\end{pmatrix} \to \begin{pmatrix}
+    -4 &  1 & -1 \\
+     2 & -5 & -4 \\
+    -2 & -4 & -5
+\end{pmatrix} \to \begin{pmatrix}
+    0 & -9 & -9 \\
+    2 & -5 & -4 \\
+    0 & -9 & -9
+\end{pmatrix} \to \begin{pmatrix}
+    0 &  1 &  1 \\
+    2 & -5 & -4 \\
+    0 &  1 &  1
+\end{pmatrix} \to \begin{pmatrix}
+    0 & 1 &  1 \\
+    2 & 0 &  1 \\
+    0 & 0 &  0
+\end{pmatrix} \implies \\\\
+\begin{cases}
+    v_2 = -v_3 \\
+    v_1 = -\frac{v_3}{2} \\
+    v_3 \in \R
+\end{cases} \implies v = (-1, \; -2, \; 2)$. По аналогичен начин за $\lambda = -3$ търсим ФСР на хомогенната система $(A  + 3E)x = \theta$. \\
+
+$\begin{pmatrix}
+     1 &  2 & -2 \\
+     2 &  4 & -4 \\
+    -2 & -4 &  4
+\end{pmatrix} \to \begin{pmatrix}
+    1 & 2 & -2 \\
+    1 & 2 & -2 \\
+    1 & 2 & -2
+\end{pmatrix} \to \begin{pmatrix}
+    1 & 2 & -2 \\
+    0 & 0 &  0 \\
+    0 & 0 &  0
+\end{pmatrix} \to \begin{pmatrix}
+    1 & 2 & -2
+\end{pmatrix} \implies \begin{cases}
+    x_1 = -2x_2 + 2x_3 \\
+    x_2 \in \R \\
+    x_3 \in \R
+\end{cases}$ \\
+
+Тогава една фундаментална система от решения е: $\{(-2, \; 1, \; 0), \; (2, \; 0, \; 1)\}$. \\
+
+Отговор: \\
+
+$\lambda = 6 \implies (-1, \; -2, \; 2)$ \\
+
+$\lambda = -3 \implies (-2, \; 1, \; 0), \; (2, \; 0, \; 1)$ \\
+
+б) Намерете ортонормиран базис $d$ на $\R^3$ в който матрицата $D$ на $\phi$ е диагонална. Напишете матрица $D$. \\
+
+Решение: \\
+
+От теорията знаем, че векторите отговарящи на различни сосбствени стойности са ортогонални помежду си.
+Тогава е необходимо да ортогонализираме по метода на Грам-Шмид само векторите съотвестващи на собствената стойност $-3$.
+Нека $b_1 = (-2, \; 1, \; 0)$ и $a = (2, \; 0, \; 1)$, тогава вектора $b_2$ ще търсим по следния начин
+$b_2 = \lambda b_1 + a$, където $\lambda \in \R$. Искаме $b_2$ да е ортогонален на $b_1$, тогава $(b_2, \; b_1) = 0$.
+Тоест $0 = (b_2, \; b_1) = (\lambda b_1 + a, \; b_1) = (\lambda b_1, \; b_1) + (a, \; b_1) = \lambda(b_1, \; b_1) + (a, \; b_1)
+\implies \lambda(b_1, \; b_1) = -(a, \; b_1) \implies \lambda = -\frac{(a, \; b_1)}{(b_1, \; b_1)} = -\frac{-4 + 0 + 0}{4 + 1 + 0} = \frac{4}{5} \implies \\\\
+b_2 = \left(\frac{-8}{5}, \; \frac{4}{5}, \; 0\right) + (2, \; 0, \; 1) = \left(\frac{2}{5}, \; \frac{4}{5}, \; 1\right)$, но и вектора $5.b_2$ е ортогонален на $b_1$.
+Остава да нормираме намерения ортогонален базис. Полагаме: \\
+
+$d_1 = \frac{1}{\|(-1, \; -2, \; 2)\|}(-1, \; -2, \; 2) = \frac{1}{\sqrt{1 + 4 + 4}}(-1, \; -2, \; 2) = \frac{1}{3}(-1, \; -2, \; 2) = \left(-\frac{1}{3}, \; -\frac{2}{3}, \; \frac{2}{3}\right)$ \\
+
+$d_2 = \frac{1}{\|(-2, \; 1, \; 0)\|}(-2, \; 1, \; 0) = \frac{1}{\sqrt{4 + 1 + 0}}(-2, \; 1, \; 0) = \frac{1}{\sqrt{5}}(-2, \; 1, \; 0) = \left(-\frac{2}{\sqrt{5}}, \; \frac{1}{\sqrt{5}}, \; 0\right)$ \\
+
+$d_3 = \frac{1}{\|(2, \; 4, \; 5)\|}(2, \; 4, \; 5) = \frac{1}{\sqrt{4 + 16 + 25}}(2, \; 4, \; 5) = \frac{1}{\sqrt{45}}(2, \; 4, \; 5) = \frac{1}{3\sqrt{5}}(2, \; 4, \; 5) = \left(\frac{2}{3\sqrt{5}}, \; \frac{4}{3\sqrt{5}}, \; \frac{\sqrt{5}}{3}\right)$. \\
+
+За векторите $d_1, \; d_2, \; d_3$ е изпъленено: 
+\begin{align*}
+    \phi(d_1) = 6d_1 = 6d_1 + 0d_2 + 0d_3 \\
+    \phi(d_2) = -3d_2 = 0d_1 -3d_2 + 0d_3 \\
+    \phi(d_3) = -3d_3 = 0d_1 + 0d_2 -3d_3
+\end{align*}
+
+Тогава търсеният базис е: $d = \{d_1, \; d_2, \; d_3\}$ и спрямо него търсената матирца е: \\
+
+$D = M_d(\phi) = \begin{pmatrix}
+    6 &  0 &  0 \\
+    0 & -3 &  0 \\
+    0 &  0 & -3
+\end{pmatrix}$ \\\\
+
+в) Намерете матрицата на оператора $\phi^{99}$ спрямо базиса $d$. \\
+
+Решение: \\
+
+Нека пресметнем матрицата на $\phi^2$ спрямо базиса $d$. \\
+
+$\phi^2 = \phi \circ \phi \implies M_d(\phi^2) = M_d(\phi \circ \phi) = M_d(\phi).M_d(\phi) = D^2 =  \begin{pmatrix}
+    6 &  0 &  0 \\
+    0 & -3 &  0 \\
+    0 &  0 & -3
+\end{pmatrix}.\begin{pmatrix}
+    6 &  0 &  0 \\
+    0 & -3 &  0 \\
+    0 &  0 & -3
+\end{pmatrix} = \\\\\\
+= \begin{pmatrix}
+    6.6 + 0.0 + 0.0 &  6.0 - 3.0 + 0.0 & 6.0 + 0.0 - 3.0 \\
+    0.6 -3.0 + 0.0 & 0.0 + (-3).(-3) + 0.0 & 0.0 -3.0 + 0.(-3) \\
+    0.6 + 0.(-3) -3.0 & 0.0 + 0.(-3) -3.0 & 0.0 + 0.0 + (-3).(-3)
+\end{pmatrix} = \begin{pmatrix}
+    6^2 &  0 &  0 \\
+    0 & (-3)^2 &  0 \\
+    0 &  0 & (-3)^2
+\end{pmatrix}$ \\\\
+
+Нека пресметнем и матирцата на $\phi^3$ спрямо базиса $d$. $\phi^3 = \phi^2 \circ \phi \implies \\\\
+M_d(\phi^3) = M_d(\phi^2 \circ \phi) = M_d(\phi^2).M_d(\phi) = D^2.D = D^3 =  \begin{pmatrix}
+    6^2 &  0 &  0 \\
+    0 & (-3)^2 &  0 \\
+    0 &  0 & (-3)^2
+\end{pmatrix}.\begin{pmatrix}
+    6 &  0 &  0 \\
+    0 & -3 &  0 \\
+    0 &  0 & -3
+\end{pmatrix} = \\\\\\
+= \begin{pmatrix}
+    6^2.6 + 0.0 + 0.0 &  6^2.0 - 3.0 + 0.0 & 6^2.0 + 0.0 - 3.0 \\
+    0.6 (-3)^2.0 + 0.0 & 0.0 + (-3)^2.(-3) + 0.0 & 0.0 + (-3)^2.0 + 0.(-3) \\
+    0.6 + 0.(-3) + (-3)^2.0 & 0.0 + 0.(-3) + (-3)^2.0 & 0.0 + 0.0 + (-3)^2.(-3)
+\end{pmatrix} = \begin{pmatrix}
+    6^3 &  0 &  0 \\
+    0 & (-3)^3 &  0 \\
+    0 &  0 & (-3)^3
+\end{pmatrix}$ \\\\
+
+Тогава си изграждаме хипотезата, че $\forall n \in \N^+ \; M_d(\phi^n) = \begin{pmatrix}
+    6^n &  0 &  0 \\
+    0 & (-3)^n &  0 \\
+    0 &  0 & (-3)^n
+\end{pmatrix}$ \\\\
+
+Ще го докажем по индукция от където със сигурност ще знаем $M_d(\phi^{99})$ на колко е равна. \\
+
+База: $M_d(\phi^1) = M_d(\phi) = D$. \\
+
+Индукционна хипотеза: допускаме, че $\exists k \in \N^+ \; : \;  M_d(\phi^k) = \begin{pmatrix}
+    6^k &  0 &  0 \\
+    0 & (-3)^k &  0 \\
+    0 &  0 & (-3)^k
+\end{pmatrix}$. \\\\
+
+Индукционна стъпка: \\
+
+$M_d(\phi^{k + 1}) = M_d(\phi^k \circ \phi) = M_d(\phi^k).M_d(\phi) = \begin{pmatrix}
+    6^k &  0 &  0 \\
+    0 & (-3)^k &  0 \\
+    0 &  0 & (-3)^k
+\end{pmatrix}.\begin{pmatrix}
+    6 &  0 &  0 \\
+    0 & -3 &  0 \\
+    0 &  0 & -3
+\end{pmatrix} = \\\\\\
+= \begin{pmatrix}
+    6^k.6 + 0.0 + 0.0 &  6^k.0 - 3.0 + 0.0 & 6^k.0 + 0.0 - 3.0 \\
+    0.6 (-3)^k.0 + 0.0 & 0.0 + (-3)^k.(-3) + 0.0 & 0.0 + (-3)^k.0 + 0.(-3) \\
+    0.6 + 0.(-3) + (-3)^k.0 & 0.0 + 0.(-3) + (-3)^k.0 & 0.0 + 0.0 + (-3)^k.(-3)
+\end{pmatrix} = \begin{pmatrix}
+    6^{k + 1} &  0 &  0 \\
+    0 & (-3)^{k + 1} &  0 \\
+    0 &  0 & (-3)^{k + 1}
+\end{pmatrix}$ \\\\
+
+Заключение: $\forall n \in \N^+ \; M_d(\phi^n) = \begin{pmatrix}
+    6^n &  0 &  0 \\
+    0 & (-3)^n &  0 \\
+    0 &  0 & (-3)^n
+\end{pmatrix} = D^n$ \\\\
+
+Тогава $M_d(\phi^{99}) = D^{99} = \begin{pmatrix}
+    6^{99} &  0 &  0 \\
+    0 & (-3)^{99} &  0 \\
+    0 &  0 & (-3)^{99}
+\end{pmatrix}$ \\\\
+
+г) Намерете как би изглеждала матрицата на $\phi^{99}$ спрямо произволен базис на $\R^3$. \\
+
+Решение: \\
+
+Нека $b$ е произволен различен от $d$ базис на $\R^3$. \\
+
+Тогава от теорията знаем как се променя матрицата на $\phi^{99}$ при смяна на базиса: \\
+
+$M_b(\phi^{99}) = T_{b \to d}.M_d(\phi^{99}).T_{d \to b} =  T_{b \to d}.\begin{pmatrix}
+    6^{99} &  0 &  0 \\
+    0 & (-3)^{99} &  0 \\
+    0 &  0 & (-3)^{99}
+\end{pmatrix}.T_{d \to b}$ \\
+
+Бихе могли да достигнем до същото нещо, ако използваме знанието как се променя матрицата на $\phi$
+при смяна на базиса: $M_b(\phi) = T_{b \to d}.M_d(\phi).T_{d \to b} = T_{b \to d}.D.T_{d \to b}$.
+Нека $B = T_{d \to b}$, тогава $B^{-1} = T_{b \to d}$ и тогава $M_b(\phi) = B^{-1}.D.B \implies M_b(\phi^{99}) = [M_b(\phi)]^{99} = (B^{-1}.D.B)^{99} = (B^{-1}.D.B).(B^{-1}.D.B).\dots.(B^{-1}.D.B) = B^{-1}.D^{99}.B$. \\
+
+д) Пресметнете матрицата на $\phi^{99}$ спрямо стандартния базис на $\R^3$. \\
+
+Решение: \\
+
+В подточка а) намерихме собствените стойности и вектори на оператора $\phi$: \\
+
+$\lambda = 6 \implies (-1, \; -2, \; 2)$ \\
+
+$\lambda = -3 \implies (-2, \; 1, \; 0), \; (2, \; 0, \; 1)$. \\
+
+В подточка б) орнормирахме собствените вектори от а) и получихме матирцата $D = \begin{pmatrix}
+    6 &  0 &  0 \\
+    0 & -3 &  0 \\
+    0 &  0 & -3
+\end{pmatrix}$. \\\\
+
+Сега ще проверим и че сменяйки базиса с векторите от а) можем да достигнем до същата матрица.
+В подточка в) същност намерихме как се пресмята $D^{99}$ и получения резултата от г) можем
+спокойно да приложим и за базиса от вектори от а). Това правим тъйкато значително по-лесно
+ще намерим обратната матрица на неортогонална матрица (матрцата $T_{e \to d}$ от ортонормираните собствени вектори е ортогонална),
+както и значително по-лесно ще сметнем $M_e(\phi^{99})$. \\
+
+Нека $C = \begin{pmatrix}
+    -1 & -2 & 2 \\
+    -2 &  1 & 0 \\
+     2 &  0 & 1
+\end{pmatrix}$. Ще пресметнем $C^{-1}$: \\\\
+
+$\left(\begin{array}{ccc|ccc}
+    -1 & -2 & 2 & 1 & 0 & 0 \\
+    -2 &  1 & 0 & 0 & 1 & 0 \\
+     2 &  0 & 1 & 0 & 0 & 1
+\end{array}\right) \to \left(\begin{array}{ccc|ccc}
+    -1 & -2 &  2 &  1 & 0 & 0 \\
+     0 &  5 & -4 & -2 & 1 & 0 \\
+     0 & -4 &  5 &  2 & 0 & 1
+\end{array}\right) \to \left(\begin{array}{ccc|ccc}
+    -5 & -10 & 10 &  5 & 0 & 0 \\
+     0 &   5 & -4 & -2 & 1 & 0 \\
+     0 & -20 & 25 & 10 & 0 & 5
+\end{array}\right) \to \\\\\\
+\to \left(\begin{array}{ccc|ccc}
+    -5 & 0 &  2 &  1 & 2 & 0 \\
+     0 & 5 & -4 & -2 & 1 & 0 \\
+     0 & 0 &  9 &  2 & 4 & 5
+\end{array}\right) \to \left(\begin{array}{ccc|ccc}
+    -45 &  0 &  18 &   9 & 18 & 0 \\
+     0  & 45 & -36 & -18 &  9 & 0 \\
+     0  &  0 &   9 &   2 &  4 & 5
+\end{array}\right) \to \left(\begin{array}{ccc|ccc}
+    -45 &  0 & 0 &   5 & 10 & -10 \\
+      0 & 45 & 0 & -10 & 25 &  20 \\
+      0 &  0 & 9 &   2 &  4 &   5
+\end{array}\right) \to \\\\\\
+\to \left(\displaystyle\begin{array}{ccc|ccc}
+    1 & 0 & 0 & -\displaystyle\frac{1}{9} & -\displaystyle\frac{2}{9} & \displaystyle\frac{2}{9} \\
+    ~ & ~ & ~ & ~                         & ~                         & ~                        \\
+    0 & 1 & 0 & -\displaystyle\frac{2}{9} &  \displaystyle\frac{5}{9} & \displaystyle\frac{4}{9} \\
+    ~ & ~ & ~ & ~                         & ~                         & ~                        \\
+    0 & 0 & 1 &  \displaystyle\frac{2}{9} &  \displaystyle\frac{4}{9} & \displaystyle\frac{5}{9}
+\end{array}\right) \implies C^{-1} = \frac{1}{9}\begin{pmatrix}
+    -1 & -2 & 2 \\
+    -2 &  5 & 4 \\
+     2 &  4 & 5
+\end{pmatrix}$ \\\\
+
+Тогава пресмятаме $C^{-1}.A.C = \frac{1}{9}\begin{pmatrix}
+    -1 & -2 & 2 \\
+    -2 &  5 & 4 \\
+     2 &  4 & 5
+\end{pmatrix}.\begin{pmatrix}
+    -2 &  2 & -2 \\
+     2 &  1 & -4 \\
+    -2 & -4 &  1
+\end{pmatrix}.\begin{pmatrix}
+    -1 & -2 & 2 \\
+    -2 &  1 & 0 \\
+     2 &  0 & 1
+\end{pmatrix} = \\\\\\
+= \frac{1}{9}\begin{pmatrix}
+    -1 & -2 & 2 \\
+    -2 &  5 & 4 \\
+     2 &  4 & 5
+\end{pmatrix}.\begin{pmatrix}
+     -6 &  6 & -6 \\
+    -12 & -3 &  0 \\
+     12 &  0 & -3
+\end{pmatrix} = \frac{1}{9}\begin{pmatrix}
+    54 &   0 &   0 \\
+     0 & -27 &   0 \\
+     0 &   0 & -27
+\end{pmatrix} = \begin{pmatrix}
+    6 &  0 &  0 \\
+    0 & -3 &  0 \\
+    0 &  0 & -3
+\end{pmatrix} = D \\\\\\
+\implies M_e(\phi) = A = C.D.C^{-1} \implies M_e(\phi^{99}) = [M_e(\phi)]^{99} = A^{99} = C.D^{99}.C^{-1} = \\\\
+= \begin{pmatrix}
+    -1 & -2 & 2 \\
+    -2 &  1 & 0 \\
+     2 &  0 & 1
+\end{pmatrix}.\begin{pmatrix}
+    6^{99} &  0 &  0 \\
+    0 & (-3)^{99} &  0 \\
+    0 &  0 & (-3)^{99}
+\end{pmatrix}.\frac{1}{9}\begin{pmatrix}
+    -1 & -2 & 2 \\
+    -2 &  5 & 4 \\
+     2 &  4 & 5
+\end{pmatrix} = \\\\\\
+= \frac{1}{9}.\begin{pmatrix}
+    -1 & -2 & 2 \\
+    -2 &  1 & 0 \\
+     2 &  0 & 1
+\end{pmatrix}.\begin{pmatrix}
+    -6^{99}      &   -2.6^{99} &    2.6^{99} \\
+    -2.(-3)^{99} & 5.(-3)^{99} & 4.(-3)^{99} \\
+     2.(-3)^{99} & 4.(-3)^{99} & 5.(-3)^{99}
+\end{pmatrix} = \\\\\\
+= \frac{1}{9}\begin{pmatrix}
+    6^{99} + 8.(-3)^{99} & 2.(6^{99} - (-3)^{99}) & 2.((-3)^{99} - 6^{99}) \\
+    2.(6^{99} - (-3)^{99}) & 4.6^{99} + 5.(-3)^{99} & 4.((-3)^{99} - 6^{99}) \\
+    2.((-3)^{99} - 6^{99}) & 4.((-3)^{99} - 6^{99}) & 4.6^{99} + 5.(-3)^{99}
+\end{pmatrix}$ \\\\
+
+Отговор: \\
+
+$M_e(\phi^{99}) = \frac{1}{9}\begin{pmatrix}
+     a &   b &  -b \\
+     b &   c & -2b \\
+    -b & -2b &   c
+\end{pmatrix}$, където \\
+
+$(a, \; b, \; c) = (6^{99} + 8.(-3)^{99}, \; 2.(6^{99} - (-3)^{99}), \; 4.6^{99} + 5.(-3)^{99})$.
+
+\section*{Задача 3.}
+
+Нека $\V = \{ax + bx^2 + cx^3 \; | \; a, \; b, \; c \; \in \Q \}$ \\
+
+
+a) Докажете, че $\V$ е линейно пространство над $\Q$. \\
+
+Решение: \\
+
+$\forall v_1 = a_1x + b_1x^2 + c_1x^3, \; v_2 = a_2x + b_2x^2 + c_2x^3 \in \V \\\\
+v_1 + v_2 = (a_1x + b_1x^2 + c_1x^3) + (a_2x + b_2x^2 + c_2x^3) = (a_1 + a_2)x + (b_1 + b_2)x^2 + (c_1 + c_2)x^3 \\\\
+\begin{cases}
+    a_1, \; a_2 \in \Q \\
+    b_1, \; b_2 \in \Q \\
+    c_1, \; c_2 \in \Q
+\end{cases} \implies v_1 + v_2 \in \V$ \\\\
+
+$\forall \lambda \in Q, \; p = ax + bx^2 + cx^3 \in \V \; \lambda p = \lambda(ax + bx^2 + cx^3) = \lambda a x + \lambda b x^2 + \lambda c x^3 \\\\
+\lambda, \; a, \; b, \; c \in \Q \implies \lambda a, \; \lambda b, \; \lambda c \in \Q \implies \lambda p \in \V$. \\
+
+Очевидно $0 \in \V$, тогава $\V < \Q^4[x] < \Q[x]$, тоест $\V$ е линейно простраство над $\Q$. \\
+
+б) Определете размерността на $\V$. \\
+
+Решение: \\
+
+$\V = \{ax + bx^2 + cx^3 \; | \; a, \; b, \; c \; \in \Q \} = l(x, \; x^2, \; x^3) \implies \mathrm{dim}\V = \mathrm{dim}l(x, \; x^2, \; x^3) = 3$
+(лесно се съобразява, че всеки полином от $\V$ еднозначно се определя от избора на точно три константи). \\
+
+в) Напишете дефиницията за дуалното пространство на $\V$. \\
+
+Решение: \\
+
+$\V^* = \mathrm{Hom}(\V, \; \Q)$ - дуалното пространство на $\V$. \\
+
+г) Нека за всяко рационално число $q$, изображението $\varphi_q \; : \; \V \to \Q$ е такова изображение,
+че $\forall p \in \V \; \varphi_q(p) = p(q)$, докажете че то е елемент на дуалното пространство на $\V$. \\
+
+Решение: \\
+
+Нека $q \in \Q$ - произволно и нека $v_1, \; v_2 \in \V$, тогава \\
+
+$\varphi_q(v_1 + v_2) = (v_1 + v_2)(q) = v_1(q) + v_2(q) = \varphi_q(v_1) + \varphi_q(v_2) \implies \forall v, \; u \in \V \; \varphi_q(v + u) = \varphi_q(v) + \varphi_q(u) $ \\
+
+Нека $p \in \V$ и нека $\lambda \in \Q$, тогава $\varphi_q(\lambda p) = (\lambda p)(q) = \lambda p(q) = \lambda \varphi_q(p) \implies \\
+\forall v \in \V \; \forall \mu \in \Q \; \varphi_q(\mu v) = \mu \varphi_q(v)$ \\
+
+$\implies \varphi_q \in \mathrm{Hom}(\V, \; \Q) = \V^* \implies \forall y \in \Q \; \varphi_y \in \V^*$ \\
+
+д) Напишете определението за дуален базис на даден базис $A = \{a_1, \; a_2, \; a_3\}$ на $\V$. \\
+
+Решение: \\
+
+$A^* = \{a^1, \; a^2, \; a^3\} \subset V^*$ е дуален базис на базиса $A$, ако \\
+
+$\forall i, \; j \in \{1, \; 2, \; 3\} \quad a^i(a_j) = \delta_{ij} = \begin{cases}
+    0 & , \; i \neq j \\
+    1 & , \; i = j
+\end{cases}$ \\\\
+
+е) Да се намерят координатите на $\varphi_q$ относно дуалния базис
+$\{f_1, \; f_2, \; f_3\}$ на базиса $\{x, \; x^2, \; x^3\}$. \\
+
+Решение: \\
+
+Нека $q, \in \Q, \; f = \alpha f_1 + \beta f_2 + \gamma f_3 = \varphi_q$, тогава
+\begin{align*}
+    f(x) = (\alpha f_1 + \beta f_2 + \gamma f_3)(x) = \alpha f_1(x) + \beta f_2(x) + \gamma f_3(x) = \\
+    = \alpha\delta_{11} + \beta\delta_{21} + \gamma\delta_{31} = \alpha.1 + \beta.0 + \gamma.0 = \alpha = \varphi_q(x) = (x)(q) = q \\\\
+    f(x^2) = (\alpha f_1 + \beta f_2 + \gamma f_3)(x^2) = \alpha f_1(x^2) + \beta f_2(x^2) + \gamma f_3(x^2) = \\
+    = \alpha\delta_{12} + \beta\delta_{22} + \gamma\delta_{32} = \alpha.0 + \beta.1 + \gamma.0 = \beta = \varphi_q(x^2) = (x^2)(q) = q^2 \\\\
+    f(x^3) = (\alpha f_1 + \beta f_2 + \gamma f_3)(x^3) = \alpha f_1(x^3) + \beta f_2(x^3) + \gamma f_3(x^3) = \\
+    = \alpha\delta_{13} + \beta\delta_{23} + \gamma\delta_{33} = \alpha.0 + \beta.0 + \gamma.1 = \gamma = \varphi_q(x^3) = (x^3)(q) = q^3
+\end{align*}
+
+$\implies \varphi_q = qf_1 + q^2f_2 + q^3f_3$ \\
+
+ж) Докажете, че $\{\varphi_{19}, \; \varphi_{-111}, \; \varphi_{32}\}$ е базис на дуалното пространство на $\V$. \\
+
+Решение: \\
+
+От предната подточка имаме: \\
+
+\begin{align*}
+    \varphi_{19} = 19f_1 + 19^2f_2 + 19^3f_3 \\\\
+    \varphi_{-111} = (-111)f_1 + (-111)^2f_2 + (-111)^3f_3 \\\\
+    \varphi_{32} = 32f_1 + 32^2f_2 + 32^3f_3
+\end{align*} \\
+
+Имаме три дуални вектора, тогава те ще образуват базис на $\V^*$ ако са линейно независими.
+Тоест, ако уравнението $\alpha \varphi_{19} + \beta \varphi_{-111} + \gamma \varphi_{32} = \theta$ има единствено решение:
+$(\alpha, \; \beta, \; \gamma) = (0, \; 0, \; 0)$. \\
+
+\begin{align*}
+    \alpha \varphi_{19} + \beta \varphi_{-111} + \gamma \varphi_{32} = \theta \implies \\\\
+    \alpha[19f_1 + 19^2f_2 + 19^3f_3]\
+    + \beta[-111f_1 + 111^2f_2 - 111^3f_3]
+    + \gamma[32f_1 + 32^2f_2 + 32^3f_3]
+    = 0f_1 + 0f_2 + 0f_3 \\\\
+    \implies [19\alpha - 111 \beta + 32 \gamma]f_1
+    + [19^2\alpha + 111^2\beta + 32^2 \gamma]f_2
+    + [19^3\alpha - 111^3\beta + 32^3 \gamma]f_3
+    = 0f_1 + 0f_2 + 0f_3 \\\\
+    \implies \begin{cases}
+        19\alpha - 111 \beta + 32 \gamma = 0 \\
+        19^2\alpha + 111^2\beta + 32^2 \gamma = 0 \\
+        19^3\alpha - 111^3\beta + 32^3 \gamma = 0
+    \end{cases}
+\end{align*}
+
+От теорията знаем, че тази система има единствено нулевото решение, когато детерминантата на системата е различна от $0$.
+Нека я пресметнем: \\
+
+$\Delta = \begin{vmatrix}
+    19   & -111   & 32   \\
+    19^2 &  111^2 & 32^2 \\
+    19^3 & -111^3 & 32^3
+\end{vmatrix} = 19.(-111).32.\begin{vmatrix}
+    1    &   1    & 1   \\
+    19   &  -111  & 32  \\
+    19^2 &  111^2 & 32^2
+\end{vmatrix} = 19.(-111).32.W(19, \; -111, \; 32)$\\
+
+Получихме детерминанта на Вандермонд $W(19, \; -111, \; 32)$ и понеже числата $19, \; -111, \; 32$ са различни то тя е различна от $0$.
+Нека все пак я пресметнем честно: \\
+
+$W(19, \; -111, \; 32) = \begin{vmatrix}
+    1    &   1    & 1   \\
+    19   &  -111  & 32  \\
+    19^2 &  111^2 & 32^2
+\end{vmatrix} = \begin{vmatrix}
+    1    &   1    & 1   \\
+    19   &  -111  & 32  \\
+    19^2 - 19^2 &  111^2 - (-111).19 & 32^2 - 32.19
+\end{vmatrix} = \\\\\\
+= \begin{vmatrix}
+    1    &   1    & 1   \\
+    19 - 19   &  -111 - 19  & 32 - 19  \\
+    19^2 - 19^2 &  111^2 - (-111).19 & 32^2 - 32.19
+\end{vmatrix} = \begin{vmatrix}
+    1  &   1    & 1   \\
+    0 &  -111 - 19  & 32 - 19  \\
+    0 &  111(111 + 19) & 32.(32 - 19)
+\end{vmatrix} = \\\\\\
+= \begin{vmatrix}
+    -130 & 13 \\
+    111.(130) & 32.13
+\end{vmatrix} = -130.13.\begin{vmatrix}
+    1 & 1 \\
+    -111 & 32
+\end{vmatrix} = -130.13.(32 + 111) = -130.13.143$.\\
+
+Получихме $\Delta = 19.(-111).32.(-130).13.143 = 19.111.32.130.13.143 > 0$ \\
+
+з) Ако знаете, че $\beta = \{\varphi_1, \; \varphi_{-1}, \; \varphi_2\}$ е базис на дуалното пространство на $\V$
+намерете базис $b$ на $\V$, на който $\beta$ е дуален базис. \\
+
+Решение: \\
+
+Нека търсения базис е $b = \{v_1, \; v_2, \; v_3\} \subset \V$.
+Естествено е да запишем търсените полиноми като:
+\begin{align*}
+    v_1 = a_1x +b_1x^2 + c_1x^3 \\
+    v_2 = a_2x +b_2x^2 + c_2x^3 \\
+    v_3 = a_3x +b_3x^2 + c_3x^3 \\
+\end{align*}
+тогава ествено е да запишем дадения базис като $v^1 = \varphi_1$, $v^2 = \varphi_{-1}$, $v^3 = \varphi_2$
+и тогава от дефиницията за дуален базис имаме $\forall i, \; j \in \{1, \; 2, \; 3\} \quad v^i(v_j) = \delta_{ij}$.
+За $v_1$ имаме: 
+
+\begin{align*}
+    v^1(v_1) = \varphi_1(v_1) = v_1(1) = (a_1x +b_1x^2 + c_1x^3)(1) = a_1 + b_1 + c_1 = \delta_{11} = 1 \\
+    v^2(v_1) = \varphi_{-1}(v_1) = v_1(-1) = (a_1x +b_1x^2 + c_1x^3)(-1) = -a_1 + b_1 - c_1 = \delta_{21} = 0 \\
+    v^3(v_1) = \varphi_2(v_1) = v_1(2) = (a_1x +b_1x^2 + c_1x^3)(2) = 2.a_1 + 4.b_1 + 8.c_1 = \delta_{31} = 0
+\end{align*} \\
+
+Тогава за $v_1$ получаваме следната система:
+\begin{align*}
+    \begin{cases}
+         a_1 +  b_1 + c_1 = 1 \\
+        -a_1 +  b_1 -  c_1 = 0 \\
+        2a_1 + 4b_1 + 8c_1 = 0
+    \end{cases}
+\end{align*}
+
+Нека я решим: \\
+
+$\left(\begin{array}{ccc|c}
+     1 & 1 &  1 & 1 \\
+    -1 & 1 & -1 & 0 \\
+     2 & 4 &  8 & 0
+\end{array}\right) \to \left(\begin{array}{ccc|c}
+    1 & 1 & 1 &  1 \\
+    0 & 2 & 0 &  1 \\
+    0 & 2 & 6 & -2
+\end{array}\right) \to \left(\begin{array}{ccc|c}
+    2 & 2 & 2 &  2 \\
+    0 & 2 & 0 &  1 \\
+    0 & 2 & 6 & -2
+\end{array}\right) \to \left(\begin{array}{ccc|c}
+    2 & 0 & 2 &  1 \\
+    0 & 2 & 0 &  1 \\
+    0 & 0 & 6 & -3
+\end{array}\right) \implies \\\\
+c_1 = -\frac{1}{2}, \; b_1 = \frac{1}{2} \implies 2.a_1 = 1 - 2c_1 = 1 + 1 = 2 \implies a_1 = 1 \implies v_1 = x + \frac{x^2}{2} - \frac{x^3}{2}$ \\
+
+По аналогичен начин за $v_2$ получаваме системата:
+\begin{align*}
+    \begin{cases}
+         a_2 +  b_2 + c_2 = 0 \\
+        -a_2 +  b_2 -  c_2 = 1 \\
+        2a_2 + 4b_2 + 8c_2 = 0
+    \end{cases}
+\end{align*}
+
+Нека я решим: \\
+
+$\left(\begin{array}{ccc|c}
+     1 & 1 &  1 & 0 \\
+    -1 & 1 & -1 & 1 \\
+     2 & 4 &  8 & 0
+\end{array}\right) \to \left(\begin{array}{ccc|c}
+    1 & 1 & 1 & 0 \\
+    0 & 2 & 0 & 1 \\
+    0 & 2 & 6 & 0
+\end{array}\right) \to \left(\begin{array}{ccc|c}
+    2 & 2 & 2 & 0 \\
+    0 & 2 & 0 & 1 \\
+    0 & 2 & 6 & 0
+\end{array}\right) \to \left(\begin{array}{ccc|c}
+    2 & 0 & 2 & -1 \\
+    0 & 2 & 0 &  1 \\
+    0 & 0 & 6 & -1
+\end{array}\right) \implies \\\\
+c_2 = -\frac{1}{6}, \; b_2 = \frac{1}{2} \implies 2a_2 = -1 - 2c_2 = -1 + \frac{1}{3} = -\frac{2}{3} \implies a_2 = -\frac{1}{3} \implies v_2 = -\frac{x}{3} + \frac{x^2}{2} - \frac{x^3}{6}$ \\
+
+Също така по аналогичен начин за $v_3$ получаваме системата:
+\begin{align*}
+    \begin{cases}
+         a_3 +  b_3 + c_3 = 0 \\
+        -a_3 +  b_3 -  c_3 = 0 \\
+        2a_3 + 4b_3 + 8c_3 = 1
+    \end{cases}
+\end{align*}
+
+Нека я решим: \\
+
+$\left(\begin{array}{ccc|c}
+     1 & 1 &  1 & 0 \\
+    -1 & 1 & -1 & 0 \\
+     2 & 4 &  8 & 1
+\end{array}\right) \to \left(\begin{array}{ccc|c}
+    1 & 1 & 1 & 0 \\
+    0 & 2 & 0 & 0 \\
+    0 & 2 & 6 & 0
+\end{array}\right) \to \left(\begin{array}{ccc|c}
+    2 & 2 & 2 & 0 \\
+    0 & 2 & 0 & 0 \\
+    0 & 2 & 6 & 1
+\end{array}\right) \to \left(\begin{array}{ccc|c}
+    2 & 0 & 2 & 0 \\
+    0 & 2 & 0 & 0 \\
+    0 & 0 & 6 & 1
+\end{array}\right) \to \left(\begin{array}{ccc|c}
+    1 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 6 & 1
+\end{array}\right) \\\\
+\implies c_3 = \frac{1}{6}, \; b_3 = 0 \implies a_3 = -c_3 = -\frac{1}{6} \implies v_3 = -\frac{x}{6} + \frac{x^3}{6}$.
+Получихме: 
+
+\begin{align*}
+    v_1 = x + \frac{x^2}{2} - \frac{x^3}{2} \\
+    v_2 = -\frac{x}{3} + \frac{x^2}{2} - \frac{x^3}{6} \\
+    v_3 = -\frac{x}{6} + \frac{x^3}{6}
+\end{align*}
+
+и) Постройте изоморфизъм между $\V$ и неговото дуално пространство. \\
+
+Решение: \\
+
+Построяваме следното изображение $\sigma \; : \; \V \to \V^*$, за което
+\begin{align*}
+    \sigma(v_1) = v^1 \\
+    \sigma(v_2) = v^2 \\
+    \sigma(v_3) = v^3
+\end{align*}
+
+Разширяваме $\sigma$ до линейно изображение: \\
+$\forall \mu_1, \; \mu_2, \; \mu_3 \in \Q \; \sigma(\mu_1v_1 + \mu_2v_2 + \mu_3v_3) = \mu_1v^1 + \mu_2v^2 + \mu_3v^3$. \\
+
+От теорията знаем, че $\mathrm{dim}\V^* = \mathrm{dim}\V = 3$ построихме $\sigma$, така че да е линейно изображение,
+тогава от теорията (теоремата за изомофризъм между крайно мерни линейни пространства със съвпадаща размерност) следва, че $\sigma$ е изоморфизъм между $\V$ и $\V^*$. \\
+
+й) Напишете каква е матрицата на построения от вас изоморфизъм спрямо базисите $b$ на $\V$ и $\beta$ на дуалното пространство на $\V$. \\
+
+Решение: \\
+
+От начина, по който построихме $\sigma$ следва, че $M_b^\beta(\sigma) = \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+\end{pmatrix} = E_3$.
+\end{document}
