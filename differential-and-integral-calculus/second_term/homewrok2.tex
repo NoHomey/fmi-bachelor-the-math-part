@@ -1,0 +1,108 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage[margin=0.5in, top=1cm, left=1in]{geometry}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Sum}{\displaystyle\sum_{n = 1}^\infty}
+\newcommand{\Lim}[1]{\displaystyle\lim_{x  \to #1}}
+
+\title{Домашна работа 3, № 45342, Група 3}
+\author{Иво Стратев}
+
+\DeclareMathSizes{10}{14}{10}{7}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \maketitle
+    \section{Задача 1.}
+    \(\Sum a_n = \Sum \frac{n!(2n)!}{(3n)!} \\\\\\
+    a_n = \frac{n!(2n)!}{(3n)!}, \quad a_{n + 1} = \frac{(n + 1)!(2n + 2)!}{(3n + 3)!}, \quad \forall n \in \N \; a_n > 0 \\\\\\
+    d_n = \frac{a_{n + 1}}{a_n} = \frac{(n + 1)!(2n + 2)!}{(3n + 3)!}\frac{(3n)!}{n!(2n)!} = \frac{(n + 1)(2n + 1)(2n + 2)}{(3n + 1)(3n + 2)(3n + 3)} = \\\\\\
+    = \frac{(2n + 1)(2n + 2)}{(3n + 1)(3n + 2)3} = \frac{4n^2 + 6n + 2}{(9n^2 + 9n + 2)3} \to \frac{4}{27} < 1 \implies \text{сходимост по Даламбер}\)
+    \section{Задача 2.}
+    \(\Sum a_nx^{4n} = \Sum \frac{x^{4n}}{(n + 1)(3^n + 2)} = \Sum \frac{(x^4)^n}{(n + 1)(3^n + 2)} = \Sum a_n(x^4)^n \\\\\\
+    y = x^4 \implies \Sum a_ny^n = \Sum \frac{y^n}{(n + 1)(3^n + 2)} \\\\\\
+    a_n = \frac{1}{(n + 1)(3^n + 2)}, \quad a_{n + 1} = \frac{1}{(n + 2)(3^{n + 1} + 2)}, \quad \forall n \in \N \; a_n > 0 \\\\\\
+    d_{a_n} = \frac{a_{n + 1}}{a_n} = \frac{(n + 1)(3^n + 2)}{(n + 2)(3^{n + 1} + 2)} = \frac{n3^n + 2n + 3^n + 2}{3n3^n + 2n + 6.3^n + 4} \to \frac{1}{3} = \frac{1}{R_y} \implies \\\\\\
+    R = R_x = \sqrt[4]{R_y} = \sqrt[4]{3} \quad \implies \quad
+    \begin{tikzpicture}
+        \draw(-1,0) -- (5,0);
+        \foreach \x in {1,2,3}
+            \draw (\x cm,3pt) -- (\x cm,-3pt);
+        \draw (1,0) node[below=3pt] {$ -\sqrt[4]{3} $};
+        \draw (2,0) node[below=3pt] {$ 0 $};
+        \draw (3,0) node[below=3pt] {$ \sqrt[4]{3} $};
+        \draw (1,0) node[above=3pt] {?};
+        \draw (2,0) node[above=3pt] {абс. сх.};
+        \draw (3,0) node[above=3pt] {?};
+        \draw (0,0) node[above=3pt] {разх.};
+        \draw (4,0) node[above=3pt] {разх.};
+    \end{tikzpicture} \\\\\\ 
+    x = \sqrt[4]{3} \implies \Sum b_n = \Sum \frac{\left(\left(\sqrt[4]{3}\right)^4\right)^n}{(n + 1)(3^n + 2)} = \Sum \frac{3^n}{(n + 1)(3^n + 2)} \\\\\\
+    b_n = \frac{3^n}{(n + 1)(3^n + 2)}, \quad b_{n + 1} = \frac{3^{n + 1}}{(n + 2)(3^{n + 1} + 2)} \\\\\\
+    d_{b_n} = \frac{b_{n + 1}}{b_n} = \frac{3^{n + 1}}{(n + 2)(3^{n + 1} + 2)} \frac{(n + 1)(3^n + 2)}{3^n} = \\\\\\
+    \frac{3^{n + 1}}{3^n}d_{a_n} = 3d_{a_n} = 3\frac{n3^n + 2n + 3^n + 2}{3n3^n + 2n + 6.3^n + 4} = \\\\\\
+    \frac{3n3^n + 6n + 3.3^n + 6}{3n3^n + 2n + 6.3^n + 4} \to 1 \implies \text{нищо по Даламбер} \\\\\\
+    r_{b_n} = n\left(\frac{1}{d_{b_n}} - 1\right) = n\left(\frac{3n3^n + 2n + 6.3^n + 4 - (3n3^n + 6n + 3.3^n + 6)}{3n3^n + 6n + 3.3^n + 6}\right) = \\\\\\
+    = n\left(\frac{3.3^n - 4n - 2}{3n3^n + 6n + 3.3^n + 6}\right) = \frac{3n3^n - 4n^2 - 2n}{3n3^n + 6n + 3.3^n + 6} \to 1 \implies \text{нищо по Раабе-Дюамел} \\\\\\
+    \forall n \in \N \; \frac{1}{n} > 0, \quad \Sum \frac{1}{n} \; \text{ е разходящ} \\\\\\
+    \displaystyle\lim_{n \to \infty} \frac{b_n}{\frac{1}{n}} = \frac{n3^n}{(n + 1)(3^n + 2)} \to 1 > 0 \implies \\\\\\
+    \Sum b_n \; \text{ е разходящ съгласно граничната форма на критерият за сравнение.} \\\\\\	
+    x = -\sqrt[4]{3} \implies \Sum c_n = \Sum \frac{\left(\left(-\sqrt[4]{3}\right)^4\right)^n}{(n + 1)(3^n + 2)} = \Sum \frac{3^n}{(n + 1)(3^n + 2)} \implies \\\\\\
+    \Sum c_n = \Sum b_n \implies \Sum c_n \text{ е разходящ} \implies \\\\\\
+    \forall x \in (-\sqrt[4]{3}, \sqrt[4]{3}) \; \Sum a_nx^{4n} \text{ е сходящ (абсолютно сходящ)}\)
+    \section{Задача 3.}
+    \(f(x) = \begin{cases}
+    	x &, \; x \in [0, \frac{\pi}{2}) \\
+    	\\
+    	\pi - x &, \; x \in [\frac{\pi}{2}, \pi]
+    \end{cases} \\\\\\
+    \text{Очевидно } f \text{ е непрекъсната в интервалите } [0, \frac{\pi}{2}), (\frac{\pi}{2}, \pi] \\\\
+    \Lim{\frac{\pi}{2}} f(x) = \Lim{\frac{\pi}{2}} \pi - x = \pi - \frac{\pi}{2} = \frac{\pi}{2} \\\\\\
+    \Lim{\frac{\pi}{2} - 0} f(x) = \Lim{\frac{\pi}{2} - 0} x = \frac{\pi}{2} \\\\\\
+    \Lim{\frac{\pi}{2} + 0} f(x) = \Lim{\frac{\pi}{2} + 0} \pi - x = \pi - \frac{\pi}{2} = \frac{\pi}{2} \\\\\\
+    f\left(\frac{\pi}{2}\right) = \pi - \frac{\pi}{2} = \frac{\pi}{2} \implies f \; \text{ е непрекъсната в } [0, \pi] \\\\\\
+    \forall x \in \left[\frac{\pi}{2}, \pi\right] \; f'(x) = (\pi - x)' = -1 < 0 \implies \forall x \in \left[\frac{\pi}{2}, \pi\right] \; f(x) \downarrow \\\\\\
+    \forall x \in \left[0, \frac{\pi}{2}\right) \; f'(x) = (x)' = 1 > 0 \implies \forall x \in \left[0, \frac{\pi}{2}\right) \; f(x) \uparrow \\\\\\
+    f' \; \text{ е прекъсната в } \frac{\pi}{2} \implies f \; \text{ е частично гладка в } [0, \pi] \\\\\\
+    \forall x \in \left[0, \pi\right] \; 0 \leq f(x) \leq \frac{\pi}{2} \implies f \; \text{ е интегруема в } [0, \pi] \\\\\\
+    f_1(x) = \begin{cases}
+    	-f(-x) &, \; x \in [-\pi, 0) \\
+    	f(x) &, \; x \in [0, \pi]
+    \end{cases} \implies \\\\\\
+    f_1 \text{ е нечетна и съвпада с } f \text{ в интервала } [0, \pi] \text{, което значи, че} \\\\
+    \text{развитието й в ред на Фурие ще е развитието на } f \text{ по синуси.} \\\\\\
+    f_1 \; \text{ е непрекъсната, частично гладка и интегруема в } [-\pi, \pi] \\\\\\
+    f_1(-\pi) = -f_1(\pi) = -(\pi - \pi) = 0 = \pi - \pi = f_1(\pi) \\\\\\
+    \implies \text{Редът на Фурие на } f_1 \text{ е равномерно сходящ в } [-\pi, \pi] \text{ и има за стойност } f_1(x) \\\\\\
+    \implies \forall x \in [0, \pi] \; \text{ сумата на реда ще съвпада със стойността на } f(x) \\\\\\ 
+    \forall n \in \N \cup \{0\} \; a_n = \frac{1}{\pi} \int_{-\pi}^\pi f_1(x)\cos (nx) \; \mathrm{d}x = 0 \\\\\\
+    \forall n \in \N \; b_n = \frac{1}{\pi} \int_{-\pi}^\pi f_1(x)\sin (nx) \; \mathrm{d}x = \frac{2}{\pi} \int_0^\pi f(x)\sin (nx) \; \mathrm{d}x = \\\\\\
+    = \frac{2}{\pi} \left(\int_0^\frac{\pi}{2} x\sin (nx) \; \mathrm{d}x + \int_\frac{\pi}{2}^\pi (\pi - x)\sin (nx) \; \mathrm{d}x \right) = \\\\\\
+    = \frac{2}{\pi} \left(\int_0^\frac{\pi}{2} x\sin (nx) \; \mathrm{d}x + \pi\int_\frac{\pi}{2}^\pi \sin (nx) \; \mathrm{d}x  - \int_\frac{\pi}{2}^\pi x\sin (nx) \; \mathrm{d}x  \right) = \\\\\\
+    = -\frac{2}{n\pi} \left(\int_0^\frac{\pi}{2} x \; \mathrm{d}\cos(nx) + \pi\cos(nx)\Big|_\frac{\pi}{2}^\pi  - \int_\frac{\pi}{2}^\pi x \; \mathrm{d}\cos(nx)  \right) \\\\\\
+    \int x \; \mathrm{d}\cos(nx) = x\cos(nx) - \int \cos(nx) \; \mathrm{d}x = x\cos(nx) - \frac{\sin(nx)}{n} \implies \\\\\\
+    b_n = -\frac{2}{n\pi} \left[\left(x\cos(nx) - \frac{\sin(nx)}{n}\right)\Big|_0^\frac{\pi}{2} + \pi\cos(nx)\Big|_\frac{\pi}{2}^\pi - \left(x\cos(nx) - \frac{\sin(nx)}{n}\right)\Big|_\frac{\pi}{2}^\pi \right] = \\\\\\
+    = -\frac{2}{n\pi} \left[\frac{\pi}{2}\cos\left(n\frac{\pi}{2}\right) - \frac{\sin\left(n\frac{\pi}{2}\right)}{n} + \pi\cos(n\pi) - \pi\cos\left(n\frac{\pi}{2}\right)
+    - \pi\cos(n\pi) \; + \right. \\\\\\
+    \left. + \frac{\pi}{2}\cos\left(n\frac{\pi}{2}\right) -\frac{\sin\left(n\frac{\pi}{2}\right)}{n} \right] = \frac{4}{\pi n^2}\sin\left(n\frac{\pi}{2}\right) \\\\\\
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+	\hline
+	n & 1 & 2 & 3  & 4 & 5 & 6 & 7  & 8 & 9 & 10 \\ \hline
+	\(\sin\left(n\frac{\pi}{2}\right)\) & 1 & 0 & -1 & 0 & 1 & 0 & -1 & 0 & 1 & 0 \\ \hline
+	\end{tabular} \implies \\\\\\
+	b_n = \begin{cases}
+	\frac{4}{\pi n^2}(-1)^{((\frac{n - 1}{2}) \bmod 2)} &, \; n \equiv 1 \pmod 2 \\\\
+	0 &, \; n \equiv 0 \pmod 2
+	\end{cases} \\\\\\
+	f_1(x) = \Sum b_n \sin(nx) = \Sum \frac{4}{\pi n^2}(-1)^{((\frac{2n - 2}{2}) \bmod 2)}\sin((2n - 1)x) = \\\\\\
+	= \Sum \frac{4}{\pi n^2}(-1)^{((n - 1) \bmod 2)}\sin((2n - 1)x = \Sum \frac{4}{\pi n^2}(-1)^{n - 1}\sin((2n - 1)x)\)
+\end{document}

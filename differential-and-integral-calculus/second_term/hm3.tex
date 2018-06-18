@@ -1,0 +1,234 @@
+\documentclass[14pt]{extarticle}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage[margin=0.5in, top=1cm, left=1in]{geometry}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Sum}{\displaystyle\sum_{n = 1}^\infty}
+\newcommand{\Lim}[1]{\displaystyle\lim_{y \to #1}}
+
+\title{Домашна работа 3. Вариант 2, № 45342, Група 3}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+\section{Задача 1.}
+Дадена е фунцкията \(f(x, y) = (x^2 -xy)e^{-y}\)
+\subsection{а) Да се изследва \(f(x, y)\) за локални екстремуми.}
+Решение: \\\\
+\(f(x, y) = (x^2 -xy)e^{-y} = xe^{-y}(x - y) \\\\
+f_x'(x, y) = e^{-y}(x - y) + xe^{-y} = e^{-y}(2x - y) \\\\
+f_y'(x, y) = -(x^2 -xy)e^{-y} -xe^{-y} = xe^{-y}(y - x - 1) \\\\
+\begin{cases}
+    f_x'(x, y) = 0 \\\\
+    f_y'(x, y) = 0
+\end{cases} \implies \begin{cases}
+    e^{-y}(2x - y) = 0 \\\\
+    xe^{-y}(y - x - 1) = 0
+\end{cases} \implies \begin{cases}
+    2x - y = 0 \\\\
+    x(y - x - 1) = 0
+\end{cases} \implies \\\\\\\\
+\begin{cases}
+    y = 2x  \\\\
+    2x(2x - x - 1) = 0
+\end{cases} \implies \begin{cases}
+    y = 2x  \\\\
+    x(x - 1) = 0
+\end{cases} \implies \{(0, 0), \; (1, 2)\} \\\\\\
+f_{xx}''(x, y) = 2e^{-y} \\\\ 
+f_{xy}''(x, y) = -e^{-y}(2x - y) - e^{-y} = e^{-y}(y - 2x - 1) \\\\
+f_{yx}''(x, y) = e^{-y}(y - x - 1) - xe^{-y} =  e^{-y}(y - 2x - 1) \\\\
+f_{yy}''(x, y) = -xe^{-y}(y - x - 1) + xe^{-y} = xe^{-y}(x - y + 2) \\\\
+\Delta(x,y) = \begin{vmatrix}
+    f_{xx}''(x, y) & f_{xy}''(x, y) \\\\
+    f_{yx}''(x, y) & f_{yy}''(x, y)
+ \end{vmatrix} = 
+ \begin{vmatrix}
+    2e^{-y} & e^{-y}(y - 2x - 1) \\\\
+    e^{-y}(y - 2x - 1) & xe^{-y}(x - y + 2)
+ \end{vmatrix} = \\\\\\
+ = 2xe^{-2y}(x - y + 2) - e^{-2y}(y - 2x - 1)^2 = \\\\
+ = e^{-2y}(2x^2 - 2xy + 4x) + e^{-2y}(-y^2 + 4xy + 2y - 4x^2 - 4x - 1) = \\\\
+ = e^{-2y}(2xy - y^2 - 2x^2 + 2y - 1) \\\\
+f_{xx}''(1, 2) = \frac{2}{e^2} > 0 \\\\
+\Delta(1, 2) = e^{-4}(4 - 4 - 2 + 4 - 1) = \frac{1}{e^4} > 0 \implies (1, 2) \) е локален минимум \\\\
+\(\Delta(0, 0) = -1 < 0 \implies (0, 0) \) е седлова точка
+\subsection{б) Да се изследва \(f(x, y)\) за глобални екстремуми в множеството \(D = \{(x, y) \in \R^2 \; | \; x^2 -xy + y^2 \leq 3\}\) }
+Решение: \\\\
+\((x^2 - xy)\) е непрекъсната фунцкия, като полином на две променливи е дефинирана навсякъде в \(\R^2\) и
+\(\frac{1}{e^y}\) е дефинирана и непрекъсната навсякъде в \(\R\). Тоест \(f(x, y)\) е непрекъсната и дефинирана навсякъде в \(\R^2\) и множеството \(D\)
+е компакт тогава от теоремата на Вайерщрас за \(f(x,y) \implies \\\\
+\exists \; \min\{f(x, y) \; | \; (x, y) \in D\} \; \wedge \; \exists \; \max\{f(x, y) \; | \; (x, y) \in D\}\) \\\\
+От изследването ни досега знаем, че \(f(x, y)\) има локален минимум в \((1, 2) \\\\
+1^2 - 2 + 4 = 3 \leq 3 \implies (1, 2) \in D\).  \\\\
+От теоремата на Вайерщрас знаем, че глобалния минимум и максимум в компакт се реализират или във вътрешна точка или по контура на компактното множество.
+Тоест остава ни да разледаме \(f(x, y)\) в множеството: \\\\
+\(\overline{D} = \{(x, y) \in \R^2 \; | \; x^2 -xy + y^2 = 3\} = \{(x, y) \in \R^2 \; | \; x^2 -xy = 3 - y^2\}\). \\\\
+За целта разглеждаме функцията: \(g(y) = f(x, y)|_{\overline{D}} = (3 - y^2)e^{-y} \\\\
+g'(y) = -e^{-y}(3 - y^2) - 2ye^{-y} = e^{-y}(y^2 - 2y - 3) \implies \\\\
+g'(y) = 0 \iff y^2 - 2y - 3 = 0 \iff (y + 1) (y - 3) = 0 \iff y = - 1 \; \vee \; y = 3 \) \\\\
+\(g'(y)\): \begin{tikzpicture}
+        \draw(0,0) -- (6,0);
+        \draw (2 cm,3pt) -- (2 cm,-3pt);
+        \draw (4 cm,3pt) -- (4 cm,-3pt);
+        \draw (1,0) node[above=-3pt] {$ + $};
+        \draw (2,0) node[below=3pt] {$ -1 $};
+        \draw (3,0) node[above=-3pt] {$ - $};
+        \draw (4,0) node[below=3pt] {$ 3 $};
+        \draw (5,0) node[above=-3pt] {$ + $};
+\end{tikzpicture} \(\implies\) \(g(y)\): \begin{tikzpicture}
+        \draw(0,0) -- (6,0);
+        \draw (2 cm,3pt) -- (2 cm,-3pt);
+        \draw (4 cm,3pt) -- (4 cm,-3pt);
+        \draw (1,0) node[above=-3pt] {$ \nearrow $};
+        \draw (2,0) node[below=3pt] {$ -1 $};
+        \draw (3,0) node[above=-3pt] {$ \searrow $};
+        \draw (4,0) node[below=3pt] {$ 3 $};
+        \draw (5,0) node[above=-3pt] {$ \nearrow $};
+\end{tikzpicture} \\\\\\
+\(\implies g(-1)\) е локален максимум, а \(g(3)\) е локален минимум. \\\\
+\(\Lim{\infty} g(y) = \Lim{\infty} (3 - y^2)e^{-y} = \Lim{\infty} \frac{3 - y^2}{e^y} = 0 \\\\
+\Lim{-\infty} g(y) = \Lim{-\infty} (3 - y^2)e^{-y} = \Lim{-\infty} (3 - y^2)e^y = -\infty \implies \\\\
+g(y) \) е не ограничена при \(y \to -\infty\) \\\\
+За \(g(y)\) като произведение на непрекъснати фунцкии, дефинирани навсякъде в \(R\) можем да търсим глобалния
+минимум и максимум само в подходящ краен и затворен интервал, в който да приложим теоремата на Вайерщрас. Тогава: \\\\
+\(\forall (x, y) \in D \; x^2 -xy + y^2 \leq 3 \implies x^2 -2x\frac{y}{2} + 4\left(\frac{y}{2}\right)^2 \leq 3 \implies \\\\
+0 \leq \left(x - \frac{y}{2}\right)^2 + \frac{3}{4}y^2 \leq 3 \implies 0 \leq \left(x - \frac{y}{2}\right)^2 \leq 3 - \frac{3}{4}y^2 \implies 0 \leq 3 \left(1 - \frac{1}{4}y^2\right) \implies \\\\
+0 \leq 1 - \frac{1}{4}y^2 \implies y^2 \leq 4 \implies |y| \leq 2 \implies y \in [-2, 2] \) \\\\
+Следователно търсим глобален минимум и максимум на \(g(y)\) в интервала \([-2, 2]: \\
+3 \notin [-2, 2] \\\\
+g(-1) = (3 - 1)e^1 = 2e \\\\
+g(2) = (3 - 4)e^{-2} = - \frac{1}{e^2} \\\\
+g(-2) = (3 - 4)e^2 = -e^2 \\\\
+f(1, 2) = 1e^{-2}(1 - 2) = - \frac{1}{e^2} \implies \\\\
+\min\{f(x, y) \; | \; (x, y) \in D\} = g(-2) = -e^2 \\\\
+\max\{f(x, y) \; | \; (x, y) \in D\} = g(-1) = 2e \\\\
+3 - y^2 = x^2 -xy \)\\\\
+При \(y = -1 \implies 2 = x^2 + x \implies \\\\
+x^2 + x -2 = 0 \implies x = 1 \; \vee \; x = -2\) \\\\
+При \(y = -2 \implies -1 = x^2 + 2x \implies \\\\
+x^2 + 2x + 1 = 0 \implies x = -1\)
+\subsection*{Отговор:}
+Глобалният минимум на \(f(x, y) \) за \((x, y) \in D\) е: \(-e^2\) и той се достига в точката с координати \((-1, -2)\). \\\\
+Глобалният максимум на \(f(x, y) \) за \((x, y) \in D\) е: \(2e\) и той се достига в точките с координати \((1, -1), \; (-2, -1)\)
+\subsection*{Проверка чрез използването на множители на Лагранж}
+Нека \(h(x, y) = x^2 -xy + y^2 - 3\) \\\\
+Тогава разглеждаме Лагранжиана: \\\\
+\(\Phi(x, y, \lambda) =  (\Lambda(f, h, \lambda))(x, y) = f(x, y) + \lambda h(x, y) = \\\\
+= (x^2 -xy)e^{-y} + \lambda(x^2 -xy + y^2 - 3) = (x^2 -xy)(e^{-y} + \lambda) + \lambda y^2 = 3\lambda \\\\
+\Phi'_x(x, y, \lambda) = (e^{-y} + \lambda)(x, y) + x(e^{-y} + \lambda) = (e^{-y} + \lambda)(2x - y) \\\\
+\Phi'_y(x, y, \lambda) = f'_y(x, y) + (\lambda(x^2 -xy + y^2 - 3))'_y = xe^{-y}(y - x - 1) + \lambda (2y - x) \\\\
+\Phi'_\lambda(x, y, \lambda) = x^2 -xy + y^2 - 3 \\\\
+\begin{cases}
+\Phi'_x(x, y, \lambda) = 0 \\
+\Phi'_y(x, y, \lambda) = 0 \\
+\Phi'_\lambda(x, y, \lambda) = 0
+\end{cases} \implies
+\begin{cases}
+(e^{-y} + \lambda)(2x - y) = 0 \\
+xe^{-y}(y - x - 1) + \lambda (2y - x) = 0 \\
+x^2 -xy + y^2 - 3 = 0
+\end{cases} \implies \\\\\\
+(e^{-y} + \lambda) = 0 \; \vee \; (2x - y) = 0\) \\\\
+Ако \(e^{-y} + \lambda = 0 \implies 
+\begin{cases}
+\lambda = -e^{-y} \\
+xe^{-y}(y - x - 1) - e^{-y}(2y - x) = 0 \\
+x^2 -xy + y^2 - 3 = 0
+\end{cases} \implies \\\\
+\begin{cases}
+\lambda = -e^{-y} \\
+e^{-y}(yx - x^2 - x) = e^{-y}(2y - x) \\
+x^2 -xy + y^2 - 3 = 0
+\end{cases} \implies
+\begin{cases}
+\lambda = -e^{-y} \\
+yx - x^2 = 2y \\
+x^2 -xy + y^2 - 3 = 0
+\end{cases} \implies \\\\
+\begin{cases}
+\lambda = -e^{-y} \\
+x^2 = xy - 2y \\
+xy - 2y -xy + y^2 - 3 = 0
+\end{cases} \implies
+\begin{cases}
+\lambda = -e^{-y} \\
+x^2 = xy - 2y \\
+y^2 -2y - 3 = 0
+\end{cases} \implies 
+\begin{cases}
+\lambda = -e^{-y} \\
+x^2 = xy - 2y \\
+(y - 3)(y + 1) = 0
+\end{cases} \implies \\\\
+\begin{cases}
+\lambda = -e^{-3} \\
+x^2 -3x + 6 = 0\\
+y = 3
+\end{cases} \; \bigvee \quad \begin{cases}
+\lambda = -e \\
+x^2 + x - 2 = 0\\
+y = -1
+\end{cases} \implies \\\\\\
+\begin{cases}
+\lambda = -e^{-3} \\
+x \notin \R \\
+y = 3
+\end{cases} \; \bigvee \quad \begin{cases}
+\lambda = -e \\
+(x - 1)(x + 2) = 0 \\
+y = -1
+\end{cases} \implies
+\begin{cases}
+\lambda = -e \\
+x = -2 \\
+y = -1
+\end{cases} \; \bigvee \quad \begin{cases}
+\lambda = -e \\
+x = 1 \\
+y = -1
+\end{cases}\) \\\\\\
+Ако \(2x - y = 0 \implies
+\begin{cases}
+y = 2x \\
+xe^{-2x}(2x - x - 1) + \lambda (4x - x) = 0 \\
+x^2 -2x^2 + 4x^2 - 3 = 0
+\end{cases} \implies \\\\\\
+\begin{cases}
+y = 2x \\
+xe^{-2x}(x - 1) + 3\lambda x = 0 \\
+3x^2 = 3
+\end{cases} \implies \\\\\\
+\begin{cases}
+y = 2x \\
+xe^{-2x}(x - 1) + 3\lambda x = 0 \\
+|x| = 1
+\end{cases}  \implies \\\\\\
+\begin{cases}
+y = -2 \\
+2e^{2} - 3\lambda = 0 \\
+x = -1
+\end{cases}  \; \bigvee \quad \begin{cases}
+y = 2 \\
+0 - 3\lambda = 0 \\
+x = 1
+\end{cases} \implies \begin{cases}
+y = -2 \\
+\frac{2}{3}e^{2} = \lambda \\
+x = -1
+\end{cases}  \; \bigvee \quad \begin{cases}
+y = 2 \\
+\lambda = 0 \\
+x = 1
+\end{cases} \implies \\\\\\
+\{(-2, -1), \; (1, -1), \; (-1, - 2), \; (1, 2)\}\)
+\end{document}

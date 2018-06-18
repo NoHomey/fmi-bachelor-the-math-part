@@ -1,0 +1,213 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage[margin=0.5in, top=1cm, left=0.5in]{geometry}
+
+\newcommand{\dx}[1][x]{\,\mathrm{d}#1}
+\newcommand{\stkout}[1]{\ifmmode\text{\sout{\ensuremath{#1}}}\else\sout{#1}\fi}
+
+
+\title{Домашна работа 1. Вариант 2. № 45342. Група 3}
+\author{Иво Стратев}
+
+\DeclareMathSizes{10}{14}{9}{7}
+
+\begin{document}
+    \maketitle
+    \section{Задача 1.}
+	\(C: x^2 + y^2 \leq 5^2 \\
+	  P: y = x^2 - 5 \\
+	  K: x^2 + y^2 = 5^2 \implies K(O(0, 0), 5) \\
+	  {V_P}_x = 0 \implies {V_P}_y = -5 \implies V_P(0, -5) \\\\
+	  \Phi:
+	\begin{cases}
+	  x^2 + y^2 \leq 5^2 \\
+	  y = x^2 - 5		
+	\end{cases} \\\\
+	  \Gamma:
+	\begin{cases}
+	  y = x^2 - 5 \\
+	  x^2 + y^2 = 5^2		
+	\end{cases} \to
+	\begin{cases}
+	  x^2 = y + 5 \\
+	  y + 5 + y^2 = 5^2		
+	\end{cases} \\\\\\
+	  y^2 + y - 20 = 0 \\
+	  D = 1 -4.(-20) = 1 + 80 = 81 \\
+	  y_1 = \frac{-1 + 9}{2} = 4 \\
+	  y_2 = \frac{-1 - 9}{2} = -5 \\\\
+	  4 = x^2 - 5 \\
+	  9 = x^2 \\
+	  x_1 = 3 \\
+	  x_2 = -3 \\\\
+	  -5 = x^2 - 5 \\
+	  x_3 = 0 \\\\
+	  \implies K \cap P = \{(0, -5), \; (-3, 4), \; (3, 4)\} \\\\
+	\begin{tikzpicture}[scale=0.7]
+	  \draw (0, -5) parabola (-3, 4) node[above] {(-3, 4)};
+	  \draw (0, -5) parabola (3, 4) node[above] {(3, 4)};
+	  \draw (0, -5) node[below] {$ V_P $ (0,-5)} -- (0, 5);
+	  \draw (0, 0) node[align=center, left] {$ S_C $} circle (5);
+	  \draw (-1, 2.5) node[align=center, left] {$ S_{ml} $};
+	  \draw (1, 2.5) node[align=center, right] {$ S_{mr} $};
+	  \draw (0, 0.5) node[align=center, right] {$ S_m $};
+	  \draw (0.5, -1) node[align=center, right] {$ S_\gamma $};
+	  \draw (-3, -1) node[align=center, left] {$ S_l $};
+	  \draw (3, -1) node[align=center, right] {$ S_r $};
+	\end{tikzpicture} \\\\\\
+	  K: y^2 = 25 - x^2 \implies K: y = \pm \sqrt{25 - x^2} \\\\
+	  \forall x \in [0, 3] : \\\\
+	  f(x) = \sqrt{25 - x^2} \\
+	  f'(x) = \frac{-\stkout{2}x}{\stkout{2}\sqrt{25 - x^2}} = -\frac{x}{\sqrt{25 - x^2}} \implies f'(x) < 0 \implies \\
+	  f(x) \downarrow \implies
+	\begin{cases}
+	  f_{max}(x) = f(0) = \sqrt{25 - 0} = 5 \\
+	  f_{min}(x) = f(3) = \sqrt{25 - 9} = \sqrt{16} =  4 \\
+	\end{cases} \\\\\\
+	  P: y = x^2 - 5, \; g(x) = x^2 - 5 \\
+	  g'(x) = 2x \implies g'(x) > 0 \implies \\
+	  g(x) \uparrow \implies
+	\begin{cases}
+	  g_{max}(x) = g(3) = 9 - 5 = 4 \\
+	  g_{min}(x) = g(0) = 0 - 5 = -5 \\
+	\end{cases} \\\\\\
+	  \implies \forall x \in [0, 3] \; g(x) \leq f(x) \\
+	  \gamma:
+	\begin{cases}
+	  0 \leq x \leq 3 \\
+	  g(x) \leq y \leq f(x) \\
+	\end{cases} \implies \\\\
+	  S_\gamma = \int_0^3 f(x) - g(x) \dx \\\\
+	  S_C = \pi5^2 = 25\pi \\\\
+	  S_C = S_l + S_m + S_r \\\\
+	  S_m = S_{ml} + S_{mr} \\\\
+	  S_{ml} = S_{mr} = S_\gamma \implies S_m = 2S_\gamma \\\\
+	  S_l = S_r = \frac{1}{2} (S_C - S_m) = 12.5\pi - S_\gamma \)
+	\begin{align*}
+	  S_\gamma = \int_0^3 f(x) - g(x) \dx \\
+	  &=& \int_0^3 \sqrt{25 - x^2} - (x^2 - 5) \dx \\
+	  &=& \int_0^3 \sqrt{25 - x^2} - x^2 + 5 \dx \\
+	  &=& (- \frac{x^3}{3} + 5x)|_0^3 + \int_0^3 \sqrt{25 - x^2} \dx \\
+	  &=& 15 - \frac{\stkout{27}}{\stkout{3}} + \int_0^3 \sqrt{25 - x^2} \dx \\
+	  &=& 6 + \int_0^3 \sqrt{25 - x^2} \dx
+	\end{align*}
+	\begin{align*}
+	  I = \int_0^3 \sqrt{25 - x^2} \dx \\
+	  &=& x\sqrt{25 - x^2}|_0^3 - \int_0^3 x \dx[\sqrt{25 - x^2}] \\
+	  &=& 3\sqrt{25 - 9} - \int_0^3 \frac{x.(-\stkout{2}x)}{\stkout{2}\sqrt{25 - x^2}} \dx \\
+	  &=& 3\sqrt{16} + \int_0^3 \frac{x^2}{\sqrt{25 - x^2}} \dx \\
+	  &=& 12 + \int_0^3 \frac{x^2 + 25 - 25}{\sqrt{25 - x^2}} \dx \\
+	  &=& 12 + \int_0^3 \frac{x^2 - 25}{\sqrt{25 - x^2}} \dx + 25\int_0^3 \frac{\dx}{\sqrt{25 - x^2}} \\
+	  &=& 12 - \int_0^3 \frac{\stkout{25 - x^2}}{\stkout{\sqrt{25 - x^2}}} \dx + 25\int_0^3 \frac{\dx}{\sqrt{25(1 - \frac{x^2}{25}})} \\
+	  &=& 12 - I + 25\int_0^3 \frac{\stkout{5}\dx[\frac{x}{5}]}{\stkout{5}\sqrt{1 - (\frac{x}{5})^2}} \\
+	  &=& 12 - I + 25\arcsin\frac{x}{5}|_0^3 \\
+	  &=& 12 - I + 25\arcsin\frac{3}{5} = I
+	\end{align*}
+	\(\implies 2I = 12 + 25\arcsin\frac{3}{5} \implies I = 6 + 12.5\arcsin\frac{3}{5} \implies \\\\
+	  S_\gamma = 6 + I = 12 + 12.5\arcsin\frac{3}{5} \implies \\\\
+	  S_r = S_l = 12.5\pi - (12 + 12.5\arcsin\frac{3}{5}) = 12.5(\pi - \arcsin\frac{3}{5}) - 12 \\\\
+	  S_m = 2S_\gamma = 24 + 25\arcsin\frac{3}{5} \) \\\\
+	Отговор: \\ 
+	\(12.5(\pi - \arcsin\frac{3}{5}) - 12, \; 24 + 25\arcsin\frac{3}{5}, \; 12.5(\pi - \arcsin\frac{3}{5}) - 12 \)
+	\section{Задача 2.}
+	\(C: x^2 + y^2 \leq 13^2 \\
+	  P: y = 13 - x^2 \\
+	  K: x^2 + y^2 = 13^2 \implies K(O(0, 0), 13) \\
+	  {V_P}_x = 0 \implies {V_P}_y = 13 \implies V_P(0, 13) \\\\
+	  K \cap P:
+	\begin{cases}
+	  y = 13 - x^2 \\
+	  x^2 + y^2 = 13^2	
+	\end{cases} \to 	\begin{cases}
+	  x^2 = 13 - y \\
+	  13 - y + y^2 = 13^2	
+	\end{cases} \\\\\\
+	  y^2 - y - 156 = 0 \\
+	  D = 1 -4.(-146) = 1 + 624 = 25 \\
+	  y_1 = \frac{1 + 25}{2} = 13 \\
+	  y_2 = \frac{1 - 25}{2} = -12 \\\\
+	  13 = 13 - x^2 \\
+	  x_1 = 0 \\\\
+	  -12 = 13 - x^2 \\
+	  x^2 = 25 \\
+	  x_2 = 5 \\
+	  x_3 = -5 \\\\
+	  \implies K \cap P = \{(0, 13), \; (-5, -12), \; (5, -12)\} \\\\
+	\begin{tikzpicture}[scale=0.25]
+	  \draw (0, 13) parabola (-5, -12) node[below] {(-5, -12)};
+	  \draw (0, 13) parabola (5, -12) node[below] {(5, -12)};
+	  \draw (0, 13) node[above] {$ V_P $ (0, 13)} -- (0, -13);
+	  \draw (4, 9) node[align=center, left] {$ \gamma $};
+	  \draw (-{sqrt(5)}, 8) node[right] {$ \Gamma $};
+	  \draw (0,0) circle (13);
+	\end{tikzpicture} \\\\\\
+	  \Gamma: \begin{cases}
+	  -5 \leq x \leq 5 \\
+	  f(x) = 13 - x^2
+	\end{cases} \\\\\\
+	\gamma: \begin{cases}
+	  0 \leq x \leq 5 \\
+	  f(x) = 13 - x^2
+	\end{cases} \implies l_\Gamma = 2l_\gamma \\\\
+	  f'(x) = -2x, \; (f'(x))^2 = 4x^2 \)
+	\begin{align*}
+	  l_\gamma = \int_0^5 \sqrt{1 + (f'(x))^2} \dx \\
+	  &=& \int_0^5 \sqrt{1 + 4x^2} \dx \\
+	  &=& x\sqrt{1 + 4x^2}|_0^5 - \int_0^5 x \dx[\sqrt{1 + 4x^2}] \\
+	  &=& 5\sqrt{101} - \int_0^5 \frac{x4x\stkout{2}}{\stkout{2}\sqrt{1 + 4x^2}} \\
+	  &=& 5\sqrt{101} - \int_0^5 \frac{4x^2 + 1 - 1}{\sqrt{1 + 4x^2}} \\
+	  &=& 5\sqrt{101} - \int_0^5 \frac{\stkout{4x^2 + 1}}{\sqrt{\stkout{1 + 4x^2}}} + \int_0^5 \frac{1}{\sqrt{1 + (2x)^2}} \dx \\
+	  &=& 5\sqrt{101} - l_\gamma + \frac{1}{2} \int_0^5 \frac{1}{\sqrt{1 + (2x)^2}} \dx{2x} \\
+	  &=& 5\sqrt{101} - l_\gamma + \frac{1}{2} \ln|2x + \sqrt{1 + (2x)^2}||_0^5 \\
+	  &=& 5\sqrt{101} - l_\gamma + \frac{1}{2} \ln(10 + \sqrt{101}) = l_\gamma \\
+	\end{align*}
+	\(\implies 2l_\gamma = l_\Gamma = 5\sqrt{101} + \frac{1}{2} \ln(10 + \sqrt{101})\) \\\\
+	Отговор: \(5\sqrt{101} + \frac{1}{2} \ln(10 + \sqrt{101}) \)
+	\section{Задача 3.}
+	\(I = \int_0^\infty \frac{\arctg(x^3) \ln(1 + x^2)}{x^p} \dx, \; p \in \mathbb{R} \\\\
+	  I_0 = \int_0^1 \frac{\arctg(x^3) \ln(1 + x^2)}{x^p} \dx \\\\
+	  I_\infty = \int_1^\infty \frac{arctg(x^3) \ln(1 + x^2)}{x^p} \dx \\\\
+	  \implies I = I_0 + I_\infty \\\\
+	  I \text{ е сх } \iff I_0, \; I_\infty \text{ са едновременно сх} \\\\
+ 	  I_0 = \int_0^1 \frac{\arctg(x^3) \ln(1 + x^2)}{x^p} \dx \\\\
+	  \frac{\arctg(x^3) \ln(1 + x^2)}{x^p} \; \widetilde{0} \; \frac{x^3x^2}{x^p} = \frac{1}{x^{p - 5}} \\\\
+	  \int_0^1 \frac{1}{x^{p - 5}} \dx \text{ е сх за } p - 5 < 1 \text{ те. за } p < 6 \\\\
+	  \implies I_0 \text{ е сх за } p < 6 \\\\
+	  I_\infty = \int_1^\infty \frac{\arctg(x^3) \ln(1 + x^2)}{x^p} \dx \\\\
+	  J_\infty = \int_1^\infty \frac{\ln(1 + x^2)}{x^p} \dx \\\\
+	  f(x) = \frac{\ln(1 + x^2)}{x^p} \\
+	  g(x) = \frac{\ln x}{x^p} \)
+	\begin{align*}
+	  \lim_{x \to \infty} \frac{f(x)}{g(x)} \\
+	  &=& \lim_{x \to \infty} \frac{\ln(1 + x^2)}{x^p} \frac{x^p}{\ln x} \\
+	  &=& \lim_{x \to \infty} \frac{\ln(1 + x^2)}{\ln x} \\
+	  &=& \lim_{x \to \infty} \frac{2x^2}{1 + x^2} \\
+	  &=& \frac{2}{1} = 2 \in (0, \infty)
+	\end{align*}
+	\(\implies f(x) \; \widetilde{\infty} \; g(x) \\\\
+	  \int_1^\infty \frac{\ln x}{x^p} \dx =
+	\begin{cases}
+	  \int_1^\infty \frac{\ln x}{x} \dx = \int_1^\infty \ln x \dx[\ln x] = \frac{\ln^2x}{2} |_1^\infty = \infty \implies \text{ разх}, & p = 1 \\
+	  ~ & ~ \\
+	  \frac{1}{1 - p}(\frac{\ln x}{x^{p - 1}}|_1^\infty - \int_1^\infty \frac{x}{x^p} \dx[\ln x]) =
+	  \frac{1}{1 - p}(\frac{\ln x}{x^{p - 1}}|_1^\infty - \int_1^\infty \frac{1}{x^p} \dx), & p \neq 1
+	\end{cases} \\\\
+	  \int_1^\infty \frac{1}{x^p} \dx \text{ е сх за } p > 1 \\\\
+      p > 1 \; \frac{\ln x}{x^{p - 1}}|_1^\infty =
+	  \lim_{x \to \infty} \frac{\ln x}{x^{p - 1}} - \ln1 =
+	  0 - 0 = 0 \; (\ln x \prec x^{p - 1}) \\\\
+	  \implies \int_1^\infty \frac{\ln x}{x^p} \dx \text{ е сх за } p > 1 \\\\
+	  \implies J_\infty \text{ е сх за } p > 1 \\\\
+	  \forall x \in [1, \infty) \; \arctg \uparrow, \; \lim_{x \to \infty} \arctg x = \frac{\pi}{2} \implies \\\\
+	  I_\infty \text{ е сх за } p > 1 \; (\text{Критерий на Абел}) \implies \\\\
+	  I  \text{ е сх за } p \in (-\infty, 6) \cap (1, \infty) = (1, 6) \) \\\\
+	Отговор: \\\\
+	\(\int_0^\infty \frac{\arctg(x^3) \ln(1 + x^2)}{x^p} \dx\) е сх за \(p \in (1, 6)\)
+\end{document}
+\grid
