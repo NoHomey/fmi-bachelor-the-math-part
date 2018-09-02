@@ -301,18 +301,18 @@
     \subsection{Определение за ранг на матрица}
     Нека \(\F\) е поле и \(A \in M_n(\F), \; r(A) = rr(A) = rc(A)\)
     \subsection{Втора теорема за ранг на матрица}
-    Нека \(\F\) е поле и \(A \in M_n(\F), \; r(A) = r \iff \\\\
+    Нека \(\F\) е поле и \(A = (a_{ij})\in M_n(\F), \; r(A) = r \iff \\\\
     \exists \; 1 \leq i_1 < i_2 < \dots < i_r \leq n \\\\
     \exists \; 1 \leq j_1 < j_2 < \dots < j_r \leq n \; : \\\\
     \exists \; \begin{vmatrix}
-        i_1j_1 & \cdots & i_1j_r\\
+        a_{i_1j_1} & \cdots & a_{i_1j_r}\\
         \vdots & \ddots & \vdots\\
-        i_nj_1 & \cdots & i_nj_r
+        a_{i_nj_1} & \cdots & a_{i_nj_r}
     \end{vmatrix} \neq 0 \\\\
     \forall \; k \in \N \; : \; r < k \leq n \; \begin{vmatrix}
-        i_1j_1 & \cdots & i_1j_k\\
+        a_{i_1j_1} & \cdots & a_{i_1j_k}\\
         \vdots & \ddots & \vdots\\
-        i_kj_1 & \cdots & i_kj_k
+        a_{i_nj_1} & \cdots & a_{i_nj_k}
     \end{vmatrix} = 0\)
     \section{}
     Нека \(\F\) е поле и \subsection{\(A \in M_5(\F), \; \det A = 0 \implies 0 \leq r(A) < 5\)}

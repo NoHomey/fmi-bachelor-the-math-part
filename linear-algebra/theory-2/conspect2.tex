@@ -27,16 +27,26 @@
 \begin{document}
     \maketitle
     \section{Линейно изображение и линеен оператор}
-    \subsection{Определение линеен оператор}
+    \subsection{Определение линеен оператор (Учебник)}
     Нека \(\V\) - Л.П. над полето \(\F, \; \varphi : \V \to \V \\\\
     \forall n \in \N, \; \forall \n{v} \in \V, \; \forall \n{\lambda} \in \F \\\\
     \varphi\left(\displaystyle\sum_{i = 1}^n \lambda_i v_i\right)
     = \displaystyle\sum_{i = 1}^n \lambda_i \varphi(v_i) \implies \varphi \in \mathrm{Hom}\V \)
+    \subsubsection{Алтернативно (Лекции)}
+    Нека \(\V\) - Л.П. над полето \(\F, \; \varphi : \V \to \V \\\\
+    \forall a, \; b \in \V, \; \forall \lambda \in \F \;
+    \varphi(a + b) = \varphi(a + b) \; \land \; \varphi(\lambda.a) = \lambda\varphi(a) \\\\
+    \implies \varphi \in \mathrm{Hom}\V \)
     \subsection{Определение линейно изображение}
     Нека \(\V, \; \W\) - Л.П. над полето \(\F, \; \varphi : \V \to \W \\\\
     \forall n \in \N, \; \forall \n{v} \in \V, \; \forall \n{\lambda} \in \F \\\\
     \varphi\left(\displaystyle\sum_{i = 1}^n \lambda_i v_i\right)
     = \displaystyle\sum_{i = 1}^n \lambda_i \varphi(v_i) \implies \varphi \in \mathrm{Hom}(\V, \; \W) \)
+    \subsubsection{Алтернативно (Лекции)}
+    Нека \(\V, \; \W\) - Л.П. над полето \(\F, \; \varphi : \V \to \W \\\\
+    \forall a, \; b \in \V, \; \forall \lambda \in \F \;
+    \varphi(a + b) = \varphi(a + b) \; \land \; \varphi(\lambda.a) = \lambda\varphi(a) \\\\
+    \implies \varphi \in \mathrm{Hom}(\V, \; \W) \)
     \subsection{Теорема \(\exists! \; \varphi \in \mathrm{Hom}(\V, \; \W)\)}
     Нека \(\V, \; \W\) - Л.П. над полето \(\F, \; \mathrm{dim}\V = n \\\\
     \n{e} - \; \text{ базис на } \V \\\\
@@ -142,7 +152,8 @@
     Нека \(\V, \; \W\) - Л.П. над полето \(\F, \; \varphi, \psi \in \mathrm{Hom}(\V, \; \W) \\\\
     \varphi + \psi : \V \to \W \; : \; \forall v \in \V \; (\varphi + \psi)(v) = \varphi(v) + \psi(v)\)
     \subsection{Определение за матрица на линейно изображение, което е сумата на две линейни изображения}
-    Нека \(\V, \; \W\) - K.M.Л.П. над полето \(\F, \; \varphi, \; \psi \in \mathrm{Hom}(\V, \; \W), \; n = \mathrm{dim}\V, \; m = \mathrm{dim}\W\) \\\\
+    Нека \(\V, \; \W\) - K.M.Л.П. над полето \(\F, \\\\
+    \varphi, \; \psi \in \mathrm{Hom}(\V, \; \W), \; n = \mathrm{dim}\V, \; m = \mathrm{dim}\W\) \\\\
     Нека \(\tau = \varphi + \psi \in \mathrm{Hom}(\V, \; \W)\) \\\\
     Нека \(\n{e} - \text{ базис на } \V\) \\\\
     Нека \(\m{f} - \text{ базис на } \W\) \\\\
@@ -218,7 +229,7 @@
     \varphi \text{ - инективно } \implies v = \OV_\V \implies \mathrm{Ker}\varphi \subseteq \{\OV_\V\} \implies \mathrm{Ker}\varphi = \{\OV\}\) \\\\
     Доказателство \((\; \Leftarrow \;)\) \\\\
     Нека \(u, \; v \in \V \; : \; \varphi(u) = \varphi(v) \implies \\\\
-    \OV_\V = \varphi(u) - \varphi(v) = \varphi(u - v) \implies \\\\
+    \OV_\W = \varphi(u) - \varphi(v) = \varphi(u - v) \implies \\\\
     u - v = \OV_\V, \; \{\OV_\V\} = \mathrm{Ker}\varphi \implies \\\\
     u = v \implies \varphi \text{ е инективно}\)
     \subsection{Обратимо линейно изображение изпраща линейно независими вектори в линейно независими вектори}
@@ -314,4 +325,7 @@
     \subsection{Определение за анихилатор \(\UV^0\) на едно линейно подпространсво \(\UV\) на едно линейно пространство \(\V\)}
     Нека \(\V\) - Л.П. над полето \(\F \\\\
     \UV < \V \implies \UV^0 = \{f \in \V^* \; | \; \forall u \in \UV \; f(u) = 0\}\)
+    \subsection{Определение за анулатор \(\UV_0\) на едно линейно подпространсво \(\UV\) на едно линейно пространство \(\V\)}
+    Нека \(\V\) - Л.П. над полето \(\F \\\\
+    \UV < \V \implies \UV_0 = \{u \in \UV \; | \; \forall f \in \V^* \; f(u) = 0\}\)
 \end{document}
