@@ -1,0 +1,385 @@
+\documentclass[11pt,oneside,a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{epstopdf}
+\usepackage[
+  pdftitle={Homework 1},
+  pdfsubject={"Discrete structures" at SU, FMI},
+  pdfauthor={Aleksandar Karakushev},
+  pdfstartview={FitH}
+]{hyperref}
+
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+\makeatletter
+\newcommand{\xleftrightarrow}[2][]{\ext@arrow 3359\leftrightarrowfill@{#1}{#2}}
+\newcommand{\xdashrightarrow}[2][]{\ext@arrow 0359\rightarrowfill@@{#1}{#2}}
+\newcommand{\xdashleftarrow}[2][]{\ext@arrow 3095\leftarrowfill@@{#1}{#2}}
+\newcommand{\xdashleftrightarrow}[2][]{\ext@arrow 3359\leftrightarrowfill@@{#1}{#2}}
+\def\rightarrowfill@@{\arrowfill@@\relax\relbar\rightarrow}
+\def\leftarrowfill@@{\arrowfill@@\leftarrow\relbar\relax}
+\def\leftrightarrowfill@@{\arrowfill@@\leftarrow\relbar\rightarrow}
+\def\arrowfill@@#1#2#3#4{%
+  $\m@th\thickmuskip0mu\medmuskip\thickmuskip\thinmuskip\thickmuskip
+   \relax#4#1
+   \xleaders\hbox{$#4#2$}\hfill
+   #3$%
+}
+\makeatother
+\usepackage{amssymb}
+\usepackage{mathtext}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[cp1251]{inputenc}
+\usepackage[english,bulgarian]{babel}
+\usepackage{dirtytalk}
+\usepackage{setspace}
+
+\usepackage{color}
+
+%\usepackage{array}
+
+\setlength{\parindent}{25pt} 
+\setlength{\parskip}{0pt}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+\begin{spacing}{2}
+\textsc{\Large
+     \vspace{-10pt}\linebreak
+     Домашно\; № 1\; по\; дисциплината\; “Дискретни\; структури”\vspace{-10pt}\linebreak
+     за\; специалност\; “Информатика”,\; I\; курс,\; I\; поток,\vspace{-10pt}\linebreak
+     летен\; семестър\; на\; 2017/2018\; уч.\;г.\; в\; СУ,\; ФМИ}\vspace{-12pt}
+%\noindent\rule[0.5ex]{\linewidth}{1pt}\vspace{-12pt}
+%\emph{Домашната работа се дава на асистента в началото на упражнението
+%      на ??\,--\,??.\,??.\,???? г.\vspace{-12pt}}
+\noindent\rule[0.5ex]{\linewidth}{1pt}\vspace{-12pt}
+\end{spacing}
+Име: \, \,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,.\,. \;\;\;
+Факултетен № \, .\,.\,.\,.\,.\,.\,.\,. \;\;\;
+Група: \, .\,.\,.\,.\,.
+\end{center}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c||c|}
+\hline
+\textbf{Задача} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textsc{Общо} \\ 
+\hline
+\vspace{-12.3pt} \; & \; & \; & \; & \; & \; \\
+\hline
+\emph{получени точки} & $\quad \quad$ & $\quad \quad$ & $\quad \quad$ & $\quad \quad$ & \\
+\hline
+\emph{максимум точки} &  \emph{10} & \emph{10} & \emph{10} & \emph{10} & \emph{40} \\
+\hline
+\end{tabular}
+\end{center}
+
+\paragraph{\emph{Забележка\hspace{1pt} 1:}}
+\emph{Всички отговори трябва да бъдат обосновани подробно.}
+\vspace{-12pt}
+
+\paragraph{\emph{Забележка 2:}}
+\emph{Не предавайте идентични решения дори когато работите заедно:\\
+      идентичните решения ще бъдат анулирани!}
+
+\noindent\rule[0.5ex]{\linewidth}{1pt}\\
+
+\paragraph{\mbox{Задача 1.}}
+а)\, Нека $A$ е множество и нека $f$ е функция с домейн декартовия квадрат\linebreak
+на множеството $A$
+и ко-домейн множеството $A$, имаща следните свойства:
+
+\begin{itemize} 
+    \item $\forall x \in A \; \forall y \in A \; \forall z \in A \; f(f(x, \; y), \; z) = f(x, \; f(y, \; z)) $
+    \item $\exists x \in A \; \forall y \in A \; f(x, \; y) = y \; \land \; f(y, \; x) = y $
+    \item $\exists x \in A \; \exists y \in A \; \lnot (f(x, \; y) = f(y, \; x))  $ 
+\end{itemize}
+
+Дайте добре обоснован пример за множеството $A$ и функцията $f$, в който\linebreak
+множеството $A$ е крайно и пример, в който $A$ е изброимо безкрайно.
+\hfill\textbf{(5 точки)}\vspace{10pt}\linebreak
+
+б)\, Нека $A$ е множество и нека $R$ е релация в множеството $A$, имаща следните свойства:
+
+\begin{itemize} 
+    \item $R$ е рефлексивна и не е транзитивна.
+    \item $\forall x \in A \; \exists y \in A \; \left((y, \; x) \in R \; \land \; (x, \; y) \notin R \right) $
+\end{itemize}
+
+Дайте добре обоснован пример, в който $A$ и $R$ са крайни множества и пример, в който са изброимо безкрайни.
+\hfill\textbf{(5 точки)}\vspace{10pt}\linebreak
+
+\paragraph{\mbox{Задача 2.}}
+Дадена е окръжност върху, която са нарисувани $n$ сини точки и $n$ червени точки.
+Докажете, че за всяко естествено число $n$ независимо от разположението на точките,
+можем да направим обиколка по часовниковата стрелка на окръжността, започвайки от една от точките,
+така че на всяко преминаване от оцветена точка в оцветена точка, броят на червените точки е винаги
+поне колкото броят на сините точки. 
+
+\paragraph{\mbox{Задача 3.}}
+Нека $D = \{0, \; 1, \; 2, \; 3, \; 4\}$ и нека $R \subseteq D^3 \times D^3$ е следната релация:
+\begin{align*}
+  (a, \; b, \; c) \, R \, (x, \; y, \; z) \iff ac \equiv xz \, (\mathrm{mod} \; 5).
+\end{align*}
+
+а)\, Докажете, че $R$ е релация на еквивалетност. \hfill\textbf{(3 точки)}\vspace{10pt}\linebreak
+
+б)\, Намерете броят на класовете на еквивалетност относно релацията $R$. \hfill\textbf{(2 точки)}\vspace{10pt}\linebreak
+
+в)\, Намерете броят на елементите във всеки клас на еквивалентност относно $R$. \hfill\textbf{(5 точки)}\vspace{10pt}\linebreak
+
+\paragraph{\mbox{Задача 4.}}
+Дадено е естествено число $n$. Всяка от четирите
+страни на квадрат се оцветява в точно един от $n$-те различни цвята.
+Да се намери броят на различните възможни оцветявания с точност до 
+ротация и отражение. Тоест ако едно оцветяване се получава от друго
+чрез ротация или отражение ние не считаме тези оцветявания за различни. 
+
+\pagebreak
+
+\begin{center}
+\textbf{РЕШЕНИЯ}\\\mbox{\,}
+\end{center}
+
+\paragraph{\mbox{Задача 1.}}
+
+а) \, Да разгледаме дефиницията за група,
+която се използва в курсовете по алгебра:\\
+
+Нека множеството $G$ е непразно и е затворено
+относно бинарната операция $*$. Казваме, че
+$G$ е група относно бинарната операцията $*$, ако:
+
+\begin{itemize}
+  \item $\forall a \in G \, \forall b \in G \, \forall c \in G \; (a * b) * c = a * (b * c)$
+  \item $\exists e \in G \, \forall g \in G \; e * g = g \, \land \, g * e = g$
+  \item $\forall g \in G \, \exists r \in G \; g * r = e \, \land \, r * g = e$
+\end{itemize}
+
+$G$ е абелева група относно бинарната операцията $*$, ако е група относно бинарната операцията $*$
+и е в сила: $\forall a \in G \, \forall b \in G \; a * b = b * a$. Тогава отрицанието на твърдението:
+"$G$ е е абелева група относно бинарната операцията $*$" е равносилно на: $ \lnot \forall a \in G \, \forall b \in G \; a * b = b * a$,
+което е логически еквивалентно на $\exists a \in G \, \exists b \in G \; a * b \neq b * a$, защото:
+\begin{align*}
+  \lnot \forall a \in G \, \forall b \in G \; a * b = b * a \equiv \\
+  \exists a \in G \, \lnot \forall b \in G \; a * b = b * a \equiv \\
+  \exists a \in G \, \exists b \in G \; \lnot a * b = b * a \equiv \\
+  \exists a \in G \, \exists b \in G \; a * b \neq b * a
+\end{align*}
+
+Ние знаем, че $*$ е бинарна операция в множеството $G$ и то е затворено относно $*$, ако \\
+$\forall a \in G \, \forall b \in G \; a * b \in G$. \\
+
+Тогава нека $A$ е произволна не абелева група относно бинарната операция $\#$ \\
+и нека $f : A \times A \to A$ е функцията: $f = \{((x, \; y), \; x \# y) \; | \; x, \; y \in A\}$, тогава \\
+$\forall x \in A \, \forall y \in A \; f(x, \; y) = x \# y$ и нека $\varepsilon$ е неутралния елемент на $A$ относно $\#$,\\
+тогава е вярно:
+\begin{itemize} 
+  \item $\forall x \in A \; \forall y \in A \; \forall z \in A \; f(f(x, \; y), \; z) = f(x, \; f(y, \; z)) $
+  \item $\forall x \in A \; f(x, \; \varepsilon) = x \; \land \; f(\varepsilon, \; x) = x \implies \exists x \in A \; \forall y \in A \; f(x, \; y) = y \; \land \; f(y, \; x) = y $
+  \item $\forall x \in A \; \exists y \in A \; f(x, \; y) = \varepsilon \; \land \; f(y, \; x) = \varepsilon$
+  \item $\exists x \in A \; \exists y \in A \; \lnot (f(x, \; y) = f(y, \; x))$ 
+\end{itemize}
+В частност е вярно:
+\begin{itemize} 
+  \item $\forall x \in A \; \forall y \in A \; \forall z \in A \; f(f(x, \; y), \; z) = f(x, \; f(y, \; z)) $
+  \item $\exists x \in A \; \forall y \in A \; f(x, \; y) = y \; \land \; f(y, \; x) = y $
+  \item $\exists x \in A \; \exists y \in A \; \lnot (f(x, \; y) = f(y, \; x))  $ 
+\end{itemize}
+
+От курсът по Висша Алгебра е известно, че с точност до изоморфизъм съществува единствена група с изброимо безкрайно много елементи
+и това е множеството на целите числа (ние знаем, че множествата $\mathbb{N}, \; \mathbb{Z}, \; \mathbb{Q}$ са изброимо безкрайни) относно операцията събиране.
+Тогава ако $A = \mathbb{Z}$ и $f = \{((a, \; b), \; a + b) \; | \; a, \; b \in \mathbb{Z}\}$ е пример, в който множеството $A$ е изброимо безкрайно. \\
+
+Отново от курсът по Висша Алгебра ни е известно, че множеството от неутралния елемент на коя да е група е група (минимална подгрупа) относно груповата операция.\\
+
+Тогава ако $A = \{0\}$ и $f = \{(0, \; 0), \; 0)\}$ е пример, в който множеството $A$ е крайно. \\
+
+б)\, Ако $A$ е множество, то $R$ е релация по дефиниция, ако $R \subseteq A \times A$. \\
+
+$R$ е рефлексивна, ако е вярно: $\forall a \in A \; (a, \; a) \in R$. \\
+
+$R$ е транзитивна, ако е вярно: $\forall x \in A \; \forall y \in A \; \forall z \in A \; \left((x, \; y) \in R \, \land \, (y, \; z) \in R \implies (x, \; z) \in R\right)$
+
+Тогава $R$ не е транзитивна, ако е вярно: \\
+$\exists x \in A \; \exists y \in A \; \exists z \in A \; \left((x, \; y) \in R \, \land \, (y, \; z) \in R \, \land \, (x, \; z) \notin R\right)$, защото:
+\begin{align*}
+  \lnot \forall x \in A \; \forall y \in A \; \forall z \in A \; \left((x, \; y) \in R \, \land \, (y, \; z) \in R \implies (x, \; z) \in R\right) \equiv \\
+  \exists x \in A \; \lnot \forall y \in A \; \forall z \in A \; \left((x, \; y) \in R \, \land \, (y, \; z) \in R \implies (x, \; z) \in R\right) \equiv \\
+  \exists x \in A \; \exists y \in A \; \lnot \forall z \in A \; \left((x, \; y) \in R \, \land \, (y, \; z) \in R \implies (x, \; z) \in R\right) \equiv \\
+  \exists x \in A \; \exists y \in A \; \exists z \in A \; \lnot \left((x, \; y) \in R \, \land \, (y, \; z) \in R \implies (x, \; z) \in R\right) \equiv \\
+  \exists x \in A \; \exists y \in A \; \exists z \in A \; \lnot \left(\lnot\left((x, \; y) \in R \, \land \, (y, \; z) \in R\right) \, \lor \, (x, \; z) \in R\right) \equiv \\
+  \exists x \in A \; \exists y \in A \; \exists z \in A \; \left(\lnot \left(\lnot\left((x, \; y) \in R \, \land \, (y, \; z) \in R\right) \, \land \, \lnot\left((x, \; z) \in R\right)\right)\right) \equiv \\
+  \exists x \in A \; \exists y \in A \; \exists z \in A \; \left((x, \; y) \in R \, \land \, (y, \; z) \in R \, \land \, (x, \; z) \notin R\right)
+\end{align*}
+
+В крайния случай ще построим стъпка по стъпка минимални $A$ и $R$, започвайки от множество $A$, което да е празно.  \\
+
+Следкато $A$ е празно множество, то и $R \subset \emptyset \times \emptyset$ следва, че $R = \emptyset$,
+но тогава $R$ е празната релация, която по тривални причини е транзитивна. \\
+
+Нека $A = \{a\}$, понеже $R$ е рефлексивна то нека $R = \{(a, \; a)\}$, но тогава \\
+$(a, \; a) \in R \, \land \, (a, \; a) \in R \, \land \, (a, \; a) \in R$, тоест $R$ е транзитивна. \\
+
+Тогава нека $A = \{a, \; b\}$, понеже $R$ е рефлексивна, то започваме с $R = \{(a, \; a), \; (b, \; b)\}$.
+Искаме да бъде изпълнено: $\forall x \in A \; \exists y \in A \; \left((y, \; x) \in R \; \land \; (x, \; y) \notin R \right)$.
+Тогава ако си вземем елемента $b$ понеже е изпълнено $(b, \; b) \in R$, то добавяме двойката $(a, \; b)$ към $R$.
+По аналогични съображения добавяме и симетричната двойка $(b, \; a)$. Нека разгледаме диаграма на релацията
+$R = \{(a, \; a), \; (b, \; b), \; (a, \; b), \; (b, \; a)\}$. \\
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+  \node (a) {a};
+  \node (b) [right=of a] {b};
+  \path [->] (a) edge[loop above] node {$1$} ();
+  \path [->] (b) edge[loop above] node {$2$} ();
+  \path [->] (a) edge[bend left=30] node {$3$} (b);
+  \path [->] (b) edge[bend left=30] node {$4$} (a);
+\end{tikzpicture}
+
+Понеже искаме релацията $R$ да не е транзитивна, то съобразяваме от диаграмата на релацията, че текущата релация е транзитивна
+и продължаваме със следващата стъпка, която е да добавим нов елемент към множеството $A$ и да се пробваме да изградим релация
+с желаните свойства. Нека $A = \{a, \; b, \; c\}$ искаме $R$ да е рефлексивна, за това започваме от релацията \linebreak
+$R = \{(a, \; a), \; (b, \; b), \; (c, \; c)\}$. Отново искаме да бъде вярно:
+$\forall x \in A \; \exists y \in A \; \left((y, \; x) \in R \; \land \; (x, \; y) \notin R \right)$.
+Тогава по абсолютно сходни разсъждения като в предният опит добавяме двойката $(a, \; b)$.
+Ако добавим двойката $(b, \; c)$ то ще е вярно, че $(b, \; c) \in R \, \land \, (c, \; b) \notin R$,
+както и е вярно, че $R$ няма да бъде  транзитивна релация, защото $(a, \; b) \in R \, \land \, (b, \; c) \in R \, \land \, (a, \; c) \notin R$.
+Тогава единственото нещо, което остава да е изпълнено е $\exists y \in A \; \left((y, \; а) \in R \; \land \; (а, \; y) \notin R \right)$.
+Следователно ако добавим двойката $(c, \; a)$ релацията ни ще изпълнява всички свойства.
+
+Тоест $A = \{a, \; b, \; c\}$ и $R = \{(a, \; a), \; (b, \; b), \; (c, \; c), \; (a, \; b), \; (b, \; c), \; (c, \; a)\}$ е краен пример,
+изпълняващ условията на задачата. Ето и как изглежда диаграмата на релацията: \\
+
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+  \node (a) {a};
+  \node (b) [right=of a] {b};
+  \node (c) [right=of b] {c};
+  \path [->] (a) edge[loop above] node {$1$} ();
+  \path [->] (b) edge[loop above] node {$2$} ();
+  \path [->] (c) edge[loop above] node {$3$} ();
+  \path [->] (a) edge[bend left=30] node {$4$} (b);
+  \path [->] (b) edge[bend left=30] node {$5$} (c);
+  \path [->] (c) edge[bend left=30] node {$6$} (a);
+\end{tikzpicture}
+
+В крайния случай ни беше сравнително лесно да построим множествата, които търсим в изброимо безкрайния
+ще ни е малко по-трудно, за това там ще използваме друга стратегия. Досещаме се, че ако
+вземем изброимо безкрайно множество $A$ и подходяща изброимо безкрайна релация, която е рефлексивна,
+транзитивна и има свойството $\forall x \in A \; \exists y \in A \; \left((y, \; x) \in R \; \land \; (x, \; y) \notin R \right)$,
+то ако премахнем само една транзитивна \say{тройка}, като запазим рефлексивността ще получим релация
+с търсените свойства. Тогава нека $A = \mathbb{Z}$ и нека $T$ да бъде релацията \say{по-малко или равно} на цели числа.
+Ще се борим да покажем, че $T$ притежава свойството \\
+$\forall x \in A \; \exists y \in A \; \left((y, \; x) \in T \; \land \; (x, \; y) \notin T \right)$.
+$\forall z \in \mathbb{Z} \; z - 1 \in \mathbb{Z} \, \land \, z - 1 \leq z \, \land \, z \not \leq z -1 \implies \\
+\forall z \in \mathbb{Z} \; (z - 1, \; z) \in R_{\leq} \, \land \, (z, \; z - 1) \notin R_{\leq} \implies \forall x \in A \; \exists y \in A \; \left((y, \; x) \in T \; \land \; (x, \; y) \notin T \right)$.
+
+Тогава ако $R = T \; \backslash \{(0, \; 9)\}$ e рефлексивна и притежава свойството \\
+$\forall x \in A \; \exists y \in A \; \left((y, \; x) \in R \; \land \; (x, \; y) \notin R \right)$.
+Остава да покажем, че не е транзитивна. \\
+$0 \leq 8 \, \land \, 8 \leq 9 \, \land \, (0, \; 8) \neq (0, \; 9) \, \land \, (8, \; 9) \neq (0, \; 9) \, \land \, (0, \; 9) \notin R \implies (0, \; 8) \in R \, \land \, (8, \; 9) \in R \, \land \, (0, \; 9) \notin R$
+Премахнали сме краен брой (една двойка) елементи на изброимо безкрайно множество, тогава $R$ е изброимо безкрайно.
+
+\paragraph{\mbox{Задача 2.}}
+
+\paragraph{\mbox{Задача 3.}}
+а)
+
+- $R$ е рефлексивна, защото $\forall (a, \; b, \; c) \in D^3 \; ac \equiv ac \; (\mathrm{mod} \; 5)
+\implies (a, \; b, \; c) \: R \: (a, \; b, \; c) $
+(Рефлексивност на релацията $\equiv_{\mathrm{mod} \; 5}$). \\
+
+- $R$ е симетрична, защото $\forall (a, \; b, \; c), \; (x, \; y, \; z) \in D^3 \; : \;
+(a, \; b, \; c) \: R \: (x, \; y, \; z) \implies ac \equiv xz \; (\mathrm{mod} \; 5)
+\implies ac \equiv xz \; (\mathrm{mod} \; 5) \implies (x, \; y, \; z) \: R \: (a, \; b, \; c)$ \\
+(Симетричност на релацията $\equiv_{\mathrm{mod} \; 5}$). \\
+
+- $R$ е транзитивна, защото \\
+$\forall (a, \; b, \; c), \; (x, \; y, \; z), \; (m, \; n, \; k) \in D^3 \; : \;
+(a, \; b, \; c) \: R \: (m, \; n, \; k) \; \land \; (m, \; n, \; k) \: R \: (x, \; y, \; z) \\
+\implies ac \equiv mk \; (\mathrm{mod} \; 5) \; \land \; mk \equiv xz \; (\mathrm{mod} \; 5) \implies
+ac \equiv xz \; (\mathrm{mod} \; 5) \implies (a, \; b, \; c) \: R \: (x, \; y, \; z)$
+(Транзитивност на релацията $\equiv_{\mathrm{mod} \; 5}$). \\
+
+$R$ е рефлексивна, симетрична и транзитивна следователно е релация на еквивалентност. \\
+
+б)\, Нека фиксираме един елемент на домейна $(a, \; b, \; c) \in D^3$ тогава класът на $(a, \; b, \; c)$ по дефиниция е:
+\begin{align*}
+    [(a, \; b, \; c)] = \{(x, \; y, \; z) \in D^3 \; | \; (a, \; b, \; c) \: R \: (x, \; y, \; z)\} = \\
+    = \{(x, \; y, \; z) \in D^3 \; | \; ac \equiv xz \; (\mathrm{mod} \; 5) \},
+\end{align*}
+но понеже $(a, \; b, \; c)$ е фиксиран елемент на домейна на релацията, то и $ac$ е фиксирана константа,
+която е с фиксиран остатък при делеление с частно и остатък на 5.
+Ние знаем, че има точно пет различни остатъци "по модул" \: 5, това са елементите на множеството $D$.
+Тогава множеството от класовете на еквивалентност относно $R$ е:
+\begin{align*}
+    \{\{(x, \; y, \; z) \in D^3 \; | \; xz \equiv k \; (\mathrm{mod} \; 5)\} \: | \; k \in D \}
+\end{align*}
+и броят на елементите му съвпада с броят на елементите на множеството $D$, който е $5$. \\implies
+
+в)\, От комбинаторния принцип на умножението следва, че броят на елементие на домейна е: $|D^3| = |D|^3 = 5^3 = 125$. \\
+
+Нека разгледаме подробно всеки един клас на еквивалентност. \\
+
+Започваме със следното наблюдение ако $m, \; n \in D$, то $0 \leq mn \leq 16$.\\
+
+Нека означим с $M$ множеството от целите числата от 0 до 16, тоест $M = \{0, \; 1, \; 2, \; \dots, \; 16\}$. \\
+
+Започвайки от онези наредени тройки с елементи от $D$, за които
+\begin{align*}
+    \{(x, \; y, \; z) \in D^3 \; | \; xz \equiv 0 \; (\mathrm{mod} \; 5)\}.
+\end{align*}
+Числата даващи остатък 0 при деление с частно и остатък на 5 са числата от множеството:
+\begin{align*}
+    \{m \in M \; | \; 5 \mid m \} = \{0, \; 5, \; 10, \; 15\}
+\end{align*}
+Понеже $5 \notin D$, то единственото число кратно на 5, което може да се получи като произведение на числа от $D$ е 0.
+Тогава
+$\{(x, \; y, \; z) \in D^3 \; | \; xz \equiv 0 \; (\mathrm{mod} \; 5)\}
+= \{(x, \; y, \; z) \in D^3 \; | \; x = 0 \; \lor \; z = 0 \} = \{(0, \; y, \; z) \in D^3\} \cup \{(x, \; y, \; 0) \in D^3\}$.
+Тогава от принципа на включването и изключването получаваме:
+\begin{align*}
+|\{(x, \; y, \; z) \in D^3 \; | \; xz \equiv 0 \; (\mathrm{mod} \; 5)\}| = |\{(0, \; y, \; z) \in D^3\} \cup \{(x, \; y, \; 0) \in D^3\}| = \\
+= |\{(0, \; y, \; z) \in D^3\}| + |\{(x, \; y, \; 0) \in D^3\}| - |\{(0, \; y, \; z) \in D^3\} \cap \{(x, \; y, \; 0) \in D^3\}| = \\
+= |D^2| + |D^2| - |\{(0, \; y, \; 0) \; | \; y \in D\}| = 2 |D|^2 - |D| = 50 - 5 = 45.
+\end{align*}
+
+Числата даващи остатък 1 при делеление с частно и остатък на 5 от $M$ са: $1, \; 6, \; 11, \; 16$.
+11 е просто число строго по-голямо от 4, следователно никой две числа от $D$ не дават произведение 11.
+За останалите числа съществува единствено (с точност до реда) разлагане като произведение на числа от множеството $D$,
+по-кокретно: $1 = 1.1$, $6 = 2.3 = 3.2$ и $16 = 4.4$. Тогава:
+\begin{align*}
+    |\{(x, \; y, \; z) \in D^3 \; | \; xz \equiv 1 \; (\mathrm{mod} \; 5)\}| = \\
+    = |\{(x, \; y, \; z) \; | \; y \in D, \; (x, \; z) \in \{(1, \; 1), \; (2, \; 3), \; (3, \; 2), \; (4, \; 4)\}\}| = \\
+    = |D|.|\{(1, \; 1), \; (2, \; 3), \; (3, \; 2), \; (4, \; 4)\}| = 5.4 = 20.
+\end{align*}
+
+Числата даващи остатък 2 при делеление с частно и остатък на 5 от $M$ са: $2, \; 7, \; 12$.
+7 е просто число строго по-голямо от 4, следователно никой две числа от $D$ не дават произведение 7.
+За 2 и 12 съществува единствено (с точност до реда) разлагане като произведение на числа от множеството $D$,
+по-кокретно: $2 = 1.2 = 2.1$ и $12 = 3.4 = 4.3$. Тогава:
+\begin{align*}
+    |\{(x, \; y, \; z) \in D^3 \; | \; xz \equiv 1 \; (\mathrm{mod} \; 5)\}| = \\
+    = |\{(x, \; y, \; z) \; | \; y \in D, \; (x, \; z) \in \{(1, \; 2), \; (2, \; 1), \; (3, \; 4), \; (4, \; 3)\}\}| = \\
+    = |D|.|\{(1, \; 2), \; (2, \; 1), \; (3, \; 4), \; (4, \; 3)\}| = 5.4 = 20.
+\end{align*}
+
+Числата даващи остатък 3 при делеление с частно и остатък на 5 от $M$ са: $3, \; 8, \; 13$.
+13 е просто число строго по-голямо от 4, следователно никой две числа от $D$ не дават произведение 13.
+За 3 и 8 съществува единствено (с точност до реда) разлагане като произведение на числа от множеството $D$,
+по-кокретно: $3 = 1.3 = 3.1$ и $8 = 2.4 = 4.2$. Тогава:
+\begin{align*}
+    |\{(x, \; y, \; z) \in D^3 \; | \; xz \equiv 1 \; (\mathrm{mod} \; 5)\}| = \\
+    = |\{(x, \; y, \; z) \; | \; y \in D, \; (x, \; z) \in \{(1, \; 3), \; (3, \; 1), \; (2, \; 4), \; (4, \; 2)\}\}| = \\
+    = |D|.|\{(1, \; 3), \; (3, \; 1), \; (2, \; 4), \; (4, \; 2)\}| = 5.4 = 20.
+\end{align*}
+
+Получихме: $45 + 4.20 = 45 + 80 = 125$.
+
+\paragraph{\mbox{Задача 4.}}
+
+\end{document}

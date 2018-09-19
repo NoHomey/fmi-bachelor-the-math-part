@@ -1,0 +1,69 @@
+\documentclass[a4paper, 12pt, oneside]{article}
+    
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{stmaryrd}
+\usepackage[ampersand]{easylist}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+            
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+            
+\setlength{\parindent}{0mm}
+                    
+\title{Предложения за задачки}
+\author{ДСТР}
+                    
+\begin{document}
+\maketitle
+
+\section*{Множества, релации и функции}
+
+\subsection*{а)}
+
+Нека $A$ е множество и нека $f$ е функция с домейни декартовия квадрат на множеството $A$
+и ко-домейн множеството $A$, тоест $f : A \times A \to A$ имаща следните свойства:
+
+\begin{itemize} 
+    \item $\forall x \in A \; \forall y \in A \; \forall z \in A \; f(f(x, \; y), \; z) = f(x, \; f(y, \; z)) $
+    \item $\exists x \in A \; \forall y \in A \; f(x, \; y) = y \; \land \; f(y, \; x) = y $
+    \item $\exists x \in A \; \exists y \in A \; \lnot (f(x, \; y) = f(y, \; x))  $ 
+\end{itemize}
+
+Дайте добре обоснован пример за множеството $A$ и функцията $f$, в който множеството $A$ е крайно и пример, в който $A$ е изброимо безкрайно.
+
+\subsection*{б)}
+
+Нека $A$ е множество и нека $R$ е релация в множеството $A$, тоест $R \subseteq A \times A$ имаща следните свойства:
+
+\begin{itemize} 
+    \item $R$ е рефлексивна и не е транзитивна.
+    \item $\forall x \in A \; \exists y \in A \; \left((y, \; x) \in R \; \land \; (x, \; y) \notin R \right) $
+\end{itemize}
+
+Дайте добре обоснован пример, в който $A$ и $R$ са крайни множества и пример, в който са изброимо безкрайни.
+
+\section*{Индукция}
+
+Нека $\forall n \in \N \quad F_n \; : \R \to \R$, като \\
+
+$F_0(x) = \begin{cases}
+    \sin x & , \; x < 0 \\
+    \log_{1000}(x^2 + 3x + \cos x) & , \; x = 0 \\
+    5^{\ln(x^3)} & , \; x > 0
+\end{cases}$ \\\\
+
+$F_1(x) = \mathrm{sign}(x)|x| + 1$ \\
+
+$\forall n \in \N \quad F_{n + 2}(x) = F_n(nF_{n + 1}(x) + 3^n) - \displaystyle2^{F_n(2x - 1) + F_{n + 1}(\pi x + e)} $. \\
+
+Докажете, че за всяко $n \in \N$ $F_n$ е интегруема функция в интервала $[-100, \; e^{1000}]$. \\
+
+\textit{Забележка:} можете да използвате директно всяко знание от курсa по ДИС1.
+
+\end{document}    
