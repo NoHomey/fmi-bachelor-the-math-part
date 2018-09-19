@@ -1,0 +1,280 @@
+\documentclass[a4paper, 12pt, oneside]{article}
+    
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\urlstyle{same}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Теорема}
+\newtheorem{corollary}{Следствие}
+\newtheorem{lemma}{Лема}
+\newtheorem{proposition}{Твърдение}
+\newtheorem{definition}{Определение}
+\newtheorem{problem}{Задача}
+\newtheorem{example}{Пример}
+\newtheorem{question}{Въпрос}
+\newtheorem*{remark}{Забележка}
+\renewenvironment{proof}{\noindent{\bf Доказателство.}\hspace*{1em}}{\qed\par}
+\newenvironment{hint}{\noindent{\bf Упътване.}\hspace*{1em}}{\qed\par}
+\newenvironment{solution}{\noindent{\bf Решение.}\hspace*{1em}}{\qed\par}
+            
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+            
+\setlength{\parindent}{0mm}
+                    
+\title{Увод в Теория на числата}
+\author{Иво Стратев}
+                    
+\begin{document}
+\maketitle
+        
+\tableofcontents
+
+\pagebreak
+
+Под число ще разбираме цяло число, освен ако изрично не е оказано
+от кое числово множество е даден елемент.
+    
+\section{Делимост на цели числа}
+
+\begin{definition}
+    Делимост. \\
+    Казваме, че ненулевото число $a$ дели числото $b$ (или $b$ се дели на $a$),
+    ако съществува число $c$, такова че $b = ac$.
+    Числото $a$ наричаме \textit{делител} на $b$, а $b$ - \textit{кратно} на $a$.
+    
+    За да отебележим, че $a$ дели $b$ ще използваме означението $a \mid b$.
+    Напротив за да отебележим, че $a$ не дели $b$ ще използваме означението $a \nmid b$.
+    означението $a \nmid b$.
+\end{definition}
+
+\subsection{Основни свойства}
+
+\begin{enumerate}
+    \item $\forall a, \; b \in \Z \; : \; a \mid b \implies \pm a \mid \pm b$ 
+    \item $\forall a \in \Z \; : \; a \neq 0 \implies a \mid a$ $(a = 1.a)$
+    \item $\forall a, \; b \in \Z \; : \; a \mid b \; \land \; b \neq 0 \implies |a| \leq |b|$ \\
+
+    \begin{proof}
+        Нека $a, \; b \in \Z \; : \; a \mid b \; \land \; b \neq 0 \\\\
+        \implies \exists c \in \Z \; : \; c \neq 0 \; \land \; b = ac \implies |b| = |ac| = |a||c| \\\\
+        \implies |a| \leq |b|$ $(c \neq 0 \implies |c| > 0)$
+    \end{proof}
+
+    \item $\forall a \in \Z \; : \; a \mid b \; \land \; b \mid a \implies a = \pm b$ \\
+
+    \begin{proof}
+        Нека $a, \; b \in \Z \; : \; a \mid b \; \land \; b \mid a \\\\
+        \implies a \neq 0 \; \land \; b \neq 0 \implies |a| \leq |b| \land |b| \leq |a| \implies |a| = |b| \implies a = \pm b$
+    \end{proof}
+
+    \item $\forall a, \; b, \; c \in \Z \; : \; a \mid b \; \land \; b \mid c \implies a \mid c$ \\
+
+    \begin{proof}
+        Нека $a, \; b, \; c \in \Z \; : \; a \mid b \; \land \; b \mid c \\\\
+        \implies \exists u, \; v \in \Z \; : \; b = ua \; \land c = vb \implies c = vua = (vu)a \overset{vu \in \Z}{\implies} a \mid c$
+    \end{proof}
+
+    \item $\forall a, \; b, \; c \in \Z \; : \; a \mid b \; \land \; a \mid c \implies a \mid (b \pm c)$ \\
+
+    \begin{proof}
+        Нека $a, \; b, \; c \in \Z \; : \; a \mid b \; \land \; a \mid c \\\\
+        \implies \exists u, \; v \in \Z \; : \; b = ua \; \land c = va \\\\
+        \implies b \pm c = ua \pm va = (u \pm v)a = (vu)a \overset{u \pm v \in \Z}{\implies} a \mid (b \pm c)$
+    \end{proof}
+
+    \item $\forall a, \; b, \; c \in \Z \; : \; a \mid b \implies a \mid cb$ \\
+
+    \begin{proof}
+        Нека $a, \; b, \; c \in \Z \; : \; a \mid b \implies \exists z \in \Z \; : \; b = za \\\\
+        \implies cb = cza = (cz)a \overset{cz \in \Z}{\implies} a \mid cb$
+    \end{proof}
+
+    \item $\forall a \in \Z, \; n \in \N^+, \; b_1, \; \dots, \; b_n \in \Z, \; c_1, \; \dots, \; c_n \in \Z \; : \; a \mid b_1, \; \dots, \; a \mid b_n \\\\
+    \implies  a \; \Big| \; \left(\displaystyle\sum_{i = 1}^n c_ib_i\right)$ \\
+
+    \begin{proof}
+        Нека $a \in \Z, \; n \in \N^+, \; b_1, \; \dots, \; b_n \in \Z, \; c_1, \; \dots, \; c_n \in \Z \; : \; a \mid b_1, \; \dots, \; a \mid b_n
+        \implies \exists z_1, \; \dots, \; z_n \in \Z \; : \; \forall i \in \{1, \; \dots, \; n\} \; b_i = z_ia \\\\
+        \implies \displaystyle\sum_{k = 1}^n c_kb_k = \displaystyle\sum_{k = 1}^n c_k(z_ka) = \displaystyle\sum_{k = 1}^n (c_kz_k)a = \left(\displaystyle\sum_{k = 1}^n c_kz_k\right)a \\\\
+        \implies a \; \Big| \; \left(\displaystyle\sum_{k = 1}^n c_kb_k\right)$ $(\forall i \in \{1, \; \dots, \; n\} \; c_iz_i \in \Z)$
+    \end{proof}
+
+    \item $\forall a, \; b, \; c \in \Z \; : \; a \mid (b + c) \; \land \; a \mid b \implies a \mid c$ \\
+
+    \begin{proof}
+        Нека $a, \; b, \; c \in \Z \; : \; a \mid (b + c) \; \land a \mid b \\\\
+        \implies \exists u, \; v \in \Z \; : \; b + c = ua \; \land b = va \\\\
+        \implies c = ua - b = ua - va = (u - v)a \overset{u - v \in \Z}{\implies} a \mid c$
+    \end{proof}
+\end{enumerate}
+
+\subsection{Теорема за деление с частно и остатък}
+
+\begin{theorem}
+    \bf(Теорема за деление с частно и остатък) \\
+    $\forall a, \; b \in \Z \; : \; a \neq 0 \; \exists! \; q, \; r \in \Z \; : \; b = qa + r \; \land \; 0 \leq r < |a|$
+\end{theorem}
+
+\begin{proof}
+    (\textit{Единственост}) \\
+    Нека $a, \; b \in \Z \; : \; a \neq 0$ и нека 
+    \begin{align*}
+        q_1, \; r_1 \in \Z \; : \; b = q_1a + r_1 \; \land \; 0 \leq r_1 < |a| \\\\
+        q_2, \; r_2 \in \Z \; : \; b = q_2a + r_2 \; \land \; 0 \leq r_2 < |a|
+    \end{align*}
+    Тогава
+    \begin{align*}
+        0 = b - b = q_1a + r_1 - (q_2a + r_2) = (q_1 - q_2)a + (r_1 - r_2) \\\\
+        \implies r_2 - r_1 = (q_1 - q_2)a \iff r_2 - r_1 = 0 \iff q_1 - q_2 = 0 \\\\
+        \iff r_2 = r_2 \; \land \; q_1 = q_2
+    \end{align*}
+\end{proof}
+
+\begin{proof}
+    (\textit{Съществуване}) \\
+    Ще разгледаме четирите възможни случаи в зависимост от знаците на двете числа.
+
+    \begin{enumerate}
+        \item $a > 0 \; \land \; b \geq 0$ \\
+
+        Ако $b < a$,  то полагаме $q = 0$ и $r = b$. \\
+        
+        В противен случай нека $q \in \N$ е най-голямото със свойството: \\
+        $qa \leq b < (q + 1)a$. Тогава \\
+        $0 = qa - qa \leq b - qa < (q + 1)a - qa = a = |a|$ \\
+        следователно полагаме $r = b - qa$.
+
+        \item $a > 0 \; \land \; b < 0$ \\
+        Нека $t \in \N$ е най-голямото със свойството: \\
+        $ta < |b| \leq (t + 1)a$. Тогава нека положим $q = -(t + 1)$ \\
+        Тогава
+        \begin{align*}
+            -(q + 1)a < |b| \leq -qa \; | \; -1 \implies \\\\
+            (q + 1)a > b \geq qa \; | \; - qa \implies \\\\
+            a > b - qa \geq 0 \implies 0 \leq b - qa < |a| 
+        \end{align*}
+        Полагаме $r = b - qa$
+
+        \item $a < 0 \; \land \; b \geq 0$ \\
+
+        Ако $b < |a|$,  то полагаме $q = 0$ и $r = b$. \\
+        
+        В противен случай нека $t \in \N$ е най-голямото със свойството: \\
+        $t|a| \leq b < (t + 1)|a|$. Тогава полагаме $q = -t$ и $qa = -ta = t|a|$\\
+        $0 = t|a| - t|a| \leq b - t|a| < (t + 1)|a| - t|a| = |a|$ \\
+        следователно полагаме $r = b - t|a| = b - qa$.
+
+        \item $a < 0 \; \land \; b < 0$ \\
+        Нека $t \in \N$ е най-голямото със свойството: \\
+        $t|a| < |b| \leq (t + 1)|a|$. Тогава нека положим $q = t + 1$ \\
+        Тогава
+        \begin{align*}
+            t|a| < |b| \leq (t + 1)|a| \; | \; -1 \implies \\\\
+            (q - 1)a > b \geq qa \; | \; + qa \implies \\\\
+            -a > b - qa \geq 0 \implies 0 \leq b - qa < |a| 
+        \end{align*}
+        Полагаме $r = b - qa$
+    \end{enumerate}
+\end{proof}
+
+\subsection{Следствия}
+
+\begin{corollary}
+    $\forall a, \; b \in \Z \; : \; a \neq 0 \quad a \mid b \iff \exists! \; q \in \Z \; : \; b = qa + 0$
+\end{corollary}
+
+\begin{corollary}
+    Нека $n \in \N^+$. Тогава от всеки $n$ последователни числа точно едно се дели на $n$.
+\end{corollary}
+
+\begin{proof}
+    Нека $n \in \N^+$ и нека $z \in Z$ е произволно число.
+    Нека \\ $\forall i \in \{0, \; \dots, \; n - 1\} \; a_i = z + i $. Прилагаме теоремата за деление с частно и остатък
+    за $z$ и получаваме $\exists! \; q, \; r \in \Z \; : \; z = qn + r \; \land \; 0 \leq r < n$. Ако $r = 0$ то тогава $a_0 = z + 0 = z = qn \implies n \mid a_0$.
+    Ако $r \neq 0 \implies r > 0 \implies \\
+    \forall i \in \{0, \; \dots, \; n - 1\} \; a_i = qn + r + i \implies \\
+    a_{n - r} = qn + r + (n - r) = qn + n = (q + 1)n \implies n \mid a_{n - r}$ \\
+    Следователно $\exists k \in \{0, \; \dots, \; n - 1\} \; : \; n \mid a_k$
+\end{proof}
+
+\begin{corollary}
+    Нека $n \in \N^+$. Тогава \\
+    $\forall a_1, \; \dots, \; a_{n + 1} \in \Z \; \exists i \neq j \in \{1, \; \dots, \; n + 1\} \; : \; n \; | \; (a_i - a_j)$
+\end{corollary}
+
+\begin{proof}
+    Нека $n \in \N^+, \; a_1, \; \dots, \; a_{n + 1} \in \Z$. Прилагаме теоремата за деление с частно и остатък и получаваме \\
+    $\forall k \in \{1, \; \dots, \; n + 1\} \; \exists! \; q_k, \; r_k \in \Z \; : \; a_k = q_kn + r_k \; \land \; 0 \leq r_k < n$.
+    Нека да дефинираме функцията $\forall k \in \{1, \; \dots, \; n + 1\} \; f(k) = r_k$, тоест \\
+    $f = \{(k, \; r_k) \; | \; k \in \{1, \; \dots, \; n + 1\}\}$. Очевидно домейнът на $f$ е множеството
+    $\{1, \; \dots, \; n + 1\}$, а нейният ко-домейн е множеството $\{0, \; \dots, \; n - 1\}$. Очевидно домейнът
+    има един елемент повече от ко-домейна, тогава $f$ не е инекция следователно $\exists i \neq j \in \{1, \; \dots, \; n + 1\} \; : \; f(i) = f(j) \implies \\
+    a_i - a_j = q_in + r_i - (q_jn + r_j) = (q_i - q_j)n + (r_i - r_j) = (q_i - q_j)n + 0 \implies n \mid (a_i - a_j)$
+\end{proof}
+
+\subsection{Теорема за запис в $p$-ична бройна система}
+
+\begin{theorem}
+    Нека $p \geq 2$ е фиксирано естествено число. Тогава \\
+    $\forall z \in \Z \; \exists! \; n, \; c_0, \; \dots, \; c_n \in \N \; : \;
+    z = \displaystyle\sum_{k = 0}^n c_k p^k \; \land \; \forall i \in \{0, \; \dots, \; n\} \; 0 \leq c_i < p \; \land \; c_n > 0$
+\end{theorem}
+
+\begin{proof}
+    (\textit{Съществуване})
+    Нека $z \in \Z$ е произволно. \\
+
+    Ако $z < p$, то $n = 0$ и $c_0 = z$. \\
+
+    Ако $z \geq p$ прилагаме теоремата за деление с частно и остатък и получаваме $z = q_1p + c_0 \; \land \; 0 \leq c_0 < p$
+    и освен това $z > q_1$. Ако $q_1 < p$, то полагаме $c_1 = q_1$
+    и получаваме представянето $z = c_1p + c_0$.
+    Ако пък $q_1 \geq p$ прилагаме теоремата за деление с частно и остатък за $q_1$ и $p$ и получаваме
+    $q_1 = q_2p + c_1 \; \land \; 0 \leq c_1 < p$ и $q_1 > q_2$, $z = q_2p^2 + c_1p + c_0$. Ако $q_2 < p$,
+    полагаме $c_2 = q_2$ и получаваме търсеното представяне. Ако $q_2 \geq p$ продължаваме да прилагаме
+    теоремата за деление с частно и остатък. Тъй като на всяка стъпка получаваме $z > q_1 > q_2 > \dots$
+    и тези числа са естествени, то този процес ще спре и за някое $n \in \N$ ще получим
+    $q_{n - 1} = q_np + c_{n - 1} \; \land \; 0 \leq c_{n - 1} < p \; \land \; q_n < p$.
+    Тогава полагаме $c_n = q_n$ и получаваме търсеното представяне $z = \displaystyle\sum_{k = 0}^n c_k p^k$.
+\end{proof}
+
+\begin{proof}
+    (\textit{Единственост})
+    Нека $z \in \Z$ е произволно. \\
+    Допускаме, че $z = \displaystyle\sum_{k = 0}^n c_k p^k = \displaystyle\sum_{j = 0}^m b_j p^j$, където \\
+    $\forall i \in \{0, \; \dots, \; n\} \; 0 \leq c_i < p \; \land \; c_n > 0$ и  $\forall j \in \{0, \; \dots, \; m\} \; 0 \leq b_j < p \; \land \; b_m > 0$.
+    Следователно $0 \leq c_0 - b_0 < |p|$
+    От равенствата следва
+    \begin{align*}
+        0 = z - z = \displaystyle\sum_{k = 0}^n c_k p^k - \displaystyle\sum_{j = 0}^m b_j p^j = \left(\displaystyle\sum_{k = 1}^n c_k p^{k - 1} - \displaystyle\sum_{j = 0}^m b_j p^{j - 1}\right)p + (c_0 - b_0) \\\\
+        p \mid 0 \; \land \; p \;  \Big| \; \left(\displaystyle\sum_{k = 1}^n c_k p^{k - 1} - \displaystyle\sum_{j = 0}^m b_j p^{j - 1}\right) \implies p \mid (c_0 - b_0) \iff c_0 = b_0
+    \end{align*}
+
+    Следователно $\displaystyle\frac{z - c_0}{p} = \displaystyle\sum_{k = 1}^n c_k p^{k - 1} = \displaystyle\sum_{j = 1}^m b_j p^{j - 1} = \displaystyle\frac{z - b_0}{p}$. Повтаряме горните стъпки
+    и така получаваме, че $m = n$ и $\forall i \in \{0, \; \dots, \; n\} \; b_i = c_i$
+\end{proof}
+С това теоремата е доказана. Записът от теоремата на числото $a$,
+се нарича \textit{запис на $a$ в p-ична бройна система} или \textit{p-ичен запис на числото $a$}.
+Числото $p$ се нарича основа на бройната система, а числата $c_0, \; \dots, \; c_n$ -
+\textit{p-ични цифри в записа на числото $a$}. Така при фиксирано $p$ всяко число се записва
+с краен брой символи. При $p = 10$ това са символите $\{-, \; 0, \; \dots, \; 9\}$, при $p = 2$
+символите са $\{-, \; 0, \; 1\}$.
+
+\subsection{Задачи}
+\end{document}
