@@ -1,0 +1,491 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage{tikz}
+
+\newcommand{\vectr}{\overrightarrow}
+\newcommand{\stkout}[1]{\ifmmode\text{\sout{\ensuremath{#1}}}\else\sout{#1}\fi}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\begin{document}
+    \pagenumbering{gobble}
+    \section{Глава 3 Уравнения на права и равнина в пространството}
+    \subsection{Задача 1.}
+    Да се намери точка \(M'\), ортогонално симетрична\\
+    на точката \(M(1, 1, 2)\) относно равнината \(\varepsilon\), определена с точките\\
+    \(M_1(5, 10, 0), \; M_2(4, 0 ,-7), \; M_3(2, 4, -5)\). Да се определят и директорните\\
+    косинуси в посока от \(M\) към \(M'\)\\
+    Решение:
+    \\\(\varepsilon \begin{cases}
+        z \; M_1(5, 10, 0)\\
+        z \; M_2(4, 0 ,-7)\\
+        z \; M_3(2, 4, -5)
+    \end{cases}\\
+    \\\\\varepsilon : \begin{vmatrix}
+        x - 5 & y - 10 & z\\
+        -1 & -10 & -7\\
+        -3 & -6 & -5
+    \end{vmatrix} = 0\\
+    \\\varepsilon : 50(x - 5) + 21(y - 10) + 6z - 30z -42(x - 5) - 5(y - 10) = 0\\
+    \\\varepsilon : 8(x - 5) + 16(y - 10) - 24z = 0 \; | \frac{1}{8}\\
+    \\\varepsilon : x - 5 + 2(y - 10) - 3z = 0\\
+    \\\varepsilon : x + 2y - 3z - 25 = 0\\
+    \\N_{\varepsilon}(1, 2, -3) \perp \varepsilon\\
+    \\\\g \begin{cases}
+        z \; M(1, 1, 2)\\
+        \parallel N_{\varepsilon}(1, 2, -3)
+    \end{cases}\\
+    \\\\g \begin{cases}
+        x = 1 + \lambda\\
+        y = 1 + 2\lambda\\
+        z = 2 - 3\lambda
+    \end{cases}\\
+    \\g \cap \varepsilon = M_0(x_0, y_0, z_0)\\
+    \\1 + \lambda_0 + 2 + 4\lambda_0 - 6 + 9\lambda_0 - 25 = 0\\
+    \\14\lambda_0 = 28 \implies \lambda_0 = 2 \implies M_0(3, 5, -4)\\
+    \\M'(x', y', z')\\
+    \\M_0(\frac{x_M + x'}{2}, \frac{y_M + y'}{2}, \frac{z_M + z'}{2})\\
+    \\3 = \frac{1 + x'}{2} \quad 5 = \frac{1 + y'}{2} \quad -4 = \frac{2 + z'}{2}\\
+    \\x' = 5 \quad y' = 9 \quad z = -10\\
+    \\\implies M'(5, 9, -10)\\
+    \\\vectr{MM'}(4, 8 , -12) \parallel \vectr{q}(1, 2, -3)\\
+    \\\implies \vectr{n_q} = \frac{\vectr{q}}{|\vectr{q}|}\\
+    \\|\vectr{q}| = \sqrt{1 + 4 + 9} = \sqrt{14}\\
+    \\\vectr{n_q}(\frac{1}{14}, \frac{2}{14}, -\frac{3}{14})\\
+    \\\text{Директроните косинуси съвпадат с кординатите на } \vectr{n_q}\)
+    \subsection{Задача 2.}
+    Да се намери точка \(M'\), ортогонално симетрична\\
+    на точката \(M(-1, 1, 2)\) относно правата
+    \\\(g \begin{cases}
+        x - y + 1 = 0\\
+        x - z - 2 = 0
+    \end{cases}\)
+    \\ и да се намери разтоянието от \(M\) до \(g\)\\
+    Решение:
+    \\\\\(g \begin{cases}
+        x = 0 + \lambda\\
+        y = 1 + \lambda & \lambda \in \mathbb{R}\\
+        z = -2 + \lambda
+    \end{cases}\\
+    \\\\g \begin{cases}
+        z \; G(0, 1, -2)\\
+        \parallel \vectr{g}(1, 1, 1)
+    \end{cases}\\
+    \\\\\varepsilon \begin{cases}
+        z \; M(-1, 1, 2)\\
+        \perp \vectr{g}(1, 1, 1)
+    \end{cases}\\
+    \\\\\implies \varepsilon : 1(x + 1) + 1(y - 1) + 1(z - 2) = 0\\
+    \\\varepsilon : x + y + z - 2 = 0\\
+    \\\varepsilon \cap g = M_0(x_0, y_0, z_0)\\
+    \\\begin{array}{lcl}
+        y_0 & = & x_0 + 1\\
+        z_0 & = & x_0 - 2\\
+        x_0 + y_0 + z_0 - 2 & = & 0
+    \end{array}\\
+    \\\\\begin{array}{lcl}
+        y_0 & = & x_0 + 1\\
+        z_0 & = & x_0 - 2\\
+        x_0 + x_0 + 1 + x_0 - 2 - 2 & = & 0
+    \end{array}\\
+    \\\\\begin{array}{lcl}
+        y_0 & = & x_0 + 1\\
+        z_0 & = & x_0 - 2\\
+        3x_0 & = & 3
+    \end{array}\\
+    \\\\\begin{array}{lcl}
+        y_0 & = & 2\\
+        z_0 & = & - 1\\
+        x_0 & = & 1
+    \end{array}\\
+    \\\implies M_0(1, 2, -1)\\
+    \\M'(x', y', z')\\
+    \\M_0(\frac{x_M + x'}{2}, \frac{y_M + y'}{2}, \frac{z_M + z'}{2})\\
+    \\1 = \frac{-1 + x'}{2} \quad 2 = \frac{1 + y'}{2} \quad -1 = \frac{2 + z'}{2}\\
+    \\x' = 3 \quad y' = 3 \quad z = -4\\
+    \\\implies M'(3, 3, -4)\\
+    \\d(M, g) = d(M, M_0) = |\vectr{MM_0}| \; (\varepsilon \cap g = M_0, \; \varepsilon \; z \; M, \; \varepsilon \perp g)\\
+    \\\vectr{MM_0}(2, 1, -3)\\
+    \\|\vectr{MM_0}| = \sqrt{4 + 1 = 9} = \sqrt{14}\)
+    \subsection{Задача 3.}
+    Да се намери трансферзалата на правите
+    \\\(a \begin{cases}
+        x = 3 + \lambda\\
+        y = -1 + 2\lambda & \lambda \in \mathbb{R}\\
+        z = 4\lambda
+    \end{cases} \quad b \begin{cases}
+        x = -2 + 3\mu\\
+        y = -1 & \mu \in \mathbb{R}\\
+        z = 4 - 5\mu
+    \end{cases}\)
+    \\минаваща през точката \(P(1, 1, 1)\)\\
+    Решение:
+    \\\\\(a \begin{cases}
+        z \; A(3, -1, 0)\\
+        \parallel \vectr{a}(1, 2, 4)
+    \end{cases}\\
+    \\\\\alpha \begin{cases}
+        z \; P(1, 1, 1)\\
+        z \; A(3, -1, 0)\\
+        \parallel \vectr{a}(1, 2, 4)
+    \end{cases}\\
+    \\\\\vectr{AP}(-2, 2, 1)\\
+    \\\vectr{AP} \times \vectr{a} \left(\begin{vmatrix}
+        2 & 1\\
+        2 & 4
+    \end{vmatrix}, \begin{vmatrix}
+        1 & -2\\
+        4 & 1
+    \end{vmatrix}, \begin{vmatrix}
+        -2 & 2\\
+        1 & 2
+    \end{vmatrix}\right)\\
+    \\\vectr{AP} \times \vectr{a} (6, 9, -6) \parallel \vectr{q}(2, 3, -2)\\
+    \\\alpha \begin{cases}
+        z \; P(1, 1, 1)\\
+        \perp \vectr{q}(2, 3, -2)
+    \end{cases}\\
+    \\\alpha : 2(x - 1) + 3(y - 1) - 2(z - 1) = 0\\
+    \\\alpha : 2x - \stkout{2} + 3y - 3 - 2z + \stkout{2} = 0\\
+    \\\alpha : 2x + 3y - 2z - 3 = 0\\
+    \\b \begin{cases}
+        z \; B(-2, -1, 4)\\
+        \parallel \vectr{b}(3, 0, -5)
+    \end{cases}\\
+    \\\\\beta \begin{cases}
+        z \; P(1, 1, 1)\\
+        z \; B(-2, -1, 4)\\
+        \parallel \vectr{b}(3, 0, -5)
+    \end{cases}\\
+    \\\\\vectr{BP}(3, 2, -3)\\
+    \\\vectr{BP} \times \vectr{b} \left(\begin{vmatrix}
+        2 & -3\\
+        0 & -5
+    \end{vmatrix}, \begin{vmatrix}
+        -3 & 3\\
+        -5 & 3
+    \end{vmatrix}, \begin{vmatrix}
+        3 & 2\\
+        3 & 0
+    \end{vmatrix}\right)\\
+    \\\vectr{BP} \times \vectr{b}(-10, 6, -6) \parallel \vectr{w}(-5, 3, -3)\\
+    \\\beta \begin{cases}
+        z \; P(1, 1, 1)\\
+        \perp \vectr{w}(-5, 3, -3)
+    \end{cases}\\
+    \\\beta : -5(x - 1) + 3(y - 1) - 3(z - 1) = 0\\
+    \\\beta : -5x + 5 + 3y - \stkout{3} -3z + \stkout{3} = 0\\
+    \\\beta : -5x + 3y - 3z + 5 = 0 \; |-1\\
+    \\\beta : 5x - 3y  + 3z - 5 = 0\\
+    \\t \begin{cases}
+        2x + 3y - 2z - 3 = 0\\
+        5x - 3y  + 3z - 5 = 0
+    \end{cases}\)
+    \subsection{Задача 4.}
+    Да се намерият ъравнението на оста отсечка и дължината на оста-отсечка на кръстосаните правите
+    \\\(a \begin{cases}
+        x = 7 + \lambda\\
+        y = 3 + 2\lambda & \lambda \in \mathbb{R}\\
+        z = 9 - \lambda
+    \end{cases} \quad b \begin{cases}
+        x = 3 - 7\mu\\
+        y = 1 + 2\mu & \mu \in \mathbb{R}\\
+        z = 1 + 3\mu
+    \end{cases}\\
+    \\\\a \begin{cases}
+        z \; A(7, 3, 9)\\
+        \parallel \vectr{a}(1, 2, -1)
+    \end{cases} b \begin{cases}
+        z \; B(3, 1, 1)\\
+        \parallel \vectr{b}(-7 , 2, 3)
+    \end{cases}\\
+    \\P_1(7 + \lambda, 3 + 2\lambda, 9 - \lambda)\\
+    \\P_2(3 - 7\mu, 1 + 2\mu, 1 + 3\mu)\\
+    \\\vectr{P_1P_2}(-7\mu - \lambda - 4, 2\mu - 2\lambda -2, 3\mu + \lambda -8)\\
+    \\\begin{array}{lcl}
+        \vectr{P_1P_2}\vectr{a} & = & 0\\
+        \vectr{P_1P_2}\vectr{b} & = & 0
+    \end{array}\\
+    \\-7\mu - \lambda - \stkout{4} + 4\mu - 4\lambda - \stkout{4} - 3\mu - \lambda + \stkout{8} = 0\\
+    \\-6\mu - 6\lambda = 0 \; | -\frac{1}{6}\\
+    \\\mu + \lambda = 0\\
+    \\49\mu + 7\lambda + \stkout{28} + 4\mu - 4\lambda - \stkout{4} + 9 \mu + 3\lambda - \stkout{24} = 0\\
+    \\62\mu + 6\lambda = 0 \; | \frac{1}{2}\\
+    \\31\mu + 3\lambda = 0\\
+    \\\lambda = - \mu\\
+    \\28\mu = 0 \implies \mu = \lambda = 0\\
+    \implies P_1 \equiv A(7, 3, 9), \; P_2 \equiv B(3, 1, 1)\\
+    \\\vectr{P_1P_2}(-4, -2, -8) \parallel \vectr{q}(2, 1, 4)\\
+    \\t \begin{cases}
+        z \; P_2(3, 1, 1)\\
+        \parallel{q}(2, 1, 4)
+    \end{cases}\\
+    \\\implies t \begin{cases}
+        x = 3 + 2\upsilon\\
+        y = 1 + \upsilon & \upsilon \in \mathbb{R}\\
+        z = 1 + 4\upsilon
+    \end{cases}\\
+    \\d(P_1, P_2) = |\vectr{P_1P_2}| = |-2||\vectr{q}| = 2\sqrt{4 + 1 + 16} = 2\sqrt{21}\)
+    \section{Ръководство по АГ - В.Михова}
+    \subsection{Задача 259. б)}
+    Да се намери трансферзалата на правите
+    \\\(a \begin{cases}
+        x = 3 + s\\
+        y = -1 + 2s & s \in \mathbb{R}\\
+        z = 4s
+    \end{cases} \quad b \begin{cases}
+        x = -2 + 3k\\
+        y = -1 & k \in \mathbb{R}\\
+        z = 4 - 5k
+    \end{cases}\)
+    \\Ако трансферзалата е \(\parallel l \begin{cases}
+        x - 3y + z = 0\\
+        x + y - z + 4 = 0
+    \end{cases}\\
+    \\\begin{pmatrix}[ccc|c]
+        1 & -3 & 1 & 0\\
+        1 & 1 & -1 & -4
+    \end{pmatrix} \to \begin{pmatrix}[ccc|c]
+        1 & -3 & 1 & 0\\
+        0 & -4 & 2 & 4
+    \end{pmatrix}\\
+    \\\to \begin{pmatrix}[ccc|c]
+        1 & -3 & 1 & 0\\
+        0 & 2 & -1 & -2
+    \end{pmatrix} \to \begin{pmatrix}[ccc|c]
+        1 & -1 & 0 & 0\\
+        0 & 2 & -1 & -2
+    \end{pmatrix}\\
+    \\z = \lambda, \; \lambda \in \mathbb{R}\\
+    \\2y = \lambda - 2 \implies y = -1 + \frac{1}{2}\lambda\\
+    \\x = y = -1 + \frac{1}{2}\lambda\\
+    \\\implies l \begin{cases}
+        x = -1 + \frac{1}{2}\lambda\\
+        y = -1 + \frac{1}{2}\lambda & \lambda \in \mathbb{R}\\
+        z = \lambda
+    \end{cases} \implies l \begin{cases}
+        z \; L(-1, -1, 0)\\
+        \parallel \vectr{l}(\frac{1}{2}, \frac{1}{2}, 1)
+    \end{cases}\\
+    \\a \begin{cases}
+        z \; A(3, - 1, 0)\\
+        \parallel \vectr{a}(1, 2, 4)
+    \end{cases}\\
+    \\\alpha \begin{cases}
+        z \; A(3, -1, 0)\\
+        \parallel \vectr{a}(1, 2, 4)\\
+        \parallel \vectr{l}(1, 1, 2)
+    \end{cases}\\
+    \\\vectr{a} \times \vectr{l}\left(\begin{vmatrix}
+        2 & 4\\
+        1 & 2
+    \end{vmatrix}, \begin{vmatrix}
+        4 & 1\\
+        2 & 1
+    \end{vmatrix}, \begin{vmatrix}
+        1 & 2\\
+        1 & 1
+    \end{vmatrix}\right)\\
+    \\\vectr{a} \times \vectr{l}(0, 2, -1)\\
+    \\\alpha \begin{cases}
+        z \; A(3, -1, 0)\\
+        \perp \vectr{a} \times \vectr{l}(0, 2, -1)
+    \end{cases} \implies \alpha : 2y - z + 2 = 0\\
+    \\b \begin{cases}
+        z \; B(-2, -1, 4)\\
+        \parallel \vectr{b}(3, 0, -5)
+    \end{cases}\\
+    \\\beta \begin{cases}
+        z \; B(-2, -1, 4)\\
+        \parallel \vectr{b}(3, 0, -5)
+        \parallel \vectr{l}(1, 1, 2)
+    \end{cases}\\
+    \\\vectr{b} \times \vectr{l}\left(\begin{vmatrix}
+        0 & -5\\
+        1 & 2
+    \end{vmatrix}, \begin{vmatrix}
+        -5 & 3\\
+        2 & 1
+    \end{vmatrix}, \begin{vmatrix}
+        3 & 0\\
+        1 & 1
+    \end{vmatrix}\right)\\
+    \\\vectr{b} \times \vectr{l}(5, -11, 3)\\
+    \\\beta \begin{cases}
+         z \; B(-2, -1, 4)\\
+        \perp \vectr{b} \times \vectr{l}(5, -11, 3)\\
+    \end{cases}\\
+    \\\implies \beta : 5(x + 2) -11(y + 1) + 3(z -4) = 0\\
+    \\\beta : 5x + 10 - 11y - 11 + 3z - 12 = 0\\
+    \\\beta : 5x - 11y + 3z - 13 = 0\\
+    \\\implies t \begin{cases}
+        2y - z + 2 = 0\\
+        5x - 11y + 3z - 13 = 0
+    \end{cases}\)
+    \subsection{Задача 259. в)}
+    Да се намери трансферзалата на правите
+    \\\(a \begin{cases}
+        x = 3 + s\\
+        y = -1 + 2s & s \in \mathbb{R}\\
+        z = 4s
+    \end{cases} \quad b \begin{cases}
+        x = -2 + 3k\\
+        y = -1 & k \in \mathbb{R}\\
+        z = 4 - 5k
+    \end{cases}\)
+    \\Ако трансферзалата лежи в равнината
+    \\\(\alpha : x - 3y + z - 5 = 0\\
+    \\a \cap \alpha = A(-2 + 3k, -1 + 2s, 4s)\\
+    \\3 + s - 3(- 1 + 2s) + 4s - 5 = 0\\
+    \\3 + s + 3 - 6s + 4s - 5 = 0\\
+    \\s = 1 \implies A(4, 1, 4)\\
+    \\b \cap \alpha = B(-2 + 3k, -1, 4 - 5k)\\
+    \\-2 + 3k + 3 + 4 - 5k -5 = 0\\
+    \\k = 0 \implies B(-2, -1, 4)\\
+    \\\vectr{AB}(-6, -2, 0) \parallel \vectr{q}(3, 1, 0)\\
+    \\AB \begin{cases}
+        z \; A(4, 1, 4)\\
+        \parallel \vectr{q}(3, 1, 0)
+    \end{cases}\\
+    \\\implies AB \begin{cases}
+        x = 4 + \upsilon\\
+        y = 1 + \upsilon & \upsilon \in \mathbb{R}\\
+        z = 4
+    \end{cases}\)
+    \subsection{Задача 262.}
+    Да се намери оста на кръстосаните прави
+    \\\(l \begin{cases}
+        x = 7 + s\\
+        y = 3 + 2s & s \in \mathbb{R}\\
+        z = 9 - s
+    \end{cases} \quad m \begin{cases}
+        x + 2y + z - 6 = 0\\
+        x + 5y - z - 7 = 0
+    \end{cases}\)\\
+    \\\(m\) е зададена като пресечница на две равнини \(\implies \exists\) сноп равнини пресичащисе в \(m\)
+    \\ Нека \(\alpha\) е равнина от снопа и \(\alpha \parallel l\)
+    \\\(l \begin{cases}
+        z \; L(7, 3, 9)\\
+        \parallel \vectr{l}(1, 2, -1)
+    \end{cases}\\
+    \\\alpha : \lambda(x + 2y + z - 6) + \mu(x + 5y - z - 7) = 0\\
+    \\\alpha : (\lambda + \mu)x + (2\lambda + 5\mu)y + (\lambda - \mu)z - 6\lambda - 7\mu = 0\\
+    \\\implies \vectr{n_\alpha}(\lambda + \mu, 2\lambda + 5\mu, \lambda - \mu) \perp \alpha\\
+    \\\implies \vectr{n_\alpha} \perp l \implies \vectr{n_\alpha} \perp \vectr{l} \implies \vectr{n_\alpha}\vectr{l} = 0\\
+    \\1(\lambda + \mu) + 2(2\lambda + 5\mu) -1(\lambda - \mu) = 0\\
+    \\\stkout{\lambda} + \mu  + 4\mu + 10\mu - \stkout{\lambda} + \mu = 0\\
+    \\4\lambda + 12\mu = 0 \; |\frac{1}{4}\\
+    \\\lambda + 3\mu = 0 \implies \lambda = -3\mu\\
+    \\\mu = -1 \implies \lambda = 3 \implies \vectr{n_\alpha}(2, 1, 4)\\
+    \\\implies \alpha : 2x + y + 4z - 11 = 0\\
+    \\p \begin{cases}
+        z \; L(7, 3, 9)\\
+        \parallel \vectr{n_\alpha}(2, 1, 4)
+    \end{cases}\\
+    \\\implies p \begin{cases}
+        x = 7 + 2k\\
+        y = 3 + k & k \in \mathbb{R}\\
+        z = 9 + 4k
+    \end{cases}\\
+    \\p \cup \alpha = P\\
+    \\\implies 2(7 + 2k) + 3 + k + 4(9 + 4k) - 11 = 0\\
+    \\14 + 4k + 3 + k + 36 + 16k - 11 = 0\\
+    21k = -42 \implies k = -2\\
+    \implies P(3, 1, 1)\\
+    \\l_0 \begin{cases}
+        z \; P(3, 1, 1)\\
+        \parallel \vectr{l}(1, 2, -1)
+    \end{cases}
+    \\\\l_0 \begin{cases}
+        x = 3 + \upsilon\\
+        y = 1 + 2\upsilon & \upsilon \in \mathbb{R}\\
+        z = 1 - \upsilon
+    \end{cases}\\
+    \\l_0 \cup m = M\\
+    \\m \begin{cases}
+        x + 2y + z - 6 = 0\\
+        x + 5y - z - 7 = 0
+    \end{cases}\\
+    \\\stkout{3} + \stkout{\upsilon} + \stkout{2} + 4\upsilon + \stkout{1} - \stkout{\upsilon} - \stkout{6} = 0 \implies \upsilon = 0\\
+    \\\implies M(3, 1, 1)\\
+    \\t \begin{cases}
+        z \; L(7, 3, 9)\\
+        z \; M(3, 1, 1)\\
+        \parallel \vectr{ML}(4, 2, 8) \parallel \vectr{t}(2, 1, 4)
+    \end{cases}\\
+    \\\implies t \begin{cases}
+        x = 7 + 2\tau\\
+        y = 3 + \tau & \tau \in \mathbb{R}\\
+        z = 9 + 4\tau
+    \end{cases}\)
+    \subsection{Задача 262. II Начин}
+    Да се намери оста на кръстосаните прави
+    \\\(l \begin{cases}
+        x = 7 + s\\
+        y = 3 + 2s & s \in \mathbb{R}\\
+        z = 9 - s
+    \end{cases} \quad m \begin{cases}
+        x + 2y + z - 6 = 0\\
+        x + 5y - z - 7 = 0
+    \end{cases}\\
+    \\\begin{array}{lcl}
+        x & = & 6 - z - 2y\\
+        x & = & 7 + z - 5y\\
+        6 - z - 2y & = & 7 + z - 5y\\
+        1 + 2z - 3y & = & 0\\
+        2z + 1 & = & 3y
+    \end{array}\\
+    \\\begin{array}{lcl}
+        x & = & 6 - z - 2y\\
+        2z + 1 & = & 3y
+    \end{array}\\
+    \\M_1(3, 1, 1), \; M_2(-4, 3, 4), \; \vectr{M_1M_2}(-7, 2, 3)\\
+    \\m \begin{cases}
+        x = 3 - 7k\\
+        y = 1 + 2k & k \in \mathbb{R}\\
+        z = 1 + 3k
+    \end{cases}\\
+    \\\\l \begin{cases}
+        z \; L(7, 3, 9)\\
+        \parallel \vectr{l}(1, 2, -1)
+    \end{cases} m \begin{cases}
+        z \; M(3, 1, 1)\\
+        \parallel \vectr{m}(-7 , 2, 3)
+    \end{cases}\\
+    \\P_1(7 + s, 3 + 2s 9 - s)\\
+    \\P_2(3 - 7k, 1 + 2k, 1 + 3k)\\
+    \\\vectr{P_1P_2}(-7k - s - 4, 2k - 2s -2, 3k + s -8)\\
+    \\\begin{array}{lcl}
+        \vectr{P_1P_2}\vectr{a} & = & 0\\
+        \vectr{P_1P_2}\vectr{b} & = & 0
+    \end{array}\\
+    \\-7k - s - \stkout{4} + 4k - 4s - \stkout{4} - 3k - s + \stkout{8} = 0\\
+    \\-6k - 6s = 0 \; | -\frac{1}{6}\\
+    \\k + s = 0\\
+    \\49k + 7s + \stkout{28} + 4k - 4s - \stkout{4} + 9 k + 3s - \stkout{24} = 0\\
+    \\62k + 6s = 0 \; | \frac{1}{2}\\
+    \\31k + 3s = 0\\
+    \\s = - k\\
+    \\28k = 0 \implies k = s = 0\\
+    \implies P_1 \equiv L(7, 3, 9), \; P_2 \equiv M(3, 1, 1)\\
+    \\\vectr{P_1P_2}(-4, -2, -8) \parallel \vectr{q}(2, 1, 4)\\
+    \\t \begin{cases}
+        z \; P_1(7, 3, 9)\\
+        \parallel{q}(2, 1, 4)
+    \end{cases}\\
+    \\\implies t \begin{cases}
+        x = 7 + 2\upsilon\\
+        y = 3 + \upsilon & \upsilon \in \mathbb{R}\\
+        z = 9 + 4\upsilon
+    \end{cases}\)
+\end{document}

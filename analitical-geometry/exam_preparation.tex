@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage{tikz}
+
+\newcommand{\vectr}{\overrightarrow}
+\newcommand{\stkout}[1]{\ifmmode\text{\sout{\ensuremath{#1}}}\else\sout{#1}\fi}
+\newcommand{\va}{\vectr{a}}
+\newcommand{\vb}{\vectr{b}}
+\newcommand{\x}{\times}
+\newcommand{\angglevab}{\measuredangle(\va, \vb)}
+\newcommand{\SABC}{S_{\bigtriangleup_{ABC}}}
+\newcommand{\VABCD}{V_{ABCD}}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\begin{document}
+    \pagenumbering{gobble}
+    \(|\va| = 1, \; |\vb| = 2, \; \angglevab = \frac{\pi}{3}\\
+    \\\vectr{CA} = \va(\vb\x\va)\\
+    \\\vectr{CB} = \va + \vb\\
+    \\\vectr{CD} = \va\x\vb\\
+    \\|\vectr{AH}| = ? \; \SABC = ? \; \VABCD = ?\\
+    \\\vectr{CA} = \begin{vmatrix}
+        \va\va & \va\vb\\
+        \va & \vb
+    \end{vmatrix} = (\va\va)\vb - (\va\vb)\va\\
+    \\\va^2 = |\va|^2 = 1^2 = 1\\
+    \\\vb^2 = |\vb|^2 = 2^2 = 4\\
+    \\\va\vb = |\va||\vb|\cos\angglevab = \stkout{2}\frac{1}{\stkout{2}} = 1\\
+    \\\implies \vectr{CA} = \vb - \va\\
+    \\\vectr{AH} = \vectr{CH} - \vectr{CA}\\
+    \\\vectr{AH} = \lambda\vectr{CB} - \vectr{CA} \quad |\vectr{CB}\\
+    \\0 = \lambda\vectr{CB}^2 - \vectr{CA}\vectr{CB}\\
+    \\\lambda = \frac{\vectr{CA}\vectr{CB}}{\vectr{CB}^2}
+    = \frac{(\vb - \va)(\va + \vb)}{(\va + \vb)^2}
+    = \frac{\vb^2 - \va^2}{\va^2 + 2\va\vb + \vb^2}
+    = \frac{4 - 1}{1 + 2 + 4} = \frac{3}{7}\\
+    \\\vectr{AH} = \frac{3}{7}(\va + \vb) -\vb + \va
+    = \frac{3}{7}\va + \va + \frac{3}{7}\vb - \vb
+    = \frac{10}{7}\va - \frac{4}{7}\vb\\
+    \\\vectr{AH}^2 = (\frac{10}{7}\va - \frac{4}{7}\vb)^2
+    = \frac{100}{49}\va^2 -\frac{80}{7}\va\vb + \frac{16}{7}\vb^2
+    = \frac{100}{49} - \frac{160}{49} + \frac{64}{49} = \frac{4}{49}\\
+    \\|\vectr{AH}| = \sqrt{\vectr{AH}^2} = \sqrt{\frac{4}{49}} = \frac{2}{7}\\
+    \\\SABC = \frac{1}{2}|\vectr{CA}\x\vectr{CB}|\\
+    \\= \frac{1}{2}|(\vb - \va)\x(\va + \vb)|\\
+    \\= \frac{1}{2}|(\vb - \va)\x\vectr{CB}|\\
+    \\= \frac{1}{2}|\vb\x\vectr{CB} - \va\x\vectr{CB}|\\
+    \\= \frac{1}{2}|\vb\x(\va + \vb) - \va\x(\va + \vb)|\\
+    \\= \frac{1}{2}|\vb\x\va + \vb\x\vb - \va\x\va - \va\x\vb|\\
+    \\= \frac{1}{2}|-\va\x\vb + 0 - 0 - \va\x\vb|\\
+    \\= \frac{1}{2}|-2(\va\x\vb)|\\
+    \\= \frac{1}{2}|-2|\sqrt{(\va\x\vb)^2}\\
+    \\= \sqrt{(|\va||\vb|\sin\angglevab)^2}
+    \\= \sqrt{|\va|^2|\vb|^2\sin^2\angglevab}\\
+    \\= \sqrt{\stkout{4}\frac{3}{\stkout{4}}} = \sqrt3\\
+    \\\VABCD = \frac{1}{6}|\vectr{CA}\vectr{CB}\vectr{CD}|\\
+    \\= \frac{1}{6}|(\vectr{CA}\x\vectr{CB})\vectr{CD}|\\
+    \\= \frac{1}{6}|-2(\va\x\vb)(\va\x\vb)|\\
+    \\= \frac{1}{6}|-2||(\va\x\vb)^2|\\
+    \\= \frac{1}{\stkout{3}}\stkout{4}\frac{\stkout{3}}{\stkout{4}} = 1
+    \)
+\end{document}

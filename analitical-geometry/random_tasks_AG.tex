@@ -1,0 +1,312 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage{tikz}
+
+\newcommand{\vectr}{\overrightarrow}
+\newcommand{\stkout}[1]{\ifmmode\text{\sout{\ensuremath{#1}}}\else\sout{#1}\fi}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \section{118}
+    \(\vectr{CA} = \vectr{a}, \; \vectr{CB} = \vectr{b}, \; |\vectr{b}| = 2, \; (\vectr{a}, \vectr{b})_e = \frac{2\pi}{3}\\
+    |AB| = ?, \; m_B \perp l_C\\
+    \\\vectr{AB} = \vectr{b} - \vectr{a}\\
+    \\\vectr{BM} = \frac{1}{2}(\vectr{BA} + \vectr{BC}) = \frac{1}{2}(-\vectr{AB} + (-\vectr{CB})) = \\
+    \\= \frac{1}{2}(-(\vectr{b} - \vectr{a}) + (-\vectr{b})) = \frac{1}{2}(\vectr{a}  -2\vectr{b})\\
+    \\\vectr{CL} = \vectr{CA} + \vectr{AL}\\
+    \\CL \equiv l_C, \; L \in AB \implies \frac{|AL|}{|LB|} = \frac{|CA|}{|CB|} = \frac{|\vectr{a}|}{|\vectr{b}|}\\
+    \\\implies |AL| = \frac{|\vectr{a}|}{|\vectr{a}| + |\vectr{b}|}|AB|\\
+    \\\implies \vectr{AL} = \frac{|\vectr{a}|}{|\vectr{a}| + |\vectr{b}|}(\vectr{b} - \vectr{a}) = \frac{|\vectr{a}|\vectr{b} - |\vectr{a}|\vectr{a}}{|\vectr{a}| + |\vectr{b}|}\\
+    \\\vectr{CL} = \vectr{a} + \frac{|\vectr{a}|\vectr{b} - |\vectr{a}|\vectr{a}}{|\vectr{a}| + |\vectr{b}|}
+    \\= \frac{\stkout{|\vectr{a}|\vectr{a}} + |\vectr{b}|\vectr{a} + |\vectr{a}|\vectr{b} - \stkout{|\vectr{a}|\vectr{a}}}{|\vectr{a}| + |\vectr{b}|}
+    \\= \frac{|\vectr{b}|\vectr{a} + |\vectr{a}|\vectr{b}}{|\vectr{a}| + |\vectr{b}|}\\
+    \\|\vectr{b}| = 2 \implies \vectr{CL} = \frac{2\vectr{a} + |\vectr{a}|\vectr{b}}{|\vectr{a}| + 2}\\
+    \\m_B \perp l_C \implies \vectr{BM}\vectr{CL} = 0\\
+    \\\frac{1}{2}(\vectr{a}  -2\vectr{b})\frac{2\vectr{a} + |\vectr{a}|\vectr{b}}{|\vectr{a}| + 2} = 0 \; | \quad 2(|\vectr{a}| + 2)\\
+    \\(\vectr{a}  -2\vectr{b})(2\vectr{a} + |\vectr{a}|\vectr{b}) = 0\\
+    \\2|\vectr{a}|^2 + \vectr{a}\vectr{b}|\vectr{a}| -4\vectr{a}\vectr{b} - 2|\vectr{a}||\vectr{b}|^2\\
+    \\\vectr{a}\vectr{b} = |\vectr{a}||\vectr{b}|\cos(\vectr{a}, \vectr{b})_e = |\vectr{a}|\stkout{2}\frac{-1}{\stkout{2}} = - |\vectr{a}|\\
+    \\2|\vectr{a}|^2 - |\vectr{a}|^2 + 4|\vectr{a}| -8|\vectr{a}| = 0\\
+    \\|\vectr{a}|^2 - 4|\vectr{a}| = 0\\
+    \\|\vectr{a}|(|\vectr{a}| - 4) = 0\\
+    \\|\vectr{a}| = 0 (|\vectr{a}| > 0) \quad |\vectr{a}| - 4 = 0\\
+    \\\implies |\vectr{a}| = 4\\
+    \\|\vectr{AB}|^2 = \vectr{AB}^2 = (\vectr{b} - \vectr{a})^2 = \vectr{b}^2 -2\vectr{a}\vectr{b} + \vectr{a}^2\\
+    \\= 4 + 8 + 16 = 28\\
+    \\\implies |\vectr{AB}| = \sqrt{28} = 2\sqrt{7} = |AB|\)
+    \section{136}
+    \(OCS \quad K = O\vectr{e_1}\vectr{e_2}, \; A_1(x_1, y_1), \; A_2(x_2, y_2), \; A_3(x_3, y_3), \; A_1 \nparallel A_2 \nparallel A_3 \nparallel A_1\\
+    \\S\bigtriangleup A_1A_2A_3 =? \; \frac{1}{2}|(x_1 - x_2)(y_3 - y_1) - (x_3 - x_1)(y_2 - y_1)|\\
+    \\K' = O\vectr{e_1}\vectr{e_2}\vectr{e_3}; \; e_3 = e_1 \times e_2 \implies A_1(x_1, y_1, 0), \; A_2(x_2, y_2, 0), \; A_3(x_3, y_3, 0)\\
+    \\S\bigtriangleup A_1A_2A_3 = \frac{1}{2}|\vectr{A_1A_2} \times \vectr{A_1A_3}|\\
+    \\\vectr{A_1A_2}(x_2 - x_1, y_2 - y_1, 0), \; \vectr{A_1A_3}(x_3 - x_1, y_3 - y_1, 0)\\
+    \\\vectr{A_1A_2} \times \vectr{A_1A_3}\left(\begin{vmatrix}
+        y_2 - y_1 & 0\\
+        y_3 - y_1 & 0
+    \end{vmatrix}, \begin{vmatrix}
+        0 & x_2 - x_1\\
+        0 & x_3 - x_1
+    \end{vmatrix}, \begin{vmatrix}
+        x_2 - x_1 & y_2 - y_1\\
+        x_3 - x_1 & y_3 - y_1
+    \end{vmatrix}\right)\\
+    \\\vectr{A_1A_2} \times \vectr{A_1A_3}\left(0, 0, \begin{vmatrix}
+        x_2 - x_1 & y_2 - y_1\\
+        x_3 - x_1 & y_3 - y_1
+    \end{vmatrix}\right)\\
+    \\|\vectr{A_1A_2} \times \vectr{A_1A_3}| = \sqrt{0 + 0 + [(x_2 - x_1)(y_3 - y_1) - (y_2 - y_1)(x_3 - x_1)]^2} =\\
+    \\ = |(x_2 - x_1)(y_3 - y_1) - (y_2 - y_1)(x_3 - x_1)|\\
+    \\\implies S\bigtriangleup A_1A_2A_3 = \frac{1}{2}|(x_1 - x_2)(y_3 - y_1) - (x_3 - x_1)(y_2 - y_1)|\\
+    \\\implies S\bigtriangleup A_1A_2A_3 = \frac{1}{2} \left|\begin{vmatrix}
+        x_2 - x_1 & y_2 - y_1\\
+        x_3 - x_1 & y_3 - y_1
+    \end{vmatrix}\right| = \frac{1}{2} \varepsilon \begin{vmatrix}
+        x_2 - x_1 & y_2 - y_1\\
+        x_3 - x_1 & y_3 - y_1
+    \end{vmatrix}; \; \varepsilon = \pm 1\)
+    \section{137 (Th Shal)}
+    \(A, B, C, D \in \lambda \in S_2, \; S\bigtriangleup ABC =? \; S\bigtriangleup DAB + S\bigtriangleup DBC + S\bigtriangleup DCA\\
+    \\A(a_1, a_2), \; B(b_1, b_2), \; C(c_1, c_2), \; D(d_1, d_2)\\
+    \\\lambda' \in S_3; \; A(a_1, a_2, 0), \; B(b_1, b_2, 0), \; C(c_1, c_2, 0), \; D(d_1, d_2, 0) \in \lambda' \implies\\
+    \\signS\bigtriangleup ABC =  signS\bigtriangleup DAB = signS\bigtriangleup DBC = sign S\bigtriangleup DCA = \varepsilon; \; \varepsilon = \pm 1\\
+    \\S\bigtriangleup ABC = \frac{1}{2}|\vectr{AB} \times \vectr{AC}|\\
+    \\\vectr{AB}(b_1 - a_1, b_2 - a_2, 0), \; \vectr{AC}(c_1 - a_1, c_2 - a_2, 0)\\
+    \\S\bigtriangleup ABC = \frac{1}{2}\begin{vmatrix}
+        b_1 - a_1 & b_2 - a_2\\
+        c_1 - a_1 & c_2 - a_2
+    \end{vmatrix} = \frac{1}{2}[(b_1 - a_1)(c_2 - a_2) - (b_2 - a_2)(c_1 - a_1)] = \\
+    \\ = \frac{1}{2}(b_1c_2 -b_1a_2 - a_1c_2 + \stkout{a_1a_2} - b_2c_1 + b_2a_1 + a_2c_1 - \stkout{a_1a_2}) = \\
+    \\ = \frac{1}{2}(b_1c_2 -b_1a_2 - a_1c_2 - b_2c_1 + b_2a_1 + a_2c_1)\\
+    \\\vectr{DA}(a_1 - d_1, a_2 - d_2, 0), \; \vectr{DB}(d_1 - b_1, d_2 - b_2, 0)\\
+    \\S\bigtriangleup DAB = \frac{1}{2}\begin{vmatrix}
+        a_1 - d_1 & a_2 - d_2\\
+        b_1 - d_1 & b_2 - d_2
+    \end{vmatrix}\\
+    \\\vectr{DC}(c_1 - d_1, c_2 - d_2, 0), \quad S\bigtriangleup DBC = \frac{1}{2}\begin{vmatrix}
+        b_1 - d_1 & b_2 - d_2\\
+        c_1 - d_1 & c_2 - d_2
+    \end{vmatrix}\\
+    \\S\bigtriangleup DCA = \frac{1}{2}\begin{vmatrix}
+        c_1 - d_1 & c_2 - d_2\\
+        a_1 - d_1 & a_2 - d_2
+    \end{vmatrix}\\
+    \\S\bigtriangleup DAB + S\bigtriangleup DCA = \\
+    \\ = \frac{1}{2}[(a_1 - d_1)(b_2 - d_2) - (a_2 - d_2)(b_1 - d_1) + (c_1 - d_1)(a_2 - d_2) - (c_2 - d_2)(a_1 - d_1)] =\\
+    \\ = \frac{1}{2}[(a_1 - d_1)(b_2 - \stkout{d_2} - c_2 + \stkout{d_2}) + (a_2 - d_2)(c_1 - \stkout{d_1} - b_1 + \stkout{d_1})] = \\
+    \\ = \frac{1}{2}[(a_1 - d_1)(b_2 - c_2) + (a_2 - d_2)(c_1 - b_1)]\\
+    \\S\bigtriangleup DAB + S\bigtriangleup DCA + S\bigtriangleup DBC = \\
+    \\ = \frac{1}{2}[(a_1 - d_1)(b_2 - c_2) + (a_2 - d_2)(c_1 - b_1) + (b_1 - d_1)(c_2 - d_2) - (b_2 - d_2)(c_1 - d_1)] = \\
+    \\ = \frac{1}{2}(a_1b_2 - a_1c_2 - \stkout{d_1b_2} + \stkout{d_1c_2} + a_2c_1 - a_2b_1 - \stkout{d_2c_1} + \stkout{d_2b_1} + b_1c_2 - \stkout{b_1d_2} - \stkout{d_1c_2} + \stkout{d_1d_2} - b_2c_1 + \stkout{b_2d_1} + \stkout{d_2c_1} - \stkout{d_2d_1}) = \\
+    \\ = \frac{1}{2}(a_1b_2 - a_1c_2 + a_2c_1 - a_2b_1 + b_1c_2 - b_2c_1) = \\
+    \\ = \frac{1}{2}(b_1c_2 -b_1a_2 - a_1c_2 - b_2c_1 + b_2a_1 + a_2c_1)\\
+    \\\implies S\bigtriangleup ABC = S\bigtriangleup DAB + S\bigtriangleup DBC + S\bigtriangleup DCA\)
+    \section{206}
+    \(b_A : x - 2y + 3 = 0, \; m_A : 2x + y - 4 = 0, \; S\bigtriangleup ABC = ?, \; B(3, -4)\\
+    \\ b_A \perp m_A \implies m_A \equiv b_A \sphericalangle(BAC)_e \implies AB = AC \implies B = OImC\\
+    \begin{tikzpicture}
+    \draw (1,2) node[anchor=south]{$A(1, 2)$}
+        -- (23/5, -16/5) node[anchor=west]{$C(\frac{23}{5}, -\frac{16}{5})$}
+        -- (3,-4) node[anchor=north]{$B(3, -4)$}
+        -- cycle;
+    \draw (1, 2) -- (38/10, -36/10) node[anchor=south]{$m_A$};
+    \draw (1, 2) -- (3, 3.25) node[anchor=south]{$b_A$};
+    \end{tikzpicture}\\
+    \\ m_A \cap b_A = A(x_A, y_A)\\
+    \\ \begin{array}{lcl}
+        x_A - 2y_A + 3 & = & 0\\
+        2x_A + y_A - 4 & = & 0 \; | 2
+    \end{array} \\
+    \\\\ \begin{array}{lcl}
+        x_A - 2y_A + 3 & = & 0 \\
+        + & ~ & ~ \\
+        4x_A + 2y_A - 8 & = & 0 \;
+    \end{array} \\
+    \\\\ 5x_A = 5, \; x_A = 1\\
+    \\ 2 + y_A - 4 = 0, \; y_A = 2\\
+    \\\implies (x_A, y_A) = (1, 2)\\
+    \\ m_A \equiv h_A \perp BC \implies BC : x - 2y + c = 0\\
+    \\ B(3, -4) \; z \; BC \implies 3 + 8 + c = 0, \; c = -11\\
+    \\\implies BC : x - 2y - 11 = 0\\
+    \\ BC \cup m_A = M(x_M, y_M)\\
+    \\ \begin{array}{lcl}
+        x_M - 2y_M - 11 & = & 0\\
+        2x_M + y_M - 4 & = & 0 \; | 2
+    \end{array} \\
+    \\\\ \begin{array}{lcl}
+        x_M - 2y_M - 11 & = & 0 \\
+        + & ~ & ~ \\
+        4x_M + 2y_M - 8 & = & 0 \;
+    \end{array} \\
+    \\\\ 5x_M - 19 = 0, \; x_M = \frac{19}{5}\\
+    \\ \frac{19}{5} - 2y_M - 11 = 0 \; | 5\\
+    \\ 19 - 10y_M - 55 = 0\\
+    \\ -10y_M - 36 = 0\\
+    \\ y_M = -\frac{\stkout{36}}{\stkout{10}} = - \frac{18}{5}\\
+    \\\implies (x_M, y_M) = (\frac{19}{5}, - \frac{18}{5})\\
+    \\ (x_M, y_M) = (\frac{x_B + x_C}{2}, \frac{y_B + y_C}{2})\\
+    \\\frac{19}{5} = \frac{3 + x_C}{2} \quad -\frac{18}{5} = \frac{-4 + y_C}{2}\\
+    \\ 38 = 15 + 5x_C \quad -36 = -20 + 5y_C\\
+    \\ x_C = \frac{23}{5} \quad y_C = -\frac{16}{5}\\
+    \\\implies (x_C, y_C) = (\frac{23}{5}, -\frac{16}{5})\\
+    \\\\\\ C(\frac{23}{5}, -\frac{16}{5}), \; A(1, 2)\\
+    \\ S\bigtriangleup ABC = \frac{|\vectr{AB} \times \vectr{AC}|}{2}\\
+    \\ \vectr{AB}(2, - 6), \; \vectr{AC}(\frac{18}{5},-\frac{26}{5})\\
+    \\ S\bigtriangleup ABC = \frac{1}{2}\varepsilon\left|\begin{vmatrix}
+        2 & -6\\
+        \frac{18}{5} & -\frac{26}{5}\\
+    \end{vmatrix}\right|, \varepsilon = 1, \; \vectr{AB}, \vectr{AC} \in S^-\\
+    \\ S\bigtriangleup ABC = \frac{1}{2}(-\frac{52}{5} + \frac{108}{5}) = \frac{\stkout{56}}{\stkout{10}} = \frac{38}{5}\)
+    \section{207}
+    \(b_C : x - 2y = 0, \; m_C : 2x - y - 3 = 0, \; S\bigtriangleup ABC = ?, \; A(3, 4)\\
+    \\\begin{tikzpicture}
+    \draw (3, 4) node[anchor=south]{$A(3, 4)$}
+        -- (17/7, 6/7) node[anchor=north]{$B(\frac{17}{7}, -\frac{6}{7})$}
+        -- (2, 1) node[anchor=east]{$C(2, 1)$}
+        -- cycle;
+    \draw (2, 1) -- (4, 2) node[anchor=west]{$A_0(4, 2)$};
+    \draw (2, 1) -- (19/7, 17/7) node[anchor=west]{$M(\frac{19}{7}, \frac{17}{7})$};
+    \draw (2, 1) -- (5, 0);
+    \draw (3, 4) -- (5, 0) node[anchor=west]{$A'(5, 0)$};
+    \end{tikzpicture}\\
+    \\ b_C \cup m_C = C(x_ C, y_C)\\
+    \\\\\begin{array}{lcl}
+        x_C - 2y_C & = & 0 \; |2\\
+        2x_C -y_C - 3 & = & 0
+    \end{array}\\
+    \\\\\begin{array}{lcl}
+        -2x_C + 4y_C & = & 0\\
+        + & ~ & ~\\
+        2x_C - y_C - 3 & = & 0
+    \end{array}\\
+    \\ y_C = 1, \; x_C = 2 \implies C(2, 1)\\
+    \\ AA' = \begin{cases}
+        z \; A(3, 4)\\
+        \perp b_C : x - 2y = 0
+    \end{cases}\\
+    \\ AA' \perp b_C \implies AA' : 2x + y + c_{AA'} = 0\\
+    \\ A \; z \; AA' \implies c_{AA'} = -10\\
+    \\\implies AA' : 2x + y - 10 = 0\\
+    AA' \cup b_C = A_0(x_0, y_0)\\
+    \\\\\begin{array}{lcl}
+        2x_0 + y_0 - 10 & = & 0 \; |2\\
+        x_0 - 2y_0 & = & 0
+    \end{array}\\
+    \\\\\begin{array}{lcl}
+        -x_0 + 2y_0 - 20 & = & 0\\
+        + & ~ & ~\\
+        x_0 - 2y_C & = & 0
+    \end{array}\\
+    \\ 5x_0 = 20 \implies x_0 = 4\\
+    \\ -2y_0 = 4 \implies y_0 = 2\\
+    \\\implies A_0(4, 2)\\
+    \\ A'(x_{A'}, y_{A'})\\
+    \\ A_0(\frac{x_A + x_{A'}}{2}, \frac{y_A + y_{A'}}{2})\\
+    \\ 4 = \frac{3 + x_{A'}}{2} \quad 2 = \frac{4 + y_{A'}}{2}\\
+    \\ 8 = 3 + x_{A'} \quad 4 = 4 + y_{A'}\\
+    \\ x_{A'} = 5 \quad y_{A'} = 0\\
+    \\\implies A'(5, 0)\\
+    \\ CA' : \begin{cases}
+        z \; C(2, 1)\\
+        z \; A'(5, 0)
+    \end{cases}\\
+    \\\implies CA' : \begin{vmatrix}
+        x - 5 & y\\
+        2 - 5 & 1
+    \end{vmatrix} = 0\\
+    \\ CA' : x + 3y - 5 = 0\\
+    \\ B(x_B, y_B) \; z \; CA'\\
+    \\x_B + 3_B - 5 = 0\\
+    \\ M(x_M, y_M), \; \vectr{OM}(x_M, y_M), \; \vectr{OA}(3, 4), \; \vectr{OB}(x_B, y_B)\\
+    \\ AM = MB \implies \vectr{OM} = \frac{1}{2}(\vectr{OA} + \vectr{OB})\\
+    \\ x_M = \frac{3 + x_B}{2} \quad y_m = \frac{4 + y_B}{2}\\
+    \\ 2x_M = 3 + x_B \quad 2y_M = 4 + y_B\\
+    \\ x_B = 2x_M - 3 \quad y_B = 2y_M - 4\\
+    \\\\\begin{array}{lcl}
+        2x_M - y_M - 3 & = & 0\\
+        x_B + 3y_B - 5 & = & 0
+    \end{array}\\
+    \\\\\begin{array}{lcl}
+        2x_M - y_M - 3 & = & 0\\
+        2x_M - 3 + 6y_B - 12 - 5 & = & 0
+    \end{array}\\
+    \\\\\begin{array}{lcl}
+        2x_M - y_M - 3 & = & 0 \; | -1\\
+        2x_M + 6y_M - 20 & = & 0
+    \end{array}\\
+    \\\\\begin{array}{lcl}
+        -2x_M + y_M + 3 & = & 0\\
+        + & ~ & ~\\
+        2x_M + 6y_M - 20 & = & 0
+    \end{array}\\
+    \\ 7y_M = 17 \implies y_M = \frac{17}{7}\\
+    \\ 2x_M = \frac{17}{7} + 3\\
+    \\ 2x_M = \frac{38}{7} \implies x_M = \frac{19}{7}\\
+    \\ x_B = \frac{38}{7} - 3 = \frac{17}{7}\\
+    \\ y_B = \frac{34}{7} - 4 = \frac{6}{7}\\
+    \\\implies B(\frac{17}{7}, \frac{6}{7})\\
+    \\\\ S\bigtriangleup ABC = \frac{|\vectr{AB} \times \vectr{AC}|}{2}\\
+    \\\vectr{AB}(-\frac{4}{7}, -\frac{22}{7})\\
+    \\\vectr{AC}(-1 , -3)\\
+    \\ \vectr{AB}, \; \vectr{AC} \in S^- \implies S\bigtriangleup ABC > 0\\
+    \\ S\bigtriangleup ABC = \frac{1}{2}\left|\begin{vmatrix}
+        -\frac{4}{7} & -1\\
+        -\frac{22}{7} & -3
+    \end{vmatrix}\right| = \frac{1}{2}|\frac{17}{7} - \frac{22}{7}| = \frac{1}{2} |-\frac{10}{7}| = \frac{5}{7}
+    \)
+    \section{218}
+    \(P(2, 4), \; Q(1, 1), \; l \; z \; P, \; l' \; z \; Q; \quad l, \; l' ?\\
+    \\\begin{tikzpicture}
+    \draw (2, 4) node[anchor=east]{$P(2, 4)$} (1, -1) node[anchor=east]{$Q'(1, -1)$};
+    \draw (1, 1) node[anchor=east]{$Q(1, 1)$} (2, -4) node[anchor=west]{$P'(2, -4)$};
+    \draw (1, 0) node[anchor=east]{$Q_0(1, 0)$} (2, 0) node[anchor=west]{$P_0(2, 0)$};
+    \draw (4/5, -2) -- (11/5, 5) node[anchor=east]{$l$};
+    \draw (4/5, 2) node[anchor=east]{$l'$} -- (11/5, -5);
+    \draw (-1, 0) -- (4, 0) node[anchor=south]{$O_x$};
+    \draw (1, 1) -- (1, -1);
+    \draw (2, 4) -- (2, -4);
+    \end{tikzpicture}\\
+    \\ O_x: x = 0\\
+    \\ Q_0 \; z \ O_x \implies Q_0(1, 0)\\
+    \\ Q'(x_{Q'}, y_{Q'})\\
+    \\ Q_0(\frac{x_Q + x_{Q'}}{2}, \frac{y_Q + y_{Q'}}{2})\\
+    \\\implies 1 = \frac{1 + x_{Q'}}{2}, \quad 0 = \frac{1 + y_{Q'}}{2}\\
+    \\\implies x_{Q'} = 1, \; y_{Q'} = -1 \implies Q'(1, -1)\\
+    \\ P_0 \; z \ O_x \implies P_0(2, 0)\\
+    \\ P'(x_{P'}, y_{P'})\\
+    \\ P_0(\frac{x_P + x_{P'}}{2}, \frac{y_P + y_{P'}}{2})\\
+    \\\implies 2 = \frac{2 + x_{P'}}{2}, \quad 0 = \frac{4 + y_{P'}}{2}\\
+    \\\implies x_{P'} = 2, \; y_{P'} = -4 \implies P'(2, -4)\\
+    \\ l \begin{cases}
+        z \; P(2, 4)\\
+        z \; Q'(1, -1)
+    \end{cases}\\
+    \\\\\implies l: \begin{vmatrix}
+        x - 1 & y + 1\\
+        2 - 1 & 4 + 1\\
+    \end{vmatrix} = 0\\
+    \\\\ \begin{vmatrix}
+        x - 1 & y + 1\\
+        1 & 5\\
+    \end{vmatrix} = 0\\
+    \\\\ l : 5x - 5 - y - 1 = 0\\
+    \\ l : 5x - y - 6 = 0\\
+    \\ l' \begin{cases}
+        z \; Q(1, 1)\\
+        z \; P'(2, -4)
+    \end{cases}\\
+    \\\\\implies l': \begin{vmatrix}
+        x - 1 & y - 1\\
+        2 - 1 & -4 - 1\\
+    \end{vmatrix} = 0\\
+    \\\\ \begin{vmatrix}
+        x - 1 & y - 1\\
+        1 & -5\\
+    \end{vmatrix} = 0\\
+    \\\\ l' : -5x + 5 - y + 1 = 0\\
+    \\ l' : -5x - y + 6 = 0\)
+\end{document}

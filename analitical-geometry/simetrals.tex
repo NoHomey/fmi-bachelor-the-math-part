@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage{tikz}
+
+\newcommand{\vectr}{\overrightarrow}
+\newcommand{\stkout}[1]{\ifmmode\text{\sout{\ensuremath{#1}}}\else\sout{#1}\fi}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \begin{tikzpicture}
+    \draw (5,1) node[anchor=west]{$A(5, 1)$}
+        -- (3,3) node[anchor=west]{$B(3, 3)$}
+        -- (-1,5) node[anchor=west]{$C(-1, 5)$}
+        -- cycle;
+    \draw (7/2, 3/2) node[anchor=north]{$S_{AB}$} -- (4, 2) node[anchor=west]{$M(4, 2)$};
+    \draw (8/3, 4) node[anchor=east]{$S_{AC}$} -- (2, 3) node[anchor=east]{$N(2, 3)$};
+    \end{tikzpicture}
+    \\\(A(5, 1), \; B(3, 3) \; C(-1, 5)\\
+    \\S_{AB}, \; S_{AC} = ?\\
+    \\S_{AB} \cap S_{AC} = ?\\
+    \\R = ?\\
+    \\S_{AB} : \begin{cases}
+        z \; M\\
+        \perp AB
+    \end{cases}\\
+    \\M(\frac{5 + 3}{2}, \frac{1 + 3}{2}) \implies M(4, 2)\\
+    \\AB : \begin{cases}
+        z \; A(5, 1)\\
+        z \; B(3, 3)
+    \end{cases}
+    \\AB : \begin{vmatrix}
+        x - 3 & y - 3\\
+        2 &  -2
+    \end{vmatrix} = 0\\
+    \\AB : -2x + 6 -2y + 6 = 0\\
+    \\AB: -2x -2y + 12 = 0 \; |-\frac{1}{2}\\
+    \\AB : x + y + 6 = 0\\
+    \\S_{AB} \perp AB \implies S_{AB} : -x + y + C = 0\\
+    \\M(4, 2) \; z \; S_{AB} \implies -4 + 2 + C = 0\\
+    \\\implies S_{AB} : -x + y + 2 = 0\\
+    \\S_{AC} : \begin{cases}
+        z \; N\\
+        \perp AC
+    \end{cases}\\
+    \\N(\frac{5 - 1}{2}, \frac{1 + 5}{2}) \implies N(2, 3)\\
+    \\AC : \begin{cases}
+        z \; A(5, 1)\\
+        z \; C(-1, 5)
+    \end{cases}
+    \\AB : \begin{vmatrix}
+        x - 5 & y - 1\\
+        -6 &  4
+    \end{vmatrix} = 0\\
+    \\AC : 4x - 20 + 6y - 6 = 0\\
+    \\AC : 4x + 6y - 26 = 0 \; |\frac{1}{2}\\
+    \\AC : 2x + 3y - 13 = 0\\
+    \\S_{AC} \perp AC \implies S_{AC} : -3x + 2y + C = 0\\
+    \\N(2, 3) \; z \; S_{AC} \implies -6 + 6 + C = 0\\
+    \\\implies S_{AC} : -3x + 2y = 0\\
+    \\S_{AB} \cap S_{AC} = O(x_O, y_O)\\
+    \\\begin{array}{lcl}
+        -3x_O + 2y_O & = & 0\\
+        -x_O + y_O + 2 & = & 0 \; |-3
+    \end{array}\\
+    \\\\\begin{array}{lcl}
+        -3x_s + 2y_O & = & 0\\
+        3x_O - 3y_O - 6 & = & 0
+    \end{array}\\
+    \\ y_O = -6 \implies x_O = -4 \implies O(-4, -6)\\
+    \\\vectr{BS}(-7, -9)\\
+    \\|\vectr{BS}| = \sqrt{49 + 81} = \sqrt{130} = R\)
+\end{document}
