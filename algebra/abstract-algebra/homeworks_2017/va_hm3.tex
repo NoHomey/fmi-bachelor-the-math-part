@@ -1,0 +1,280 @@
+\documentclass[14pt]{extarticle}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage[margin=0.5in, top=1cm, left=1in]{geometry}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Cx}{\mathbb{C}[x]}
+\newcommand{\Sum}{\displaystyle\sum_{k = 1}^3}
+\newcommand{\Prod}{\displaystyle\prod_{k = 1}^3}
+\newcommand{\Pf}{\displaystyle\prod_{k = 1}^{j - 1}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\title{Домашна работа 3, № 45342, Група 3}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+\section*{Задача 1.}
+\(f(x) = x^4 + x^2 + \overline{5}x + \overline{3}, \quad g(x) = \overline{12}x^4 + x^3 + \overline{8}x + \overline{2} \in \Z_{13} \\\\
+\tab \overline{12}x^4 + x^3 + \overline{8}x + \overline{2} \; : \; x^4 + x^2 + \overline{5}x + \overline{3} = \overline{12}\\
+- \\
+\tab \overline{12}x^4 + \overline{12}x^2 + \overline{8}x + \overline{10}\\
+\tab \noindent\rule{4.8cm}{0.4pt} \\\\
+\tab \tab \quad \quad x^3 + x^2 + \overline{5} \) \\\\
+Нека \(q_1(x) = \overline{12}, \; r_1(x) = x^3 + x^2 + \overline{5} \implies g(x) = q_1(x)f(x) + r_1(x) \implies \\\\
+r_1(x) = g(x) - q_1(x)f(x) \\\\
+\tab x^4 + x^2 + \overline{5}x + \overline{3} \; : \; x^3 + x^2 + \overline{5} = x + \overline{12} \\
+- \\
+\tab x^4 + x^3 + \overline{5}x \\
+\tab \noindent\rule{3.8cm}{0.4pt} \\\\
+\tab \tab \overline{12}x^3 + x^2 + \overline{3} \\
+\tab - \\
+\tab \tab \overline{12}x^3 + \overline{12}x^2 + \overline{8} \\
+\tab \tab \noindent\rule{3.2cm}{0.4pt} \\\\
+\tab \tab \tab \quad \overline{2}x^2 + \overline{8} \) \\\\
+Нека \(q_2(x) = x + \overline{12}, \; r_2(x) = \overline{2}x^2 + \overline{8} \implies f(x) = q_2(x)r_1(x) + r_2(x) \implies \\\\
+r_2(x) = f(x) - q_2(x)r_1(x) = f(x) - q_2(x)(g(x) - q_1(x)f(x)) = \\\\
+= f(x) - q_2(x)g(x) + q_2(x)q_1(x)f(x) \implies r_2(x) = (\overline{1} + q_2(x)q_1(x))f(x) - q_2(x)g(x) \\\\
+\tab x^3 + x^2 + \overline{5} \; : \; \quad \overline{2}x^2 + \overline{8} = \overline{7}x + \overline{7} = \overline{7}(x + \overline{1})\\
+- \\
+\tab x^3 + \overline{4}x \\
+\tab \noindent\rule{4cm}{0.4pt} \\\\
+\tab \tab \; \; \; x^2 + \overline{9}x + \overline{5} \\\\
+\tab - \\
+\tab \tab \; \; \; x^2 + \overline{4} \\
+\tab \tab \; \; \; \noindent\rule{2.6cm}{0.4pt} \\\\
+\tab \tab \tab \; \; \; \overline{9}x + \overline{1} \) \\\\
+Нека \(q_3(x) = \overline{7}(x + \overline{1}), \; r_3(x) = \overline{9}x + \overline{1} \implies r_1(x) = q_3(x)r_2(x) + r_3(x) \implies \\\\
+r_3(x) = r_1(x) - q_3(x)r_2(x) = \\\\
+= g(x) - q_1(x)f(x) - q_3(x)\left[(\overline{1} + q_2(x)q_1(x))f(x) - q_2(x)g(x)\right] = \\\\
+= g(x)(\overline{1} + q_3(x)q_2(x)) + f(x)(-q_1(x) - q_3(x) - q_1(x)q_2(x)q_3(x)) = \\\\
+= g(x)(\overline{1} + q_3(x)q_2(x)) + f(x)\left[-q_3(x) - q_1(x)(\overline{1} + q_2(x)q_3(x))\right] \) \\\\
+Нека \(h(x) = \overline{1} + q_3(x)q_2(x) \implies r_3 = h(x)g(x) + f(x)(-q_3(x) - q_1(x)h(x)) \\\\
+\tab \overline{2}x^2 + \overline{8} \; : \; \quad \overline{9}x + \overline{1} = \overline{6}x + \overline{8}\\
+- \\
+\tab \overline{2}x^2 + \overline{6}x \\
+\tab \noindent\rule{2.4cm}{0.4pt} \\\\
+\tab \tab \overline{7}x + \overline{8} \\
+\tab - \\
+\tab \tab \overline{7}x + \overline{8} \\
+\tab \tab \noindent\rule{1.6cm}{0.4pt} \\
+\tab \tab \tab 0 \quad \implies (f, g) = r_3 \\\\\\\
+h(x) = \overline{1} + \overline{7}(x + \overline{1})(x + \overline{12}) = \overline{1} + \overline{7}(x + \overline{1})(x - \overline{1}) =
+\overline{1} + \overline{7}(x^2 - \overline{1}) = \\\\
+= \overline{7}x^2 - \overline{6} = \overline{7}x^2 + \overline{7} = \overline{7}(x^2 + \overline{1}) \implies \\\\
+-q_3(x) - q_1(x)h(x) = -\overline{7}(x + \overline{1}) - \overline{12} . \overline{7}(x^2 + \overline{1}) = \overline{7}(x^2 + \overline{1}) -\overline{7}(x + \overline{1}) = \\\\
+= \overline{7}x^2 + \overline{7} - \overline{7}x - \overline{7} = \overline{7}x^2 - \overline{7}x = \overline{7}(x^2 - x) \implies \\\\
+(f, g) = \overline{9}x + \overline{1} = \overline{7}(x^2 + \overline{1})g(x) + \overline{7}(x^2 - x)f(x) \implies \\\\
+\overline{5}x + \overline{2} = (x^2 + \overline{1})g(x) + (x^2 - x)f(x)\) \\\\
+Отговор: \((f,g) = \overline{5}x + \overline{2}, \; \overline{5}x + \overline{2} = (x^2 + \overline{1})g(x) + (x^2 - x)f(x)\)
+\section*{Задача 2.}
+Нека \(f(x) = ax^3 + bx^2 + cx + d \in \Cx : \; \exists q \in \Cx : \; f(x) = (x^2 + 1)q(x) -12x - 8 \) \\\\
+За корените на \(f(x)\) е изпълнено: \\\\
+\(\begin{cases}
+\Sum \frac{1}{x_k} = 6 \\\\
+\Sum \frac{1}{x_k^2} = \left(\Sum \frac{1}{x_k}\right)^2 - 2\left(\frac{1}{x_1}\frac{1}{x_2} + \frac{1}{x_1}\frac{1}{x_3} + \frac{1}{x_2}\frac{1}{x_3}\right) = 18
+\end{cases} \\\\\\
+x^2 + 1 = (x - i)(x + i) \implies \\\\
+f(i) = -ai -b + ci + d = -12i - 8 \\\\
+f(-i) = ai -b -ci + d = 12i - 8 \implies \\\\
+f(i) + f(-i) =  -2b + 2d = -16 \implies d = b - 8 \\\\
+f(i) - f(-i) = -2ai + 2ci = -24i \implies c = a - 12 \) \\\\
+Нека \(g(x) = x^3f\left(\frac{1}{x}\right) = dx^3 + cx^2 + bx + a \implies \\\\
+\begin{cases}
+\Sum \frac{1}{x_k} = -\frac{c}{d} = 6\\\\
+\frac{1}{x_1}\frac{1}{x_2} + \frac{1}{x_1}\frac{1}{x_3} + \frac{1}{x_2}\frac{1}{x_3} = \frac{b}{d} \\\\
+\Prod \frac{1}{x_k} = -\frac{a}{d}
+\end{cases} \implies \begin{cases}
+c = -6d \\\\
+\left(-\frac{c}{d}\right)^2 - 2\frac{b}{d} = 18
+\end{cases} \implies \\\\
+\begin{cases}
+c = -6d \\
+6.6 - 2\frac{b}{d} = 3.6 
+\end{cases} \implies \begin{cases}
+c = -6d \\
+18 = 2\frac{b}{d} 
+\end{cases} \implies \begin{cases}
+c = -6d \\
+b = 9d 
+\end{cases} \implies \\\\\\
+\begin{cases}
+d = b - 8 \\
+c = -6d \\
+b = 9d \\
+c = a - 12
+\end{cases} \implies \begin{cases}
+-8d = - 8 \\
+c = -6d \\
+b = 9d \\
+c = a - 12
+\end{cases} \implies \begin{cases}
+d = 1 \\
+c = -6 \\
+b = 9 \\
+a = 6
+\end{cases} \implies \\\\\\
+f(x) = 6x^3 + 9x^2 -6x + 1\) \\\\
+Проверка: \\\\
+\(\tab 6x^3 + 9x^2 -6x + 1 \; : \; \quad x^2 + 1 = 6x + 9 \\
+- \\
+\tab 6x^3 + 6x \\
+\tab \noindent\rule{4.4cm}{0.4pt} \\
+\tab \tab \; \; \; 9x^2 -12x + 1 \\
+\tab - \\
+\tab \tab \; \; \; 9x^2 + 9 \\
+\tab \tab \; \; \; \noindent\rule{3.2cm}{0.4pt} \\
+\tab \tab \tab \; \; \; -12x - 8 \) \\\\
+Отговор: \(f(x) = 6x^3 + 9x^2 -6x + 1\)
+\section*{Задача 3.}
+\(x_1, \; x_2, \; x_3\) са корени на полинома \(s(x) = x^3 + px + q \implies \\\\
+\begin{cases}
+    \Sum x_k = 0 \implies x_2 + x_3 = -x_1 \\
+    x_1x_2 + x_1x_3 + x_2x_3 = p \implies x_1(x_2 + x_3) + x_2x_3 = p \implies x_2x_3 = p + x_1^2 \\
+    \Prod x_k = -q \implies x_2x_3 = -\frac{q}{x_1} \\
+    \forall k \in \{1, 2, 3\} \; x_k^3 = -px_k - q
+\end{cases} \\\\\\
+\sigma = \frac{x_1}{-8x_2^2 + 5x_2x_3 - 8x_3^2} + \frac{x_2}{-8x_1^2 + 5x_1x_3 - 8x_3^2} + \frac{x_3}{-8x_1^2 + 5x_1x_2 - 8x_2^2} = \sum \frac{x_1}{-8x_2^2 + 5x_2x_3 - 8x_3^2} = \\\\
+= \sum \frac{x_1}{-8(x_2^2 + x_3^2) + 5x_2x_3} = \sum \frac{x_1}{-8(x_2 + x_3)^2 + 21x_2x_3} = \sum \frac{x_1}{-8(-x_1)^2 - 21\frac{q}{x_1}} = \Sum \frac{x_k}{-8x_k^2 - 21\frac{q}{x_k}} = \\\\
+= \Sum \frac{x_k^2}{-8x_k^3 - 21q} = \Sum \frac{x_k^2}{8px_k - 13q} = \frac{1}{8p}\Sum \frac{x_k^2 - \left(\frac{13q}{8p}\right)^2 + \left(\frac{13q}{8p}\right)^2}{x_k - \frac{13q}{8p}} = \\\\\\
+= \frac{1}{8p}\Sum \frac{\left(x_k - a\right)\left(x_k + a\right)}{x_k - a} + \frac{1}{8p}\Sum \frac{\left(a\right)^2}{x_k - a} = \\\\\\
+= \frac{1}{8p}\Sum \left(x_k + a\right) + \frac{a^2}{8p}\Sum \frac{1}{x_k - a} = \\\\\\
+= \frac{1}{8p}\left(3a + \Sum x_k - a^2\Sum \frac{1}{a - x_k}\right) = \frac{1}{8p}\left(3a - a^2\frac{s'(a)}{s(a)}\right) = \\\\\\
+= \frac{3as(a) - a^2s'(a)}{8ps(a)} = \frac{3a(a^3 + pa + q) - a^2(3a^2 + p)}{8ps(a)} = \\\\\\
+= \frac{2pa^2 + 3aq}{8ps(a)} = \frac{2pa^2 + 3aq}{8p(a^3 + pa + q)} = \frac{2p\left(\frac{13q}{8p}\right)^2 + 3\frac{13q}{8p}q}{8p\left(\left(\frac{13q}{8p}\right)^3 + p\frac{13q}{8p} + q\right)} = \\\\\\
+= \frac{\frac{1}{4}169q^2 + 39q^2}{(8p)^2\left(\left(\frac{13q}{8p}\right)^3 + \frac{13q}{8} + q\right)} = \frac{169q^2 + 156q^2}{\frac{(13q)^3}{2p} + 416p^2q + 256p^2q} = \\\\\\
+= \frac{325q^2}{\frac{(13q)^3}{2p} + 672p^2q} = \frac{650pq^2}{2197q^3 + 1344p^3q} = \frac{650pq}{1344p^3 + 2197q^2}\) \\\\
+Отговор: \(\frac{650pq}{1344p^3 + 2197q^2}\)
+\section*{Задача 4.}
+\(f(x) = x^4 + x^3 + \mu x^2 -15x -22 \in \Cx \) \\\\
+Нека \(P(M) : \; (M \subset \mathbb{C}) \land (|M| = 4) \land (\forall m \in M \; f(m) = 0) \land \\\\
+\tab \tab \tab \land (\exists r,t,u,v \in M : \; r + t = uv) \) \\\\
+Нека \(a, b, c, d \in \mathbb{C}: \; P(\{a,b,c,d\}) \implies \\\\
+\begin{cases}
+a + b = cd \\
+a + b + c + d = -1 \\
+ab + ac + ad + bc + bd + cd = \mu \\
+abc + abd + acd + bcd = 15 \\
+abcd = -22
+\end{cases} \implies \begin{cases}
+a + b = cd \\
+c + d = -1 - (a + b)\\
+ab + (a + b)(c + d + 1) = \mu \\
+ab(c + d) + (a + b)^2 = 15 \\
+a^2b + ab^2 = -22
+\end{cases} \implies \\\\\\
+\begin{cases}
+a + b = cd \\
+c + d = -1 - (a + b)\\
+ab = \mu + (a + b)^2 \\
+-ab -(a^2b + ab^2) + (a + b)^2 = 15 \\
+a^2b + ab^2 = -22
+\end{cases} \implies
+\begin{cases}
+a + b = cd \\
+c + d = -1 - (a + b)\\
+ab = \mu + (a + b)^2 \\
+-\mu -(a + b)^2 + 22 + (a + b)^2 = 15 \\
+a^2b + ab^2 = -22
+\end{cases} \\\\
+\implies \mu = 7 \) \\\\\\
+Ако \(\mu = 7 \implies f(x) = x^4 + x^3 + 7x^2 -15x -22 = x^3(x + 1) + x(7x - 15) -22\) \\\\
+Поренциялни корени на \(f(x)\) са \(\pm1, \; \pm2, \; \pm11, \; \pm22 \\\\
+f(1) = 2 -8 - 22 \neq 0 \\\\
+f(-1) = 22 - 22 = 0 \\\\
+f(2) = 24 + -2 -22 = 0 \implies \) \\\\
+Нека \(g(x) = (x - 2)(x + 1) = x^2 -x - 2 \implies g \; | \; f \\\\
+\tab x^4 + x^3 + 7x^2 -15x -22 \; : \; \quad x^2 -x - 2 = x^2 + 2x + 11 \\
+- \\
+\tab x^4 - x^3 - 2x^2 \\
+\tab \noindent\rule{6cm}{0.4pt} \\
+\tab \tab \; \; \; 2x^3 + 9x^2 -15x - 22 \\
+\tab - \\
+\tab \tab \; \; \; 2x^3 -2x^2 - 4x \\
+\tab \tab \; \; \; \noindent\rule{4.6cm}{0.4pt} \\
+\tab \tab \tab \; \; \; 11x^2 -11x - 22 \\
+\tab \tab - \\
+\tab \tab \tab \; \; \; 11x^2 -11x - 22 \\
+\tab \tab \tab \; \; \; \noindent\rule{3.6cm}{0.4pt} \\
+\tab \tab \tab \tab \tab \tab \; \; \; 0 \) \\\\
+Нека \(h(x) = x^2 + 2x + 11 \implies f = gh \\\\
+D(h) = 4 - 44 = -40 \implies \sqrt{D(h)} = 2i\sqrt{10} \implies \\\\
+h(-1 - i\sqrt{10}) = h(-1 + i\sqrt{10}) = f(-1 - i\sqrt{10}) = f(-1 + i\sqrt{10}) = 0 \implies \\\\
+(-1 - i\sqrt{10}) + (-1 + i\sqrt{10}) = -2 = (-1)2 \implies \\\\
+P(\{-1, \; 2, \; -1 - i\sqrt{10}, \; -1 + i\sqrt{10} \}) \) \\\\
+Отговор: \(\mu = 7\)
+\section*{Задача 5.}
+\(f(x) = x^4 - 5x^3 - 5x^2 - x + 3 \in \Z[x] \) \\\\
+Ако \(p, q \in \Z: \; \frac{p}{q}\) е потенциялен корен на \(f(x) \implies p \; | \; 3 \; \land \; q \; | \; 1 \implies \\\\
+(p = \pm 1 \; \lor \; p = \pm 3) \; \land \; q = \pm 1 \implies \frac{p}{q} = \pm 1 \; \lor \; \frac{p}{q} = \pm 3 \\\\
+f(1) = 1 - 5 - 5 - 1 + 3 = -7 \neq 0 \\\\
+f(-1) = 1 + 5 - 5 + 1 + 3 = 5 \neq 0 \\\\
+f(3) = 27(3 - 5) - 45 - 3 + 3 = -54 - 45 = -99 \neq 0 \\\\
+f(-3) = 9(9 + 15 - 5) + 6 = 19.9 + 6 = 171 + 6 = 177 \neq 0 \implies \\\\
+\not\exists \; z \in \Z: \; f(z) = 0 \implies \not \exists d \in \Z[x]: deg(d) = 1 \; \land \; d \; | \; f\) \\\\
+Нека \(g, \; h \in \Z[x]: \; deg(g) = deg(h) = 2 \; \land \; f = gh \implies \\\\
+\exists a, b, c, d \in \Z : \; g(x) = x^2 + ax + b \; \land \; h(x) = x^2 + cx + d \implies \\\\
+f(x) = x^4 - 5x^3 - 5x^2 - x + 3  = g(x)h(x) = (x^2 + ax + b)(x^2 + cx + d) \implies \\\\
+\begin{cases}
+a + c = -5 \\
+ac + b + d = - 5 \\
+bc + ad = -1 \\
+bd = 3
+\end{cases} \implies \begin{cases}
+c = -5 - a \\
+ac + 4s = -5 \\
+sc + a3s = -1 \\
+b = s \\
+d = 3s \\
+s = \pm 1
+\end{cases} \implies \begin{cases}
+c = -5 - a \\
+ac + 4s = -5 \\
+2as = 5s -1 \\
+b = s \\
+d = 3s \\
+s = \pm 1
+\end{cases} \implies \\\\\\
+\begin{cases}
+c = -7 \\
+-9 = -14 \\
+a = 2 \\
+b = 1 \\
+d = 3 \\
+s = 1
+\end{cases} \bigvee \quad \begin{cases}
+c = -8 \\
+-24 = -1 \\
+a = 3 \\
+b = -1 \\
+d = -3 \\
+s = -1
+\end{cases} \implies \lightning \implies \\\\\\
+f(x) \) е неразложим над \(\Z \implies f(x)\) е неразложим над \(\Q\)
+\section*{Задача 6.}
+\(f(x) = x^j + bx + e \implies f'(x) = jx^{j - 1} + b\) \\\\
+Нека \(\alpha_1, \; \dots, \; \alpha_{j - 1}\) са корени на \(f' \implies \\\\
+\forall i \in \N: \; i \leq (j - 1) \quad f'(\alpha_i) = j\alpha_i^{j - 1} + b = 0 \implies \\\\
+D(f) = \frac{1}{1}(-1)^{\frac{j(j - 1)}{2}}R(f, f') = \frac{1}{1}(-1)^{\frac{j(j - 1)}{2}}R(f', f) = \\\\
+= (-1)^{\frac{j(j - 1)}{2}}j^j\Pf f(\alpha_k) = (-1)^{\frac{j(j - 1)}{2}}j^j\Pf(\alpha_k^j + \alpha_kb + e) = \\\\
+= (-1)^{\frac{j(j - 1)}{2}}j^j\Pf(\alpha_k(\alpha_k^{j - 1} + b) + e) = (-1)^{\frac{j(j - 1)}{2}}j^j\Pf\left(\frac{\alpha_k}{j}(j\alpha_k^{j - 1} + b + (j - 1)b) + e\right) = \\\\
+= (-1)^{\frac{j(j - 1)}{2}}j^j\Pf\left(\frac{1}{j}((j - 1)b\alpha_k + je)\right) = (-1)^{\frac{j(j - 1)}{2}}j \Pf ((j - 1)b\alpha_k + je) = \\\\
+=  (-1)^{\frac{j(j - 1)}{2}}j[(j - 1)b]^{j - 1} \Pf \left(\alpha_k + \frac{je}{(j - 1)b}\right) = \\\\
+= (-1)^{\frac{j(j - 1)}{2}}j[(j - 1)b]^{j - 1} (-1)^{j - 1}\Pf \left(-\frac{je}{(j - 1)b} - \alpha_k\right) = \\\\\\
+= (-1)^{\frac{j(j - 1) + 2j - 2}{2}}[(j - 1)b]^{j - 1}\left[j\Pf \left(-\frac{je}{(j - 1)b} - \alpha_k\right)\right] = \\\\\\
+= -(-1)^{\frac{j(j + 1)}{2}}[(j - 1)b]^{j - 1}f'\left(-\frac{je}{(j - 1)b}\right) = \\\\\\
+= -(-1)^{\frac{j(j + 1)}{2}}[(j - 1)b]^{j - 1}\left[j\left(-\frac{je}{(j - 1)b}\right)^{j - 1} + b\right] = \\\\\\
+= (-1)^{\frac{j(j + 3)}{2}}j^je^{j - 1} - (-1)^{\frac{j(j + 1)}{2}}(j - 1)^{j - 1}b^j\)\\\\
+Отговор: \(D(x^j + bx + e) = (-1)^{\frac{j(j + 3)}{2}}j^je^{j - 1} - (-1)^{\frac{j(j + 1)}{2}}(j - 1)^{j - 1}b^j\)
+\end{document}
