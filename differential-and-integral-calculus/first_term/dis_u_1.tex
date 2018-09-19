@@ -1,0 +1,189 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+
+\pgfplotsset{compat=1.13}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \section{Числови съвкупности}
+    \subsection{Естествени числа}
+    \subsubsection{def}
+    \(\mathbb{N} = \{1, 2, 3, 4, \dots \}\)
+    \subsubsection{Заб.}
+    \(\mathbb{N} = \{0, 1, 2, 3, 4, \dots \} \quad \text{Пеано}\)
+    \subsubsection{Операции: \(+, \times\)}
+    \subsection{Цели числа}
+    \subsubsection{def}
+    \(\mathbb{N} \subset \mathbb{Z} = \{\dots \, -2, -1, 0, 1, 2, 3, \dots \} \)
+    \subsubsection{Операции: \(+, -, \times\)}
+    \subsection{Рационални числа}
+    \subsubsection{def}
+    \(
+        \mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} = \{ \forall \, \frac{p}{q} \, | \, p, q \in \mathbb{Z}, q \neq 0\}\\
+        \iff \forall \, \text{крайна или безкрайна, но периодична десетична дроб}
+    \)
+    \subsubsection{Операции: \(+, -, \times, \div \, q \neq 0\)}
+    \subsubsection{Примери:}
+    \begin{align*}
+        5 = \frac{5}{1} \in \mathbb{Q}\\
+        -7 = \frac{7}{-1} \in \mathbb{Q}\\
+        \pm \frac{22}{7} \in \mathbb{Q}\\
+        3.14 = \frac{314}{100} \in \mathbb{Q}\\
+        5.21414 = 5.2_{(14)} \in \mathbb{Q} \, \text{(безкрайна периодична дроб)}\\
+        A = 5.21414\\
+        \frac{
+            \begin{array}[b]{r}
+                100 \times A = 521.414\\
+                - \quad A = 5.21414
+            \end{array}
+        }{
+            \begin{array}[b]{r}
+                99 \times A = 516.2\\
+                A = \frac{516.2}{99} = \frac{5162}{990}
+                \end{array}
+        }
+    \end{align*}
+    (Умножаваме по \(10^x - 1\), където x е дължината на периода и получаваме дроб от вида \(\frac{p}{q}\))
+    \subsubsection{Примери за числа \(\notin \mathbb{Q}\):}
+    \begin{align*}
+        \sqrt{2} \notin \mathbb{Q} \quad \text{(доказва се чрез алгоритъма на Евклид)}\\
+        \pi = 3.141292\dots \notin \mathbb{Q}\\
+        \epsilon \sim 2.71 \notin \mathbb{Q} \, \text{(неперово число)}\\
+        \epsilon^x \notin \mathbb{Q} \, \text{(експоненциялна функция)}\\
+        \log_\epsilon x = \ln x \notin \mathbb{Q} \, \text{(натурален логаритъм)}
+    \end{align*}
+    \subsection{Ирационални числа}
+    \subsubsection{def}
+    \(\mathbb{I} = \{ \forall \, \frac{p}{q} \, | \, p, q \in \mathbb{Z}, q \neq 0\} \iff \forall \, \text{безкрайна непериодична десетична дроб}\)
+    \subsubsection{Операции: \(+, -, \times, \div \, q \neq 0\)}
+    \subsubsection{Примери:}
+    \(\pi, \epsilon, \sqrt{x} \, x \in \mathbb{R}, \sqrt[n]{x} \, n \in \mathbb{N} \, x \in \mathbb{R}, \dots \notin \mathbb{Q} \in \mathbb{I}\)
+    \subsection{Реални числа}
+    \subsubsection{def}
+    \(\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} =  \mathbb{Q} \cup \mathbb{I} \iff \forall \, \text{крайна или безкрайна десетична дроб}\)
+    \subsubsection{Операции: \(+, -, \times, \div \, q \neq 0, \lim\) (граничен преход)}
+    \subsubsection{Заб. \(\mathbb{R}\) е пълно пространство:}
+    \(\mathbb{Q} \cap \mathbb{I} = \emptyset\)
+    \subsubsection{Сравняване на две рационални числа:}
+    \(A = \pm \, a_1 a_2 a_3 \dots \, . \, b_1 b_2 b_3 \dots\)\\
+    \(C = \pm \, c_1 c_2 c_3 \dots \, . \, d_1 d_2 d_3 \dots\)\\
+    \(A > C\) когато:
+    \begin{enumerate}
+        \item \(A > C \, , \, A > 0 \, \text{и} C <= 0\) или
+        \item \(A > C \, , \, a_1 a_2 a_3 \dots \ > c_1 c_2 c_3 \dots\) или
+        \item \(A > C \, , \, b_1 > d_1 \, \text{или} \, b_2 > d_2 \, \text{или} \, \dots \, \text{докато} \, b_n > d_n \, \text{или} \, \exists b_n \text{и} \, \nexists d_n \, n \in \mathbb{N}\)
+    \end{enumerate}
+    \subsection{Комплексни числа}
+    \subsubsection{def}
+    \(\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \subset \mathbb{C} = \{(a,b) \, | \, a, b \in \mathbb{R}\} \iff \{\forall z = x + \imath \times y \, | \, x, y \in \mathbb{R}, \, \imath^2 = -1 \iff \imath = \sqrt{-1}\}\)
+    \subsubsection{Комплексна равнина}
+    \(z = x + \imath \times y\) \quad Съкратен запис: \(z = x + y \imath\)
+    \begin{enumerate}
+        \item \(z \in \mathbb{C}\)
+        \item x се нарича рялна част
+        \item y се нарича имагинерна част
+    \end{enumerate}
+    \begin{tikzpicture}
+    \begin{axis}[axis lines = left, xlabel = \(x\), ylabel = \(y\)]
+    \addplot[mark=*]coordinates{(2, 3)(5, -1)(5, 1)(7, 2)(-3, 4)(13, 15)(7, 17)};
+    \end{axis}
+    \end{tikzpicture}\\
+    Комплексните числа разширяват концепцията за едноизмерна числова линия до двуизмерна комплексна равнина, като двете координатни оси се използват като числови линии съответно за реалната и имагинерната част. Комплексното число \(z = x + y \imath\) може да се идентифицира с точката \((x, y)\), а рялното число \(r = u + 0 \imath\) с точката \((u, 0)\). 
+    \subsubsection{Операции: \(\overline{z}, +, -, \times, \div \, q \neq 0\)}
+    \begin{align*}
+        z = x + y \imath\\
+        \overline{z} = x - y \imath\\
+        z_1 = x_1 + y_1 \imath\\
+        z_2 = x_2 + y_2 \imath\\
+        z_1 + z_2 = (x_1 + x_2) + (y_1 + y_2) \imath\\
+        z + \overline{z} = (x + y \imath) + (x - y \imath) = 2x + (y - y) \imath = 2x\\
+        z_1 - z_2 = (x_1 - x_2) + (y_1 - y_2) \imath\\
+        z - \overline{z} = (x - x) + (y - (-y)) \imath = 2y \imath\\
+        z_1 \times z_2 = (x_1 + y_1 \imath) \times (x_2 + y_2 \imath) = x_1 x_2 + (x_1 y_2 + x_2 y_1) \imath + y_1 y_2 \imath^2\\
+        = (x_1 x_2 - y_1 y_2) + (x_1 y_2 + x_2 y_1) \imath\\
+        z \times z = (x + y \imath)^2 = x^2 + 2xy \imath + y^2 \imath^2 =  x^2 - y^2 + 2xy \imath\\
+        z \times \overline{z} = (x + y \imath) \times (x - y \imath) = x^2 + y^2 \geq 0 \in \mathbb{R}\\
+        \frac{z_1}{z_2} = \frac{z_1}{z_2}\frac{\overline{z_2}}{\overline{z_2}} = \frac{z_1 z_2}{z_2 \overline{z_2}} = \frac{(x_1 x_2 - y_1 y_2) + (x_1 y_2 + x_2 y_1) \imath}{x_2^2 + y_2^2}\\
+        \frac{z}{\overline{z}} = \frac{z}{\overline{z}}\frac{z}{z} =  \frac{x^2 - y^2 + 2xy \imath}{x^2 + y^2}
+    \end{align*}
+    \subsubsection{Примери за операции:}
+    \begin{align*}
+        z_1 = 2 + 3 \imath\\
+        z_2 = 5 - \imath\\
+        z_1 + z_2 = 7 + 2 \imath\\
+        z_1 - z_2 = -3 + 4 \imath\\
+        \overline{z_2} = 5 + \imath\\
+        z_1z_2 = (2 + 3 \imath)(5 - \imath) = 10 - 2 \imath + 15 \imath - 3 \imath^2 = 13 + 15 \imath\\
+        \frac{z_1}{z_2} = \frac{2 + 3 \imath}{5 - \imath} = \frac{2 + 3 \imath}{5 - \imath}\frac{5 + \imath}{5 + \imath} = \frac{10 + 2 \imath + 15 \imath + 3 \imath^2}{5^2 + (-1)^2} = \frac{7 + 17 \imath}{26}
+    \end{align*}
+    \subsubsection{Необходимост от комплексните числа}
+    \begin{align*}
+        ax^2 + bx + c = 0\\
+        D = b^2 - 4ac\\
+        x_1 + x_2 = \frac{-b}{a}\\
+        x_1 x_2 = \frac{c}{a}\\
+        x_1, x_2 = \frac{-b \pm \sqrt{D}}{2a}\\
+        x_1, x_2 =
+            \begin{cases}
+                x_1 \neq x_2 \quad D > 0\\
+                x_1 = x_2 \quad D = 0\\
+                \nexists x_1 \, \text{и} \, x_2 \in \mathbb{R} \quad D < 0
+            \end{cases}\\
+        \text{но при} \quad D < 0 \quad \exists x_1 \neq x_2, x_1 \, \text{и} \, x_2 \in \mathbb{C}
+    \end{align*}
+    Целта на комплексните числа е да дадат решения на всички уравнения с комплексни коефициенти!\\
+    Или ако за коефициентите на квадратния тричлен \(ax^2 + bx + c\) е в сила:
+    \begin{align*}
+        a \in \mathbb{R} \implies a = a + 0 \imath \in \mathbb{C}\\
+        b \in \mathbb{R} \implies b = b + 0 \imath \in \mathbb{C}\\
+        c \in \mathbb{R} \implies c = c + 0 \imath \in \mathbb{C}\\
+        x_1 \in \mathbb{R} \implies x_1 = x_1 + 0 \imath \in \mathbb{C}\\
+        x_2 \in \mathbb{R} \implies x_2 = x_2 + 0 \imath \in \mathbb{C}\\
+        x_1 \neq x_2
+    \end{align*}
+    Следва, че и за произволни числа: \(a, b, c \in \mathbb{C}\) от вида:
+    \begin{align*}
+        a = a_1 + a_2 \imath, a_1 \, \text{и} \, a_2 \in \mathbb{R}\\
+        b = b_1 + b_2 \imath, b_1 \, \text{и} \, b_2 \in \mathbb{R}\\
+        c = c_1 + c_2 \imath, c_1 \, \text{и} \, c_2 \in \mathbb{R}\\
+        \implies \exists \, x_1, x_2 = \frac{-b \pm \sqrt{D}}{2a} \in \mathbb{C}
+    \end{align*}
+    И когато за числата:\\
+    \(a, b, c\) в горното си представяне е известно, че:
+    \(
+        a_2, b_2 \, \text{и} \, c_2 \neq 0\\
+        \implies a_2, b_2 \, \text{и} \, c_2 \in \mathbb{C} \cap \mathbb{R} = \{(p, q) \, | \, p, q \in \mathbb{R}, q \neq 0 \}\\
+        \implies \exists x_1, x_2 \notin \mathbb{R} \in \mathbb{C}
+    \)
+    \subsubsection{Примери:}
+    \begin{align*}
+        x^2 + 2x + 5 = 0\\
+        D = 4 - 20 = -16\\
+        \sqrt{D} = \sqrt{-16} = \sqrt{-1}\sqrt{16} = 4\sqrt{-1} = 4 \imath\\
+        x_1, x_2 = \frac{-2 \pm \sqrt{4 \imath}}{2} = -1 \pm 2 \imath
+    \end{align*}
+    \begin{align*}
+        x_1 = -1 + 2 \imath\\
+        x_2 = -1 - 2 \imath\\
+        x_2 = \overline{x_1}\\
+        x_1 + x_2 = -2 = \frac{-b}{a} = \frac{-2}{1}\\
+        x_1 x_2 = 5 = \frac{c}{a} = \frac{5}{1}\\
+        \implies x_1, x_2 \, \text{са корени на уравнението} \, x^2 + 2x + 5 = 0
+    \end{align*}
+    \section{Основна теорема на алгебрата}
+
+    \section{Квантори}
+    \begin{align*}
+        \forall \quad \text{За всяко} \quad \text{For all}\\
+        \exists \quad \text{Съществува} \quad \text{Exists}\\
+        \nexists \quad \text{Не съществува} \quad \text{Not exists}\\
+        \forall \, x_1, x_2 \, \exists \, \varepsilon_1, \varepsilon_2 > 0 = \forall \, x_2, x_1 \, \exists \, \varepsilon_2, \varepsilon_1 > 0\\
+        \forall \, x \, \exists \, \varepsilon > 0 \neq \exists \, \varepsilon > 0 \, \forall \, x
+    \end{align*}
+\end{document}
