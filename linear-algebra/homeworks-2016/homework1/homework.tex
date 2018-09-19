@@ -1,0 +1,731 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\newcommand{\stkout}[1]{\ifmmode\text{\sout{\ensuremath{#1}}}\else\sout{#1}\fi}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\title{Домашна работа 1, №45342, Martin, 1, I, Информатика}
+\author{Иво Стратев}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \maketitle
+    Задача 1.\\
+    а) Да се запише в алгебричен вид числото
+    \begin{math}
+        \left(\frac{8 - 4\sqrt3\imath}{2 + 6\sqrt3\imath}\right)^{342}\\
+        \\
+        \left(\frac{8 - 4\sqrt3\imath}{2 + 6\sqrt3\imath}\right)^{342} =
+        \left(\frac{(8 - 4\sqrt3\imath)(2 - 6\sqrt3\imath)}{(2 + 6\sqrt3\imath)(2 - 6\sqrt3\imath)}\right)^{342} =\\
+        = \left(\frac{16 - 48\sqrt3\imath - 8\sqrt3\imath - 72}{4 + 108}\right)^{342}
+        = \left(\frac{-\stkout{56} - \stkout{56}\sqrt3\imath}{\stkout{112}}\right)^{342}
+        = \left(-\frac{1}{2} -\frac{\sqrt3}{2}\imath\right)^{342}\\
+        |z| = \sqrt{Re(z) ^ 2 + Im(z) ^ 2}\\
+        \cos\varphi = \frac{ Re(z) }{|z|}, \sin\varphi = \frac{Im(z)}{|z|}\\
+        z = |z|\left(\cos\varphi + \imath\sin\varphi\right)\\
+        z ^ n  = |z| ^ n\left(\cos{n\varphi} + \imath\sin{n\varphi}\right)\\
+        z = -\frac{1}{2} -\frac{\sqrt3}{2}\imath\\
+        |z| = \sqrt{\left(\frac{1}{2}\right) ^ 2 + \left(\frac{\sqrt3}{2}\right) ^ 2} = \sqrt{\frac{4}{4}} = 1\\
+        \cos\varphi = \frac{-1}{2}, \sin\varphi = \frac{-\sqrt3}{2} \implies \varphi = \frac{5}{3}\\
+        z = 1\left(\cos{\frac{5}{3}\pi} + \imath\sin{\frac{5}{3}\pi}\right)\\
+        z ^ {342} = 1 ^ {342}\left(\cos{\stkout{342}\frac{5}{\stkout{3}}\pi} + \imath\sin{\stkout{342}\frac{5}{\stkout{3}}\pi}\right)\\
+        z ^ {342} = \cos{560\pi} + \imath\sin{560\pi}\\
+        z ^ {342} = \cos{0\pi} + \imath\sin{0\pi} = 1\\
+        \implies \left(\frac{8 - 4\sqrt3\imath}{2 + 6\sqrt3\imath}\right)^{342} = 1
+    \end{math}\\
+    \\
+    б) Да се намерят в тригонометричен вид корените на уравнението
+    \begin{math}
+        x ^ {263} - 4\sqrt3\imath -4 = 0\\
+        \\
+        x ^ {263} - 4\sqrt3\imath -4 = 0\\
+        x ^ {263} = 4 + 4\sqrt3\imath = z\\
+        x = \sqrt[263]{z}\\
+        |z| = \sqrt{Re(z) ^ {2} + Im(z) ^ {2}}\\
+        \cos\varphi = \frac{ Re(z) }{|z|}, \sin\varphi = \frac{Im(z)}{|z|}\\
+        z = |z|\left(\cos\varphi + \imath\sin\varphi\right)\\
+        \sqrt[n]{z}  = |z| ^ \frac{1}{n}\left(\cos{\frac{\varphi + 2k\pi}{n}} + \imath\sin{\frac{\varphi + 2k\pi}{n}}\right)\\
+        k = 0, 1, \dots, n - 1\\
+        |z| = \sqrt{\left(4\right)^2 + \left(4\sqrt3\right) ^ 2}
+        = \sqrt{16 + 16 \times 3}
+        = \sqrt{4 \times 16} = 2 \times 4 = 8\\
+        z = 8\left(\frac{\stkout{4}}{\stkout{8}} + \frac{\stkout{4}\sqrt3}{\stkout{8}}\right)
+        = 8\left(\frac{1}{2} + \imath\frac{\sqrt3}{2}\right)
+        = 8\left(\cos\frac{\pi}{3} + \imath\sin\frac{\pi}{3}\right)\\
+        x = \sqrt[263]{z} = 2 ^ {\frac{3}{263}}\left(\cos{\frac{\frac{\pi}{3} + 2k\pi}{263}} + \imath\sin{\frac{\frac{\pi}{3} + 2k\pi}{263}}\right)\\
+        k = 0, 1, \dots, 262
+    \end{math}\\
+    \\
+    в) Да се намерят в алгебричен вид корените на уравнението 
+    \begin{math}
+        x^2 + (2 + 2\imath)x - (12 - 18\imath) = 0\\
+        \\
+        x^2 + (2 + 2\imath)x - (12 - 18\imath) = 0\\
+        D = (2 + 2\imath)^2 - 4(-(12 - 18\imath))\\
+        D = 4 + 8\imath + 4\imath^2 + 4(12 - 18\imath)\\
+        D = \stkout{4} + 8\imath \stkout{-4} + 48 -  72\imath\\
+        D = 48 - 64\imath\\
+        z = \sqrt{D} | \uparrow ^ 2\\
+        z \in \mathbb{C}; z = a + b\imath\\
+        z ^ 2 = D = 48 - 64\imath\\
+        a ^ 2 - b ^ 2 + 2ab\imath = 48 - 64\imath\\
+        \\
+        \begin{matrix}[|lcl]
+            a ^ 2 - b ^ 2 & = & 48\\
+            2ab\imath & = & -64\imath
+        \end{matrix}\\
+        \begin{matrix}[|lcl]
+            a ^ 2 - b ^ 2 & = & 48\\
+            a & = & \frac{-32}{b}
+        \end{matrix}\\
+        \\
+        a ^ 2 - b ^ 2 = 48\\
+        \left(\frac{-32}{b}\right)^ 2 - b ^ 2 = 48\\
+        b ^ 2 - \left(\frac{-32}{b}\right)^ 2  + 48 = 0 |\times b ^ 2\\
+        b ^ 4 + 48b ^ 2 - 32 ^ 2 + = 0\\
+        y = b ^ 2,\, y \geq 0\\
+        y ^ 2 + 48y - 32 ^ 2 = 0\\
+        D_y = 48 ^ 2 -4(-32 ^ 2)\\
+        D_y = 48 ^ 2 + 4\times32^2\\
+        D_y = 2^2\times3^2\times8^2 + 2^2\times4^2\times8 ^ 2\\
+        D_y = 2^28^2(3^2 + 4^2) = 2^28^25^2\\\
+        \sqrt{D_y} = 2\times5\times8 = 80\\
+        y_1 = \frac{-\stkout{48} + \stkout{80}}{2} = -24 + 40 = 16 > 0\\\
+        y_2 = \frac{-\stkout{48} + \stkout{80}}{2} = -24 - 40 = -64 \leq 0\\
+        \\
+        b ^ 2 = 16, b = \pm 4\\
+        a = \frac{-32}{\pm 4}, a = \mp 8\\
+        z = \mp 8 \pm 4\imath\\ 
+        x_1 = \frac{-(2 + 2\imath) + (-8 + 4\imath)}{2} = \frac{-2 - 2\imath - 8 + 4\imath}{2} = \frac{-\stkout{10} + \stkout{2}\imath}{\stkout{2}} = -5 + \imath\\
+        x_2 = \frac{-(2 + 2\imath) - (-8 + 4\imath)}{2} = \frac{-2 - 2\imath + 8 - 4\imath}{2} = \frac{-\stkout{6} - \stkout{6}\imath}{\stkout{2}} = 3 - 3\imath\\
+        x_3 = \frac{-(2 + 2\imath) + (8 - 4\imath)}{2} = \frac{-2 - 2\imath + 8 - 4\imath}{2} = \frac{-\stkout{6} - \stkout{6}\imath}{\stkout{2}} = 3 - 3\imath\\
+        x_4 = \frac{-(2 + 2\imath) - (8 - 4\imath)}{2} = \frac{-2 - 2\imath - 8 + 4\imath}{2} = \frac{-\stkout{10} + \stkout{2}\imath}{\stkout{2}} = -5 + \imath\\
+        x_1 = x_4, x_2 = x_3
+    \end{math}\\
+    \\
+    Задача 2.\\
+    Нека \(w_0, w_1, \dots, w_71\) са седемдесет и вторите корени на единицата, където \(\omega_k = \cos{\frac{2k\pi}{72}} + \imath\sin{\frac{2k\pi}{72}}\). Да се пресметне израза
+    \begin{math}
+        \omega_0 ^ {389} + \omega_1 ^ {389} + \dots + \omega_{71} ^ {389}\\
+        \\
+        \omega_0 ^ {389} + \omega_1 ^ {389} + \dots + \omega_{71} ^ {389} = \displaystyle\sum_{i=0}^{71} \omega_i ^ {389}\\
+        \omega_1 \in \mathbb{C}\\
+        \implies \omega_1 ^ k = \cos{\frac{2k\pi}{72}} + \imath\sin{\frac{2k\pi}{72}} = \omega_k\\
+        \implies \displaystyle\sum_{i=0}^{71} \omega_i ^ {389}
+        = \displaystyle\sum_{i=0}^{71} \left(\omega_1 ^ {389}\right) ^ i
+        = \frac{\left(\omega_1 ^ {389}\right) ^ {72} - 1}{\omega_1 ^ {389} - 1}\\
+        = \frac{\left(\cos{\frac{2\times\stkout{72}\times389\pi}{\stkout{72}}} + \imath\sin{\frac{2\times\stkout{72}\times389\pi}{\stkout{72}}}\right) - 1}{\omega_1 ^ {389} - 1}\\
+        = \frac{\left(\cos{2\times389\pi} + \imath\sin{2\times389\pi}\right) - 1}{\omega_1 ^ {389} - 1}\\
+        = \frac{\left(\cos\pi + \imath\sin\pi\right) - 1}{\omega_1 ^ {389} - 1} = \frac{1 + 0\imath - 1}{\omega_1 ^ {389} - 1} = \frac{0}{\omega_1 ^ {389} - 1}\\
+        \omega_1 ^ {389} = \cos{\frac{2\pi389}{72}} + \imath\sin{\frac{2\pi389}{72}} \neq 1\\
+        \implies \omega_1 ^ {389} - 1 \neq 0\\
+        \implies \frac{0}{\omega_1 ^ {389} - 1} = 0\\
+        \implies \omega_0 ^ {389} + \omega_1 ^ {389} + \dots + \omega_{71} ^ {389} = 0
+    \end{math}\\
+    \\
+    Задача 3.\\
+    Да се реши уравнението
+    \begin{math}
+        (x - \imath) ^ {36} + (x + \imath) ^ {36} = 0\\
+        \\
+        (x - \imath) ^ {36} + (x + \imath) ^ {36} = 0\\
+        (x - \imath) ^ {36} = -(x + \imath) ^ {36}\\
+        x \neq \imath\\
+        \left(\frac{x - \imath}{x + \imath}\right) ^ {36} = -1\\
+        A = \frac{x - \imath}{x + \imath}\\
+        A ^ {36} = -1\\
+        z = -1 = -1 + 0\imath\\
+        |z| = \sqrt{1} = 1\\
+        \cos\varphi = \frac{-1}{1} = -1, \sin\varphi = \frac{0}{1} = 0 \implies \varphi = \pi\\
+        z = \cos\pi + \imath\sin\pi\\
+        \sqrt[36]z = \cos{\frac{\pi + 2k\pi}{36}} + \imath\sin{\frac{\pi + 2k\pi}{36}} = z_k\\
+        k = 0, 1, \dots, 35\\
+        \\
+        \frac{x - \imath}{x + \imath} = z_k\\
+        x - \imath = z_k(x + \imath)\\
+        x - \imath = z_kx + z_k\imath\\
+        \imath - z_k\imath = z_kx + x\\
+        (1 - z_k)\imath = (z_k + 1)x\\
+        z_k < \cos{\frac{\pi + 2\pi\stkout{36}}{\stkout{36}}} + \imath\sin{\frac{\pi + 2\pi\stkout{36}}{\stkout{36}}} = \cos\pi + \imath\sin\pi = -1\\
+        \implies z_k + 1 \neq 0\\
+        x = \frac{(z_k - 1)\imath}{(z_k + 1)}
+    \end{math}\\
+    \\
+    Задача 4. Нека z е комплексно число, за което е испълнено \(z + \frac{1}{z} = 2\cos\varphi\). Да се докаже, че
+    \begin{math}
+        z ^ {81} + \frac{1}{z ^ {81}} = 2\cos{(81\varphi)}\\
+        \\
+        z + \frac{1}{z} = 2cos\varphi| \times z\\
+        z^2 + 1 -2z\cos\varphi = 0\\
+        D = 4\cos^2\varphi -4\\
+        D = 4(\cos^2\varphi - 1)\\
+        \sqrt{D} = 2\sqrt{\cos^2\varphi - 1} = 2\sqrt{-\sin^2\varphi}\\
+        z_1,_2 = \frac{\stkout{2}\cos\varphi \pm \stkout{2}\sqrt{-\sin^2\varphi}}{\stkout{2}}\\
+        z_1,_2 = \cos\varphi \pm \sqrt{-1}\sqrt{\sin^2\varphi}\\
+        z_1,_2 = \cos\varphi \pm \imath\sin\varphi\\
+        \frac{1}{z_1,_2} = {z_1,_2} ^{-1} = \cos{-\varphi} \pm \imath\sin{-\varphi} = \cos\varphi \mp \imath\sin\varphi\\
+        z^{81} = \cos{81\varphi} \pm \imath\sin{81\varphi}\\
+        \frac{1}{z^{81}} = \cos{81\varphi} \mp \imath\sin{81\varphi}\\
+        z^{81} + \frac{1}{z^{81}} = \cos{81\varphi} \pm \stkout{\imath\sin{81\varphi}} + \cos{81\varphi} \mp \stkout{\imath\sin{81\varphi}}\\
+        z ^ {81} + \frac{1}{z ^ {81}} = 2\cos{(81\varphi)}
+    \end{math}\\
+    \\
+    Задача 5. Да се реши системата в зависимост от стойностите на параметрите \(\lambda\) и \(\mu\):\\
+    \\
+    \begin{math}
+        \begin{matrix}
+          4x_1 & + & 3x_2 & + & 3x_3 & - & 2x_4 & = & \lambda\\
+          -x_1 & - & x_2 & - & x_3 & + & x_4 & = & 2\\
+          -19x_1 & - & 19x_2 & - & 20x_3 & + & (11 + \mu)x_4 & = & 6 - 2\lambda\\
+          4x_1 & + & 7x_2 & + & 8x_3 & + & x_4 & = & -2
+        \end{matrix}\\
+        \\
+        \\
+        \begin{matrix}
+          3\\
+          ~\\
+          -20\\
+          8
+        \end{matrix}
+        \begin{pmatrix}[cccc|c]
+            4 & 3 & 3 & -2 &  \lambda\\
+            -1  &  -1 &  -1 & 1 & 2\\
+            -19 & -19 & -20 & 11 + \mu & 6 - 2\lambda\\
+            4 & 7 & 8 & 1 & -2
+        \end{pmatrix}\\
+        \\
+        \\
+        \to
+        \begin{matrix}
+          ~\\
+          -1\\
+          1\\
+          ~
+        \end{matrix}
+        \begin{pmatrix}[cccc|c]
+            1 & 0 & 0 & 1 & \lambda + 6\\
+            -1 & -1 & -1 & 1 & 2\\
+            1 & 1 & 0 & \mu - 9 & -2\lambda - 34\\
+            -4 & -1 & 0 & 9 & 14
+        \end{pmatrix}\\
+        \\
+        \\
+        \to
+        \begin{matrix}
+          ~\\
+          -3\\
+          3\\
+          4
+        \end{matrix}
+        \begin{pmatrix}[cccc|c]
+            1 & 0 & 0 & 1 & \lambda + 6\\
+            3 & 0 & -1 & -8 & -12\\
+            -3 & 0 & 0 & \mu & -2\lambda - 20\\
+            -4 & -1 & 0 & 9 & 14
+        \end{pmatrix}\\
+        \\
+        \\
+        \to
+        \begin{pmatrix}[cccc|c]
+            1 & 0 & 0 & 1 & \lambda + 6\\
+            0 & 0 & -1 & -11 & -3\lambda - 30\\
+            0 & 0 & 0 & \mu + 3 & \lambda - 2\\
+            0 & -1 & 0 & 13 & 4\lambda + 38
+        \end{pmatrix}
+        \begin{matrix}
+          ~\\
+          -1\\
+          ~\\
+          ~
+        \end{matrix}\\
+        \\
+        \\
+        \to
+        \begin{pmatrix}[cccc|c]
+            1 & 0 & 0 & 1 & \lambda + 6\\
+            0 & 0 & 1 & 11 & 3\lambda + 30\\
+            0 & 0 & 0 & \mu + 3 & \lambda - 2\\
+            0 & -1 & 0 & 13 & 4\lambda + 38
+        \end{pmatrix}\\
+        \\
+        \\
+        \begin{matrix}[|ccccc]
+            x_1 & + & x_4 & = & \lambda + 6\\
+            x_3 & + & 11x_4 & = & 3\lambda + 30\\
+            ~ & ~ & (\mu + 3)x_4 & = & \lambda - 2\\
+            -x_2 & + & 13x_4 & = & 4\lambda + 38
+        \end{matrix}
+    \end{math}\\
+    \\
+    \\
+    I \(\mu = -3\)\\
+    \\
+    I.1 \(\lambda = 2\)\\
+    \\
+    \\
+    \begin{math}
+        \begin{matrix}[|ccccc]
+            x_1 & + & x_4 & = & \lambda + 6\\
+            x_3 & + & 11x_4 & = & 3\lambda + 30\\
+            ~ & ~ & 0x_4 & = & 0\\
+            -x_2 & + & 13x_4 & = & 4\lambda + 38
+        \end{matrix}\\
+        \\
+        \to\quad
+        \begin{matrix}[|ccccc]
+            x_1 & + & x_4 & = & \lambda + 6\\
+            x_3 & + & 11x_4 & = & 3\lambda + 30\\
+            -x_2 & + & 13x_4 & = & 4\lambda + 38
+        \end{matrix}\\
+        \\
+        x_4 = p\\
+        \\
+        \begin{matrix}[|ccccc]
+            x_1 & + & p & = & \lambda + 6\\
+            x_3 & + & 11p & = & 3\lambda + 30\\
+            -x_2 & + & 13p & = & 4\lambda + 38
+        \end{matrix}\\
+        \\
+        \to\quad
+        \begin{matrix}[|ccc]
+            x_1 & = & \lambda + 6 - p\\
+            x_3 & = & 3\lambda + 30 - 11p\\
+            x_2 & = & 13p - 4\lambda - 38
+        \end{matrix}
+    \end{math}\\
+    \\
+    \\
+    I.2 \(\lambda \neq 2\)\\
+    \\
+    \begin{math}
+        \begin{matrix}[|ccccc]
+            x_1 & + & x_4 & = & \lambda + 6\\
+            x_3 & + & 11x_4 & = & 3\lambda + 30\\
+            ~ & ~ & 0x_4 & = & \lambda - 2\\
+            -x_2 & + & 13x_4 & = & 4\lambda + 38
+        \end{matrix}
+    \end{math}\\
+    Системата няма решение.\\
+    \\
+    \\
+    II \(\mu \neq -3\)\\
+    \\
+    \\
+    II.1 \(\lambda = 2\)\\
+    \\
+    \\
+    \begin{math}
+        \begin{matrix}[|ccccc]
+            x_1 & + & x_4 & = & \lambda + 6\\
+            x_3 & + & 11x_4 & = & 3\lambda + 30\\
+            ~ & ~ & (\mu + 3)x_4 & = & 0\\
+            -x_2 & + & 13x_4 & = & 4\lambda + 38
+        \end{matrix}\\
+        \\
+        \\
+        \to\quad
+        \begin{matrix}[|ccc]
+            x_1 & = & \lambda + 6\\
+            x_3 & = & 3\lambda + 30\\
+            x_4 & = & 0\\
+            x_2 & = & -4\lambda - 38
+        \end{matrix}
+    \end{math}\\
+    \\
+    \\
+    II.2 \(\lambda \neq 2\)\\
+    \\
+    \\
+    \begin{math}
+        \begin{matrix}[|ccccc]
+            x_1 & + & x_4 & = & \lambda + 6\\
+            x_3 & + & 11x_4 & = & 3\lambda + 30\\
+            ~ & ~ & (\mu + 3)x_4 & = & \lambda - 2\\
+            -x_2 & + & 13x_4 & = & 4\lambda + 38
+        \end{matrix}\\
+        \\
+        \\
+        \to\quad
+        \begin{matrix}[|ccccc]
+            x_1 & + & \frac{\lambda - 2}{\mu + 3} & = & \lambda + 6\\
+            x_3 & + & 11\frac{\lambda - 2}{\mu + 3} & = & 3\lambda + 30\\
+            ~ & ~ & x_4 & = & \frac{\lambda - 2}{\mu + 3}\\
+            -x_2 & + & 13\frac{\lambda - 2}{\mu + 3} & = & 4\lambda + 38
+        \end{matrix}\\
+        \\
+        \\
+        \to\quad
+        \begin{matrix}[|ccc]
+            x_1 & = & \frac{(\lambda + 6)(\mu + 3) - (\lambda - 2)}{\mu + 3}\\
+            x_3 & = & \frac{(3\lambda + 30)(11\mu + 33) - (11\lambda - 22)}{11\mu + 33}\\
+            x_4 & = & \frac{\lambda - 2}{\mu + 3}\\
+            x_2 & = & -\frac{(4\lambda + 38)(13\mu + 39) - (13\lambda - 26)}{13\mu + 39}
+        \end{matrix}\\
+        \\
+        \\
+        \to\quad
+        \begin{matrix}[|ccc]
+            x_1 & = & \frac{\lambda\mu + 2\lambda + 6\mu + 20}{\mu + 3}\\
+            x_3 & = & \frac{33\mu + 88\lambda + 330\mu + 1012}{11\mu + 33}\\
+            x_4 & = & \frac{\lambda - 2}{\mu + 3}\\
+            x_2 & = & -\frac{52\lambda\mu + 143\lambda + 494\mu + 1498}{13\mu + 39}
+        \end{matrix}
+    \end{math}\\
+    \\
+    Задача 6\\
+    В четири мерното пространство са дадени векторите:\\
+    \\
+    \\
+    \begin{math}
+        \begin{array}{rcl}
+            v_1 & = & (-4, 3, 5, -3)\\
+            v_2 & = & (-4, -1, 8, -14)\\
+            v_3 & = & (-1, 1, 1, 0)\\
+            v_4 & = & (-1, -3, 2,\mu - 8)\\
+            v & = & (1, 1, \lambda, 1)
+        \end{array}\\
+        \\
+        \\
+        \begin{matrix}
+          ~\\
+          1\\
+          1\\
+          ~
+        \end{matrix}
+        \begin{pmatrix}[cccc|c]
+             -4 & -4 & -1 & -1 & 1\\
+             3 & -1 & 1 & -3 & 1\\
+             5 & 8 & 1 & 2 & \lambda\\
+             -3 & -14 & 0 & \mu - 8 & 1
+        \end{pmatrix}\\
+        \\
+        \\
+        \to
+        \begin{matrix}
+          -4\\
+          ~\\
+          1\\
+          -3
+        \end{matrix}
+        \begin{pmatrix}[cccc|c]
+             -4 & -4 & -1 & -1 & 1\\
+             -1 & -5 & 0 & -4 & 2\\
+             1 & 4 & 0 & 1 & \lambda + 1\\
+             -3 & -14 & 0 & \mu - 8 & 1
+        \end{pmatrix}
+        \\
+        \\
+        \\
+        \to
+        \begin{matrix}
+          16\\
+          -5\\
+          ~\\
+          1
+        \end{matrix}
+        \begin{pmatrix}[cccc|c]
+             0 & 16 & -1 & 15 & -7\\
+             -1 & -5 & 0 & -4 & 2\\
+             0 & -1 & 0 & -3 & \lambda + 3\\
+             0 & 1 & 0 & \mu + 4 & -5
+        \end{pmatrix}\\
+        \\
+        \\
+        \to
+        \begin{pmatrix}[cccc|c]
+             0 & 0 & -1 & -33 & 16\lambda + 41\\
+             -1 & 0 & 0 & 11 & -5\lambda - 13\\
+             0 & -1 & 0 & -3 & \lambda + 3\\
+             0 & 0 & 0 & \mu + 1 & \lambda - 2
+        \end{pmatrix}
+        \begin{matrix}
+          -1\\
+          -1\\
+          -1\\
+          ~
+        \end{matrix}
+        \\
+        \\
+        \\
+        \begin{matrix}[|ccccc]
+            x_3 & + & 33x_4 & = & -16\lambda - 41\\
+            x_1 & + & -11x_4 & = & 5\lambda + 13\\
+            x_2 & + & 3x_4 & = & -\lambda - 3\\
+            ~ & ~ & (\mu + 1)x_4 & = & \lambda - 2\\
+        \end{matrix}
+    \end{math}\\
+    \\
+    \\
+    I \(\mu = -1\)\\
+    \\
+    \\
+    I.1 \(\lambda = 2\)\\
+    \\
+    \begin{math}
+       \begin{matrix}[|ccccc]
+            x_3 & + & 33x_4 & = & -16\lambda - 41\\
+            x_1 & + & -11x_4 & = & 5\lambda + 13\\
+            x_2 & + & 3x_4 & = & -\lambda - 3\\
+            ~ & ~ & 0x_4 & = & 0\\
+        \end{matrix}\\
+        \\
+        \\
+        \to\quad
+        \begin{matrix}[|ccccc]
+            x_3 & + & 33x_4 & = & -16\lambda - 41\\
+            x_1 & + & -11x_4 & = & 5\lambda + 13\\
+            x_2 & + & 3x_4 & = & -\lambda - 3\\
+        \end{matrix}\\
+        \\
+        x_4 = p\\
+        \\
+        \begin{matrix}[|ccccc]
+            x_3 & + & 33p & = & -16\lambda - 41\\
+            x_1 & + & -11p & = & 5\lambda + 13\\
+            x_2 & + & 3p & = & -\lambda - 3\\
+        \end{matrix}\\
+        \\
+        \\
+        \to\quad
+        \begin{matrix}[|ccc]
+            x_3 & = & -16\lambda - 41 - 33p\\
+            x_1 & = & 5\lambda + 13 + 11p\\
+            x_2 & = & -\lambda - 3 - 3p\\
+        \end{matrix}
+    \end{math}\\
+    \\
+    \\
+    I.2 \(\lambda \neq 2\)\\
+    \\
+    \\
+    \begin{math}
+       \begin{matrix}[|ccccc]
+            x_3 & + & 33x_4 & = & -16\lambda - 41\\
+            x_1 & + & -11x_4 & = & 5\lambda + 13\\
+            x_2 & + & 3x_4 & = & -\lambda - 3\\
+            ~ & ~ & 0x_4 & = & \lambda - 2\\
+        \end{matrix}
+    \end{math}\\
+    Системата няма решение.\\
+    \\
+    \\
+    II \(\mu \neq -1\)\\
+    \\
+    \\
+    II.1 \(\lambda = 2\)\\
+    \\
+    \\
+    \begin{math}
+       \begin{matrix}[|ccccc]
+            x_3 & + & 33x_4 & = & -16\lambda - 41\\
+            x_1 & + & -11x_4 & = & 5\lambda + 13\\
+            x_2 & + & 3x_4 & = & -\lambda - 3\\
+            ~ & ~ & (\mu + 1)x_4 & = & 0\\
+        \end{matrix}\\
+        \\
+        \\
+        \to\quad
+        \begin{matrix}[|ccc]
+            x_3 & = & -16\lambda - 41\\
+            x_1 & = & 5\lambda + 13\\
+            x_2 & = & -\lambda - 3\\
+            x_4 & = & 0\\
+        \end{matrix}\\
+    \end{math}\\
+    \\
+    \\
+    II.2 \(\lambda \neq 2\)\\
+    \\
+    \\
+    \begin{math}
+       \begin{matrix}[|ccccc]
+            x_3 & + & 33x_4 & = & -16\lambda - 41\\
+            x_1 & + & -11x_4 & = & 5\lambda + 13\\
+            x_2 & + & 3x_4 & = & -\lambda - 3\\
+            ~ & ~ & (\mu + 1)x_4 & = & \lambda - 2\\
+        \end{matrix}\\
+        \\
+        \\
+        \to\quad
+        \begin{matrix}[|ccc]
+            x_3 & = & \frac{-(16\lambda + 41)(\mu + 1) - 33(\lambda - 2)}{\mu + 1}\\
+            x_1 & = & \frac{(5\lambda + 13)(\mu + 1) + 11(\lambda - 2)}{\mu + 1}\\
+            x_2 & = & \frac{-(\lambda + 3)(\mu + 1) - 3(\lambda - 2)}{\mu + 1}\\
+            x_4 & = & \frac{\lambda - 2}{\mu + 1}
+        \end{matrix}\\
+        \\
+        \\
+        \to\quad
+        \begin{matrix}[|ccc]
+            x_3 & = & \frac{-(16\lambda\mu + 40\lambda + 41\mu - 25)}{\mu + 1}\\
+            x_1 & = & \frac{5\lambda\mu + 16\lambda + 13\mu - 9}{\mu + 1}\\
+            x_2 & = & \frac{-(\lambda\mu + 4\lambda + 3\mu -3)}{\mu + 1}\\
+            x_4 & = & \frac{\lambda - 2}{\mu + 1}
+        \end{matrix}
+    \end{math}\\
+    \\
+    \\
+    а) За стойностите на параметрите \(\mu \neq -1\,,\,\, \forall\,\lambda\) векторът v се представя като линейна комбинация на векторите \(v_1, v_2, v_3, v_4\) по точно един начин.\\
+    \\
+    б) За стойностите на параметрите \(\mu = -1\,,\,\, \lambda =  2\) векторът v се представя като линейна комбинация на векторите \(v_1, v_2, v_3, v_4\) по повече от един начин.\\
+    \\
+    Задача 7.\\
+    Нека V е множеството от всички полиноми с реални коефициенти и от степен не по-голяма от 3.\\
+    а) Да се докаже, че v е линейно пространство над полето на рялните числа относно обичайните операци на полиноми и умножение на полиноми с число.\\
+    \\
+    \begin{math}
+        a = \alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4\\
+        b = \beta_1 x ^ 3 + \beta_2 x ^ 2 + \beta_3 x ^ 1 + \beta_4\\
+        c = \gamma_1 x ^ 3 + \gamma_2 x ^ 2 + \gamma_3 x ^ 1 + \gamma_4\\
+        a' = \alpha_1' x ^ 3 + \alpha_2' x ^ 2 + \alpha_3' x ^ 1 + \alpha_4'\\
+        a, b, c, a' \in \mathbb{V}\\
+        \lambda, \mu, \alpha_1, \alpha_2, \alpha_3, \alpha_4, \beta_1, \beta_2, \beta_3, \beta_4, \gamma_1, \gamma_2, \gamma_3, \gamma_4, \alpha_1', \alpha_2', \alpha_3', \alpha_4' \in \mathbb{R}\\
+        \\
+        1.\quad(a + b) + c = a + (b + c)\\
+        \\
+        (a + b) = (\alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4)
+        + (\beta_1 x ^ 3 + \beta_2 x ^ 2 + \beta_3 x ^ 1 + \beta_4)
+        = (\alpha_1 + \beta_1) x ^ 3 + (\alpha_2 + \beta_2) x ^ 2
+        + (\alpha_3 + \beta_3) x ^ 1 + (\alpha_4 + \beta_4)\\
+        \\
+        (a + b) + c = (\alpha_1 + \beta_1) x ^ 3 + (\alpha_2 + \beta_2) x ^ 2 + (\alpha_3 + \beta_3) x ^ 1 + (\alpha_4 + \beta_4)
+        + (\gamma_1 x ^ 3 + \gamma_2 x ^ 2 + \gamma_3 x ^ 1 + \gamma_4)
+        = (\alpha_1 + \beta_1 + \gamma) x ^ 3 + (\alpha_2 + \beta_2 + \gamma) x ^ 2 + (\alpha_3 + \beta_3 + \gamma) x ^ 1 + (\alpha_4 + \beta_4 + \gamma)\\
+        \\
+        (b + c) = (\beta_1 x ^ 3 + \beta_2 x ^ 2 + \beta_3 x ^ 1 + \beta_4) + (\gamma_1 x ^ 3 + \gamma_2 x ^ 2 + \gamma_3 x ^ 1 + \gamma_4)
+        = (\beta_1 + \gamma_1) x ^ 3 + (\beta_2 + \gamma_2) x ^ 2 + (\beta_3 + \gamma_3) x ^ 1 + (\beta_4 + \gamma_4)\\
+        \\
+        a + (b + c) = (\alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4)
+        + (\beta_1 + \gamma_1) x ^ 3 + (\beta_2 + \gamma_2) x ^ 2 + (\beta_3 + \gamma_3) x ^ 1 + (\beta_4 + \gamma_4)
+        = (\alpha_1 + \beta_1 + \gamma) x ^ 3 + (\alpha_2 + \beta_2 + \gamma) x ^ 2 + (\alpha_3 + \beta_3 + \gamma) x ^ 1 + (\alpha_4 + \beta_4 + \gamma)\\
+        \\
+        \implies (a + b) + c = a + (b + c) = a + b + c\\
+        \\
+        2.\quad a + b = b + a\\
+        \\
+        (a + b) = (\alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4)
+        + (\beta_1 x ^ 3 + \beta_2 x ^ 2 + \beta_3 x ^ 1 + \beta_4)
+        = (\alpha_1 + \beta_1) x ^ 3 + (\alpha_2 + \beta_2) x ^ 2
+        + (\alpha_3 + \beta_3) x ^ 1 + (\alpha_4 + \beta_4)\\
+        \\
+        (b + a) = (\beta_1 x ^ 3 + \beta_2 x ^ 2 + \beta_3 x ^ 1 + \beta_4)
+        + (\alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4)
+        = (\alpha_1 + \beta_1) x ^ 3 + (\alpha_2 + \beta_2) x ^ 2
+        + (\alpha_3 + \beta_3) x ^ 1 + (\alpha_4 + \beta_4)\\
+        \\
+        \implies a + b = b + a\\
+        \\
+        3.\quad a + 0 = a\\
+        \\
+        a + 0 = (\alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4) + (0 x ^ 3 + 0 x ^ 2 + 0 x ^ 1 + 0)
+        = (\alpha_1 + 0) x ^ 3 + (\alpha_2 + 0) x ^ 2
+        + (\alpha_3 + 0) x ^ 1 + (\alpha_4 + 0)
+        = \alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4\\
+        \\
+        \implies a + 0 = a\\
+        \\
+        4.\quad \exists\,a': a + a' = 0\\
+        \\
+        a + a' = 0\\
+        (\alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4) + (\alpha_1' x ^ 3 + \alpha_2' x ^ 2 + \alpha_3' x ^ 1 + \alpha_4') = (0 x ^ 3 + 0 x ^ 2 + 0 x ^ 1 = 0)\\
+        (\alpha_1 + \alpha_1') x ^ 3 + (\alpha_2 + \alpha_2') x ^ 2 + (\alpha_3 + \alpha_3') x ^ 1 + (\alpha_4 + \alpha_4') = (0 x ^ 3 + 0 x ^ 2 + 0 x ^ 1 = 0)\\
+        \\
+        \equiv\quad
+        \begin{matrix}[|ccccc]
+            \alpha_1' & + & \alpha_1' & = & 0\\
+            \alpha_2 & + & \alpha_2' & = & 0\\
+            \alpha_3 & + & \alpha_3' & = & 0\\
+            \alpha_4 & + & \alpha_4' & = & 0\\
+        \end{matrix}
+        \quad\to\quad
+        \begin{matrix}[|ccc]
+            \alpha_1' & = & -\alpha_1\\
+            \alpha_2' & = & -\alpha_2\\
+            \alpha_3' & = & -\alpha_3\\
+            \alpha_4' & = & -\alpha_4\\
+        \end{matrix}\\
+        \\
+        \\
+        \implies a' = -\alpha_1 x ^ 3 + -\alpha_2 x ^ 2 + -\alpha_3 x ^ 1 + -\alpha_4 = -(\alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4) = -a\\
+        \implies \exists\,a': a + a' = 0\\
+        \\
+        5.\quad 1a = a\\
+        \\
+        1a = 1(\alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4)
+        = (1\alpha_1) x ^ 3 + (1\alpha_2) x ^ 2 + (1\alpha_3) x ^ 1 + (1\alpha_4)
+        = \alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4\\
+        \\
+        \implies 1a = a\\
+        \\
+        6.\quad \lambda(a + b) = \lambda a + \lambda b\\
+        \\
+        \lambda(a + b) = \lambda[(\alpha_1 + \beta_1) x ^ 3 + (\alpha_2 + \beta_2) x ^ 2 + (\alpha_3 + \beta_3) x ^ 1 + (\alpha_4 + \beta_4)]
+        = \lambda(\alpha_1 + \beta_1) x ^ 3 + \lambda(\alpha_2 + \beta_2) x ^ 2 + \lambda(\alpha_3 + \beta_3) x ^ 1 + \lambda(\alpha_4 + \beta_4)
+        = (\lambda\alpha_1 + \lambda\beta_1) x ^ 3 + (\lambda\alpha_2 + \lambda\beta_2) x ^ 2 + (\lambda\alpha_3 + \lambda\beta_3) x ^ 1 + (\lambda\alpha_4 + \lambda\beta_4)\\
+        \\
+        \lambda a = \lambda(\alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4)
+        = \lambda\alpha_1 x ^ 3 + \lambda\alpha_2 x ^ 2 + \lambda\alpha_3 x ^ 1 + \lambda\alpha_4\\
+        \\
+        \lambda b = \lambda(\beta_1 x ^ 3 + \beta_2 x ^ 2 + \beta_3 x ^ 1 + \beta_4)
+        = \lambda\beta_1 x ^ 3 + \lambda\beta_2 x ^ 2 + \lambda\beta_3 x ^ 1 + \lambda\beta_4\\
+        \\
+        \lambda a + \lambda b = (\lambda\alpha_1 x ^ 3 + \lambda\alpha_2 x ^ 2 + \lambda\alpha_3 x ^ 1 + \lambda\alpha_4) + (\lambda\beta_1 x ^ 3 + \lambda\beta_2 x ^ 2 + \lambda\beta_3 x ^ 1 + \lambda\beta_4)
+        = (\lambda\alpha_1 + \lambda\beta_1) x ^ 3 + (\lambda\alpha_2 + \lambda\beta_2) x ^ 2 + (\lambda\alpha_3 + \lambda\beta_3) x ^ 1 + (\lambda\alpha_4 + \lambda\beta_4)\\
+        \\
+        \implies \lambda(a + b) = \lambda a + \lambda b\\
+        \\
+        7.\quad (\lambda + \mu)a = \lambda a + \mu a\\
+        \\
+        (\lambda + \mu)a = (\lambda + \mu)(\alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4)
+        = [(\lambda + \mu)\alpha_1] x ^ 3 + [(\lambda + \mu)\alpha_2] x ^ 2 + [(\lambda + \mu)\alpha_3] x ^ 1 + [(\lambda + \mu)\alpha_4]
+        = (\lambda\alpha_1 + \mu\alpha_1) x ^ 3 + (\lambda\alpha_2 + \mu\alpha_2) x ^ 2 + (\lambda\alpha_3 + \mu\alpha_3) x ^ 1 + (\lambda\alpha_4 + \mu\alpha_4)\\
+        \\
+        \lambda a = \lambda(\alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4)
+        = \lambda\alpha_1 x ^ 3 + \lambda\alpha_2 x ^ 2 + \lambda\alpha_3 x ^ 1 + \lambda\alpha_4\\
+        \\
+        \mu a = \mu(\alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4)
+        = \mu\alpha_1 x ^ 3 + \mu\alpha_2 x ^ 2 + \mu\alpha_3 x ^ 1 + \mu\alpha_4\\
+        \\
+        \lambda a + \mu a = (\lambda\alpha_1 x ^ 3 + \lambda\alpha_2 x ^ 2 + \lambda\alpha_3 x ^ 1 + \lambda\alpha_4) + (\mu\alpha_1 x ^ 3 + \mu\alpha_2 x ^ 2 + \mu\alpha_3 x ^ 1 + \mu\alpha_4)
+        = (\lambda\alpha_1 + \mu\alpha_1) x ^ 3 + (\lambda\alpha_2 + \mu\alpha_2) x ^ 2 + (\lambda\alpha_3 + \mu\alpha_3) x ^ 1 + (\lambda\alpha_4 + \mu\alpha_4)\\
+        \\
+        \implies (\lambda + \mu)a = \lambda a + \mu a\\
+        \\
+        8.\quad \lambda(\mu a) = \lambda \mu a\\
+        \\
+        \mu a = \mu(\alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4)
+        = \mu\alpha_1 x ^ 3 + \mu\alpha_2 x ^ 2 + \mu\alpha_3 x ^ 1 + \mu\alpha_4\\
+        \\
+        \lambda(\mu a) = \lambda(\mu\alpha_1 x ^ 3 + \mu\alpha_2 x ^ 2 + \mu\alpha_3 x ^ 1 + \mu\alpha_4)
+        = \lambda(\mu\alpha_1 x ^ 3 + \mu\alpha_2 x ^ 2 + \mu\alpha_3 x ^ 1 + \mu\alpha_4)
+        = \lambda\mu\alpha_1 x ^ 3 + \lambda\mu\alpha_2 x ^ 2 + \lambda\mu\alpha_3 x ^ 1 + \lambda\mu\alpha_4)
+        = \lambda\mu(\alpha_1 x ^ 3 + \alpha_2 x ^ 2 + \alpha_3 x ^ 1 + \alpha_4) = \lambda\mu a\\
+        \\
+        \implies \lambda(\mu a) = \lambda \mu a
+    \end{math}\\
+    \\
+    в) Да се докаже, че полиномите \(1, x - 49, \frac{(x - 49) ^ 2}{2!}, \frac{(x - 49) ^ 3}{3!} \) образуват базис на v.\\
+    \\
+    \begin{math}
+        v_1 = 1\\
+        v_2 = x - 49\\
+        v_3 = \frac{(x - 49) ^ 2}{2!}\\
+        v_4 = \frac{(x - 49) ^ 3}{3!}\\
+        \\
+        \frac{v_2}{v_1} \notin \mathbb{R} \quad \in \mathbb{V}\\
+        \frac{v_3}{v_2} \notin \mathbb{R} \quad \in \mathbb{V}\\
+        \frac{v_4}{v_3} \notin \mathbb{R} \quad \in \mathbb{V}\\
+        \\
+        \implies \text{векторите са линейно не зависими}
+    \end{math}
+\end{document}
