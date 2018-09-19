@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+
+\begin{document}
+    \pagenumbering{gobble}
+    \begin{math}
+        \\
+        A = a_n \to -\infty \quad if \quad \forall\, C < 0 \quad \exists\, \upsilon\,;\, n > \upsilon ; a_n < C\\
+        \\
+        \overline{A} = \exists\, C \geq 0 \quad \forall n\,;\, a_n \geq C\\
+        \\
+        a_n\downarrow \implies a_{n + 1} < a_n \implies \exists\, \upsilon\,;\, a_\upsilon \geq C; a_{\upsilon + 1} < C\\
+        \\
+        \implies \forall\, n > \upsilon \quad a_n < C \implies conflict\\
+        \\
+        \implies a_n \to -\infty
+    \end{math}
+\end{document}
