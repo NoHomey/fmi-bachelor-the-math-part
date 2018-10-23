@@ -85,7 +85,7 @@
     \subsection{Определение за Детерминанта}
     \(F\) е числово поле, \(A \in M_n(\F) \; \det A\) \\\\
     е стойността на единствената детерминантна фунцкия: \\\\
-    \(D : \F^n \times \F^n \times \dots \times \F^n \to \F \quad (f : (\F^n)^n \to \F)\) \\\\
+    \(f : \F^n \times \F^n \times \dots \times \F^n \to \F \quad (f : (\F^n)^n \to \F)\) \\\\
     на редовете на \(A : \; \aij\)
     \subsection{Формула за пресмятане на Детерминанта}
     \(\F\) - числово поле, \(A \in M_n(\F), \; A = (a_{ij})_{n \times n} \\\\
@@ -296,7 +296,7 @@
     \iff \exists B \in M_n(\F) \; : \; AB = BA = E\)
     \subsection{Неособена матрица}
     Нека \(\F\) е поле и \(A \in M_n(\F), \; A \text{ е неособена } \iff \det A \neq 0\)
-    \subsection{Формула за обратна матрица на неособена матрица}
+    \subsection{ормула за обратна матрица на неособена матрица}
     Нека \(\F\) е поле и \(A \in M_n(\F), \; A \text{ е неособена, тогава } A^{-1} = \frac{1}{\det A} (A_{ji}) = \frac{1}{\det A} ((-1)^{j + i}\Delta_{ji})\)
     \subsection{Определение за ранг на матрица}
     Нека \(\F\) е поле и \(A \in M_n(\F), \; r(A) = rr(A) = rc(A)\)
@@ -307,12 +307,12 @@
     \exists \; \begin{vmatrix}
         a_{i_1j_1} & \cdots & a_{i_1j_r}\\
         \vdots & \ddots & \vdots\\
-        a_{i_nj_1} & \cdots & a_{i_nj_r}
+        a_{i_rj_1} & \cdots & a_{i_rj_r}
     \end{vmatrix} \neq 0 \\\\
     \forall \; k \in \N \; : \; r < k \leq n \; \begin{vmatrix}
         a_{i_1j_1} & \cdots & a_{i_1j_k}\\
         \vdots & \ddots & \vdots\\
-        a_{i_nj_1} & \cdots & a_{i_nj_k}
+        a_{i_kj_1} & \cdots & a_{i_kj_k}
     \end{vmatrix} = 0\)
     \section{}
     Нека \(\F\) е поле и \subsection{\(A \in M_5(\F), \; \det A = 0 \implies 0 \leq r(A) < 5\)}
