@@ -1,0 +1,571 @@
+\documentclass[a4paper, 12pt, oneside]{article}
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+                
+\setlength{\parindent}{0mm}
+
+\title{Задачи за детерминанти от 27.12.2018г. или поне тези, които трябваше да решим :D}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+\section*{Задача 1 (n + 1 на n + 1 // пълния вариант).}
+Да се пресметне детерминантата от (n + 1)-ви ред:
+\begin{align*}
+\begin{vmatrix}
+    a & a & a & \cdots & a & a + 1 \\
+    a & a & a & \cdots & a + 1 & a \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    a & a & a + 1 & \cdots & a & a \\
+    a & a + 1 & a & \cdots & a & a \\
+    a & d & d & \cdots & d & d
+\end{vmatrix}
+\end{align*}
+\subsection*{Решение:}
+Вадим първия стълб от всеки друг и получаваме:
+\begin{align*}
+\begin{vmatrix}
+    a & 0 & 0 & \cdots & 0 & 1 \\
+    a & 0 & 0 & \cdots & 1 & 0 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    a & 0 & 1 & \cdots & 0 & 0 \\
+    a & 1 & 0 & \cdots & 0 & 0 \\
+    a & d - a & d - a & \cdots & d - a & d - a
+\end{vmatrix}
+\end{align*}
+Изваждаме общия множител \(a\) и получаваме:
+\begin{align*}
+a\begin{vmatrix}
+    1 & 0 & 0 & \cdots & 0 & 1 \\
+    1 & 0 & 0 & \cdots & 1 & 0 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    1 & 0 & 1 & \cdots & 0 & 0 \\
+    1 & 1 & 0 & \cdots & 0 & 0  \\
+    1 & d - a & d - a & \cdots & d - a & d - a
+\end{vmatrix}
+\end{align*}
+Вадим първи ред от всеки друг и получаваме:
+\begin{align*}
+a\begin{vmatrix}
+    1 & 0 & 0 & \cdots & 0 & 1 \\
+    0 & 0 & 0 & \cdots & 1 & -1 \\
+    0 & 0 & 1 & \cdots & 0 & -1 \\
+    0 & 1 & 0 & \cdots & 0 & -1  \\
+    0 & d - a & d - a & \cdots & d - a & d - a - 1
+\end{vmatrix}
+\end{align*}
+Изкарваме общия  множител \(-1\) от последния стълб и получаваме:
+\begin{align*}
+-a\begin{vmatrix}
+    1 & 0 & 0 & \cdots & 0 & -1 \\
+    0 & 0 & 0 & \cdots & 1 & 1 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & 1 & \cdots & 0 & 1 \\
+    0 & 1 & 0 & \cdots & 0 & 1  \\
+    0 & d - a & d - a & \cdots & d - a & 1 + a - d
+\end{vmatrix}
+\end{align*}
+Развиваме по първи стълб и получаваме детерминанта от n-ти ред:
+\begin{align*}
+-a\begin{vmatrix}
+    0 & 0 & \cdots & 1 & 1 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 1 & \cdots & 0 & 1 \\
+    1 & 0 & \cdots & 0 & 1  \\
+    d - a & d - a & \cdots & d - a & 1 + a - d
+\end{vmatrix}
+\end{align*}
+Умножаваме първия ред по \(d - a\) и го вадим от последния,
+умножаваме втория ред по \(d - a\) и го вадим от последния и тн. и получаваме:
+\begin{align*}
+-a\begin{vmatrix}
+    0 & 0 & \cdots & 1 & 1 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 1 & \cdots & 0 & 1 \\
+    1 & 0 & \cdots & 0 & 1  \\
+    0 & 0 & \cdots & 0 & 1 + a - d - (n - 1)(d - a)
+\end{vmatrix} =
+\end{align*}
+\begin{align*}
+-a\begin{vmatrix}
+    0 & 0 & \cdots & 1 & 1 \\
+    \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 1 & \cdots & 0 & 1 \\
+    1 & 0 & \cdots & 0 & 1  \\
+    0 & 0 & \cdots & 0 & 1 + n(a - d)
+\end{vmatrix}
+\end{align*}
+Получената детерминанта развиваме по последния ред и получаваме:
+\begin{align*}
+-a(1 + n(a - d))(-1)^{n + n}\begin{vmatrix}
+    0 & 0 & \cdots & 1  \\
+    \vdots & \vdots & \ddots & \vdots \\
+    0 & 1 & \cdots & 0  \\
+    1 & 0 & \cdots & 0
+\end{vmatrix} = \\
+-a(1 + n(a - d))\begin{vmatrix}
+    0 & 0 & \cdots & 1  \\
+    \vdots & \vdots & \ddots & \vdots \\
+    0 & 1 & \cdots & 0  \\
+    1 & 0 & \cdots & 0
+\end{vmatrix}
+\end{align*}
+Получената детерминанта е от \(n - 1\)-ви ред и е обратно диагонална и така като я развием получаваме:
+\begin{align*}
+-a(1 + n(a - d))(-1)^{\displaystyle\frac{(n - 1)n}{2}}1^{n - 1}
+\end{align*}
+И така първоначалната детерминанта е равна на:
+\begin{align*}
+(-1)^{\displaystyle\frac{(n - 1)n}{2} + 1}a(1 + n(a - d))
+\end{align*}
+\subsubsection*{Отговор: \((-1)^{\displaystyle\frac{(n - 1)n}{2} + 1}a(1 + n(a - d))\)}
+\section*{Задача 2.}
+Да се пресметне детерминантата от (n + 1)-ви ред:
+\begin{align*}
+\begin{vmatrix}
+    0 & 4 & 4 & 4 & 4 & \cdots & 4 \\
+    4 & 0 & a_1 + a_2 & a_1 + a_3 & a_1 + a_4 & \cdots & a_1 + a_n \\
+    4 & a_2 + a_1 & 0 & a_2 + a_3 & a_2 + a_4 & \cdots & a_2 + a_n \\
+    4 & a_3 + a_1 & a_3 + a_2 & 0 & a_3 + a_4 & \cdots & a_3 + a_n \\
+    4 & a_4 + a_1 & a_4 + a_2 & a_4 + a_3 & 0 & \cdots & a_4 + a_n \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    4 & a_n + a_1 & a_n + a_2 & a_n + a_3 & a_n + a_4 & \cdots & 0
+\end{vmatrix}
+\end{align*}
+\subsection*{Решение:}
+Понякога помага да си представим как изглежда още някой друг ред или стълб, за да имаме по-голям поглед над задачата
+(ако знам, че ще ми се налага да смятам подобна детерминанта бих си взел доста листа и бих писал хоризонтално :D )
+\begin{align*}
+\Delta = \begin{vmatrix}
+    0 & 4 & 4 & 4 & 4 & \cdots & 4  & 4 \\
+    4 & 0 & a_1 + a_2 & a_1 + a_3 & a_1 + a_4 & \cdots & a_1 + a_{n - 1} & a_1 + a_n \\
+    4 & a_2 + a_1 & 0 & a_2 + a_3 & a_2 + a_4 & \cdots & a_2 + a_{n - 1} & a_2 + a_n \\
+    4 & a_3 + a_1 & a_3 + a_2 & 0 & a_3 + a_4 & \cdots & a_3 + a_{n - 1} & a_3 + a_n \\
+    4 & a_4 + a_1 & a_4 + a_2 & a_4 + a_3 & 0 & \cdots & a_4 + a_{n - 1} & a_4 + a_n \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    4 & a_{n - 1} + a_1 & a_{n - 1} + a_2 & a_{n - 1} + a_3 & a_{n - 1} + a_4 & \cdots & 0 & a_{n - 1} + a_n \\
+    4 & a_n + a_1 & a_n + a_2 & a_n + a_3 & a_n + a_4 & \cdots & a_n + a_{n - 1} & 0
+\end{vmatrix}
+\end{align*}
+Ще извадим последния ред от всеки друг, без първия и така получаваме:
+\begin{align*}
+\Delta = \begin{vmatrix}
+    0 & 4 & 4 & 4 & 4 & \cdots & 4  & 4 \\
+    0 & -a_n - a_1 & a_1 - a_n & a_1 - a_n & a_1 - a_n & \cdots & a_1 - a_n & a_1 + a_n \\
+    0 & a_2 - a_n & -a_n - a_2 & a_2 - a_n & a_2 - a_n & \cdots & a_2 - a_n & a_2 + a_n \\
+    0 & a_3 - a_n & a_3 - a_n & -a_n - a_3 & a_3 - a_n & \cdots & a_3 - a_n & a_3 + a_n \\
+    0 & a_4 - a_n & a_4 - a_n & a_4 - a_n & -a_n - a_4 & \cdots & a_4 - a_n & a_4 + a_n \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & a_{n - 1} - a_n & a_{n - 1} - a_n & a_{n - 1} - a_n & a_{n - 1} + a_n & \cdots & - a_n - a_{n + 1} & a_{n - 1} + a_n \\
+    4 & a_n + a_1 & a_n + a_2 & a_n + a_3 & a_n + a_4 & \cdots & a_n + a_{n - 1} & 0
+\end{vmatrix}
+\end{align*}
+Добавяме последния стълб към всеки без първия и така получаваме:
+\begin{align*}
+\Delta = \begin{vmatrix}
+    0 & 8 & 8 & 8 & 8 & \cdots & 8  & 4 \\
+    0 & 0 & 2a_1 & 2a_1 & 2a_1 & \cdots & 2a_1 & a_1 + a_n \\
+    0 & 2a_2 & 0 & 2a_2 & 2a_2 & \cdots & 2a_2 & a_2 + a_n \\
+    0 & 2a_3 & 2a_3 & 0 & 2a_3 & \cdots & 2a_3 & a_3 + a_n \\
+    0 & 2a_4 & 2a_4 & 2a_4 & 0 & \cdots & 2a_4 & a_4 + a_n \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 2a_{n - 1} & 2a_{n - 1} & 2a_{n - 1} & 2a_{n - 1} & \cdots & 0 & a_{n - 1} + a_n \\
+    4 & a_n + a_1 & a_n + a_2 & a_n + a_3 & a_n + a_4 & \cdots & a_n + a_{n - 1} & 0
+\end{vmatrix}
+\end{align*}
+Развиваме по първи стълб и получаваме: \\
+\begin{align*}
+\Delta = 4(-1)^{n + 1 + 1}\begin{vmatrix}
+    8 & 8 & 8 & 8 & \cdots & 8  & 4 \\
+    0 & 2a_1 & 2a_1 & 2a_1 & \cdots & 2a_1 & a_1 + a_n \\
+    2a_2 & 0 & 2a_2 & 2a_2 & \cdots & 2a_2 & a_2 + a_n \\
+    2a_3 & 2a_3 & 0 & 2a_3 & \cdots & 2a_3 & a_3 + a_n \\
+    2a_4 & 2a_4 & 2a_4 & 0 & \cdots & 2a_4 & a_4 + a_n \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    2a_{n - 1} & 2a_{n - 1} & 2a_{n - 1} & 2a_{n - 1} & \cdots & 0 & a_{n - 1} + a_n
+\end{vmatrix}
+\end{align*}
+Вадим общия множител 4 от първия ред и получаваме:
+\begin{align*}
+\Delta = 16(-1)^n\begin{vmatrix}
+    2 & 2 & 2 & 2 & \cdots & 2  & 1 \\
+    0 & 2a_1 & 2a_1 & 2a_1 & \cdots & 2a_1 & a_1 + a_n \\
+    2a_2 & 0 & 2a_2 & 2a_2 & \cdots & 2a_2 & a_2 + a_n \\
+    2a_3 & 2a_3 & 0 & 2a_3 & \cdots & 2a_3 & a_3 + a_n \\
+    2a_4 & 2a_4 & 2a_4 & 0 & \cdots & 2a_4 & a_4 + a_n \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    2a_{n - 1} & 2a_{n - 1} & 2a_{n - 1} & 2a_{n - 1} & \cdots & 0 & a_{n - 1} + a_n
+\end{vmatrix}
+\end{align*}
+Вадим общия множител 2 от първите \(n - 1\) стълба и получаваме:
+\begin{align*}
+\Delta = 2^{n + 3}(-1)^n\begin{vmatrix}
+    1 & 1 & 1 & 1 & \cdots & 1  & 1 \\
+    0 & a_1 & a_1 & a_1 & \cdots & a_1 & a_1 + a_n \\
+    a_2 & 0 & a_2 & a_2 & \cdots & a_2 & a_2 + a_n \\
+    a_3 & a_3 & 0 & a_3 & \cdots & a_3 & a_3 + a_n \\
+    a_4 & a_4 & a_4 & 0 & \cdots & a_4 & a_4 + a_n \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    a_{n - 1} & a_{n - 1} & a_{n - 1} & a_{n - 1} & \cdots & 0 & a_{n - 1} + a_n
+\end{vmatrix}
+\end{align*}
+От втори ред вадим първия умножен по \(a_1\), от трети ред вадим първия умножен по \(a_2\) и тн.
+от \(n\)-ти ред вадим първия умножен по \(a_{n - 1}\) и така получаваме
+\begin{align*}
+\Delta = 2^{n + 3}(-1)^n\begin{vmatrix}
+    1 & 1 & 1 & 1 & \cdots & 1  & 1 \\
+    -a_1 & 0 & 0 & 0 & \cdots & 0 & a_n \\
+    0 & -a_2 & 0 & 0 & \cdots & 0 & a_n \\
+    0 & 0 & -a_3 & 0 & \cdots & 0 & a_n \\
+    0 & 0 & 0 & -a_4 & \cdots & 0 & a_n \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & 0 & 0 & \cdots & -a_{n - 1} & a_n
+\end{vmatrix}
+\end{align*}
+Последователно разменяме \(n\)-тия с \(n - 1\)-вия стълб, след това \(n - 1\)-вия с \(n - 2\)-рия и тн. накарая 2-рияс 1-вия.
+Това са \(n - 1\) размени, тоест \(n - 1\) смени на знака и така:
+\begin{align*}
+\Delta = (-1)^{n - 1}2^{n + 3}(-1)^n\begin{vmatrix}
+    1 & 1 & 1 & 1 & 1 & \cdots & 1 \\
+    a_n & -a_1 & 0 & 0 & 0 & \cdots & 0 \\
+    a_n & 0 & -a_2 & 0 & 0 & \cdots & 0 \\
+    a_n & 0 & 0 & -a_3 & 0 & \cdots & 0 \\
+    a_n & 0 & 0 & 0 & -a_4 & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    a_n & 0 & 0 & 0 & 0 & \cdots & -a_{n - 1}
+\end{vmatrix}
+\end{align*}
+Изкарваме \(n - 1\) множителя \((-1)\) и получаваме:
+\begin{align*}
+\Delta = 2^{n + 3}(-1)^n\begin{vmatrix}
+    1 & 1 & 1 & 1 & 1 & \cdots & 1 \\
+    -a_n & a_1 & 0 & 0 & 0 & \cdots & 0 \\
+    -a_n & 0 & a_2 & 0 & 0 & \cdots & 0 \\
+    -a_n & 0 & 0 & a_3 & 0 & \cdots & 0 \\
+    -a_n & 0 & 0 & 0 & a_4 & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    -a_n & 0 & 0 & 0 & 0 & \cdots & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+Тази детерминанта е от тип Пачи крак! Обаче ще трябва да разгледаме два случая:
+\subsubsection*{Случай 1: \(\exists i \in I_{n - 1} \; a_i = 0\)}
+Тогава \(i + 1\)-я стълб е равен на \(e_1^t\), тоест елемента с индекси \(1, i + 1\) е равен на \(1\) и всички други са \(0\),
+\(i + 1\)-я ред пък е равен на \(-a_n e_1\), тоест елемента с индекси \(i + 1, 1\) е равен на \(-a_n\) и всички други са \(0\).
+Тоест:
+\begin{align*}
+\Delta = 2^{n + 3}(-1)^n\begin{vmatrix}
+    1      & 1      & 1      & 1      & \cdots & 1      & \cdots & 1      \\
+    -a_n   & a_1    & 0      & 0      & \cdots & 0      & \cdots & 0      \\
+    -a_n   & 0      & a_2    & 0      & \cdots & 0      & \cdots & 0      \\
+    -a_n   & 0      & 0      & a_3    & \cdots & 0      & \cdots & 0      \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    -a_n   & 0      & 0      & 0      & \cdots & 0      & \cdots & 0      \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    -a_n   & 0      & 0      & 0      & \cdots & 0      & \cdots & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+Тогава от всеки стълб освен \(i + 1\)-вия вадим \(i + 1\)-вия и получаваме:
+\begin{align*}
+\Delta = 2^{n + 3}(-1)^n\begin{vmatrix}
+    0       & 0      & 0      & 0      & \cdots & 1      & \cdots & 0      \\
+    -a_n    & a_1    & 0      & 0      & \cdots & 0      & \cdots & 0      \\
+    -a_n    & 0      & a_2    & 0      & \cdots & 0      & \cdots & 0      \\
+    -a_n    & 0      & 0      & a_3    & \cdots & 0      & \cdots & 0      \\
+    \vdots  & \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    -a_n    & 0      & 0      & 0      & \cdots & 0      & \cdots & 0      \\
+    \vdots  & \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    -a_n    & 0      & 0      & 0      & \cdots & 0      & \cdots & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+След, което развиваме по \(i + 1\)-вия ред и получаваме
+\begin{align*}
+\Delta = 2^{n + 3}(-1)^n (-a_n)(-1)^{i + 1 + 1}\begin{vmatrix}
+    0      & 0      & 0      & \cdots & 1      & \cdots & 0      \\
+    a_1    & 0      & 0      & \cdots & 0      & \cdots & 0      \\
+    0      & a_2    & 0      & \cdots & 0      & \cdots & 0      \\
+    0      & 0      & a_3    & \cdots & 0      & \cdots & 0      \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    0      & 0      & 0      & \cdots & 0      & \cdots & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+Сега развиваме по първи ред и получаваме
+\begin{align*}
+\Delta = 2^{n + 3}(-1)^n (-a_n)(-1)^{i + 1 + 1}.1.(-1)^{1 + i}\begin{vmatrix}
+    a_1 & 0 & 0 & 0 & \cdots & 0 \\
+    0 & \ddots & 0 & 0 & \cdots & 0 \\
+    0 & 0 & a_{i - 1} & 0 & \cdots & 0 \\
+    0 & 0 & 0 & a_{i + 1} & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & 0 & 0 & \cdots & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+Тоест
+\begin{align*}
+\Delta = 2^{n + 3}a_n(-1)^n\begin{vmatrix}
+    a_1 & 0 & 0 & 0 & \cdots & 0 \\
+    0 & \ddots & 0 & 0 & \cdots & 0 \\
+    0 & 0 & a_{i - 1} & 0 & \cdots & 0 \\
+    0 & 0 & 0 & a_{i + 1} & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & 0 & 0 & \cdots & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+Получената детерминанта е диагонална и то по главния и можем директно да я пресметнем:
+\begin{align*}
+\Delta = 2^{n + 3}(-1)^n\displaystyle\prod_{j = 1, j \neq i}^n a_j
+\end{align*}
+\subsubsection*{Случай 2: \(\forall i \in I_{n - 1} \; a_i \neq 0\)}
+Тогава можем да делим без проблем и за това към първия стълб добавяме всеки друг умножен съответно по \(\displaystyle\frac{a_n}{a_i}\)
+и получаваме:
+\begin{align*}
+\Delta = 2^{n + 3}(-1)^n\begin{vmatrix}
+    1 + a_n\displaystyle\sum_{i = 1}^{n - 1}\displaystyle\frac{1}{a_i} & 1 & 1 & 1 & 1 & \cdots & 1 \\
+    0 & a_1 & 0 & 0 & 0 & \cdots & 0 \\
+    0 & 0 & a_2 & 0 & 0 & \cdots & 0 \\
+    0 & 0 & 0 & a_3 & 0 & \cdots & 0 \\
+    0 & 0 & 0 & 0 & a_4 & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & 0 & 0 & 0 & \cdots & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+Сега развиваме тази детерминанта по първия стълб и получаваме:
+\begin{align*}
+\Delta = 2^{n + 3}(-1)^n\left(1 + a_n\displaystyle\sum_{i = 1}^{n - 1}\displaystyle\frac{1}{a_i}\right)\displaystyle\prod_{i = 1}^{n - 1}a_i = \\
+2^{n + 3}(-1)^n\left(\displaystyle\prod_{i = 1}^{n - 1}a_i + a_n\displaystyle\prod_{i = 1}^{n - 1}a_i\displaystyle\sum_{i = 1}^{n - 1}\displaystyle\frac{1}{a_i}\right) = \\
+2^{n + 3}(-1)^n\left(\displaystyle\prod_{i = 1, i \neq n}^n a_i + \displaystyle\sum_{i = 1}^{n - 1}\displaystyle\frac{\displaystyle\prod_{j = 1}^n a_j}{a_i}\right) = \\
+2^{n + 3}(-1)^n\displaystyle\sum_{i = 1}^n\displaystyle\prod_{j = 1, j \neq i}^n a_j
+\end{align*}
+\subsubsection*{Отговор:}
+\begin{align*}
+    \exists i \in I_{n - 1} \; a_i = 0 \, \implies \, \Delta = 2^{n + 3}(-1)^n\displaystyle\prod_{j = 1, j \neq i}^n a_j \\
+    \forall i \in I_{n - 1} \; a_i \neq 0 \, \implies \, \Delta = 2^{n + 3}(-1)^n\displaystyle\sum_{i = 1}^n\displaystyle\prod_{j = 1, j \neq i}^n a_j
+\end{align*}
+\section*{Задача 3.}
+Да се пресметне детерминантата от (n + 1)-ви ред:
+\begin{align*}
+\begin{vmatrix}
+    0 & 4 & 4 & 4 & 4 & \cdots & 4 \\
+    4 & 2a_1 & a_2 - a_1 & a_3 - a_1 & a_4 - a_1 & \cdots & a_1 + a_n \\
+    4 & a_1 - a_2 & 2a_2 & a_3 - a_2 & a_4 - a_2 & \cdots & a_2 + a_n \\
+    4 & a_1 - a_3 & a_2 - a_3 & 2a_3 & a_4 - a_3 & \cdots & a_3 + a_n \\
+    4 & a_1 - a_4 & a_2 - a_4 & a_3 - a_4 & 2a_4 & \cdots & a_4 + a_n \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    4 & a_n + a_1 & a_n + a_2 & a_n + a_3 & a_n + a_4 & \cdots & 0
+\end{vmatrix}
+\end{align*}
+\subsection*{Решение:}
+\begin{align*}
+\Delta = \begin{vmatrix}
+    0 & 4 & 4 & 4 & 4 & \cdots & 4  & 4 \\
+    4 & 2a_1 & a_2 - a_1 & a_3 - a_1 & a_4 - a_1 & \cdots & a_{n - 1} - a_1 & a_1 + a_n \\
+    4 & a_1 - a_2 & 2a_2 & a_3 - a_2 & a_4 - a_2 & \cdots & a_{n - 1} - a_2 & a_2 + a_n \\
+    4 & a_1 - a_3 & a_2 - a_3 & 2a_3 & a_4 - a_3 & \cdots & a_{n - 1} - a_3 & a_3 + a_n \\
+    4 & a_1 - a_4 & a_2 - a_4 & a_3 - a_4 & 2a_4 & \cdots & a_{n - 1} - a_4 & a_4 + a_n \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    4 & a_1 - a_{n - 1} & a_2 - a_{n - 1} & a_3 - a_{n - 1} & a_4 - a_{n - 1} & \cdots & 2a_{n - 1} & a_{n - 1} + a_n \\
+    4 & a_n + a_1 & a_n + a_2 & a_n + a_3 & a_n + a_4 & \cdots & a_n + a_{n - 1} & 0
+\end{vmatrix}
+\end{align*}
+Ще извадим последния ред от всеки друг, без първия и така получаваме:
+\begin{align*}
+\Delta = \begin{vmatrix}
+    0 & 4 & 4 & 4 & 4 & \cdots & 4  & 4 \\
+    0 & a_1 - a_n & -a_1 - a_n & -a_1 - a_n & -a_1 - a_n & \cdots & -a_1 - a_n & a_1 + a_n \\
+    0 & -a_2 - a_n & a_2 - a_n & -a_2 - a_n & -a_2 - a_n & \cdots & -a_2 - a_n & a_2 + a_n \\
+    0 & -a_3 - a_n & -a_3 - a_n & a_3 - a_n & -a_3 - a_n & \cdots & -a_3 - a_n & a_3 + a_n \\
+    0 & -a_4 - a_n & -a_4 - a_n & -a_4 - a_n & a_4 - a_n & \cdots & -a_4 - a_n & a_4 + a_n \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & -a_{n - 1} - a_n & -a_{n - 1} - a_n & -a_{n - 1} - a_n & -a_{n - 1} + a_n & \cdots & a_{n + 1} - a_1 & a_{n - 1} + a_n \\
+    4 & a_n + a_1 & a_n + a_2 & a_n + a_3 & a_n + a_4 & \cdots & a_n + a_{n - 1} & 0
+\end{vmatrix}
+\end{align*}
+Добавяме последния стълб към всеки без първия и така получаваме:
+\begin{align*}
+\Delta = \begin{vmatrix}
+    0 & 8 & 8 & 8 & 8 & \cdots & 8  & 4 \\
+    0 & 2a_1 & 0 & 0 & 0 & \cdots & 0 & a_1 + a_n \\
+    0 & 0 & 2a_2 & 0 & 0 & \cdots & 0 & a_2 + a_n \\
+    0 & 0 & 0 & 2a_3 & 0 & \cdots & 0 & a_3 + a_n \\
+    0 & 0 & 0 & 0 & 2a_4 & \cdots & 0 & a_4 + a_n \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & 0 & 0 & 0 & \cdots & 2a_{n - 1} & a_{n - 1} + a_n \\
+    4 & a_n + a_1 & a_n + a_2 & a_n + a_3 & a_n + a_4 & \cdots & a_n + a_{n - 1} & 0
+\end{vmatrix}
+\end{align*}
+Развиваме по първи стълб и получаваме:
+\begin{align*}
+\Delta = 4(-1)^{n + 1 + 1}\begin{vmatrix}
+    8 & 8 & 8 & 8 & \cdots & 8  & 4 \\
+    2a_1 & 0 & 0 & 0 & \cdots & 0 & a_1 + a_n \\
+    0 & 2a_2 & 0 & 0 & \cdots & 0 & a_2 + a_n \\
+    0 & 0 & 2a_3 & 0 & \cdots & 0 & a_3 + a_n \\
+    0 & 0 & 0 & 2a_4 & \cdots & 0 & a_4 + a_n \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & 0 & 0 & \cdots & 2a_{n - 1} & a_{n - 1} + a_n
+\end{vmatrix}
+\end{align*}
+Вадим общия множител 4 от първия ред и получаваме:
+\begin{align*}
+\Delta = 16(-1)^n\begin{vmatrix}
+    2 & 2 & 2 & 2 & \cdots & 2  & 1 \\
+    2a_1 & 0 & 0 & 0 & \cdots & 0 & a_1 + a_n \\
+    0 & 2a_2 & 0 & 0 & \cdots & 0 & a_2 + a_n \\
+    0 & 0 & 2a_3 & 0 & \cdots & 0 & a_3 + a_n \\
+    0 & 0 & 0 & 2a_4 & \cdots & 0 & a_4 + a_n \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & 0 & 0 & \cdots & 2a_{n - 1} & a_{n - 1} + a_n
+\end{vmatrix}
+\end{align*}
+Вадим общия множител 2 от първите \(n - 1\) стълба и получаваме:
+\begin{align*}
+\Delta = 2^{n + 3}(-1)^n\begin{vmatrix}
+    1 & 1 & 1 & 1 & \cdots & 1  & 1 \\
+    a_1 & 0 & 0 & 0 & \cdots & 0 & a_1 + a_n \\
+    0 & a_2 & 0 & 0 & \cdots & 0 & a_2 + a_n \\
+    0 & 0 & a_3 & 0 & \cdots & 0 & a_3 + a_n \\
+    0 & 0 & 0 & a_4 & \cdots & 0 & a_4 + a_n \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & 0 & 0 & \cdots & a_{n - 1} & a_{n - 1} + a_n
+\end{vmatrix}
+\end{align*}
+От последния стълб вадим всеки друг и получаваме:
+\begin{align*}
+\Delta = 2^{n + 3}(-1)^n\begin{vmatrix}
+    1 & 1 & 1 & 1 & \cdots & 1  & 1 - (n - 1) \\
+    a_1 & 0 & 0 & 0 & \cdots & 0 & a_n \\
+    0 & a_2 & 0 & 0 & \cdots & 0 & a_n \\
+    0 & 0 & a_3 & 0 & \cdots & 0 & a_n \\
+    0 & 0 & 0 & a_4 & \cdots & 0 & a_n \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    0 & 0 & 0 & 0 & \cdots & a_{n - 1} & a_n
+\end{vmatrix}
+\end{align*}
+Последователно разменяме \(n\)-тия с \(n - 1\)-вия стълб, след това \(n - 1\)-вия с \(n - 2\)-рия и тн. накарая 2-рияс 1-вия.
+Това са \(n - 1\) размени, тоест \(n - 1\) смени на знака и така:
+\begin{align*}
+\Delta = (-1)^{n - 1}2^{n + 3}(-1)^n\begin{vmatrix}
+    2 - n & 1   & 1   & 1   & \cdots & 1  & 1 \\
+    a_n   & a_1 & 0   & 0   & \cdots & 0 & 0 \\
+    a_n   & 0   & a_2 & 0   & \cdots & 0 & 0 \\
+    a_n   & 0   & 0   & a_3 & \cdots & 0 & 0 \\
+    a_n   & 0   & 0   & 0   & \cdots & 0 & 0 \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    a_n & 0 & 0 & 0 & \cdots & 0 & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+Така получихме, че първоначалната детерминанта е равна на:
+\begin{align*}
+\Delta = 2^{n + 3}\begin{vmatrix}
+    n - 2 & -1   & -1   & -1   & \cdots & -1  & -1 \\
+    a_n   & a_1 & 0   & 0   & \cdots & 0 & 0 \\
+    a_n   & 0   & a_2 & 0   & \cdots & 0 & 0 \\
+    a_n   & 0   & 0   & a_3 & \cdots & 0 & 0 \\
+    a_n   & 0   & 0   & 0   & \cdots & 0 & 0 \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+    a_n & 0 & 0 & 0 & \cdots & 0 & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+Тази детерминанта е от тип Пачи крак! Обаче ще трябва да разгледаме два случая:
+\subsubsection*{Случай 1: \(\exists i \in I_{n - 1} \; a_i = 0\)}
+Тогава \(i + 1\)-я стълб е равен на \(-e_1^t\), тоест елемента с индекси \(1, i + 1\) е равен на \(-1\) и всички други са \(0\),
+\(i + 1\)-я ред пък е равен на \(a_n e_1\), тоест елемента с индекси \(i + 1, 1\) е равен на \(a_n\) и всички други са \(0\).
+Тоест:
+\begin{align*}
+\Delta = 2^{n + 3}\begin{vmatrix}
+    n - 2  & -1     & -1     & -1     & \cdots & -1     & \cdots & -1     \\
+    a_n    & a_1    & 0      & 0      & \cdots & 0      & \cdots & 0      \\
+    a_n    & 0      & a_2    & 0      & \cdots & 0      & \cdots & 0      \\
+    a_n    & 0      & 0      & a_3    & \cdots & 0      & \cdots & 0      \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    a_n    & 0      & 0      & 0      & \cdots & 0      & \cdots & 0      \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    a_n    & 0      & 0      & 0      & \cdots & 0      & \cdots & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+Тогава към първия стълб добавяме \(i + 1\)-вия умножен с \(n - 2\), а от всеки друг вадим \(i + 1\)-вия и получаваме:
+\begin{align*}
+\Delta = 2^{n + 3}\begin{vmatrix}
+    0      & 0      & 0      & 0      & \cdots & -1     & \cdots & 0      \\
+    a_n    & a_1    & 0      & 0      & \cdots & 0      & \cdots & 0      \\
+    a_n    & 0      & a_2    & 0      & \cdots & 0      & \cdots & 0      \\
+    a_n    & 0      & 0      & a_3    & \cdots & 0      & \cdots & 0      \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    a_n    & 0      & 0      & 0      & \cdots & 0      & \cdots & 0      \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    a_n    & 0      & 0      & 0      & \cdots & 0      & \cdots & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+След, което развиваме по \(i + 1\)-вия ред и получаваме
+\begin{align*}
+\Delta = 2^{n + 3}a_n(-1)^{i + 1 + 1}\begin{vmatrix}
+    0      & 0      & 0      & \cdots & -1     & \cdots & 0      \\
+    a_1    & 0      & 0      & \cdots & 0      & \cdots & 0      \\
+    0      & a_2    & 0      & \cdots & 0      & \cdots & 0      \\
+    0      & 0      & a_3    & \cdots & 0      & \cdots & 0      \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    0      & 0      & 0      & \cdots & 0      & \cdots & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+Сега развиваме по първи ред и получаваме
+\begin{align*}
+\Delta = 2^{n + 3}a_n(-1)^{i + 1 + 1}(-1)(-1)^{1 + i}\begin{vmatrix}
+    0      & 0      & 0      & \cdots & -1     & \cdots & 0      \\
+    a_1    & 0      & 0      & \cdots & 0      & \cdots & 0      \\
+    0      & a_2    & 0      & \cdots & 0      & \cdots & 0      \\
+    0      & 0      & a_3    & \cdots & 0      & \cdots & 0      \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+    0      & 0      & 0      & \cdots & 0      & \cdots & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+Тоест
+\begin{align*}
+\Delta = 2^{n + 3}a_n\begin{vmatrix}
+    a_1 & 0 & 0 & 0 & \cdots & 0 \\
+    0 & \ddots & 0 & 0 & \cdots & 0 \\
+    0 & 0 & a_{i - 1} & 0 & \cdots & 0 \\
+    0 & 0 & 0 & a_{i + 1} & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & 0 & 0 & \cdots & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+Получената детерминанта е диагонална и то по главния и можем директно да я пресметнем:
+\begin{align*}
+\Delta = 2^{n + 3}\displaystyle\prod_{j = 1, j \neq i}^n a_j
+\end{align*}
+\subsubsection*{Случай 2: \(\forall i \in I_{n - 1} \; a_i \neq 0\)}
+Тогава можем да делим без проблем и за това от първия стълб вадим всеки друг умножен съответно по \(\displaystyle\frac{a_n}{a_i}\)
+и получаваме:
+\begin{align*}
+\Delta = 2^{n + 3}\begin{vmatrix}
+    n - 2 - a_n\displaystyle\sum_{i = 1}^{n - 1}\displaystyle\frac{1}{a_i} & -1 & -1 & -1 & -1 & \cdots & -1 \\
+    0 & a_1 & 0 & 0 & 0 & \cdots & 0 \\
+    0 & 0 & a_2 & 0 & 0 & \cdots & 0 \\
+    0 & 0 & 0 & a_3 & 0 & \cdots & 0 \\
+    0 & 0 & 0 & 0 & a_4 & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & 0 & 0 & 0 & \cdots & a_{n - 1}
+\end{vmatrix}
+\end{align*}
+Сега развиваме тази детерминанта по първия стълб и получаваме:
+\begin{align*}
+\Delta = 2^{n + 3}\left(n - 2 - a_n\displaystyle\sum_{i = 1}^{n - 1}\displaystyle\frac{1}{a_i}\right)\displaystyle\prod_{i = 1}^{n - 1}a_i = \\
+2^{n + 3}\left((n - 2)\displaystyle\prod_{i = 1}^{n - 1}a_i - a_n\displaystyle\prod_{i = 1}^{n - 1}a_i\displaystyle\sum_{i = 1}^{n - 1}\displaystyle\frac{1}{a_i}\right) = \\
+2^{n + 3}\left((n - 2)\displaystyle\prod_{i = 1}^{n - 1} a_i - \displaystyle\sum_{i = 1}^{n - 1}\displaystyle\frac{\displaystyle\prod_{j = 1}^n a_j}{a_i}\right) = \\
+2^{n + 3}\left((n - 2)\displaystyle\prod_{i = 1}^{n - 1} a_i - \displaystyle\sum_{i = 1}^{n - 1}\displaystyle\prod_{j = 1, j \neq i}^n a_j\right)
+\end{align*}
+\subsubsection*{Отговор:}
+\begin{align*}
+    \exists i \in I_{n - 1} \; a_i = 0 \, \implies \, \Delta = 2^{n + 3}\displaystyle\prod_{j = 1, j \neq i}^n a_j \\
+    \forall i \in I_{n - 1} \; a_i \neq 0 \, \implies \, \Delta = 2^{n + 3}\left((n - 2)\displaystyle\prod_{i = 1}^{n - 1} a_i - \displaystyle\sum_{i = 1}^{n - 1}\displaystyle\prod_{j = 1, j \neq i}^n a_j\right)
+\end{align*}
+\end{document}
