@@ -62,7 +62,7 @@
     \subsection{Определение за инверсия в пермутация}
     \(\sigma \in S(\Omega_n), \; \forallij \in \Omega_n \\\\
     \sigma(i), \; \sigma(j) \text{ образуват инверсия} \iff \sigma(i) > \sigma(j), \text{ но } i < j \\\\
-    \inv \text{ - брой инверсии} \implies 1 \leq \inv \leq n\)
+    \inv \text{ - брой инверсии} \implies 1 \leq \inv \leq \frac{n(n - 1)}{2}\)
     \subsection{Определение за транспозиция}
     \(\sigma \in S(\Omega_n), \; \forallij \in \Omega_n \\\\
     \sigma \in S(\Omega_n) \implies \sigma = \{\sigma(1), \; \dots, \; \sigma(i), \; \dots, \; \sigma(j), \; \dots, \; \sigma(n)\} \\\\
@@ -112,7 +112,7 @@
     \det\begin{pmatrix} a_1\\ \vdots\\ \lambda a_i\\  \vdots\\ a_n \end{pmatrix} = \lambda \det\begin{pmatrix} a_1\\ \vdots\\ a_i\\  \vdots\\ a_n \end{pmatrix}\)
     \subsection{Промяна на детерминантата на една матрица, ако умножим един нейн стълб с някакво число}
     \leta \\\\
-    \acols \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \quad i \in \{1, \; \dots, \; n\}, \; \lambda \in \F \\\\
+    \acols \(A = (a_1 \; \dots \; a_n) \quad i \in \{1, \; \dots, \; n\}, \; \lambda \in \F \\\\
     \det(a_1 \; \dots \; \lambda a_i \; \dots \; a_n) = \lambda \det(a_1 \; \dots \; a_i \; \dots \; a_n)\)
     \subsection{Промяна на детерминантата на една матрица, ако един нейн ред заменим с друг, различен от него, ред}
     \leta \\\\
@@ -143,14 +143,14 @@
     \acols \(A = (a_1 \; \dots \; a_n) \; \text{ и нека } \iandj \\\\
     a_i := a_i + a_j \implies \det(a_1 \; \dots \; a_i + a_j \; \dots \; a_j \; \dots \; a_n) = \\\\
     = \det(a_1 \; \dots \; a_i \; \dots \; a_j \; \dots \; a_n) + \det(a_1 \; \dots \; a_j \; \dots \; a_j \; \dots \; a_n) = \det A + 0 = \det A\)
-    \subsection{Промяна на детерминантата на една матрица, ако към един нейн ред прибавим м умножен с число друг, различен от него, ред}
+    \subsection{Промяна на детерминантата на една матрица, ако към един нейн ред прибавим умножен с число друг, различен от него, ред}
     \leta \\\\
     \arows \(A = \begin{pmatrix} a_1\\ \vdots\\ a_n \end{pmatrix} \; \text{ и нека } \iandj, \; \lambda \in \F \\\\
     a_i := a_i + \lambda a_j \implies \det\begin{pmatrix} a_1\\ \vdots\\ a_i + \lambda a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix}
     = \det\begin{pmatrix} a_1\\ \vdots\\ a_i\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} +
     \det\begin{pmatrix} a_1\\ \vdots\\ \lambda a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} =\ \\\\
     = \det A + \lambda \det\begin{pmatrix} a_1\\ \vdots\\ a_j\\ \vdots\\ a_j\\ \vdots\\ a_n \end{pmatrix} = \det A + \lambda 0 = \det A + 0 = \det A\)
-    \subsection{Промяна на детерминантата на една матрица, ако един нейн стълб прибавим м умножен с число друг, различен от него, стълб}
+    \subsection{Промяна на детерминантата на една матрица, ако един нейн стълб прибавим умножен с число друг, различен от него, стълб}
     \leta \\\\
     \acols \(A = (a_1 \; \dots \; a_n) \; \text{ и нека } \iandj, \; \lambda \in \F \\\\
     a_i := a_i + \lambda a_j \implies \det(a_1 \; \dots \; a_i + \lambda a_j \; \dots \; a_j \; \dots \; a_n) = \\\\
@@ -187,7 +187,39 @@
     \(A, B \in M_n, \; \det A = 8, \; \det B = 1 \\\\ \det(AB)^t = \det AB = \det A\det B = 8.1 = 8\)
     \subsection{}
     \(A, B \in M_{n \geq 8}, \; \det A = 9, \; \det B = 1 \\\\ A, B \) се различават само по 8-мия си ред/стълб \\\\
-    \(\det(A + B) = 2^{n - 1}(\det A + \det B) = \\\\ =2^{n - 1}(9 + 1) = 2^{n - 1}.10 = 5.2^n\)
+    \(\det(A + B) = 2^{n - 1}(\det A + \det B) = \\\\ =2^{n - 1}(9 + 1) = 2^{n - 1}.10 = 5.2^n\) \\\\
+    Защото: \\\\
+    \(\det(A + B) = \det\left(\begin{pmatrix}
+    c_{11} & c_{12} & \cdots & c_{1n} \\
+    c_{21} & c_{22} & \cdots & c_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{81} & a_{82} & \cdots & a_{8n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    c_{n1} & c_{n2} & \cdots & c_{nn} \\
+    \end{pmatrix} + \begin{pmatrix}
+    c_{11} & c_{12} & \cdots & c_{1n} \\
+    c_{21} & c_{22} & \cdots & c_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    b_{81} & b_{82} & \cdots & b_{8n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    c_{n1} & c_{n2} & \cdots & c_{nn} \\
+    \end{pmatrix}\right) = \\\\
+    \begin{vmatrix}
+    2c_{11} & 2c_{12} & \cdots & 2c_{1n} \\
+    2c_{21} & 2c_{22} & \cdots & 2c_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{81} + b_{81} & a_{82} + b_{82} & \cdots & a_{8n} + b_{8n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    2c_{n1} & 2c_{n2} & \cdots & 2c_{nn} \\
+    \end{vmatrix} = 2^{n - 1}\begin{vmatrix}
+    c_{11} & c_{12} & \cdots & c_{1n} \\
+    c_{21} & c_{22} & \cdots & c_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{81} + b_{81} & a_{82} + b_{82} & \cdots & a_{8n} + b_{8n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    c_{n1} & c_{n2} & \cdots & c_{nn} \\
+    \end{vmatrix} = \\\\
+    2^{n - 1}(\det A + \det B )\)
     \section{Развитие на детерминанта по ред/стълб на}
     \(\Delta = \begin{vmatrix}
         -9 & -8 & 6 & 5\\
