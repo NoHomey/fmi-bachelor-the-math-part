@@ -341,10 +341,13 @@
         \vdots & \ddots & \vdots\\
         a_{i_rj_1} & \cdots & a_{i_rj_r}
     \end{vmatrix} \neq 0 \\\\
-    \forall \; k \in \N \; : \; r < k \leq n \; \begin{vmatrix}
-        a_{i_1j_1} & \cdots & a_{i_1j_k}\\
+    \forall \; k \in \N \; : \; r < k \leq n \\\\
+    \forall \; 1 \leq l_1 < t_2 < \dots < l_k \leq n \\\\
+    \forall \; 1 \leq t_1 < t_2 < \dots < t_k \leq n \; : \\\\
+    \begin{vmatrix}
+        a_{l_1t_1} & \cdots & a_{l_1t_r}\\
         \vdots & \ddots & \vdots\\
-        a_{i_kj_1} & \cdots & a_{i_kj_k}
+        a_{i_rt_1} & \cdots & a_{i_rt_r}
     \end{vmatrix} = 0\)
     \section{}
     Нека \(\F\) е поле и \subsection{\(A \in M_5(\F), \; \det A = 0 \implies 0 \leq r(A) < 5\)}
