@@ -1,0 +1,102 @@
+\documentclass[a4paper, 12pt, oneside]{article}
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\LN}{\N_<}
+
+\setlength{\parindent}{0mm}
+
+\title{Някои изброимо безкрайни множества}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+\section*{Увод}
+С този документ целя да докажа, че няколко множества са изброимо безкрайни.
+Идеята се зароди от желанието ми да докажа, че \(\N\times\N\) и \(\Q\) са изброимо безкрайни.
+Ще се опитам да подам идеите как се достига до съответните биекции,
+но преди това ще формулирам и докажа няколко помощни твърдения, които ще използвам в доказателствата на твърденията.
+\section*{Помощно твърдение 1.}
+Нека разгледаме следното множество \(\LN = \{(i, j) \in \N\times\N \; | \; i < j\}\),
+това същност е релацията "по-малко" над множеството на естествените числа.
+Няма да се интересуваме от този факт. Ще разглеждаме \(\LN\) като множество и ще докажем,
+че е изброимо безкрайно.
+\subsection*{Твърдение:}
+Множеството \(\LN\) е изброимо безкрайно.
+\subsection*{Идея за биекция:}
+Очевидно е вярно \(\LN = \{(i, j) \; | \; j \in \N, \; j > 0, \; i \in \{0, 1, \dots, j - 1\}\}\).
+Нека фиксираме \(n \in \N\) и нека \(n > 0\), тогава наредените двойки, които участват в \(\LN\)
+и втората им компонента е \(n\) са \((0, n), (1, n), \dots (n - 1, n)\).
+Те очевидно са \(n\) на брой и очевидно броят на тези с втора компонента строго по-малка от \(n\)
+e \(1 + 2 + \dots + n - 1\). Тоест \(\displaystyle\frac{(n - 1)n}{2}\) на брой.
+Тогава на наредената двойка \((i, j)\) от \(\LN\) ще съпоставим естественото число \(\displaystyle\frac{(j - 1)j}{2} + i\). \\
+\subsection*{Доказателство:}
+Дефинираме функцията \(f := \left\{\left((i, j), \displaystyle\frac{(j - 1)j}{2} + i\right) \; \Big| \; (i, j) \in \LN \right\}\)
+Ще докажем, че \(f\) е биекция между \(\LN\) и \(\N\). Това, че \(f\) е функция от \(\LN\) в \(\N\) вземаме за очевидно.
+Очевидно е също, че \(f((0, 1)) = 0, f((0, 2)) = 1, f((1, 2)) = 2\) и така нататък.
+\subsubsection*{\(f\) е инекция:}
+Нека \((i, j)\) и \((l, k)\) са различни елементи на \(\LN\).
+Тогава имаме два случая: \\
+\textbf{Случай 1 \(j \neq k\):} \\
+Нека без ограничение на общноста \(j < k\). Тогава
+\begin{align*}
+    f((i, j)) = \displaystyle\frac{(j - 1)j}{2} + i = \displaystyle\sum_{m = 1}^{j - 1} m  + i < \displaystyle\sum_{m = 1}^{j - 1} m + j = \\
+    \displaystyle\sum_{m = 1}^j m \leq \displaystyle\sum_{m = 1}^{k - 1} m = \displaystyle\frac{(k - 1)k}{2} \leq \displaystyle\frac{(k - 1)k}{2} + l = f((l, k)).
+\end{align*}
+Така \(f((i, j)) < f((l, k))\) тоест \(f((i, j)) \neq f((l, k))\). \\
+\textbf{Случай 2 \(j = k \; \land \; i \neq l\):} \\
+Нека \(n = j\), тогава
+\begin{align*}
+    f((i, j)) = f((i, n)) = \displaystyle\frac{(n - 1)n}{2} + i \neq \displaystyle\frac{(n - 1)n}{2} + l = f((l, n)) = f((l, k)).
+\end{align*}
+Тоест \(f((i, j)) \neq f((l, k))\). \\
+Така в и двата случая доказахме, че е в сила импликацията
+\begin{align*}
+    (i, j) \neq (l, k) \longrightarrow f((i, j)) \neq f((l, k)).
+\end{align*}
+Понеже \((i, j)\) и \((l, k)\) бяха произволни е в сила
+\begin{align*}
+    \forall (i, j) \in \LN \; \forall (l, k) \in \LN \; (i, j) \neq (l, k) \longrightarrow f((i, j)) \neq f((l, k)).
+\end{align*}
+Тоест \(f\) е инекция.
+\subsubsection*{\(f\) е сюрекция:}
+Трябва да докажем \(\forall n \in \N \; \exists (i, j) \in \LN \; f((i, j)) = n\)
+Доказателството ще извършим по индукция. \\
+\textbf{База:} \\
+\begin{align*}
+    f((0, 1)) = \displaystyle\frac{(1 - 1)1}{2} + 0 = 0 + 0 = 0.
+\end{align*}
+\textbf{Индукционна хипотеза:} \\
+Допускаме, че е вярно \(\exists m \in \N \; \exists (i, j) \in \LN \; f((i, j)) = m\). \\
+\textbf{Индукционна стъпка:}
+Ще докажем за \(n = m + 1\). От Индукционната хипотеза имаме \(\exists (i, j) \in \LN \; f((i, j)) = m\).
+Нека тогава \((i, j) \in \LN \; f((i, j)) = m\). Следното \(f((i, j)) + 1 = m + 1 = n\).
+Има две възможности: \\
+\textbf{Случай 1 \(j = i + 1\):} \\
+Тогава
+\begin{align*}
+    n = f((i, j)) + 1 = f((i, i + 1)) + 1 = \left(\displaystyle\frac{(i + 1 - 1)(i + 1)}{2} + i\right) + 1 = \\
+    \displaystyle\frac{i(i + 1)}{2} + i + 1 = \displaystyle\frac{(i + 1)(i + 2)}{2} = \displaystyle\frac{j(j + 1)}{2} = \displaystyle\frac{(j + 1 - 1)(j + 1)}{2} + 0 = f((0, j + 1)).
+\end{align*}
+Очевидно \((0, j + 1) \in \LN\) и \(f((0, j + 1)) = n\). \\
+\textbf{Случай 2 \(i < j - 1\):} \\
+Тогава
+\begin{align*}
+    n = f((i, j)) + 1 = \left(\displaystyle\frac{(j - 1)j}{2} + i\right) + 1 = \displaystyle\frac{(j - 1)j}{2} + (i + 1) = f((i + 1, j)).
+\end{align*}
+Очевидно \(i + 1 < j - 1 + 1 = j\) и значи \((i + 1, j) \in \LN\) и \(f((i + 1, j)) = n\). \\
+Така и в двата случая доказахме \(\exists (l, k) \in \LN \; f((l, k)) = n = m + 1\). \\
+\textbf{Заключение:}
+\(\forall n \in \N \; \exists (i, j) \in \LN \; f((i, j)) = n\). \\
+Което искахме да докажем. Тоест \(f\) е сюрекция. \\
+Следователно \(f\) е биекция от където \(\LN\) е изброимо безкрайно. \(\qed\)
+\end{document}
