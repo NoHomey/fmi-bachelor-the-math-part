@@ -1,0 +1,97 @@
+\documentclass[a4paper, 12pt, oneside]{article}
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+
+\setlength{\parindent}{0mm}
+
+\title{Лексикографското произведение на фундирани множества е фундирано множество}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+\section*{Твърдение:}
+Нека \((A, <_A)\) е фундирано множество и нека \((B, <_B)\) е фундирано множество.
+Тогава \((A \times B, <_{lex A, B})\) е фундирано множество, където \\
+\((\forall (a, b) \in A \times B)(\forall (a', b') \in A \times B)[(a, b) <_{lex A, B} (a', b') \iff \\
+a <_A a' \lor (a = a' \land b <_B b')]\)
+\section*{Доказателство:} 
+Нека \((A, <_A)\) е фундирано множество и нека \((B, <_B)\) е фундирано множество.
+Нека \((\forall (a, b) \in A \times B)(\forall (a', b') \in A \times B)[(a, b) <_{lex A, B} (a', b') \iff \\
+a <_A a' \lor (a = a' \land b <_B b')]\) \\
+Ще докажем, че в \((A \times B, <_{lex A, B})\) няма безкрайни спускания,
+което е еквивалентно на това множеството \((A \times B, <_{lex A, B})\) да е фундирано. \\
+Допускаме, че в \((A \times B, <_{lex A, B})\) има безкрайно спускане. Тогава е вярно,
+че съществува редица \(p_0, p_1, \dots\) с елементи от \(A \times B\), таква че \(p_0 >_{lex A, B} p_1  >_{lex A, B} \dots\).
+Нека тогава \((a_0, b_0), (a_1, b_1), \dots\) с елементи от \(A \times B\) е такава, че \((a_0, b_0) >_{lex A, B} (a_1, b_1) >_{lex A, B} \dots\).
+Тогава са възможни няколко случаи:
+\subsection*{Случай 1:}
+\((\forall i \in \mathbb{N})[a_i >_A a_{i + 1}]\). Tогава \(a_0 >_A a_1 >_A \dots\) е безкрайно спускане в \((A, <_A)\),
+но това е абсурд, понеже \((A, <_A)\) е фундирано.
+\subsection*{Случай 2:}
+\((\exists I \subseteq \mathbb{N})[\overline{\overline{I}} = \overline{\overline{\omega}} \land (\forall i_1 \in I)(\forall i_2 \in I)[i_1 <_{\mathbb{N}} i_2 \implies a_{i_1} = a_{i_2} \land b_{i_1} >_B b_{i_2}]]\) \\
+Нека тогава \(I \subseteq \mathbb{N}\) и \(\overline{\overline{I}} = \overline{\overline{\omega}} \land (\forall i_1 \in I)(\forall i_2 \in I)[i_1 <_{\mathbb{N}} i_2 \implies a_{i_1} = a_{i_2} \land b_{i_1} >_B b_{i_2}]\)
+\subsection*{Случай 2.1:}
+\((\exists J \subseteq I)(\exists a \in A)[\overline{\overline{J}} = \overline{\overline{\omega}} \land (\forall j \in J)[a_j = a] \land (\forall j_1 \in J)(\forall j_2 \in J)[j_1 <_{\mathbb{N}} j_2 \implies b_{j_1} >_B b_{j_2}]]\) \\
+Нека тогава \(J \subseteq I\), нека \(a \in A\) и нека \\
+\(\overline{\overline{J}} = \overline{\overline{\omega}} \land (\forall j \in J)[a_j = a] \land (\forall j_1 \in J)(\forall j_2 \in J)[j_1 <_{\mathbb{N}} j_2 \implies b_{j_1} >_B b_{j_2}]]\).
+Тогава е вярно \((\forall j_1 \in J)(\forall j_2 \in J)[j_1 <_{\mathbb{N}} j_2 \implies b_{j_1} >_B b_{j_2}]\).
+Понеже \(J \subseteq I \subseteq \mathbb{N}\) и \(\overline{\overline{J}} = \overline{\overline{\omega}}\),
+то елементите на \(J\) могат да бъдат наредени в строго растяща редица \(j_0 <_{\mathbb{N}} j_1  <_{\mathbb{N}} \dots\).
+Но тогава \(b_{j_0} >_B b_{j_1} >_B \dots\) е безкрайно спускане, което е абсурд, защото \((B, <_B)\) е фундирано множество.
+\subsection*{Случай 2.2:}
+\((\forall J \subseteq I)[(\exists a \in A)[(\forall j \in J)[a_j = a] \land (\forall j_1 \in J)(\forall j_2 \in J)[j_1 <_{\mathbb{N}} j_2 \implies b_{j_1} >_B b_{j_2}]] \implies (\exists n \in \mathbb{N})[\overline{\overline{J}} = \overline{\overline{\{0, 1, \dots, n - 1\}}}]]\) \\
+Тогава въвеждаме следната релация \(R := \{(i_1, i_2) \in I \times I \; | \; a_{i_1} = a_{i_2}\}\). \\
+\subsubsection*{\(R\) е рефлексивна}
+В сила е \((\forall i \in I)[a_i = a_i] \implies (\forall i \in I)[(i, i) \in R]\), тоест \(R\) е рефлексивна.
+\subsubsection*{\(R\) е симетрична}
+Нека \((i_1, i_2) \in R\) тогава \(a_{i_1} = a_{i_2}\). Но понеже равенството е симетрично, то \(a_{i_2} = a_{i_1}\) и значи \((i_2, i_1) \in R\).
+Следователно \((\forall (i_1, i_2) \in R)[(i_2, i_1) \in R]\), следователно \(R\) е симетрична.
+\subsubsection*{\(R\) е транзитивна}
+Нека \((i_1, i_2) \in R\) и нека \((i_2, i_3) \in R\).
+Тогава \(a_{i_1} = a_{i_2} \land a_{i_2} = a_{i_3}\), но понеже равенството е транзитивна релация, то \(a_{i_1} = a_{i_3}\).
+Следователно \((i_1, i_3) \in R\) и тогава е в сила \((\forall i_1 \in R)(\forall i_2 \in R)(\forall i_3 \in R)[(i_1, i_2) \in R \land (i_2, i_3) \in R \implies (i_1, i_3) \in R]\).
+Тоест \(R\) е транзитивна. 
+\subsubsection*{Заключение \(R\) е релация на еквивалентност.}
+Тогава нека \(K := \{[i]_R \; | \; i \in I\}\).
+\subsubsection*{Лема: \((\forall J \in K)(\exists n \in \mathbb{N})[\overline{\overline{J}} = \overline{\overline{\{0, 1, \dots, n - 1\}}}]\)}
+Нека \(J \in K\) и нека \(j \in J\) тогава е в сила \\
+\((\forall j' \in J)[(j, j') \in R] \implies (\forall j' \in J)[a_{j'} = a_j]\).
+Понеже \(J \subseteq I\), то е в сила \((\forall j_1 \in J)(\forall j_2 \in J)[j_1 <_{\mathbb{N}} j_2 \implies b_{j_1} >_B b_{j_2}]\). Тогава е в сила \\
+\((\exists n \in \mathbb{N})[\overline{\overline{J}} = \overline{\overline{\{0, 1, \dots, n - 1\}}}]\).
+Нека тогава \(n \in \mathbb{N}\) и \(\overline{\overline{J}} = \overline{\overline{\{0, 1, \dots, n - 1\}}}\). \\
+Тогава \((\forall J \in K)(n \in \mathbb{N})[\overline{\overline{J}} = \overline{\overline{\{0, 1, \dots, n - 1\}}}]\). \(\qed\) \\
+Както знаем \(K\) е разбиване на \(I\) и доказахме, че всеки елемент на \(K\) е крайно множество.
+Тогава \(K\) изброимо безкрайно иначе ще се окаже, че \(I\), което е изброимо безкрайно е обединение на краен брой крайни множества, тоест е крайно, което е абсурд.
+Прилагаме аксиомата за избора за множеството \(I\) и получаваме функция \(f : \mathcal{P}(I)\setminus\emptyset \to I\),
+за която \((\forall S \in \mathcal{P}(I)\setminus\emptyset)[f(S) \in S]\).
+\(K\) е разбиване, тогава е в сила \((\forall J_1 \in K)(\forall J_2 \in K)[a_{f(J_1)} = a_{f(J_2)} \iff J_1 = J_2]\).
+Нека тогава \(J := \{f(k) \; | \; k \in K\}\).
+Така \((\forall j_1 \in J)(\forall j_2 \in J)[j_1 <_{\mathbb{N}} j_2 \implies (a_{j_1}, b_{j_1}) >_{lex A, B} (a_{j_2}, b_{j_2}) \land a_{j_1} \neq a_{j_2}] \implies
+(\forall j_1 \in J)(\forall j_2 \in J)[j_1 <_{\mathbb{N}} j_2 \implies a_{j_1} >_A a_{j_2}]\).
+Очевидно \(\overline{\overline{J}} = \overline{\overline{K}} = \overline{\overline{\omega}}\).
+Тогава елементите на \(J\) могат да бъдат наредени в строго растяща редица \(j_0 <_{\mathbb{N}} j_1  <_{\mathbb{N}} \dots\).
+Но тогава \(a_{j_0} >_A a_{j_1} >_A \dots\) е безкрайно спускане, което е абсурд, защото \((A, <_A)\) е фундирано множество.
+\subsection*{Случай 3:}
+Нека \(I := \{n \in \mathbb{N} \; | \; (\exists k \in \mathbb{N})[k <_{\mathbb{N}} n \land a_k = a_n]\}\) е крайно.
+Понеже множеството \(I\) е крайно множество от естествени числа то има максимален елемент относно релацията \(<_{\mathbb{N}}\), която е линейна наредба.
+Нека тогава \(i\) е този максимален елемент.
+Да допуснем, че \((\exists i' \in \mathbb{N})[i' >_{\mathbb{N}} i \land a_{i' - 1} = a_{i'} \land b_{i' - 1} >_B b_{i'}]\).
+Нека \(i' \in \mathbb{N}\) и \(i' >_{\mathbb{N}} i \land a_{i' - 1} = a_{i'} \land b_{i' - 1} >_B b_{i'}\).
+Тогава \(i' \in I\) и \(i <_{\mathbb{N}} i'\) значи \(i\) не е максимален, което е противоречие. Тогава е в сила 
+\((\forall n_1 \in \mathbb{N})(\forall n_2 \in \mathbb{N})[i \leq_{\mathbb{N}} n_1 \land n_1 <_{\mathbb{N}} n_2 \implies a_{n_1} >_A a_{n_2}]\).
+Тогава редицата \((a_i, b_i), (a_{i + 1}, b_{i + 1}), \dots\) попада в \textbf{Случай 1} понеже сме премахнали само краен брой членове от оригиналната. \\
+Разгледахме всички възможни случаи: когато нямаме повтарящи се първи елементи,
+когато имаме изброимо много с два подслучая (изброимо дълга поредица и изборимо много крайни поредици)
+и когато имаме само краен брой повторения и при всички достигнахме до противоречие. Няма други възможни случай.
+Тогава не е вярно, че в \((A \times B, <_{lex A, B})\) има безкрайно спускане. 
+Следователно в \((A \times B, <_{lex A, B})\) няма безкрайно спускане.
+Следователно \((A \times B, <_{lex A, B})\) е фундирано.
+Твърдението е доказано. \(\qed\)
+\end{document}
