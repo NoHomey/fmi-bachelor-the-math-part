@@ -1,0 +1,229 @@
+\documentclass[a4paper, 12pt, oneside]{article}
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+
+\setlength{\parindent}{0mm}
+
+\title{Лексикографското произведение на фундирани множества е фундирано множество}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+Нека функцията \(f \; : \; \mathbb{N} \to \mathbb{Q}\) е дефинирана по следния начин:
+\begin{align*}
+f(0) = 0 \\
+f(2n) = \displaystyle\frac{f(n)}{f(n) + 1} \\
+f(2n + 1) = f(n) + 1.
+\end{align*}
+Да означим с \(\mathbb{Q}_+\) множеството от неотрицателните рационални числа. Тоест
+\begin{align*}
+    \mathbb{Q}_+ = \left\{\displaystyle\frac{x}{y} \; \Big| \; (x, y) \in \mathbb{N}^2 \; \& \; y > 0 \; \& \; gcd(x, y) = 1\right\}
+\end{align*}
+\section*{Лема 1.}
+\((\forall n \in \mathbb{N})[n > 0 \longrightarrow f(n) > 0]\)
+\subsection*{Доказателство (с индукция):}
+\subsubsection*{База:}
+\begin{align*}
+    f(1) = f(2.0 + 1) = f(0) + 1 = 0 + 1 = 1 > 0 \\
+\end{align*}
+\subsubsection*{Индукционна стъпка:}
+Нека \(n \in \mathbb{N}\setminus\{0, 1\}\) и нека \((\forall m \in \mathbb{N})[1 \leq m < n \longrightarrow f(m) > 0]\) (*) \\
+Възможни са два случая:
+\begin{itemize}
+\item \(n \equiv 0 \pmod{2}\) \\
+Тогава \((\exists! k \in \mathbb{N})[n = 2k]\). Нека тогава \(k \in \mathbb{N} \; \& \; n = 2k\).
+\(n > 1\) и \(n = 2k\) така \(n \geq 2\) следователно \(1 \leq k < n\). 
+Тогава \(f(n) = f(2k) = \displaystyle\frac{f(k)}{f(k) + 1}\) и от (*),
+следва че \(f(k) > 0\). Но тогава и \(f(k) + 1 > 0\) и значи \\
+\(f(n) = f(k)(f(k) + 1)^{-1} >0\).    
+\item \(n \equiv 1 \pmod{2}\) \\
+Тогава \((\exists! k \in \mathbb{N})[n = 2k + 1]\). Нека тогава \(k \in \mathbb{N} \; \& \; n = 2k + 1\).
+\(n > 1\) и \(n = 2k + 1\) така \(n \geq 3\) следното \(1 \leq k < n\).
+Тогава \(f(n) = f(2k + 1) = f(k) + 1\) и от (*) \(f(k) > 0\).
+Следователно \(f(n) > 1 > 0\).
+\end{itemize}
+Така \(f(n) > 0\).
+\subsubsection*{Заключение:}
+\((\forall n \in \mathbb{N})[n > 0 \longrightarrow f(n) > 0]\). \(\qed\) \\
+\subsection*{Следствие:}
+\(f[\mathbb{N} \setminus \{0\}] \subseteq \mathbb{Q} \cap \{q \in \mathbb{Q} \; | \; q > 0\} = \mathbb{Q} \cap \mathbb{Q}_+ = \mathbb{Q}_+\).
+\section*{Лема 2.}
+\(Range(f) \subseteq \mathbb{Q}_+\)
+\subsection*{Доказателство:}
+\(Range(f) = f[Dom(f)] = f[\mathbb{N}] = f[(\mathbb{N} \setminus \{0\}) \cup \{0\}] \subseteq \mathbb{Q}_+ \cup f[\{0\}] = \mathbb{Q}_+ \cup \{f(0)\} = \mathbb{Q}_+ \cup \{0\} = \mathbb{Q}_+\),
+защото от следствието на Лема 1. имаме, че \(f[\mathbb{N} \setminus \{0\}] \subseteq \mathbb{Q}_+\).
+Следователно \(Range(f) \subseteq \mathbb{Q}_+\). \(\qed\)
+\section*{Лема 3.}
+\((\forall n \in \mathbb{N})[n \equiv 0 \pmod{2} \longrightarrow 0 \leq f(n) < 1]\)
+\subsection*{Доказателство:}
+Възможни са два случая:
+\begin{itemize}
+    \item \(n = 0\) \\
+    Тогава \(f(0) = 0\) и \(0 \leq 0 < 1\). Тоест \(0 \leq f(n) < 1\)
+    \item \((\exists k \in \mathbb{N})[k > 0 \; \& \; n = 2k]\) \\
+    Нека \(k \in \mathbb{N} \; \& \; k > 0 \; \& \; n = 2k\).
+    Тогава \(f(n) = f(2k) = \displaystyle\frac{f(k)}{f(k) + 1}\).
+    Но \(k \in \mathbb{N} \; \& \; k > 0\) и от Лема 1. \(f(k) > 0\).
+    Следователно \(0 < f(k) < f(k) + 1\) и значи \(0 < \displaystyle\frac{f(k)}{f(k) + 1} = f(2k) = f(n) < 1\).
+\end{itemize}
+\subsubsection*{Заключение:}
+\((\forall n \in \mathbb{N})[n \equiv 0 \pmod{2} \longrightarrow 0 \leq f(n) < 1]\) \(\qed\)
+\section*{Лема 4.}
+\((\forall n \in \mathbb{N})[n \equiv 1 \pmod{2} \longrightarrow f(n) \geq 1]\)
+\subsection*{Доказателство:}
+Нека \(n \in \mathbb{N}\).
+Тогава \(f(2n + 1) = f(n) + 1\) по дефиниция.
+От Лема 2. следва, че \(f(n) \geq 0\).
+Следователно \(1 \leq f(n) + 1 = f(2n + 1)\).
+\subsubsection*{Заключение:}
+\((\forall n \in \mathbb{N})[n \equiv 1 \pmod{2} \longrightarrow f(n) \geq 1]\) \(\qed\)
+\section*{Лема 5.}
+\((\forall n \in \mathbb{N})(\forall m \in \mathbb{N})[n \not\equiv m \pmod{2} \longrightarrow f(n) \neq f(m)]\)
+\subsection*{Доказателство:}
+Нека \(n \in \mathbb{N}\) и \(m \in \mathbb{N}\) и \(n \not\equiv m \pmod{2}\).
+Нека без ограничение на общността \(n \equiv 0 \pmod{2} \; \& \; m \equiv 1 \pmod{2}\).
+Тогава от Лема 3. \(0 \leq f(n) < 1\).
+От Лема 4. \(f(m) \geq 1\).
+Следователно \(f(n) \neq f(m)\).
+\subsubsection*{Заключение:}
+\((\forall n \in \mathbb{N})(\forall m \in \mathbb{N})[n \not\equiv m \pmod{2} \longrightarrow f(n) \neq f(m)]\) \(\qed\)
+\section*{Твърдение 1: \(f\) е инекция.}
+\subsection*{Доказателство:}
+Да допуснем противното, тоест че \(f\) не е инекция.
+Тогава
+\begin{align*}
+    (\exists (n, m) \in \mathbb{N}^2)[n \neq m \; \& \; f(n) = f(m)]
+\end{align*}
+Да разгледаме следното множество:
+\begin{align*}
+    I := \{(n, m) \in \mathbb{N}^2 \; | \; n < m \; \& \; f(n) = f(m)\}
+\end{align*}
+От допускането следва, че \(I \neq \emptyset\). Както знаем \((\mathbb{N}^2, <_{lex \mathbb{N}})\) е фундирано. \\
+\(I \subseteq \mathbb{N}^2 \; \& \; I \neq \emptyset\) тогава \(I\) има минимален елемент спрямо \(<_{lex \mathbb{N}}\). \\
+Нека тогава \((x, y)\) е минимален елемент на \(I\) спрямо \(<_{lex \mathbb{N}}\). \\
+От контрапозицията на Лема 5. следва, че \(x \equiv y \pmod{2}\). \\
+Тогава са възможни са два случая:
+\begin{itemize}
+    \item \(x \equiv y \equiv 0 \pmod{2}\) \\
+    Тогава \((\exists! n \in \mathbb{N})(\exists! m \in \mathbb{N})[x = 2n \; \& \; y = 2m \; \& \; n < m]\). Нека тогава \\
+    \((n, m) \in \mathbb{N}^2 \; \& \; x = 2n \; \& \; y = 2m \; \& \; n < m\). \\
+    Понеже \((x, y) \in I\) то \(f(x) = f(y)\). Тогава
+    \begin{align*}
+        f(x) = f(2n) = \displaystyle\frac{f(n)}{f(n) + 1} = \displaystyle\frac{f(m)}{f(m) + 1} = f(2m) = f(y) \longleftrightarrow\\
+        f(n)(f(m) + 1) = f(m)(f(n) + 1)  \longleftrightarrow\\
+        f(n)f(m) + f(n) = f(m)f(n) + f(m) \longleftrightarrow\\
+        f(n) = f(m).
+    \end{align*}
+    Имаме \(x < y \; \& \; x = 2n \; \& \; y = 2m \; \& \; n < m\).
+    Също така \(0 \leq x < y\) и значи \(y \geq 2\), но тогава \(m < y\).
+    Следователно \(m < y \; \& \; (x = n \; \lor \; n < x)\). Тогава \(x = n \; \& \; m < y \; \lor \; n < x\)
+    и значи \((n , m) <_{lex \mathbb{N}} (x, y) \; \& \; n < m \; \& \; f(n) = f(m)\) и значи
+    \((n , m) <_{lex \mathbb{N}} (x, y) \; \& \; (n, m) \in I\), което е Абсурд понеже \((x, y)\) е минимален.
+    \item \(x \equiv y \equiv 1 \pmod{2}\) \\
+    Тогава \((\exists! n \in \mathbb{N})(\exists! m \in \mathbb{N})[x = 2n + 1 \; \& \; y = 2m + 1\; \& \; n < m]\). Нека тогава
+    \((n, m) \in \mathbb{N}^2 \; \& \; x = 2n + 1\; \& \; y = 2m + 1 \; \& \; n < m\). \\
+    Понеже \((x, y) \in I\) то \(f(x) = f(y)\). Тогава
+    \begin{align*}
+        f(x) = f(2n + 1) = f(n) + 1 = f(m) + 1 = f(2m + 1) = f(y) \longleftrightarrow \\
+        f(n) = f(m).
+    \end{align*}
+    Имаме \(x < y \; \& \; x = 2n + 1 \; \& \; y = 2m + 1 \; \& \; n < m \; \& \; f(n) = f(m) \; \& \; n < x\) 
+    тоест \((n , m) <_{lex \mathbb{N}} (x, y) \; \& \; (n, m) \in I\), което е Абсурд понеже \((x, y)\) е минимален.
+\end{itemize}
+Няма друг възможен случай.
+И в двата случая получихме противоречие с минималността на \((x, y)\), което е Абсурд.
+Тоагва не е вярно, че  \(f\) не е инекция, тоест \(f\) е инекция. \(\qed\)
+\section*{Твърдение 2: \(Range(f) = \mathbb{Q}_+\)}
+\subsection*{Доказателство:}
+Ще докажем следното твърдение
+\begin{align*}
+    (\forall (x, y) \in \mathbb{N}^2)\left[y > 0 \; \& \; gcd(x, y) = 1 \longrightarrow (\exists n \in \mathbb{N})\left[f(n) = \displaystyle\frac{x}{y}\right]\right]
+\end{align*}
+с индукция в \((\mathbb{N}^2, <_{lex\mathbb{N}})\).
+\subsection*{База:}
+\begin{itemize}
+\item \((0, 0)\)\\
+\(\lnot(0 > 0)\) следователно предпоставката на импликацията е лъжа и значи твърдението е истина за \((0, 0)\).
+\item \((0, 1)\)\\
+\(1 > 0 \; \& \; gcd(0, 1) = 1 \; \& \; f(0) = 0 \; \& \; 0 \in \mathbb{N}\) е истина.
+Следователно твърдението е истина за \((0, 1)\).
+\end{itemize}
+\subsection*{Индукционна стъпка:}
+Нека \((x, y) \in \mathbb{N}^2\) и \(y > 0 \; \& \; gcd(x, y) = 1\) и \((x, y) \neq (0, 1)\) и нека (*):\\
+\((\forall (n, m) \in \mathbb{N}^2)\left[(n, m) <_{lex\mathbb{N}} (x, y) \longrightarrow \left(m > 0 \; \& \; gcd(n, m) = 1 \longrightarrow (\exists k \in \mathbb{N})\left[f(k) = \displaystyle\frac{n}{m}\right]\right)\right]\).
+(*) е логически еквивалентно на следното твърдение (**): \\
+\((\forall (n, m) \in \mathbb{N}^2)\left[(n, m) <_{lex\mathbb{N}} (x, y) \; \& \; m > 0 \; \& \; gcd(n, m) = 1 \longrightarrow (\exists k \in \mathbb{N})\left[f(k) = \displaystyle\frac{n}{m}\right]\right]\). \\
+Възможни са два случая:
+\begin{itemize}
+\item \(x = y\)\\
+Тогава \(gcd(x, y) = x = 1 \; \& \; gcd(x, y) = y = 1\). Тоест \((x, y) = 1\). От дефиницията на \(f\)
+имаме \(f(1) = f(2.0 + 1) = f(0) + 1 = 0 + 1 = 1 = \displaystyle\frac{1}{1}\) и тогава твърдението е истина.
+\item \(x \neq y\)\\
+Възможни са два алтернативни подслучая:\\
+    \begin{itemize}
+    \item \(x < y\)\\
+    Тогава \(\displaystyle\frac{x}{y} < 1\). Поглеждайки как е дефинирана \(f\) върху четни числа
+    се досещаме да разгледаме множеството от решения на уравнието
+    \begin{align*}
+        \displaystyle\frac{z}{z + 1} = \displaystyle\frac{x}{y}.
+    \end{align*}
+    Така
+    \begin{align*}
+        \displaystyle\frac{z}{z + 1} = \displaystyle\frac{x}{y} \longleftrightarrow
+        zy = x(z + 1) \longleftrightarrow zy = zx + x \longleftrightarrow
+        z = \displaystyle\frac{x}{y - x} \longleftrightarrow z \in \left\{\displaystyle\frac{x}{y - x}\right\}
+    \end{align*}
+    Понеже \((x, y) \in \mathbb{N}^2 \; \& \; y > x\), то \(y - x \in \mathbb{N} \setminus \{0\}\).
+    Нека \(d = gcd(x, y - x)\). Тогава \(d \; \mid \; x \; \& \; d \; \mid \; y - x\).
+    Следователно \(d \; \mid \; y\) и така \(d \; \mid \; gcd(x, y) = 1\).
+    Следователно \(d = 1\). Така в сила е \(\displaystyle\frac{x}{y} \in \mathbb{Q}_+ \longleftrightarrow \displaystyle\frac{x}{y - x} \in \mathbb{Q}_+\).
+    Имаме \\
+    \((x, y - x) <_{lex\mathbb{N}} (x, y) \; \& \; y - x \in \mathbb{N} \setminus \{0\} \; \& \; gcd(x, y - x) = 1\)
+    следователно от (**) \((\exists k \in \mathbb{N})\left[f(k) = \displaystyle\frac{x}{y - x}\right]\).
+    Нека тогава \(k \in \mathbb{N}\) и \(f(k) = \displaystyle\frac{x}{y - x}\).
+    Тогава \(\displaystyle\frac{x}{y} = \displaystyle\frac{f(k)}{f(k) + 1} = f(2k) \; \& \; 2k \in \mathbb{N}\).
+    \item \(x > y\)\\
+    Тогава \(\displaystyle\frac{x}{y} \geq 1\). Поглеждайки как е дефинирана \(f\) върху нечетни числа
+    се досещаме да разгледаме множеството от решения на уравнието
+    \begin{align*}
+        z + 1 = \displaystyle\frac{x}{y}.
+    \end{align*}
+    Така
+    \begin{align*}
+        z + 1 = \displaystyle\frac{x}{y} \longleftrightarrow
+        z = \displaystyle\frac{x}{y} - 1 \longleftrightarrow
+        z = \displaystyle\frac{x - y}{y} \longleftrightarrow
+        z \in \left\{\displaystyle\frac{x - y}{y}\right\}
+    \end{align*}
+    \end{itemize}
+    Понеже \((x, y) \in \mathbb{N}^2 \; \& \; x > y\), то \(x - y \in \mathbb{N} \setminus \{0\}\).
+    Нека \(d = gcd(x - y, y)\). Тогава \(d \; \mid \; x - y \; \& \; d \; \mid \; y\).
+    Следователно \(d \; \mid \; x\) и така \(d \; \mid \; gcd(x, y) = 1\).
+    Следователно \(d = 1\). Така в сила е \(\displaystyle\frac{x}{y} \in \mathbb{Q}_+ \longleftrightarrow \displaystyle\frac{x - y}{y} \in \mathbb{Q}_+\).
+    Имаме \\
+    \((x - y, x) <_{lex\mathbb{N}} (x, y) \; \& \; x - y \in \mathbb{N} \setminus \{0\} \; \& \; gcd(x - y, y) = 1\)
+    следователно от (**) \((\exists k \in \mathbb{N})\left[f(k) = \displaystyle\frac{x - y}{y}\right]\).
+    Нека тогава \(k \in \mathbb{N}\) и \(f(k) = \displaystyle\frac{x - y}{y}\).
+    Тогава \(\displaystyle\frac{x}{y} = f(k) + 1 = f(2k + 1) \; \& \; 2k + 1 \in \mathbb{N}\).
+\end{itemize}
+\subsection*{Заключение:}
+\((\forall (x, y) \in \mathbb{N}^2)\left[y > 0 \; \& \; gcd(x, y) = 1 \longrightarrow (\exists n \in \mathbb{N})\left[f(n) = \displaystyle\frac{x}{y}\right]\right]\)
+е истина, което е еквивалентно с \((\forall q \in \mathbb{Q}_+)(\exists n \in \mathbb{N})[f(n) = q]\) е истина,
+което пък е еквивалентно с \((\forall q \in \mathbb{Q}_+)[q \in Range(f)]\) е истина.
+Тоест \(\mathbb{Q}_+ \subseteq Range(f)\) е истина.
+От Лема 2. имаме, че \(Range(f) \subseteq \mathbb{Q}_+\).
+Следователно \(Range(f) = \mathbb{Q}_+\). \(\qed\)
+\section*{Твърдение 3. \(f \; : \; \mathbb{N} \to \mathbb{Q}_+\) е биекция.}
+\subsection*{Доказателство:}
+От Твърдение 2. имаме, че \(Range(f) = \mathbb{Q}_+\). От Твърдение 1. имаме, че \\
+\(f \; : \; \mathbb{N} \to \mathbb{Q}\) е инекция,
+но тогава \(f \; : \; \mathbb{N} \to Range(f)\) е биекция и следователно
+\(f \; : \; \mathbb{N} \to \mathbb{Q}_+\) е биекция. \(\qed\)
+\end{document}
