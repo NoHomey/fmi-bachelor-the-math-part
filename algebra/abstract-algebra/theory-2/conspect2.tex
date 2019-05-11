@@ -1,0 +1,301 @@
+\documentclass[12pt]{article}
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+
+\setlength{\parindent}{0mm}
+
+\title{Теоритично контролно №2, I, Информатика}
+\author{Иван Йочев}
+
+\begin{document}
+
+\maketitle
+
+\section{Действие на група върху множество}
+
+\subsection{Определение}
+Нека G - група и M - множество\\
+$f : G \times M \rightarrow M$ \\
+G действа върху M, ако:\\
+0) $\exists f : G \times M \rightarrow M$ \\
+1) $\forall g \in G\ \forall m \in M \ f(g,m) \in M$ \\
+2) $\forall g_1,g_2 \in G \; \forall m \in M \; f(g_1g_2,m) = f(g_1,f(g_2,m))$\\
+3) $\forall m \in M \; f(e_H,m) = m$
+
+\subsection{Стабилизатор на елемент}
+Нека G - група, M - множество и G действа върху M\\
+$f : G \times M \rightarrow M$ е действие на група върху множество\\
+Нека $x \in M$ \\ 
+$St_G(x) = \{g \in G|f(g,x)=x\} \subseteq G $  
+
+\subsection{Орбита на елемент}
+Нека G - група и M - множество и G действа върху M\\
+$f : G \times M \rightarrow M$ е действие на група върху множество\\
+Нека $x \in M$ \\
+$O_G(x) = \{f(g,x)|g \in G\} \subseteq M$
+
+\subsection{Изразяване на дължина на орбита}
+Нека G - група и M - множество и G действа върху M\\
+Нека $x \in M$ \\
+$|O_G(x)| = |G\ :\ St_G(x)|$
+
+\subsection{Действие на група върху себе си чрез спрягане}
+Нека G - група \\
+$\forall g \in G$ дефинираме $\phi_g : G \rightarrow G   \\
+ \phi_g(x) = gxg^{-1}$ \\
+Тогава $gxg^{-1}$ наричаме спрегнат на $x$ по $g$
+
+\subsection{Клас спрегнати елементи}
+Нега G е група \\
+Тогава за $x \in G \\
+C_x = O_G(x) = \{gxg^{-1} \ | \ g \in G \}$\\
+наричаме клас спрегнати с x елементи
+
+\subsection{Централизатор}
+Нега G е група и G действа върху себе си, чрез спрягане \\
+Тогава за $x \in G \\
+C_G(x) = St_G(x) = \{g \in G \ | \ gxg^{-1}=x \}$\\
+наричаме централизатор на x в G
+
+\subsection{Център на група}
+Нека G e група \\
+Множеството $Z(G) = \{z \in G | \ \forall g \in G \ zg = gz \}$\\
+наричаме център на групата G
+$Z(G) = G$, когато G e абелева
+
+\subsection{Формула за класовете}
+Нека G е група и G действа върху M - множество. \\
+$|M| = n < \infty$ \\
+$M = \{x_1, x_2, ..., x_n\}$ \\
+$ \forall i \in \mathbb{N} \ \forall j \in \mathbb{N} \ O(x_i) \cap O(x_j) =\emptyset $ \\
+$ M = \bigcup\limits_{i=1}^{n}O(x_i) $ \\
+$Z(G) = \{x_{i_1},...,x_{i_t}\}, t \leq n$ \\
+$|M| = \sum\limits_{i=1}^{n}|O(x_i)|$ 
+$= \sum\limits_{i=1}^{n}|G : St_G(x_i)|$ \\
+Ако $G \equiv M$ и G действа върху себе си, чрез спрягане\\
+$|M| = |Z(G)| + \sum\limits_{j=1}^{t}|C_{x_{i_j}}|$
+
+\subsection{Теорема на Кейли}
+Нека G - група
+$|G| = n < \infty$ \\
+$\Rightarrow \ \exists \ G' \leq S_n : G \cong G'$
+
+\section{Пръстени}
+
+\subsection{Определение}
+$(R, +, \cdot)$ е пръстен, ако: \\
+0) $(R, +)$ е абелева група \\\\
+1) $(\forall a \in R \ \forall b \in R) ab \in R$ \\ затвореност относно умножение \\ \\
+2) $(\forall a \in R \ \forall b \in R \ \forall c \in R) \\ a(bc)=(ab)c=abc$ \\ асоциативност за умножение \\ \\
+3) $(\forall a \in R \ \forall b \in R \ \forall c \in R) \\ (a+b)c = ac+bc \ \land a(b+c)=ab+ac$ \\ дистрибутивност за умножение
+
+\subsection{Пръстен с единица}
+$(R, +, \cdot)$ е пръстен с единица, ако: \\
+0) $(R, +, \cdot)$ е пръстен \\
+1) $\exists e \in R \ \forall a \in R \ ae = ea = a$
+
+\subsection{Комутативен пръстен}
+$(R, +, \cdot)$ е комутативен пръстен, ако: \\
+0) $(R, +, \cdot)$ е пръстен \\
+1) $\forall a \in R \ \forall b \in R : ab = ba$
+
+\subsection{Област на цялост(област)}
+Нека $(R, +, \cdot)$ - комутативен пръстен \\
+R e област, ако \\
+0) $R \neq \{0\}$ \\
+1) Нека $a \in R$, $0_R \neq b \in R$ \\
+ $(ab=0_R) \rightarrow (a=0_R) $ \\
+(в R има единствен делител на нулата и това е $0_R$)
+
+\subsection{Делител на нулата}
+Нека $(R, +, \cdot)$ - комутативен пръстен, и $a \in R$\\
+a е делител на нулата, ако \\
+$\exists b \in R, b \neq 0_R : ab = ba = 0_R$
+
+\subsection{Поле}
+Нека $(R, +, \cdot)$ е пръстен \\
+R e поле ако: \\
+1) R e комутативен \\
+2) R е тяло 
+
+\subsection{Тяло}
+$(R, +, \cdot)$ е тяло, ако: \\
+0) $(R, +, \cdot)$ е пръстен \\
+1) $\exists 0 \in R \ \land \ \exists 1 \in R \ \land \ 0_R \neq 1_R$ \\
+2) $\forall a \in R \ \exists a' \in R : aa' = a'a = 1_R$
+
+\subsection{Подпръстен}
+Нека $(R, +, \cdot)$ е пръстен
+и нека $S \subseteq R, S \neq \emptyset$ \\
+S е подпръстен, ако
+$(\forall a \in S \ \forall b \in S) \\ (a \pm b \in S) \land (ab \in S)$
+
+\subsection{Мултипликативна група на пръстен}
+Нека $(R, +, \cdot)$ е пръстен с единица \\
+$R^* = \{a \in R \ \vert \ \exists a' \in R : aa' = a'a = 1_R \}$ \\
+$R^*$ се нарича мултипликативна група на пръстен R
+
+\clearpage
+
+\section{Полета}
+
+\subsection{Характеристика на поле}
+Нека F e поле \\\\
+Нека $m \in F n \in F, m \neq n$\\
+Ако $m.1_R \neq n.1_R$, то $char F = 0$ \\
+Ако $m.1_R = n.1_R$, то $char F = |m-n|$ \\\\
+Алтернативна дефиниция:\\
+$char F = |1|_{F^{+}}$
+
+\subsection{Общ вид на характеристика на поле}
+Нека F e поле \\
+$char F = 0$ или $char F = p$ - просто
+
+\subsection{Подполе}
+Нека F е поле \\
+Нека $K \subsetеq, F, |K| \geq 2$ \\
+K e подполе ($K \leq F $), ако: \\
+1) $\forall a \in K \forall b \in K \ a \pm b \in K$ \\
+2) $\forall a \in K \forall b \in K \ ab \in K$ \\
+3) $\forall a \in K \ a^{-1} \in K$
+
+\subsection{Разширение на поле}
+Нека F e поле и $K \leq F$ \\
+F наричаме разширение на K
+
+\subsection{Просто поле}
+Нека F е поле \\
+F е просто, ако\\
+$(\forall K \leq F) \ K = F$
+
+\subsection{Възможни прости подполета}
+Нека F е поле \\
+$P = \bigcap\limits_{K \leq F}K$ \\
+P е единствено просто подполе на F
+
+\pagebreak
+\section{Хомоморфизъм на пръстени}
+
+\subsection{Определение}
+Нека R и R' са пръстени \\
+Нека $\phi : R \rightarrow R'$ \\
+$\phi$ е хомоморфизъм, ако \\
+1) $\forall a \in R \ \forall b \in R \ \phi (a+b)=\phi (a)+ \phi (b)$\\
+2) $\forall a \in R \ \forall b \in R \ \phi (ab)=\phi (a) \phi (b)$
+
+\subsection{Изоморфизъм}
+Нека R и R' са пръстени \\
+Нека $\phi : R \rightarrow R'$\\
+$\phi$ е изоморфизъм, ако\\
+1) $\phi$ e хомоморфизъм \\
+2) $\phi$ е биекция \\
+
+\subsection{Ядро на хомоморфизъм}
+Нека R и R' са пръстени \\
+Нека $\phi : R \rightarrow R'$ - хомоморфизъм\\
+$Ker \phi = \{a \in R \ \vert \ \phi (a) = 0_{R'}\}$
+
+\subsection{Образ на хомоморфизъм}
+Нека R и R' са пръстени \\
+Нека $\phi : R \rightarrow R'$ - хомоморфизъм\\
+$Im \phi = \{ \phi (a) \in R' \ \vert \ a \in R \}$
+
+\clearpage
+\section{Идеали}
+
+\subsection{Определение за ляв(десен) идеал}
+Нека R - пръстен \\
+$I \trianglelefteq R$, ако \\
+0) $\emptyset \neq I \subseteq R$ \\
+1) $\forall a \in I \ \forall b \in I \ a-b \in I$ \\
+2) $\forall a \in I \ \forall r \in R$ \\
+$ra \in I $(ляв идеал) \\
+$ar \in I $(десен идеал) \\
+
+\subsection{Определение за двустранен идеал}
+Нека R - пръстен \\
+$I \trianglelefteq R$, ако \\
+0) $\emptyset \neq I \subseteq R$ \\
+1) $\forall a \in I \ \forall b \in I \ a-b \in I$ \\
+2) $\forall a \in I \ \forall r \in R \ ra \in I \ \land \ ar \in I$
+
+\subsection{Сума на идеали}
+Нека R - пръстен \\
+$I \trianglelefteq R, J \trianglelefteq R$ \\
+$I+J = \{i+j \vert i \in I, j \in J\} \trianglelefteq R$\\
+I+J се нарича сума на идеали
+
+\subsection{Главен идеал, породен от елемент}
+Нека R e комутативен пръстен с единица \\
+Нека $a \in R$ \\
+$(a) = \{ar \vert r \in R\}$ \\
+$(a)$ се нарича главен идеал породен от елемента a
+
+\subsection{Идеали в пръстена $\mathbb{Z}$}
+Нека $I \trianglelefteq \mathbb{Z}$ \\
+$\Rightarrow I = (n) = n\mathbb{Z}, n \in \mathbb{N} \cup {0_Z}$
+
+\subsection{Събиране в факторпръстен}
+Нека R - пръстен\\
+$I \trianglelefteq R$ \\
+Нека $a \in R$ и $b \in R$ \\
+$\bar{a} = a + I$\\
+$\bar{b} = b + I$\\
+$\bar{a} + \bar{b} = (a+I)+(b+I)$ \\
+$=(a+b)+I=\overline{a+b}$
+
+\clearpage
+\subsection{Умножение в факторпръстен}
+Нека R - пръстен\\
+$I \trianglelefteq R$ \\
+Нека $a \in R$ и $b \in R$ \\
+$\bar{a} = a + I$\\
+$\bar{b} = b + I$\\
+$\bar{a} \cdot \bar{b} = (a+I)(b+I)$ \\
+$=(ab)+I=\overline{ab}$
+
+\subsection{Теорема за хомоморфизмите за пръстени}
+Нека R, R' - пръстени \\
+Нека $\phi : R \rightarrow R'$ - хомоморфизъм на пръстени  \\
+Нека Ker$\phi = I$ \\
+$\Rightarrow I \trianglelefteq R$ и $R/I \cong Im\phi$
+
+\clearpage
+\section{Доказателства}
+
+\subsection{Поле няма нетривиални идеали}
+Нека R е поле \\
+$ \{ 0 \} \neq I \trianglelefteq R$ \\
+$a \in I, a \leq 0 \\
+\Rightarrow 1 = a^{-1}a \in I$ \\
+$\Rightarrow 1 \in I$ \\
+$\Rightarrow R = (1) \subseteq I \ \land \ I \subseteq R$ \\
+$\Rightarrow I = R$
+
+\subsection{Ако комутативен пръстен с единица няма нетривиални идеали, той е поле}
+
+Нека R e пръстен и R няма нетривиални идеали \\
+Нека $0 \neq a \in R$ \\
+$\Rightarrow (a) \neq \{ 0 \}$\\
+$\Rightarrow (a) = R = (1)$ \\
+$\Rightarrow \exists a' \in R : aa'=a'a=1$\\
+$\Rightarrow$ a e обратим и $a^{-1} = a'$\\ 
+$\Rightarrow \forall a \in R$ e обратим\\
+$\Rightarrow$ R е поле
+
+\subsection{Всяко поле съдържа едниствено просто подполе}
+
+Нека R e поле. Ще докажем, че единственото\\
+просто подполе на R e $P = \bigcap\limits_{K \leq R} K$ \\\\
+Да допуснем, че $\exists X : X < P$ (P не е просто поле) \\
+$\Rightarrow X < R$ \\
+$(P \ = \bigcap\limits_{K \leq R} K ) \rightarrow X \supseteq P$, но по допускане $X < P$\\\\
+$\Rightarrow X=P$ \\
+Следователно P e единствено просто подполе
+
+\end{document}
