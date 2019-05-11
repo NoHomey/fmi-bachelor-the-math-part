@@ -179,17 +179,22 @@
     Док-во Ползвайки горната теорема:\\
     И ако:\\
     \(|f(t)| \leq M\\ 
-    \intfromatob f(t) \dx{t} = f(c)(b - a) \implies \intfromto{a}{x} f(t) \dx{t} = f(c)(x - a) = F(x)\\
-    \implies |F(x_2) - F(x_1)| = |f(c)(x_2 - a) - f(c)(x_1 - a)| = |f(c)x_2 - f(c)x_1| = \\
+    \intfromatob f(t) \dx{t} = f(c)(b - a) \implies \intfromto{a}{x} f(t) \dx{t} = f(c)(x - a) = F(x)\)\\
+    Нека БОО \(x_1,x_2 \in [a,b] \) \\
+    \(\implies |F(x_2) - F(x_1)| = |f(c)(x_2 - a) - f(c)(x_1 - a)| = |f(c)x_2 - f(c)x_1| = \\
     = |\intfromto{a}{x_2} f(t) \dx{t} - \intfromto{a}{x_1} f(t) \dx{t}| = |\intfromto{a}{x_2} f(t) \dx{t} + \intfromto{x_1}{a} f(t) \dx{t}| = |\intfromto{x_1}{x_2} f(t) \dx{t}| \leq\\
-    \leq |Mx_2 - Mx_1| = |M(x_2 - x_1)| = M|x_2 - x_1|\)
+    \leq |Mx_2 - Mx_1| = |M(x_2 - x_1)| = M|x_2 - x_1|\\
+    \\
+    \implies |F(x_2) - F(x_1)| \leq M|x_2 - x_1| = const\\
+    \implies \forall x_0, \forall \epsilon>0 \; \exists x : |F(x) - F(x_0)|<\epsilon \\
+    \implies F\) е непрекъсната
     \subsection{Th На Нютон-Лайбниц}
     \(f(x) \in C[a,b], \; F(x) = \intfromto{a}{x}f(t)\dx{t}, \; x \in [a,b]\\
     \implies F(x) \text{ е диференцируема в интервала } [a,b] \; F'(x) = f(x)\)\\
     Док-во в точката \(x_0 \in [a,b], \; h; \; x_o + h \in [a,b]\\
     \implies \frac{F(x_0 + h) - F(x_0)}{h} = \frac{\intfromto{a}{x_0 + h} f(t) \dx{t} - \intfromto{a}{x_0} f(t) \dx{t}}{h} =\\
     = \frac{\intfromto{a}{x_0 + h} f(t) \dx{t} \, + \intfromto{x_0}{a} f(t) \dx{t}}{h} = \frac{\intfromto{x_0}{x_0 + h} f(t) dx{t}}{h} = \frac{f(c)(x_0 + h - x_0)}{h} = f(c)\\
-    x \in [min\{x_0 + h, h\}, max\{x_0 + h, x_0\}]\\
+    c \in [min\{x_0 + h, h\}, max\{x_0 + h, x_0\}]\\
     \implies x_0 + h \hto x_0 \implies c \hto x_0 \implies f(c) \to f(x_0)\\
     \frac{F(x_0 + h) - F(x_0)}{h} = f(c) \; | \limh\\
     \implies \limh \frac{F(x_0 + h) - F(x_0)}{h} = f(x_0)\\
@@ -214,6 +219,6 @@
     b = \varphi(\beta) \implies \beta = \varphi^{-1}(b)\\
     \implies \intfromatob f(x) \dx{x} = \intfromto{\alpha}{\beta}f(\varphi(t)) \varphi'(t) \dx{t}\)\\
     Док-во:\\
-    \(\int f(t) \dx{t} = \int f(\varphi(t)) \varphi'(t) \dx{t} = \Phi(t) = \Phi(\varphi^{-1}(x)) \; | ()|_a^b\\
-    \implies \intfromatob f(t) \dx{t} = \Phi(\varphi^{-1}(a)) - \Phi(\varphi^{-1}(b)) = \Phi(\alpha) - \Phi(\beta) = \intfromto{\alpha}{\beta}f(\varphi(t)) \varphi'(t) \dx{t}\)
+    \(\int f(x) \dx{x} = \int f(\varphi(t)) \varphi'(t) \dx{t} = \Phi(t) = \Phi(\varphi^{-1}(x)) \; | ()|_a^b\\
+    \implies \intfromatob f(x) \dx{x} = \Phi(\varphi^{-1}(b)) - \Phi(\varphi^{-1}(a)) = \Phi(\beta) - \Phi(\alpha) = \intfromto{\alpha}{\beta}f(\varphi(t)) \varphi'(t) \dx{t}\)
 \end{document}
