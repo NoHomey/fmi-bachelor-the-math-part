@@ -1,0 +1,723 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+
+\setlength{\parindent}{0mm}
+
+\title{Решени задачи по СЕП}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+\section*{Зад. 1. от второ контролно по СЕП (10/05/2019)}
+Да се докаже, че операторът \(\Gamma \; : \; \mathcal{F}_2 \to \mathcal{F}_2\),
+дефиниран с условието
+\begin{align*}
+\Gamma(f)(x, y) \simeq \begin{cases}
+    y, & f(x, y) \simeq 0 \\
+    f(x, y + 1), & f(x, y) > 0 \\
+    \lnot !, & \lnot !f(x, y)
+\end{cases}
+\end{align*}
+има безброй много неподвижни точки.
+\subsection*{Решение:}
+Забелязваме, че когато \(f(x, y) > 0\), то \(\Gamma(f)(x, y)\) зависи само от \(y\).
+Тоест свободно можем да се възползваме от факта, че стойността \(x\) остава фиксирана!.
+
+Понеже \(fix(\Gamma) = \{f \in \mathcal{F}_2 \; | \; \Gamma(f) = f\} \subseteq \mathcal{F}_2\) и 
+\(\mathcal{F}_2\) е неизброймо безкрайно множество, то е напълно достатъчно да покажем,
+че за някое \(S \subseteq \mathcal{F}_2\), което е неизброймо безкрайно ще е изпълнено \(S \subseteq fix(\Gamma)\).
+
+Нека \(F_1^+ \rightleftharpoons \{f \; : \; \mathbb{N} \to \mathbb{N}^+\}\) и нека \(F_2^+ \rightleftharpoons \{f \; : \; \mathbb{N}^2 \to \mathbb{N}^+\}\).
+
+Нека \(\Delta : F_1^+ \to F_2^+\) и \(\Delta(f)(x, y) = f(x)\).
+
+Нека \(S \rightleftharpoons \{\Delta(f) \; | \; f \in F_1^+\}\).
+
+Очевидно \(S\) е неизброймо безкрайно понеже \(F_1^+\) е и \(S \subseteq F_2^+ \subseteq \mathcal{F}_2\).
+
+Ще докажем, че \(S \subseteq fix(\Gamma)\).
+
+Нека \(f \in S\) тогава \((\exists h \in F_1^+)[f = \Delta(h)]\).
+Нека тогава \(h \in F_1^+\) и \(f = \Delta(h)\).
+Имаме \((\forall (x, y) \in \mathbb{N}^2)[f(x, y) = \Delta(h)(x, y) = h(x) > 0]\).
+
+Нека \((x, y) \in \mathbb{N}^2\) тогава \(\Gamma(f)(x, y) \simeq f(x, y + 1) = h(x) = f(x, y)\).
+
+Следователно \((\forall (x, y) \in \mathbb{N}^2)[\Gamma(f)(x, y) = f(x, y)]\).
+Тоест \(f \in fix(\Gamma)\). 
+
+Следователно \((\forall f \in S)[f \in fix(\Gamma)]\). Следователно \(S \subseteq fix(\Gamma)\).
+
+Извод: \(fix(\Gamma)\) е неизброймо безкрайно и значи има безброй много неподвижни точки.
+
+\section*{Зад. 2. от второ контролно по СЕП (10/05/2019)}
+Нека операторът \(\Gamma \; : \; \mathcal{F}_1 \to \mathcal{F}_1\)
+е дефиниран по следния начин:
+\begin{align*}
+\Gamma(f)(x) \simeq \begin{cases}
+    1, & x \leq 1 \\
+    \displaystyle\frac{x}{2}, & x > 1 \; \& \; x \equiv 0 \pmod{2}\\
+    \displaystyle{f\left(f\left(\frac{3x + 1}{2}\right)\right)}, & x > 1 \; \& \; x \equiv 1 \pmod{2}
+\end{cases}    
+\end{align*}
+Докажете, че:
+
+а) \(\Gamma\) е компактен (непрекъснат) оператор.
+
+б) \((\forall x \in \mathbb{N})\left[!f_\Gamma(x) \; \& \; x > 1 \implies f_\Gamma(x) \leq \displaystyle\frac{x}{2}\right]\), където \(f_\Gamma = lfp(\Gamma)\).
+\subsection*{Решение:}
+\subsubsection*{а)}
+\(\Gamma\) е компактен (непрекъснат) оператор, когато \(\Gamma\) е монотоннен и краен, което ще докажем.
+
+Нека \(f, \; g \in \mathcal{F}_1\) и \(f \subseteq g\). Нека \(x \in Dom(\Gamma(f))\).
+\begin{itemize}
+\item \(x \leq 1\)
+
+Имаме \(\Gamma(f)(x) \simeq 1 \simeq \Gamma(g)(x)\).
+\item \(x > 1 \; \& \; x \equiv 0 \pmod{2}\)
+
+Имаме \(\Gamma(f)(x) \simeq \displaystyle\frac{x}{2} \simeq \Gamma(g)(x)\).
+\item \(x > 1 \; \& \; x \equiv 1 \pmod{2}\)
+
+Имаме \(!\Gamma(f)(x)\) значи \(!\displaystyle{f\left(\frac{3x + 1}{2}\right)} \; \& \; !\displaystyle{f\left(f\left(\frac{3x + 1}{2}\right)\right)}\).
+
+Следователно \(!\displaystyle{g\left(\frac{3x + 1}{2}\right)} \; \& \; !\displaystyle{g\left(g\left(\frac{3x + 1}{2}\right)\right)}\) и
+
+\(\displaystyle{g\left(\frac{3x + 1}{2}\right)} = \displaystyle{f\left(\frac{3x + 1}{2}\right)}\) и \(\displaystyle{g\left(g\left(\frac{3x + 1}{2}\right)\right)} = \displaystyle{f\left(f\left(\frac{3x + 1}{2}\right)\right)}\).
+
+Понеже \(f \subseteq g\).
+
+Така \(\Gamma(f)(x) \simeq \displaystyle{f\left(f\left(\frac{3x + 1}{2}\right)\right)} = \displaystyle{f\left(g\left(\frac{3x + 1}{2}\right)\right)} = \\
+\displaystyle{g\left(g\left(\frac{3x + 1}{2}\right)\right)} \simeq \Gamma(g)(x)\).
+\end{itemize}
+Така \(!\Gamma(f)(x) \implies \Gamma(f)(x) \simeq \Gamma(g)(x)\).
+
+Следователно \((\forall x \in \mathbb{N})[!\Gamma(f)(x) \implies \Gamma(f)(x) \simeq \Gamma(g)(x)]\).
+
+Така \(\Gamma(f) \subseteq \Gamma(g)\). От тук \((\forall (f, g) \in \mathcal{F}_1^2)[f \subseteq g \implies \Gamma(f) \subseteq \Gamma(g)]\).
+
+Тоест \(\Gamma\) е монотоннен. (1)
+
+Нека \(h \in \mathcal{F}_1\) и нека \(x \in Dom(\Gamma(h))\).
+\begin{itemize}
+\item \(x \leq 1\)
+
+Имаме \(\Gamma(h)(x) \simeq 1 \simeq \Gamma(\emptyset)(x)\) и очевидно \(\emptyset \; \underset{fin}{\subseteq} \;  h\). 
+\item \(x > 1 \; \& \; x \equiv 0 \pmod{2}\)
+
+Имаме \(\Gamma(h)(x) \simeq \displaystyle\frac{x}{2} \simeq \Gamma(\emptyset)(x)\) и очевидно \(\emptyset \; \underset{fin}{\subseteq} \;  h\). 
+\item \(x > 1 \; \& \; x \equiv 1 \pmod{2}\)
+
+Имаме
+
+\(\Gamma(h)(x) \simeq \displaystyle{h\left(h\left(\frac{3x + 1}{2}\right)\right)} \simeq \Gamma\left(h_{\displaystyle{\restriction{\left\{\displaystyle\frac{3x + 1}{2}, h\left(\displaystyle\frac{3x + 1}{2}\right)\right\}}}}\right)(x)\)
+
+и очевидно \(h_{\displaystyle{\restriction{\left\{\displaystyle\frac{3x + 1}{2}, h\left(\displaystyle\frac{3x + 1}{2}\right)\right\}}}} \; \underset{fin}{\subseteq} \;  h\). 
+\end{itemize}
+Следователно \((\forall x \in Dom(\Gamma(h)))(\exists \theta \in \mathcal{F}_1)[\theta \; \underset{fin}{\subseteq} \;  h \; \& \; \Gamma(h)(x) \simeq \Gamma(\theta)(x)]\).
+
+Следователно
+
+\((\forall h \in \mathcal{F}_1)(\forall x \in \mathbb{N})[!\Gamma(h)(x) \implies (\exists \theta \in \mathcal{F}_1)[\theta \; \underset{fin}{\subseteq} \;  h \; \& \; \Gamma(h)(x) \simeq \Gamma(\theta)(x)]]\).
+
+Тоест \(\Gamma\) е креан. (2).
+
+От (1) и (2) следва, че \(\Gamma\) е компактен (непрекъснат) оператор.
+
+\subsubsection*{б)}
+Нека \(Q, R\) са свойства в \(\mathcal{F}_1\)
+дефинирани по следния начин:
+\begin{align*}
+Q(f) \rightleftharpoons (\forall x \in \mathbb{N})[!f(x) \; \& \; x \leq 1 \implies f(x) = 1]\\
+R(f) \rightleftharpoons (\forall x \in \mathbb{N})\left[!f(x) \; \& \; x > 1 \implies f(x) \leq \displaystyle\frac{x}{2}\right]
+\end{align*}
+\(Q\) и \(R\) са свойства от тип частична коректност и следователно са непрекъснати.
+Нека \(P(f) \rightleftharpoons Q(f) \; \& \; R(f)\).
+\(P\) е конюнкцията на \(Q\) и \(R\), които са непрекъснати, следователно \(P\) е непрекъснато. (3)
+
+Имаме \((\forall x \in \mathbb{N})[\lnot!\emptyset(x)]\) следователно
+
+\((\forall x \in \mathbb{N})[!\emptyset(x) \; \& \; x \leq 1 \implies \emptyset(x) = 1] \; \& \; (\forall x \in \mathbb{N})\left[!\emptyset(x) \; \& \; x > 1 \implies \emptyset(x) \leq \displaystyle\frac{x}{2}\right]\)
+
+тоест \(Q(\emptyset) \; \& \; R(\emptyset)\). Следователно \(P(\emptyset)\). (4)
+
+Нека \(f \in \mathcal{F}_1\) и \(P(f)\). Нека \(x \in Dom(\Gamma(f))\).
+\begin{itemize}
+\item \(x \leq 1\)
+
+Имаме \(\Gamma(f)(x) = 1\).
+
+\item \(x > 1\)
+
+Възможни са два подслучая:
+
+\begin{itemize}
+\item \(x \equiv 0 \pmod{2}\)
+
+Тогава \(\Gamma(f)(x) = \displaystyle\frac{x}{2} \leq \displaystyle\frac{x}{2}\).
+
+\item \(x \equiv 1 \pmod{2}\)
+
+Тогава \(\Gamma(f)(x) = \displaystyle{f\left(f\left(\frac{3x + 1}{2}\right)\right)}\)
+
+Понеже \(x \equiv 1 \pmod{2}\), то \(\displaystyle\frac{3x + 1}{2} > 1\). Но тогава от \(P(f)\),
+
+в частност \(R(f)\). Получаваме \(\displaystyle{f\left(\frac{3x + 1}{2}\right)} \leq \frac{3x + 1}{4}\).
+
+Нека \(z := \displaystyle{f\left(\frac{3x + 1}{2}\right)}\). Тогава за \(z\) са възможни два случая.
+
+\begin{itemize}
+\item \(z \leq 1\)
+
+Тогава \(\Gamma(f)(x) = f(z) = 1\).
+
+Понеже \(x > 1\), то \(1 \leq \displaystyle\frac{x}{2}\).
+
+Следователно \(\Gamma(f)(x) = 1 \leq \displaystyle\frac{x}{2}\).
+
+\item \(z > 1\)
+
+Тогава от \(R(f)\) получаваме
+
+\(\Gamma(f)(x) = f(z) \leq \displaystyle\frac{z}{2} \leq \displaystyle\frac{3x  + 1}{8} \leq \displaystyle\frac{4x}{8} = \displaystyle\frac{x}{2}\).
+\end{itemize}
+Следователно получаваме \(\Gamma(f)(x) \leq \displaystyle\frac{x}{2}\)
+\end{itemize}
+\end{itemize}
+Получихме, че \(!\Gamma(f)(x) \; \& \; x \leq 1 \implies \Gamma(f)(x) = 1\) и 
+
+\(!\Gamma(f)(x) \; \& \; x > 1 \implies \Gamma(f)(x) \leq \displaystyle\frac{x}{2}\).
+
+Следователно \(Q(\Gamma(f)) \; \& \; R(\Gamma(f))\) е истина,
+тоест \(P(\Gamma(f))\).
+Следователно имаме \(P(f) \implies P(\Gamma(f))\).
+Така \((\forall f \in \mathcal{F}_1)[P(f) \implies P(\Gamma(f))]\). (5)
+
+Тогава от (3), (4), (5) и правилото на Скот получаваме \(P(f_\Gamma)\).
+В частност \(R(f_\Gamma)\). Тоест \((\forall x \in \mathbb{N})\left[!f_\Gamma(x) \; \& \; x > 1 \implies f_\Gamma(x) \leq \displaystyle\frac{x}{2}\right]\).
+
+\section*{Трето контролно по СЕП (31/05/2019)}
+Нека P е следната рекурсивна програма:
+\begin{align*}
+h(x, y) = f(x, y, 26, 5, 2) + 995 \; where \\
+f(x, y, 0, 0, w) = g(w, 9) \\
+f(x, y, 0, t, w) = g(x, y) + g(y, x) + f(x, y, 0, t - 1, w) \\
+f(x, y, z, t, w) = g(x, y) + f(x, y, z - 1, t, w) \\
+g(x, 0) = x \\
+g(x, y) = x.g(x, y - 1)
+\end{align*}
+Да се докаже, че:
+
+а) \((\forall (x, y) \in \mathbb{N}^2)[!D_V[P](x, y) \implies D_V[P](x, y) \simeq 31x^{y + 1} + 5y^{x + 1} + 2019]\)
+
+б) \(D_V[P]\) е тотална функция.
+
+\subsection*{Решение:}
+
+\subsubsection*{а)}
+Дефинираме следните оператори: \(\Gamma \; : \; \mathcal{F}_5 \times \mathcal{F}_2 \to \mathcal{F}_5\) и \(\Delta \; : \; \mathcal{F}_2 \to \mathcal{F}_2\).
+\begin{align*}
+\Gamma(f, g)(x, y, z, t, w) \simeq \begin{cases}
+g(w, 9), & z = 0 \; \& \; t = 0 \\
+g(x, y) + g(y, x) + f(x, y, 0, t - 1, w), & z = 0 \; \& \; t > 0 \\
+g(x, y) + f(x, y, z, t, w), & z > 0
+\end{cases}
+\end{align*}
+\begin{align*}
+\Delta(g)(x, y) \simeq \begin{cases}
+x, & y = 0 \\
+x.g(x, y - 1), & y > 0
+\end{cases}
+\end{align*}
+
+\(\Gamma\) и \(\Delta\) са термални оператори, следователно са непрекъснати.
+
+Тогава системата
+\begin{align*}
+\Gamma(f, g) = f \\
+\Delta(g) = g
+\end{align*}
+
+Има единствено най-малко решение.
+
+Нека \(p \in \mathcal{F}_2\) и \(p(x, y) = x^{y + 1}\).
+Ще доажем, че \(fix(\Delta) = \{p\}\).
+
+Проверяваме, че \(\{p\} \subseteq fix(\Delta)\).
+
+Нека \((x, y) \in \mathbb{N}^2\). Тогава са възможни два случая.
+\begin{itemize}
+\item \(y = 0\)
+
+Тогава \(\Delta(p)(x, y) \simeq \Delta(p)(x, 0) \simeq x \simeq x^{0 + 1} \simeq x^{y + 1} \simeq p(x, y)\).
+\item \(y > 0\)
+
+Тогава \(\Delta(p)(x, y) \simeq x.p(x, y - 1) \simeq x.x^{y - 1  + 1} \simeq x.x^y \simeq x^{y + 1} \simeq p(x, y)\).
+\end{itemize}
+Следователно \((\forall (x, y) \in \mathbb{N}^2)[\Delta(p)(x, y) \simeq p(x, y)]\).
+Следователно \(p = \Delta(p)\).
+Следователно \(p \in fix(\Delta)\). Така \(\{p\} \subseteq fix(\Delta)\). (1)
+
+Проверяваме, че \(fix(\Delta) \subseteq \{p\}\).
+
+Нека \(f \in fix(\Delta)\).
+Ще докажем чрез индукция следното твърдение
+
+\((\forall y \in \mathbb{N})(\forall x \in \mathbb{N})[f(x, y) \simeq p(x, y)]\).
+\begin{itemize}
+\item База \(y = 0\)
+
+Нека \(x \in \mathbb{N}\). Тогава
+
+\(f(x, y) \simeq \Delta(f)(x, y) \simeq \Delta(f)(x, 0) \simeq x \simeq x^{0 + 1} \simeq x^{y + 1} \simeq p(x, y) \simeq p(x, 0)\).
+
+Следователно \((\forall x \in \mathbb{N})[f(x, 0) \simeq p(x, 0)]\).
+\item Индукционна хипотеза: Допускаме \((\exists n \in \mathbb{N})(\forall x \in \mathbb{N})[f(x, n) \simeq p(x, n)]\).
+Нека тогава \(n \in \mathbb{N}\) и \((\forall x \in \mathbb{N})[f(x, n) \simeq p(x, n)]\).
+\item Индукционна стъпка \(y = n + 1\)
+
+Нека \(x \in \mathbb{N}\). Тогава \(f(x, y) \simeq f(x, n + 1) \simeq \Delta(f)(x, n + 1) \simeq \\
+x.f(x, n + 1 - 1) \simeq x.f(x, n) \simeq x.p(x, n) \simeq x.x^{n + 1} \simeq \\
+x^{n + 1 + 1} \simeq x^{y + 1} \simeq p(x, y)\).
+
+Следователно \((\forall x \in \mathbb{N})[f(x, y) \simeq p(x, y)]\).
+\item Заключение: \((\forall y \in \mathbb{N})(\forall x \in \mathbb{N})[f(x, y) \simeq p(x, y)]\).
+\end{itemize}
+Следователно \(f = p\), от тук \(f \in \{p\}\).
+Следователно \((\forall f \in fix(\Delta))[f \in \{p\}]\).
+Следователно \(fix(\Delta) \subseteq \{p\}\). (2)
+
+От (1) и (2), следва, че \(fix(\Delta) = \{p\}\).
+
+Тогава понеже \(p\) е тотална, можем свободно да заместим в първото функционално уравнение.
+
+Разглеждаме оператор \(\Psi \; : \; \mathcal{F}_5 \to \mathcal{F}_5\). Дефиниран така \(\Psi(f) = \Gamma(f, p)\).
+
+Тоест: 
+\begin{align*}
+\Psi(f)(x, y, z, t, w) \simeq \begin{cases}
+w^{10}, & z = 0 \; \& \; t = 0 \\
+x^{y + 1} + y^{x + 1} + f(x, y, 0, t - 1, w), & z = 0 \; \& \; t > 0 \\
+x^{y + 1} + f(x, y, z - 1, t, w), & z > 0
+\end{cases}
+\end{align*}
+
+Разглеждаме следното свойство в \(\mathcal{F}_5\):
+
+\(Q(f) \rightleftharpoons (\forall (x, y, z, t, w) \in \mathbb{N}^5)[!f(x, y, z, t, w) \\
+\implies f(x, y, z, t, w) \simeq (z + t)x^{y + 1} + ty^{x + 1} + w^{10}]\)
+
+Това свойство очевидно е непрекъснато понеже е от тип частична коректност.
+Очевидно е и, че \(Q(\emptyset^{(5)})\) понеже \((\forall (x, y) \in \mathbb{N}^2)[\lnot!\emptyset^{(5)}(x, y)]\).
+
+Ще докажем, че \(Q\) е монотонно.
+
+Нека \(h \in \mathcal{F}_5\) и нека \(Q(h)\) е истина.
+Нека \((x, y, z, t, w) \in Dom(\Psi(h))\).
+
+Възможни са три случая:
+\begin{itemize}
+\item \((z, t) = (0, 0)\)
+
+Тогава \(\Psi(h)(x, y, z, t, w) \simeq w^{10} \simeq 0 + 0 + w^{10} \simeq 0.x^{y + 1} + 0.y^{x + 1} + w^{10} \simeq (z + t)x^{y + 1} + ty^{x + 1} + w^{10}\).
+\item \(z = 0 \; \& \; t > 0\)
+
+Тогава \(\Psi(h)(x, y, z, t, w) \simeq x^{y + 1} + y^{x + 1} + h(x, y, 0, t - 1, w) \simeq x^{y + 1} + y^{x + 1} + (t - 1)x^{y + 1} + (t - 1)y^{x + 1} + w^{10} \simeq tx^{y + 1} + ty^{x + 1} + w^{10} \simeq (z + t)x^{y + 1} + ty^{x + 1} + w^{10}\).
+\item \(z > 0\)
+
+Тогава \(\Psi(h)(x, y, z, t, w) \simeq x^{y + 1} + h(x, y, z - 1, t, w) \simeq (z - 1 + t)x^{y + 1} + ty^{x + 1} + w^{10} \simeq (z + t)x^{y + 1} + ty^{x + 1} + w^{10}\).
+\end{itemize}
+Следователно \(Q(\Psi(h))\).
+Тогава \((\forall h \in \mathcal{F}_5)[Q(h) \implies Q(\Psi(h))]\).
+
+Така \(Q\) е монотонно и от правилото на Скот получаваме \(Q(f_\Psi)\).
+В частност \((\forall (x, y) \in \mathbb{N}^2)[!f_\Psi(x, y, 26, 5, 2) \implies f_\Psi(x, y, 26, 5, 2) \simeq (26 + 5)x^{y + 1} + 5y^{x + 1} + 2^{10} \simeq 31x^{y + 1} + 5y^{x + 1} + (30 + 2)^2 \simeq 31x^{y + 1} + 5y^{x + 1} + 1024]\).
+
+Следователно \((\forall (x, y) \in \mathbb{N}^2)[!D_V[P](x, y) \implies \\
+D_V[P](x, y) \simeq f_\Psi(x, y, 26, 5, 2) + 995 \simeq 31x^{y + 1} + 5y^{x + 1} + 2019]\).
+
+\subsubsection*{б)}
+Ясно е, че \(D_V[P]\) е тотална функция, точно когато и \(f_\Psi\) е.
+
+За това ще докажем, че \(f_\Psi\) е тотална функция.
+
+Да допуснем противното, тогава \(\mathbb{N}^5 \setminus Dom(f_\Psi) \neq \emptyset\).
+
+Имаме, че \((\mathbb{N}^5, <_{lex \mathbb{N}^5})\) е фундирано множество.
+
+Тогава \(\mathbb{N}^5 \setminus Dom(f_\Psi)\) има минален елемент относно \(<_{lex \mathbb{N}^5}\).
+
+Нека тогава \((x^*, y^*, z^*, t^*, w^*)\) е минимален елемент на \(\mathbb{N}^5 \setminus Dom(f_\Psi)\).
+
+Тогава \(\lnot!f_\Psi(x^*, y^*, z^*, t^*, w^*)\).
+
+Очевидно \((z^*, t^*) \neq (0, 0)\) понеже \(f_\Psi(x^*, y^*, 0, 0, w) = w^{*10}\).
+
+Тогава са възможни два случая:
+\begin{itemize}
+\item \(z^* = 0 \; \& \; t^* > 0\)
+
+Но това значи, че \(\lnot ! f_\Psi(x^*, y^*, 0, t^* - 1, w^*)\),
+но също така \((x^*, y^*, 0, t^* - 1, w^*) <_{lex \mathbb{N}^5} (x^*, y^*, z^*, t^*, w^*)\).
+Тогава \((x^*, y^*, z^*, t^*, w^*)\), не е минимален за \(\mathbb{N}^5 \setminus Dom(f_\Psi)\) ... Абсурд!
+
+\item \(z^* > 0\)
+
+Но това значи, че \(\lnot ! f_\Psi(x^*, y^*, z^* - 1, t^*, w^*)\),
+но също така \((x^*, y^*, z^* - 1, t^*, w^*) <_{lex \mathbb{N}^5} (x^*, y^*, z^*, t^*, w^*)\).
+Тогава \((x^*, y^*, z^*, t^*, w^*)\), не е минимален за \(\mathbb{N}^5 \setminus Dom(f_\Psi)\) ... Абсурд!
+\end{itemize}
+
+Достигнахме до противоречие и в двата случая.
+Противоречието идва от допускането, което направихме, че \(f_\Psi\) не е тотална.
+Но тогава \(f_\Psi\) е тотална. Следователно и \(D_V[P]\) също е тотална!
+
+\section*{Зад. 1. Писмен изпит по СЕП 07/02/2019}
+Дайте пример за оператор от тип \(\Gamma \; : \; \mathcal{F}_1 \to \mathcal{F}_1\), който:
+
+a) няма неподвижни точки;
+
+б) има неподвижни точки, но няма най-малка неподвижна точка;
+
+в) има най-малка неподвижна точка.
+
+Обосновете се!
+
+\subsection*{Решение:}
+
+\subsubsection*{а)}
+\begin{align*}
+\Gamma(f)(x) \simeq \begin{cases}
+9, & \lnot !f(x) \\
+\lnot!, & !f(x)
+\end{cases}
+\end{align*}
+
+Да допуснем, че така дефиниран \(\Gamma\) има неподвижна точка.
+
+Нека \(f \in fix(\Gamma)\). Нека \(x \in \mathbb{N}\).
+
+Възможни са два случая:
+\begin{itemize}
+\item \(!f(x)\)
+
+Тогава \(\lnot!\Gamma(f)(x)\), но тогава \(\lnot[f(x) \simeq \Gamma(f)(x)]\).
+
+Следователно \(f \notin fix(\Gamma)\). Абсурд!
+
+\item \(\lnot!f(x)\)
+
+Тогава \(\Gamma(f)(x) = 9\) и значи \(!\Gamma(f)(x)\), но тогава \(\lnot[f(x) \simeq \Gamma(f)(x)]\).
+
+Следователно \(f \notin fix(\Gamma)\). Абсурд!
+\end{itemize}
+
+Достигнахме до противоречие. Следователно \(fix(\Gamma) = \emptyset\).
+
+\subsubsection*{б)}
+\begin{align*}
+\Gamma(f)(x) \simeq \begin{cases}
+9, & \lnot !f(x) \\
+f(x), & !f(x)
+\end{cases}
+\end{align*}
+
+Нека \(f \in \mathcal{F}_1\) и \(Dom(f) = \mathbb{N}\).
+Нека \(x \in \mathbb{N}\).
+Тогава имаме \(\Gamma(f)(x) \simeq f(x)\).
+Следователно \((\forall x \in \mathbb{N})[\Gamma(f)(x) \simeq f(x)]\).
+Тогава \(f = \Gamma(f)\) и значи \(f \in fix(\Gamma)\).
+
+Така получаваме, че всяка тотална функция е неподвижна точка за \(\Gamma\).
+
+Да допуснем, че има ненотална функция \(h\), която е неподвижна за \(\Gamma\).
+\(h\) не е тотална, следователно \(\mathbb{N} \setminus Dom(h) \neq \emptyset\).
+Нека тогава \(x \in \mathbb{N} \setminus Dom(h)\).
+Тогава имаме \(\lnot!h(x)\) и \(\Gamma(h)(x) = 9\).
+Очевидно тогава \(h \neq \Gamma(h)\). Това е Абсурд!
+
+Следователно \(fix(\Gamma) = \{g \in \mathcal{F}_1 \; | \; Dom(g) = \mathbb{N}\} \neq \emptyset\).
+
+Понеже всяка неподвижна точка на \(\Gamma\) е тотална,
+а всеки две различни тотални функции са несравними помеждуси чрез релацията "подфункция".
+И за всяка тотална функция няма частична функция, която да я разширява.
+Следователно всеки елемент на \(fix(\Gamma)\) е минимален.
+И понеже \(fix(\Gamma)\) е неизброймо безкрайно,
+то значи \(fix(\Gamma)\) няма най-малък елемент.
+Следователно \(\Gamma\) има неподвижна точка,
+но няма най-малка неподвижна точка.
+
+\subsubsection*{в)}
+Нека \(\Gamma = Id(\mathcal{F}_1)\).
+Тогава \(fix(\Gamma) = \mathcal{F}_1\).
+
+И понеже \((\mathcal{F}_1, \subset, \emptyset)\) е фундирано,
+то \(\emptyset = f_\Gamma = lfp(\Gamma)\). 
+
+\section*{Зад. 2. Писмен изпит по СЕП 07/02/2019}
+Да разгледаме следния непрекъснат оператор \(\Gamma \; : \; \mathcal{F}_3 \to \mathcal{F}_3\), където:
+\begin{align*}
+\Gamma(f)(x, y, z) \simeq \begin{cases}
+0, & y > 0 \; \& \; (z + 1)y > x \\
+f(x, y, z + 1) + 1, & y > 0 \; \& \; (z + 1)y \leq x \\
+f(x, 0, z + 1) + 1, & y = 0
+\end{cases}
+\end{align*}
+Докажете, че най-малката неподвижна точка на \(\Gamma\) е следната частична функция:
+\begin{align*}
+h(x, y, z) \simeq \begin{cases}
+\displaystyle\left\lfloor\frac{x}{y}\right\rfloor \ominus z, & y > 0\\
+\lnot!, & y = 0
+\end{cases}
+\end{align*}
+където
+\begin{align*}
+a \ominus b = \begin{cases}
+a - b, & a \geq b \\
+0. & a < b
+\end{cases}
+\end{align*}
+
+\subsection*{Решение:}
+Ще докажем, че \(f_\Gamma\) има еквивалетно представяне:
+\begin{align*}
+f_\Gamma(x, y, z) \simeq \begin{cases}
+    \displaystyle\left\lfloor\frac{x}{y}\right\rfloor - z, & y > 0 \; \& \; \displaystyle\left\lfloor\frac{x}{y}\right\rfloor \geq z \\
+    0, & y > 0 \; \& \; \displaystyle\left\lfloor\frac{x}{y}\right\rfloor < z \\
+    \lnot!, & y = 0
+\end{cases}
+\end{align*}
+
+Нека \(Q, R\) са свойства в \(\mathcal{F}_3\)
+дефинирани по следния начин:
+\begin{align*}
+Q(f) \rightleftharpoons (\forall (x, y, z) \in \mathbb{N}^3)[!f(x, y, z) \; \& \; y > 0 \; \& \; \displaystyle\left\lfloor\frac{x}{y}\right\rfloor \geq z \implies f(x, y, z) \simeq \displaystyle\left\lfloor\frac{x}{y}\right\rfloor - z] \\
+R(f) \rightleftharpoons (\forall (x, y, z) \in \mathbb{N}^3)[!f(x, y, z) \; \& \; y > 0 \; \& \; \displaystyle\left\lfloor\frac{x}{y}\right\rfloor < z \implies f(x, y, z) \simeq 0]
+\end{align*}
+\(Q\) и \(R\) са свойства от тип частична коректност и следователно са непрекъснати.
+Нека \(P(f) \rightleftharpoons Q(f) \; \& \; R(f)\).
+\(P\) е конюнкцията на \(Q\) и \(R\), които са непрекъснати, следователно \(P\) е непрекъснато. (3)
+
+Имаме \((\forall x \in \mathbb{N})[\lnot!\emptyset^{(3)}(x)]\) следователно \(P(emptyset^{(3)})\) е изпълнено.
+
+Ще докажем, че \(P\) е монотонно свойство.
+
+Нека \(f \in \mathcal{F}_3\) и \(P(f)\). Нека \((x, y, z) \in Dom(\Gamma(f))\) и нека \(y > 0\).
+Нека \(k = \displaystyle\left\lfloor\frac{x}{y}\right\rfloor\).
+Тогава \(k \leq \displaystyle\frac{x}{y} < k + 1\) и значи
+\(ky \leq x \; \& \; x < (k + 1)y\).
+Ако
+\begin{itemize}
+\item \(k < z\)
+Тогава имаме \(x < (k + 1)y \; \& \; k < z\).
+Следователно \(x < (z + 1)y\).
+Но тогава \(\Gamma(f)(x, y, z) \simeq 0\).
+
+\item \(k \geq z\)
+Възможни са два подслучая:
+
+\begin{itemize}
+\item \(k = z\)
+
+Тогава имаме \(x < (z + 1)y\) и значи
+
+\(\Gamma(f)(x, y, z) \simeq 0 \simeq k - z = \displaystyle\left\lfloor\frac{x}{y}\right\rfloor - z\).
+\item \(z < k\)
+
+Тогава имаме \(zy < (z + 1)y \leq ky \leq x\). Следователно
+
+\(\Gamma(f)(x, y, z) \simeq f(x, y, z + 1) + 1 \simeq \displaystyle\left\lfloor\frac{x}{y}\right\rfloor - (z + 1) + 1 \simeq \displaystyle\left\lfloor\frac{x}{y}\right\rfloor - z\).
+\end{itemize}
+\end{itemize}
+Следователно очевидно \(P(\Psi(f))\) е истина.
+Тогава очевидно \(P\) е монотонно свойство.
+
+Тогава от правилото на Скот получаваме
+
+\begin{align*}
+(\forall (x, y, z) \in \mathbb{N}^3)\\
+\left[!f_\Psi(x, y, z) \; \& \; y > 0 \implies f_\Psi(x, y, z) \simeq \begin{cases}
+    \displaystyle\left\lfloor\frac{x}{y}\right\rfloor - z, &  \displaystyle\left\lfloor\frac{x}{y}\right\rfloor \geq z \\
+    0, & \displaystyle\left\lfloor\frac{x}{y}\right\rfloor < z
+\end{cases}\right]
+\end{align*}
+
+Остава да покаже, че ако \(y > 0\), то \(f_\Psi\) е дефинирана и ако \(y = 0\) не е.
+
+Първо ще докажем, че \((\forall (x, y, z) \in \mathbb{N}^3)[y > 0 \implies !f_\Psi(x, y, z)]\).
+
+Нека допуснем противното. Тогава нека
+
+\((x^*, y^*, z^*) \in \mathbb{N}^3\) и \(y^* > 0\) и \(\lnot !f_\Psi(x^*, y^*, z^*)]\).
+
+Очевидно ако \((z^* + 1)y^* > x^*\), то \(\Psi(f_\Psi)(x^*, y^*, z^*) = 0\) и значи \(!f_\Psi(x^*, y^*, z^*)\).
+
+Тогава за следната редица от точки \(\{(x^*, y^*, z^* + n)\}_{n \in \mathbb{N}}\)
+
+имаме \((\forall n \in \mathbb{N})[(x^*, y^*, z^* + n) \in \mathbb{N}^3 \setminus Dom(f_\Psi)]\),
+което значи, че
+
+\((\forall n \in \mathbb{N})[(z^* + n + 1)y^* \leq x^*]\).
+Но тогава \((z^* + x^* + 1)y^* \leq x^*\) при положение, че \(y^* > 0\).
+Това е Абсурд! Следователно е в сила
+
+\((\forall (x, y, z) \in \mathbb{N}^3)[y > 0 \implies !f_\Psi(x, y, z)]\).
+
+За второ твърдение нека допуснем,
+че за някоя двойка \((a, b) \in \mathbb{N}^2\) е в сила
+\(!f_\Psi(a, 0, b)\).
+Нека тогава \(n = f_\Psi(a, 0, b)\).
+Тогава получаваме \(n = f_\Psi(a, 0, b) = \Psi(f_\Psi)(a, 0, b) = f_\Psi(a, 0, b + 1) + 1 = \Psi(f_\Psi)(a, 0, b + 1) + 1 = f_\Psi(a, 0, b + 2) + 2 = \dots = f_\Psi(a, 0, b + n + 1) + n + 1\).
+Но тогава \(n = f_\Psi(a, 0, b + n + 1) + n + 1\) и \(f_\Psi(a, 0, b + n + 1) \in \mathbb{N}\).
+Това е пълен Абсурд! Следователно
+
+\((\forall (x, z) \in \mathbb{N}^2)[\lnot!f_\Psi(x, 0, z)]\).
+
+Тогава излиза, че
+\begin{align*}
+f_\Gamma(x, y, z) \simeq \begin{cases}
+    \displaystyle\left\lfloor\frac{x}{y}\right\rfloor - z, & y > 0 \; \& \; \displaystyle\left\lfloor\frac{x}{y}\right\rfloor \geq z \\
+    0, & y > 0 \; \& \; \displaystyle\left\lfloor\frac{x}{y}\right\rfloor < z \\
+    \lnot!, & y = 0
+\end{cases}
+\end{align*}
+\section*{Зад. 3. Писмен изпит по СЕП 07/02/2019}
+Нека \(\Gamma, \; \Delta \; : \; \mathcal{F}_2 \times \mathcal{F}_2 \to \mathcal{F}_2\) са непрекъснати, където:
+\begin{align*}
+\Gamma(f, g)(x, y) \simeq \begin{cases}
+    1, & x = 0 \\
+    f(x - 1, y).g(x, y), & x > 0
+\end{cases}    
+\end{align*}
+\begin{align*}
+\Delta(f, g)(x, y) \simeq \begin{cases}
+    1, & x = 0 \; \& \; y = 0 \\
+    3.g(0, y - 1), & x = 0 \; \& \; y > 0 \\
+    2.g(x - 1, y + 1), & x > 0
+\end{cases}    
+\end{align*}
+Нека \((f_0, g_0) = lfp(\Gamma \times \Delta)\). Докажете, чe
+
+\((\forall x \in \mathbb{N})[!f_0(x, 0) \implies f_0(x, 0) \simeq 6^{\displaystyle\frac{x(x + 1)}{2}}]\)
+\subsection*{Решение:}
+Разглеждаме \(\Phi \; : \; \mathcal{F}_2 \to \mathcal{F}_2\), за който:
+\begin{align*}
+\Phi(g)(x, y) \simeq \begin{cases}
+    1, & x = 0 \; \& \; y = 0 \\
+    3.g(0, y - 1), & x = 0 \; \& \; y > 0 \\
+    2.g(x - 1, y + 1), & x > 0
+\end{cases}    
+\end{align*}
+Дефинираме следното свойство в \(\mathcal{F}_2\):
+
+\(P(f) \rightleftharpoons (\forall (x, y) \in \mathbb{N}^2)[!f(x, y) \implies f(x, y) \simeq 6^x.3^y]\)
+
+Очевидно то е непрекъснато понеже е от тип частична коректност.
+
+Очевидно е и, че \(P(\emptyset)\) понеже \((\forall (x, y) \in \mathbb{N}^2)[\lnot!\emptyset(x, y)]\).
+
+Ще докаже, че \((\forall f \in \mathcal{F}_2)[P(f) \implies P(\Phi(f))]\).
+
+Нека \(f \in \mathcal{F}_2\) и \(P(f)\). Нека \((x, y) \in Dom(\Phi(f))\).
+\begin{itemize}
+\item \((x, y) = (0, 0)\)
+
+Тогава \(\Phi(f)(x, y) \simeq 1 \simeq 6^0.3^0 \simeq 6^x.3^y\).
+\item \(x = 0 \; \& \; y > 0\)
+
+Тогава \(\Phi(f)(x, y) \simeq 3.f(0, y - 1) \simeq 3.(6^0.3^{y - 1}) \simeq 6^x.3^y\).
+
+\item \(x > 0\)
+
+Тогава \(\Phi(f)(x, y) \simeq 2.f(x - 1, y + 1) \simeq 2.(6^{x - 1}.3^{y + 1}) \simeq 6.6^{x - 1}.3^y \simeq 6^x.3^y\).
+\end{itemize}
+Следователно \(!\Phi(f)(x, y) \implies \Phi(f)(x, y) \simeq 6^x.3^y\).
+Следователно \(P(\Phi(f))\).
+
+Следователно \((\forall f \in \mathcal{F}_2)[P(f) \implies P(\Phi(f))]\).
+
+Така от до тук доказаното и правилото на Скот получаваме, че
+
+\((\forall (x, y) \in \mathbb{N}^2)[!f_\Phi(x, y) \implies f_\Phi(x, y) \simeq 6^x.3^y]\).
+
+Сега ще докажем, че \(f_\Phi\) е тотална.
+
+Нека допуснем противното. Тогава \(\mathbb{N}^2 \setminus Dom(f_\Phi) \neq \emptyset\).
+
+\((\mathbb{N}^2, <_{lex \mathbb{N}^2})\) е фундирано множество.
+
+Тогава \(\mathbb{N}^2 \setminus Dom(f_\Phi)\) има минален елемент относно \(<_{lex \mathbb{N}^2}\).
+
+Нека тогава \((x^*, y^*)\) е минимален елемент на \(\mathbb{N}^2 \setminus Dom(f_\Phi)\).
+
+Тогава \(\lnot!f_\Phi(x^*, y^*)\). Очевидно \((x^*, y^*) \neq (0, 0)\) понеже \(f_\Phi(0, 0) = 1\).
+
+\begin{itemize}
+\item \(x^* = 0 \; \& \; y^* > 0\)
+
+Тогава \(\lnot!f_\Phi(0, y^* - 1)\), но \((0, y^* - 1) \in \mathbb{N}^2\)
+
+следователно \((x^*, y^* - 1) \in \mathbb{N}^2 \setminus Dom(f_\Phi)\) и \((x^*, y^* - 1) <_{lex \mathbb{N^2}} (x^*, y^*)\).
+
+Но тогава \((x^*, y^*)\) не е минимален ... Абсурд!
+\item \(x^* > 0\)
+
+Тогава \(\lnot!f_\Phi(x^* - 1, y^* + 1)\), но \((x^* - 1, y^* + 1) \in \mathbb{N}^2\)
+
+следователно \((x^* - 1, y^* + 1) \in \mathbb{N}^2 \setminus Dom(f_\Phi)\) и \((x^* - 1, y^* + 1) <_{lex \mathbb{N^2}} (x^*, y^*)\).
+
+Но тогава \((x^*, y^*)\) не е минимален ... Абсурд!
+\end{itemize}
+
+Получихме противоречие с допускането, че \(\mathbb{N}^2 \setminus Dom(f_\Phi) \neq \emptyset\).
+
+Следователно \(Dom(f_\Phi) = \mathbb{N}^2\).
+
+От тук и от \(P(f_\Phi)\) получаваме \((\forall (x, y) \in \mathbb{N}^2)[f_\Phi(x, y) = 6^x.3^y]\).
+
+Тогава разглеждаме \(\Psi \; : \; \mathcal{F}_2 \to \mathcal{F}_2\).
+
+\(\Psi(f)(x, y) \simeq \Gamma(f, g_0)(x, y) \simeq \Gamma(f, f_\Phi)(x, y)\). Следователно
+\begin{align*}
+\Psi(f)(x, y) \simeq \begin{cases}
+    1, & x = 0 \\
+    6^x.3^y.f(x - 1, y), & x > 0
+\end{cases}    
+\end{align*}
+
+Дефинираме следното свойство в \(\mathcal{F}_2\):
+
+\(Q(f) \rightleftharpoons (\forall (x, y) \in \mathbb{N}^2)[!f(x, y) \implies f(x, y) \simeq 6^{\displaystyle\frac{x(x + 1)}{2}}.3^{xy}]\)
+
+Очевидно то е непрекъснато понеже е от тип частична коректност.
+
+Очевидно е и, че \(Q(\emptyset)\) понеже \((\forall (x, y) \in \mathbb{N}^2)[\lnot!\emptyset(x, y)]\).
+
+Ще докаже, че \((\forall f \in \mathcal{F}_2)[Q(f) \implies Q(\Phi(f))]\).
+
+Нека \(f \in \mathcal{F}_2\) и \(Q(f)\). Нека \((x, y) \in Dom(\Psi(f))\).
+\begin{itemize}
+\item \(x = 0\)
+
+Тогава \(\Psi(f)(x, y) \simeq \Psi(f)(0, y) \simeq 1 \simeq 6^{0}.3^{0.y} \simeq 6^{\displaystyle\frac{x(x + 1)}{2}}.3^{xy}\).
+
+\item \(x > 0\)
+
+Тогава
+
+\(\Psi(f)(x, y) \simeq 6^x.3^y.f(x - 1, y) \simeq 6^x.3^y.6^{\displaystyle\frac{x(x - 1)}{2}}.3^{(x - 1)y} \simeq 6^{\displaystyle\frac{x(x + 1)}{2}}.3^{xy}\).
+\end{itemize}
+Следователно \(Q(\Psi(f))\).
+Следователно \((\forall f \in \mathcal{F}_2)[Q(f) \implies Q(\Phi(f))]\).
+
+Тогава използвайки правилото на Скот получаваме \(Q(f_0)\).
+
+В частност \((\forall x \in \mathbb{N})[!f_0(x, 0) \implies f_0(x, 0) \simeq 6^{\displaystyle\frac{x(x + 1)}{2}}]\).
+\end{document}
