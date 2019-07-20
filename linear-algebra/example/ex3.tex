@@ -1,0 +1,60 @@
+\documentclass[a4paper, 12pt, oneside]{article}
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+                
+\setlength{\parindent}{0mm}
+
+\title{Предложения за контролна работа 3}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+\section*{Задача 4.}
+Нека \(\mathbb{V}\) е линейно пространсво над полето \(\mathbb{F}\)
+и нека \(\varphi \in \mathrm{Hom}\mathbb{V}\). \\
+Нека \(A\) е матрицата на \(\varphi\) спрямо произволен базис.
+Нека \(n = \mathrm{dim}\mathbb{V}\).\\\
+Нека \(D = \begin{pmatrix}
+    \lambda_1 & 0 & 0 & \cdots & 0 \\
+    0 & \lambda_2 & 0 & \cdots & 0 \\
+    0 & 0 & \lambda_3 & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & 0 & \cdots & \lambda_n
+\end{pmatrix} \in M_n(\mathbb{F})\). \\
+а) Да се докаже, че \(D^k = \begin{pmatrix}
+    \lambda_1^k & 0 & 0 & \cdots & 0 \\
+    0 & \lambda_2^k & 0 & \cdots & 0 \\
+    0 & 0 & \lambda_3^k & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & 0 & \cdots & \lambda_n^k
+\end{pmatrix}\) за произволно естествено число \(k\). \\
+б) \(p\) е произволен полином с коефициенти от полето \(\mathbb{F}\).
+Тоест \(p \in \mathbb{F}[x]\). \\
+Нека \(\tau \; : \; \mathbb{F}[x] \to (M_n(\mathbb{F}) \to M_n(\mathbb{F}))\)
+е естественото изображение, което на полином \(f\) от \(\mathbb{F}[x]\)
+по естествен начин съпоставя "полином" със същите коефициенти като \(f\),
+само че приемащ матрици, а не скалари. Тоест \\
+\(\tau( a_0x^m + a_1 x^{m - 1} + \dots + a_{m - 1}x + a_m.1 ) = a_0X^m + a_1 X^{m - 1} + \dots + a_{m - 1}X + a_m E \). \\
+Да се докаже, че ако \(A\) е подобна матрица на \(D\),
+то  \((\tau(p))(A)\) е подобна на \((\tau(p))(D)\). \\
+в) Да се докаже, че \((\tau(p))(D) = \begin{pmatrix}
+    p(\lambda_1) & 0 & 0 & \cdots & 0 \\
+    0 & p(\lambda_2) & 0 & \cdots & 0 \\
+    0 & 0 & p(\lambda_3) & \cdots & 0 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & 0 & \cdots & p(\lambda_n)
+\end{pmatrix} \). \\
+г) Нека \(\lambda_1, \; \lambda_2, \; \dots, \; \lambda_n\) са корени на \(p\).
+Да се докаже, че \((\tau(p))(D) = \theta\). Тоест \(D\) е корен на \(\tau(p)\). \\
+д) Нека \(f_A(\lambda) = \mathrm{det}(A - \lambda E)\) е характерестичния полином на матрицата \(A\). \\
+И нека \(f_A\) има \(n\) на брой корена в полето \(\mathbb{F}\).
+Тоест всички корени на \(f_A\) са в полето \(\mathbb{F}\). Да се докаже, че
+\((\tau(f_A))(A) = \theta\). Тоест \(A\) е корен на \(\tau(f_A)\).
+\end{document}
