@@ -1,0 +1,109 @@
+\documentclass[a4paper, 12pt, oneside]{article}
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+
+\setlength{\parindent}{0mm}
+
+\title{Предложение за КР1}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+\section*{Задача 1.}
+Да се намерят всички естествени числа \(n\), които са решения на системата:
+\begin{align*}
+\begin{cases}
+    \left(\displaystyle{(p + q)^{\varphi(p^2)}.(p - 2)!}\right)x \equiv 3p + r \pmod{p} \\
+    \varphi(n) = (a, b)x \\
+    0 < x < p
+\end{cases}
+\end{align*}
+\subsection*{За задачата:}
+\(p \in \{13, 19, 23\}\), \(q \in \{2, 3, \dots p - 1\}\), \(r \in \{1, 2, 3, 6\}\) и \((a, b)x = 6\). \\
+Отгoвори: \(x = r, \; (a, b) = \displaystyle\frac{6}{r}, \; n \in \{7, 14, 9, 18\}\)
+\subsection*{Примерна задача:}
+Да се намерят всички естествени числа \(n\), които са решения на системата:
+\begin{align*}
+\begin{cases}
+    \left(\displaystyle{26^{\varphi(23^2)}}.21!\right)x \equiv 70 \pmod{23} \\
+    \varphi(n) = (42, 66)x \\
+    0 < x < 23
+\end{cases}
+\end{align*}
+\(p = 23, \; q = 3, \; a = 42, \; b = 66\) и \(x = r = 1, \; (a, b) = 6\)
+\section*{Задача 2.}
+Нека \(n\) и \(m\) са естествени числа. Дефинираме операцията \(*\) така:
+\begin{align*}
+    * \; : \; (\mathbb{C}_n \times \mathbb{C}_m) \times (\mathbb{C}_n \times \mathbb{C}_m) \to \mathbb{C}_n \times \mathbb{C}_m \\
+    \forall (x, y) \in \mathbb{C}_n \times \mathbb{C}_m \; \forall (a, b) \in \mathbb{C}_n \times \mathbb{C}_m  \; (x, y) * (a, b) = (xa, yb). 
+\end{align*}
+\subsection*{a)}
+Докажете, че \((\mathbb{C}_n \times \mathbb{C}_m, *)\) е абелева група.
+\subsection*{б)}
+Какъв е реда на \((\mathbb{C}_n \times \mathbb{C}_m, *)\) ?
+\subsection*{в)}
+Докажете, че \((\mathbb{C}_k \times \mathbb{C}_l, *)\) е подгрупа на \((\mathbb{C}_n \times \mathbb{C}_m, *)\) Т.С.Т.К. \(k \; \mid \; n\) и \(l \; \mid \; m\).
+\subsection*{г)}
+Докажете, че броят на подгрупите на \((\mathbb{C}_n \times \mathbb{C}_m, *)\) е \((n - \varphi(n) + 1)(m - \varphi(m) + 1)\).
+\subsection*{д)}
+Докажете, че всяка подгрупа на \((\mathbb{C}_n \times \mathbb{C}_m, *)\) е нормална.
+\subsection*{е)}
+Намерете всички двойки \((x, y) \in \mathbb{N}^2\) такива, че
+\begin{align*}
+    (\mathbb{C}_x \times \mathbb{C}_y, *) / (\mathbb{C}_3 \times \mathbb{C}_2, *) \cong (\mathbb{C}_8 \times \mathbb{C}_6, *)
+\end{align*}
+\subsection*{ж)}
+Намерете всички двойки \((s, t) \in \mathbb{N}^2\) такива, че
+\begin{align*}
+    (\mathbb{C}_{12} \times \mathbb{C}_4, *) / (\mathbb{C}_s \times \mathbb{C}_t, *) \cong (\mathbb{C}_2 \times \mathbb{C}_3, *)
+\end{align*}
+\subsection*{з)}
+Докажете, че \((\mathbb{C}_n \times \mathbb{C}_m, *)\) е циклична група Т.С.Т.К. \([n, m] = nm\).
+\subsection*{и)}
+Докажете, че \((\mathbb{C}_n \times \mathbb{C}_m, *)\) е циклична група Т.С.Т.К. \(\mathbb{C}_n \cap \mathbb{C}_m = \{1\}\).
+\section*{Задача 3.}
+Нека \((G, .)\) група с тривиален център от краен ред и нека \(n\) е естествено число по-голямо от \(3\).
+\subsection*{а)}
+Да се докаже, че \((G^n, \star)\) е група. Където:
+\begin{align*}
+    \forall (g_{11}, g_{12}, \dots, g_{1n}) \in G^n \; \forall (g_{21}, g_{22}, \dots, g_{2n}) \in G^n \\
+    (g_{11}, g_{12}, \dots, g_{1n}) \star (g_{21}, g_{22}, \dots, g_{2n}) = (g_{11}.g_{21}, g_{12}.g_{22}, \dots, g_{1n}.g_{2n})
+\end{align*}
+\subsection*{б)}
+Нека \(\psi \; : \; G \to (G \to G)\) е дефинирано по следния начин:
+\begin{align*}
+    \forall g \in G \; \forall h \in G \; \psi(g)(h) = g^{-1}.h.g.
+\end{align*}
+Да се докаже, че \(\psi \in Hom(G, S_G)\).
+Проверете, че \(\forall g \in G \; \psi(g) \in S_G\).
+\subsection*{в)}
+Докажете, че \(Hom(G, S_G)\) има поне \(|G|\) елемента.
+\subsection*{г)}
+Нека \(\delta \in Hom(G, S_G)\) и нека \(\Gamma \; : \; G \to (G^n \to G^n)\) е дефинирано по следния начин:
+\begin{align*}
+    \forall  g \in G \; \forall (g_{1}, g_{2}, \dots, g_{n}) \in G^n \\
+    \Gamma(g)((g_{1}, g_{2}, \dots, g_{n})) = (\delta(g)(g_{1}), \delta(g)(g_{2}), \dots, \delta(g)(g_{n})).
+\end{align*}
+Да се докаже, че \(\Gamma \in Hom(G, S_{G^n})\).
+Проверете, че \(\forall g \in G \; \Gamma(g) \in S_{G^n}\). \\
+Докажете още, че \(St_{G^n,\Gamma}((g_1, g_2, \dots, g_n)) = St_{G, \delta}(g_1) \bigcap St_{G, \delta}(g_2) \bigcap \dots \bigcap St_{G, \delta}(g_n)\).
+\subsection*{д)}
+Нека \(\tau \in Hom(G, S_G)\) и нека \(\Psi \; : \; G^n \to (G^n \to G^n)\) е дефинирано по следния начин:
+\begin{align*}
+    \forall (g_{11}, g_{12}, \dots, g_{1n}) \in G^n \; \forall (g_{21}, g_{22}, \dots, g_{2n}) \in G^n \\
+    \Psi((g_{11}, g_{12}, \dots, g_{1n}))((g_{21}, g_{22}, \dots, g_{2n})) = (\tau(g_{11})(g_{21}), \tau(g_{12})(g_{22}), \dots, \tau(g_{1n})(g_{2n})).
+\end{align*}
+Да се докаже, че \(\Psi \in Hom(G^n, S_{G^n})\).
+Проверете, че \(\forall p \in G^n \; \Psi(p) \in S_{G^n}\). \\
+Докажете още, че \(St_{G^n, \Psi}((g_1, g_2, \dots, g_n)) = St_{G, \tau}(g_1) \times St_{G, \tau}(g_2) \times \dots \times St_{G, \tau}(g_n)\).
+\subsection*{Забележка:}
+Ако \((H, \oplus)\) е група, \(M \neq \emptyset\) и \(\pi \in Hom(H, S_M)\), то \\
+\(\forall m \in M \; St_{H, \pi}(m) = \{h \in H \; | \; \pi(h)(m) = m\}\).
+\end{document}
