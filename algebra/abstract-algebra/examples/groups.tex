@@ -1,0 +1,52 @@
+\documentclass[a4paper, 12pt, oneside]{article}
+\usepackage[left=3cm,right=3cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\G}{\mathbb{G}}
+
+\setlength{\parindent}{0mm}
+
+\title{Предложения за домашно 2019}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+\section*{Задача 1.}
+Нека \((\G, .)\) е група, която действа на множеството \(\Omega\).
+\subsection*{а) Да се докаже, че ако \(n \in \N\) и \(n > 1\), то \((\G, .)\) действа на \(\Omega^n\)}
+Нека \(n \in \N\) и \(n > 1\).
+\((\G, .)\) действа на множеството \(\Omega\) следователно
+\begin{align*}
+    \exists \; \phi \in Hom((\G, .), (S_\Omega, \circ))
+\end{align*}
+Нека \(\phi \in Hom((\G, .), (S_\Omega, \circ))\).
+Дефинираме
+\begin{align*}
+    \Phi \; : \; \G \to (\Omega^n \to \Omega^n) \\
+    g \mapsto [(\omega_1, \dots, \omega_n) \mapsto (\phi(g)(\omega_1), \dots, \phi(g)(\omega_n))]
+\end{align*}
+Ще докажем, че \(\Phi \in Hom((\G, .), (S_{\Omega^n}, \circ))\) \\
+Нека \(g_1, g_2 \in \G\) и \(\omega = (\omega_1, \dots, \omega_n) \in \Omega^n\) тогава
+\begin{align*}
+   \Phi(g_1.g_2)(\omega) = (\phi(g_1.g_2)(\omega_1), \dots, \phi(g_1.g_2)(\omega_n)) \\
+   = (\phi(g_1)(\phi(g_2)(\omega_1)), \dots, \phi(g_1)(\phi(g_2)(\omega_n))) \\
+   = \Phi(g_1)((\phi(g_2)(\omega_1), \dots, \phi(g_2)(\omega_n))) \\
+   = \Phi(g_1)(\Phi(g_2)(\omega)) = (\Phi(g_1) \circ \Phi(g_2))(\omega)
+\end{align*}
+Следователно е в сила \(\Phi(g_1.g_2) = \Phi(g_1) \circ \Phi(g_2)\). \\
+Тоест вярно е \(\forall g_1 \in \G \; \forall g_2 \in \G \; \Phi(g_1.g_2) = \Phi(g_1) \circ \Phi(g_2)\). \\
+Следователно \(\Phi \in Hom((\G, .), (S_{\Omega^n}, \circ))\). \(\qed\)
+\subsection*{б) Да се докаже, че \(St_\G((\omega_1, \dots, \omega_n)) =  St_\G(\omega_1) \cap \dots \cap St_\G(\omega_n)\)}
+Нека \((\omega_1, \dots, \omega_n) \in \Omega^n\) нека \(g \in \G\). Очевидно
+\((\forall i \in \{1, \dots, n\} \; \phi(g)(\omega_i) = \omega_i) \iff \Phi(g)((\omega_1, \dots, \omega_n)) = (\phi(g)(\omega_1), \dots, \phi(g)(\omega_n)) = (\omega_1, \dots, \omega_n)\) \\
+Тоест \(g \in S_\G(\omega_1) \cap \dots \cap S_\G(\omega_n) \iff g \in S_\G((\omega_1, \dots, \omega_n))\). \\
+Следователно \(St_\G((\omega_1, \dots, \omega_n)) =  St_\G(\omega_1) \cap \dots \cap St_\G(\omega_n)\). \(\qed\)
+\end{document}
