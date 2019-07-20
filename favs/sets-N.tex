@@ -31,7 +31,7 @@
 които ще използвам в доказателствато, че \(\N\times\N\) e изброимо безкрайнo.
 \section*{Лема 1.}
 Нека разгледаме следното множество \(\LN = \{(i, j) \in \N\times\N \; | \; i < j\}\),
-това същност е релацията "по-малко" над множеството на естествените числа.
+това всъщност е релацията "по-малко" над множеството на естествените числа.
 Няма да се интересуваме от този факт. Ще разглеждаме \(\LN\) като множество и ще докажем,
 че е изброимо безкрайно.
 \subsection*{Твърдение:}
@@ -39,68 +39,68 @@
 \subsection*{Идея за биекция:}
 Очевидно е вярно \(\LN = \{(i, j) \; | \; j \in \N, \; j > 0, \; i \in \{0, 1, \dots, j - 1\}\}\).
 Нека фиксираме \(n \in \N\) и нека \(n > 0\). Tогава наредените двойки от \(\LN\)
-с втората компонента \(n\) са: \((0, n), (1, n), \dots, (n - 1, n)\).
+с втора компонента \(n\) са: \((0, n), (1, n), \dots, (n - 1, n)\).
 Те очевидно са \(n\) на брой и очевидно броят на тези с втора компонента строго по-малка от \(n\)
 e \(1 + 2 + \dots + n - 1\), тоест \(\displaystyle\frac{(n - 1)n}{2}\) на брой.
 Тогава на наредената двойка \((i, j)\) от \(\LN\) ще съпоставим естественото число \(\displaystyle\frac{(j - 1)j}{2} + i\). 
 \subsection*{Доказателство:}
-Дефинираме функцията \(f := \left\{\left((i, j), \displaystyle\frac{(j - 1)j}{2} + i\right) \; \Big| \; (i, j) \in \LN \right\}\)
+Дефинираме функцията \(f := \left\{\left((i, j), \displaystyle\frac{(j - 1)j}{2} + i\right) \; \Big| \; (i, j) \in \LN \right\}\).
 Ще докажем, че \(f\) е биекция между \(\LN\) и \(\N\). Това, че \(f\) е функция от \(\LN\) в \(\N\) вземаме за очевидно.
-Очевидно е също, че \(f((0, 1)) = 0, f((0, 2)) = 1, f((1, 2)) = 2\) и така нататък.
+Очевидно е също, че \(f(0, 1) = 0, f(0, 2) = 1, f(1, 2) = 2\) и така нататък.
 \subsubsection*{\(f\) е инекция:}
 Нека \((i, j)\) и \((l, k)\) са различни елементи на \(\LN\).
 Тогава имаме два случая: \\
 \textbf{Случай 1 \(j \neq k\):} \\
 Нека без ограничение на общноста \(j < k\). Тогава
 \begin{align*}
-    f((i, j)) = \displaystyle\frac{(j - 1)j}{2} + i = \displaystyle\sum_{m = 1}^{j - 1} m  + i < \displaystyle\sum_{m = 1}^{j - 1} m + j = \\
-    \displaystyle\sum_{m = 1}^j m \leq \displaystyle\sum_{m = 1}^{k - 1} m = \displaystyle\frac{(k - 1)k}{2} \leq \displaystyle\frac{(k - 1)k}{2} + l = f((l, k)).
+    f(i, j) = \displaystyle\frac{(j - 1)j}{2} + i = \displaystyle\sum_{m = 1}^{j - 1} m  + i < \displaystyle\sum_{m = 1}^{j - 1} m + j = \\
+    \displaystyle\sum_{m = 1}^j m \leq \displaystyle\sum_{m = 1}^{k - 1} m = \displaystyle\frac{(k - 1)k}{2} \leq \displaystyle\frac{(k - 1)k}{2} + l = f(l, k).
 \end{align*}
-Така \(f((i, j)) < f((l, k))\) тоест \(f((i, j)) \neq f((l, k))\). \\
+Така \(f(i, j) < f(l, k)\) тоест \(f(i, j) \neq f(l, k)\). \\
 \textbf{Случай 2 \(j = k \; \land \; i \neq l\):} \\
 Нека \(n = j\), тогава
 \begin{align*}
-    f((i, j)) = f((i, n)) = \displaystyle\frac{(n - 1)n}{2} + i \neq \displaystyle\frac{(n - 1)n}{2} + l = f((l, n)) = f((l, k)).
+    f(i, j) = f(i, n) = \displaystyle\frac{(n - 1)n}{2} + i \neq \displaystyle\frac{(n - 1)n}{2} + l = f(l, n) = f(l, k).
 \end{align*}
-Тоест \(f((i, j)) \neq f((l, k))\). \\
+Тоест \(f(i, j) \neq f(l, k)\). \\
 Така в и двата случая доказахме, че е в сила импликацията
 \begin{align*}
-    (i, j) \neq (l, k) \longrightarrow f((i, j)) \neq f((l, k)).
+    (i, j) \neq (l, k) \longrightarrow f(i, j) \neq f(l, k).
 \end{align*}
 Понеже \((i, j)\) и \((l, k)\) бяха произволни е в сила
 \begin{align*}
-    \forall (i, j) \in \LN \; \forall (l, k) \in \LN \; (i, j) \neq (l, k) \longrightarrow f((i, j)) \neq f((l, k)).
+    \forall (i, j) \in \LN \; \forall (l, k) \in \LN \; (i, j) \neq (l, k) \longrightarrow f(i, j) \neq f(l, k).
 \end{align*}
 Тоест \(f\) е инекция.
 \subsubsection*{\(f\) е сюрекция:}
-Трябва да докажем \(\forall n \in \N \; \exists (i, j) \in \LN \; f((i, j)) = n\)
+Трябва да докажем \(\forall n \in \N \; \exists (i, j) \in \LN \; f(i, j) = n\)
 Доказателството ще извършим по индукция. \\
 \textbf{База:} \\
 \begin{align*}
-    f((0, 1)) = \displaystyle\frac{(1 - 1)1}{2} + 0 = 0 + 0 = 0.
+    f(0, 1) = \displaystyle\frac{(1 - 1)1}{2} + 0 = 0 + 0 = 0.
 \end{align*}
 \textbf{Индукционна хипотеза:} \\
-Допускаме, че е вярно \(\exists m \in \N \; \exists (i, j) \in \LN \; f((i, j)) = m\). \\
+Допускаме, че е вярно \(\exists m \in \N \; \exists (i, j) \in \LN \; f(i, j) = m\). \\
 \textbf{Индукционна стъпка:}
-Ще докажем за \(n = m + 1\). От индукционната хипотеза имаме \(\exists (i, j) \in \LN \; f((i, j)) = m\).
-Нека тогава \((i, j) \in \LN \; f((i, j)) = m\). Следователно \(f((i, j)) + 1 = m + 1 = n\).
+Ще докажем за \(n = m + 1\). От индукционната хипотеза имаме \(\exists (i, j) \in \LN \; f(i, j) = m\).
+Нека тогава \((i, j) \in \LN \; f(i, j) = m\). Следователно \(f(i, j) + 1 = m + 1 = n\).
 Има две възможности: \\
 \textbf{Случай 1 \(j = i + 1\):} \\
 Тогава
 \begin{align*}
-    n = f((i, j)) + 1 = f((i, i + 1)) + 1 = \left(\displaystyle\frac{(i + 1 - 1)(i + 1)}{2} + i\right) + 1 = \\
-    \displaystyle\frac{i(i + 1)}{2} + i + 1 = \displaystyle\frac{(i + 1)(i + 2)}{2} = \displaystyle\frac{j(j + 1)}{2} = \displaystyle\frac{(j + 1 - 1)(j + 1)}{2} + 0 = f((0, j + 1)).
+    n = f(i, j) + 1 = f(i, i + 1) + 1 = \left(\displaystyle\frac{(i + 1 - 1)(i + 1)}{2} + i\right) + 1 = \\
+    \displaystyle\frac{i(i + 1)}{2} + i + 1 = \displaystyle\frac{(i + 1)(i + 2)}{2} = \displaystyle\frac{j(j + 1)}{2} = \displaystyle\frac{(j + 1 - 1)(j + 1)}{2} + 0 = f(0, j + 1).
 \end{align*}
-Очевидно \((0, j + 1) \in \LN\) и \(f((0, j + 1)) = n\). \\
+Очевидно \((0, j + 1) \in \LN\) и \(f(0, j + 1) = n\). \\
 \textbf{Случай 2 \(i < j - 1\):} \\
 Тогава
 \begin{align*}
-    n = f((i, j)) + 1 = \left(\displaystyle\frac{(j - 1)j}{2} + i\right) + 1 = \displaystyle\frac{(j - 1)j}{2} + (i + 1) = f((i + 1, j)).
+    n = f(i, j) + 1 = \left(\displaystyle\frac{(j - 1)j}{2} + i\right) + 1 = \displaystyle\frac{(j - 1)j}{2} + (i + 1) = f(i + 1, j).
 \end{align*}
-Очевидно \(i + 1 < j - 1 + 1 = j\) и значи \((i + 1, j) \in \LN\) и \(f((i + 1, j)) = n\). \\
-Така и в двата случая доказахме \(\exists (l, k) \in \LN \; f((l, k)) = n = m + 1\). \\
+Очевидно \(i + 1 < j - 1 + 1 = j\) и значи \((i + 1, j) \in \LN\) и \(f(i + 1, j) = n\). \\
+Така и в двата случая доказахме \(\exists (l, k) \in \LN \; f(l, k) = n = m + 1\). \\
 \textbf{Заключение:}
-\(\forall n \in \N \; \exists (i, j) \in \LN \; f((i, j)) = n\). \\
+\(\forall n \in \N \; \exists (i, j) \in \LN \; f(i, j) = n\). \\
 Което искахме да докажем. Тоест \(f\) е сюрекция. \\
 Следователно \(f\) е биекция между \(\LN\) и \(\N\) от където \(\LN\) е изброимо безкрайно. \(\qed\)
 \section*{Дефиниция (Композиция).}
@@ -156,7 +156,7 @@ e \(1 + 2 + \dots + n - 1\), тоест \(\displaystyle\frac{(n - 1)n}{2}\) на
 \(\N\times\N\) е равномощно с \(\LN\).
 \subsection*{Идея за биекция:}
 Нека фиксираме произволно естествено число \(n\).
-Нека \((i, j) \in \N\times\N\) е такава, че \(i + j = n\).
+Нека наредената двойка \((i, j) \in \N\times\N\) е такава, че \(i + j = n\).
 Тогава е вярно, че \(i \in \{0, 1, \dots, n\}\) и \(j = n - i\).
 Следователно има \(n + 1\) на брой наредени двойки \((i, j) \in \N\times\N\),
 за които е вярно \(i + j = n\). От друга страна е вярно, че
@@ -165,33 +165,33 @@ e \(1 + 2 + \dots + n - 1\), тоест \(\displaystyle\frac{(n - 1)n}{2}\) на
 \subsection*{Доказателство:}
 Дефинираме функцията \(f := \{((i, j), (i, i + j + 1)) \; | \; (i, j) \in \N\times\N\}\)
 Ще докажем, че \(f\) е биекция между \(\N\times\N\) и \(\LN\). Това, че \(f\) е функция от \(\N\times\N\) в \(\LN\) вземаме за очевидно.
-Очевидно е също, че \(f((0, 0)) = (0, 1), f((0, 1)) = (0, 2), f((1, 1)) = (1, 2)\) и така нататък.
+Очевидно е също, че \(f(0, 0) = (0, 1), f(0, 1) = (0, 2), f(1, 1) = (1, 2)\) и така нататък.
 \subsubsection*{\(f\) е инекция:}
 Нека \((i, j) \in \N\times\N\) и \((l, k) \in \N\times\N\) и \((i, j) \neq (l, k)\).
 Тогава имаме два случая: \\
 \textbf{Случай 1 \(i \neq l\):} \\
-Тогава \(f((i, j)) = (i, i + j + 1) \neq (l, l + k + 1) = f((l, k))\). \\
+Тогава \(f(i, j) = (i, i + j + 1) \neq (l, l + k + 1) = f(l, k)\). \\
 \textbf{Случай 2 \(i = l \; \land \; j \neq k\):} \\
 Тогава e вярно \(i + j \neq i + k = l + k\) и значи \(i + j + 1 \neq l + k + 1\).
-Следователно \(f((i, j)) = (i, i + j + 1) \neq (i, i + k + 1) = (l, l + k + 1) = f((l, k))\). \\
+Следователно \(f(i, j) = (i, i + j + 1) \neq (i, i + k + 1) = (l, l + k + 1) = f(l, k)\). \\
 \textbf{Заключение:}
-Тогава е в сила \((i, j) \neq (l, k) \longrightarrow f((i, j)) \neq f((l, k))\). \\
-Тогава \(\forall (i, j) \in \N\times\N \; \forall (l, k) \in \N\times\N \; (i, j) \neq (l, k) \longrightarrow f((i, j)) \neq f((l, k))\) \\
+Тогава е в сила \((i, j) \neq (l, k) \longrightarrow f(i, j) \neq f(l, k)\). \\
+Тогава \(\forall (i, j) \in \N\times\N \; \forall (l, k) \in \N\times\N \; (i, j) \neq (l, k) \longrightarrow f(i, j) \neq f(l, k)\) \\
 следователно \(f\) е инекция.
 \subsubsection*{\(f\) е сюрекция:}
 Нека \((i, k) \in \LN\) и нека \(j = k - i - 1\).
 \(k > i\) тогава \(k - i > 0\) и значи \(k - i \geq 1\)
 тогава \(j = k - i - 1 \geq 0\) и \((i, k) \in \N\times\N\)
 следователно \(j \in \N\).
-\(f((i, j)) = (i, i + j + 1) = (i, i + (k - i - 1) + 1) = (i, k)\).
-Тоест \((i, j) \in \N\times\N\) и \(f((i, j)) = (i, k)\).
-Тогава \(\forall (i, k) \in \LN \; \exists (l, j) \in \N\times\N \; f((l, j)) = (i, k)\)
+\(f(i, j) = (i, i + j + 1) = (i, i + (k - i - 1) + 1) = (i, k)\).
+Тоест \((i, j) \in \N\times\N\) и \(f(i, j) = (i, k)\).
+Тогава \(\forall (i, k) \in \LN \; \exists (l, j) \in \N\times\N \; f(l, j) = (i, k)\)
 следователно \(f\) е сюрекция.
 \subsubsection*{Заключение:}
 \(f\) е инекция и \(f\) е сюрекция следователно \(f\) е биекции. \(\qed\)
 \section*{Теорема 1.}
 \(\N\times\N\) e изброимо безкрайнo.
-\section*{Доказателство:}
+\subsection*{Доказателство:}
 От \textbf{Лема 4.} \(\N\times\N\) е равномощно с \(\LN\).
 Следователно съществува биекция между \(\N\times\N\) и \(\LN\).
 Нека тогава \(g\) е една биекция между \(\N\times\N\) и \(\LN\).
@@ -276,22 +276,22 @@ e \(1 + 2 + \dots + n - 1\), тоест \(\displaystyle\frac{(n - 1)n}{2}\) на
 Тогава на наредената двойка \((a, b) \in J_n \times \N\) ще съпоставяме естественото число \(bn + a\). 
 \subsection*{Доказателство:}
 Дефинираме следната функция \(f := \{((i, j), jn + i) \; | \; (i, j) \in J_n \times \N\}\).
-Очевидно \(f((0, 0)) = 0, f((1, 0)) = 1\) и \(f((0, 1)) = n\)
+Очевидно \(f(0, 0) = 0, f(1, 0) = 1\) и \(f(0, 1) = n\)
 и очевидно \(f\) е фунцкия от \(J_n \times \N\) в \(\N\). Ще покажем, че \(f\) е биекция.
 \subsubsection*{\(f\) е инекция:}
-Нека \((i, j) \in J_n \times \N\) и \((l, k) \in J_n \times \N\) и нека \(f((i, j)) = f((l, k))\),
+Нека \((i, j) \in J_n \times \N\) и \((l, k) \in J_n \times \N\) и нека \(f(i, j) = f(l, k)\),
 Тогава \(jn + i = kn + l\) и значи \(i - l = (k - j)n\). \(i \in J_n\) и \(l \in J_n\)
 следователно \(0 \leq |i - l| < n\). Понеже \(n\) дели \((k - j)n\), то \(n\) дели и \(i - l\).
 Следователно \(i - l = 0\), тоест \(i = l\) от където \(jn = kn\) и значи \(j = k\).
 Следователно \((i, j) = (l, k)\).
-Тоест получихме, че е вярно \(\forall (i, j) \in J_n \times \N \; \forall (l, k) \in J_n \times \N \; f((i, j)) = f((l, k)) \longrightarrow (i, j) = (l, k)\),
+Тоест получихме, че е вярно \(\forall (i, j) \in J_n \times \N \; \forall (l, k) \in J_n \times \N \; f(i, j) = f(l, k) \longrightarrow (i, j) = (l, k)\),
 което е контрапозитивното на \(f\) е инекция.
 \subsubsection*{\(f\) е сюрекция:}
 Нека \(m \in \N\). \(n > 0\) тогава прилагаме теоремата за деление с частно и остатък за \(m\) и \(n\)
 и получаваме \(\exists! q \in \N \; \exists! r \in \N \; m = qn + r \; \land \; r \in J_n\).
 Нека тогава \(q \in \N\) и \(r \in \N\) и \(m = qn + r \; \land \; r \in J_n\).
-Тогава очевидно \(m = qn + r = f((r, q))\) и \((r, q) \in J_n \times \N\).
-Следователно е вярно \(\forall m \in \N \; \exists (i, j) \in J_n \times \N \; f((i, j)) = m\).
+Тогава очевидно \(m = qn + r = f(r, q)\) и \((r, q) \in J_n \times \N\).
+Следователно е вярно \(\forall m \in \N \; \exists (i, j) \in J_n \times \N \; f(i, j) = m\).
 Тоест \(f\) е сюрекция.
 \subsubsection*{Заключение:}
 \(f\) е функция от \(J_n \times \N\)  в \(\N\),  \(f\) е инекция и \(f\) е сюрекция
@@ -304,12 +304,12 @@ e \(1 + 2 + \dots + n - 1\), тоест \(\displaystyle\frac{(n - 1)n}{2}\) на
 Дефинираме функцията \(f := \{((a, b), (b, a)) \; | \; (a, b) \in A \times B\}\)
 \subsubsection*{\(f\) е инекция:}
 Нека \((a_1, b_1) \in A \times B\) и \((a_2, b_2) \in A \times B\) и \((a_1, b_1) \neq (a_2, b_2)\).
-Тогава очевидно \((b_1, a_1) \neq (b_2, a_2)\), тоест \(f((a_1, b_1)) \neq f((a_2, b_2))\).
-Тогава е вярно \(\forall (a_1, b_1) \in A \times B \; \forall (a_2, b_2) \in A \times B \; (a_1, b_1) \neq (a_2, b_2) \longrightarrow f((a_1, b_1)) \neq f((a_2, b_2)\).
+Тогава очевидно \((b_1, a_1) \neq (b_2, a_2)\), тоест \(f(a_1, b_1) \neq f(a_2, b_2)\).
+Тогава е вярно \(\forall (a_1, b_1) \in A \times B \; \forall (a_2, b_2) \in A \times B \; (a_1, b_1) \neq (a_2, b_2) \longrightarrow f(a_1, b_1) \neq f(a_2, b_2)\).
 Тоест \(f\) е инекция.
 \subsubsection*{\(f\) е сюрекция:}
-Нека \((b, a) \in B \times A\) тогава \(f((a, b)) = (b, a)\).
-Тоест вярно е \(\forall (b, a) \in B \times A \; \exists (a', b') \in A \times B \; f((a, b)) = (b, a)\).
+Нека \((b, a) \in B \times A\) тогава \(f(a, b) = (b, a)\).
+Тоест вярно е \(\forall (b, a) \in B \times A \; \exists (a', b') \in A \times B \; f(a, b) = (b, a)\).
 Значи \(f\) е сюрекция.
 \subsubsection*{Заключение:}
 \(f\) е инекция и \(f\) е сюрекция следователно \(f\) е биекция. \(\qed\)
@@ -320,18 +320,18 @@ e \(1 + 2 + \dots + n - 1\), тоест \(\displaystyle\frac{(n - 1)n}{2}\) на
 \subsection*{Доказателство:}
 Дефинираме функцията \(h := \{((a, b), (f(a), g(b))) \; | \; (a, b) \in A \times B\}\)
 \subsubsection*{\(h\) е инекция:}
-Нека \((a_1, b_1) \in A \times B\) и \((a_2, b_2) \in A \times B\) и \(h((a_1, b_1)) = h((a_2, b_2))\).
+Нека \((a_1, b_1) \in A \times B\) и \((a_2, b_2) \in A \times B\) и \(h(a_1, b_1) = h(a_2, b_2)\).
 Tогава \((f(a_1), g(b_1)) = (f(a_2), g(b_2))\) понеже \(f\) и \(g\) са биекции, в частност инекции.
 То \(a_1 = a_2\) и \(b_1 = b_2\) и значи \((a_1, b_1) = (a_2, b_2)\). Тогава е вярно \\
-\(\forall (a_1, b_1) \in A \times B \; \forall (a_2, b_2) \in A \times B \; h((a_1, b_1)) = h(a_2, b_2)) \longrightarrow (a_1, b_1) = (a_2, b_2)\).
+\(\forall (a_1, b_1) \in A \times B \; \forall (a_2, b_2) \in A \times B \; h(a_1, b_1) = h(a_2, b_2) \longrightarrow (a_1, b_1) = (a_2, b_2)\).
 Тоест \(h\) е инекция.
 \subsubsection*{\(h\) е сюрекция:}
 Нека \((c, d) \in C \times D\). \(f\) e биекция, в частност сюрекция.
 Тогава \(\exists a \in A \; f(a) = c\). Нека тогава \(a \in A\) и \(f(a) = c\).
 \(g\) e биекция, в частност сюрекция. Тогава \\
 \(\exists b \in B \; g(b) = d\). Нека тогава \(b \in B\) и \(g(b) = d\).
-Така \(h((a, b)) = (f(a), g(b)) = (c, d)\).
-Следователно е вярно \(\forall (c, d) \in C \times D \; \exists (a, b) \in A \times B \; h((a, b)) = (c, d)\).
+Така \(h(a, b) = (f(a), g(b)) = (c, d)\).
+Следователно е вярно \(\forall (c, d) \in C \times D \; \exists (a, b) \in A \times B \; h(a, b) = (c, d)\).
 Тоест \(h\) е сюрекция.
 \subsubsection*{Заключение:}
 \(h\) е инекция и \(h\) е сюрекция следователно \(h\) е биекция. \(\qed\)
@@ -347,7 +347,7 @@ Tогава \((f(a_1), g(b_1)) = (f(a_2), g(b_2))\) понеже \(f\) и \(g\) 
 \subsubsection*{\(f\) е инекция:}
 Нека \((a_{11}, a_{21}, \dots, a_{n1}) \in A_1 \times A_2 \times \dots \times A_n\) \\
 и \((a_{12}, a_{22}, \dots, a_{n2}) \in A_1 \times A_2 \times \dots \times A_n\)
-и нека \(f((a_{11}, a_{21}, \dots, a_{n1})) = f((a_{12}, a_{22}, \dots, a_{n2}))\). \\
+и нека \(f(a_{11}, a_{21}, \dots, a_{n1}) = f(a_{12}, a_{22}, \dots, a_{n2})\). \\
 Тогава \((a_{11}, (a_{21}, \dots, a_{n1})) = (a_{12}, (a_{22}, \dots, a_{n2}))\)
 следователно \(a_{11} = a_{12}\) и \((a_{21}, \dots, a_{n1}) = (a_{22}, \dots, a_{n2})\).
 Значи \(\forall i \in \{1, 2, \dots, n\} \; a_{i1} = a_{i2}\),
@@ -357,7 +357,7 @@ Tогава \((f(a_1), g(b_1)) = (f(a_2), g(b_2))\) понеже \(f\) и \(g\) 
 Следователно \(f\) е инекция.
 \subsubsection*{\(f\) е сюрекция:}
 Нека \((a_1, (a_2, \dots, a_n)) \in A_1 \times (A_2 \times \dots \times A_n)\).
-Очевидно \(f((a_1, a_2, \dots, a_n)) = (a_1, (a_2, \dots, a_n))\). Тогава е в сила \\
+Очевидно \(f(a_1, a_2, \dots, a_n) = (a_1, (a_2, \dots, a_n))\). Тогава е в сила \\
 \(\forall y \in A_1 \times (A_2 \times \dots \times A_n) \; \exists x \in A_1 \times A_2 \times \dots \times A_n \; f(x) = y\).
 Следователно \(f\) е сюрекция.
 \subsubsection*{Заключение:}
@@ -374,7 +374,7 @@ Tогава \((f(a_1), g(b_1)) = (f(a_2), g(b_2))\) понеже \(f\) и \(g\) 
 \subsubsection*{\(f\) е инекция:}
 Нека \((a_{11}, a_{21}, \dots, a_{n1}) \in A_1 \times A_2 \times \dots \times A_n\) \\
 и \((a_{12}, a_{22}, \dots, a_{n2}) \in A_1 \times A_2 \times \dots \times A_n\)
-и нека \(f((a_{11}, a_{21}, \dots, a_{n1})) = f((a_{12}, a_{22}, \dots, a_{n2}))\). \\
+и нека \(f(a_{11}, a_{21}, \dots, a_{n1}) = f(a_{12}, a_{22}, \dots, a_{n2})\). \\
 Тогава \(((a_{11}, \dots, a_{n - 1,1}), a_{n1}) = ((a_{12}, \dots, a_{n - 1,2}), a_{n2})\)
 следователно \((a_{11}, \dots, a_{n - 1,1}) = (a_{12}, \dots, a_{n - 1,2})\) и \(a_{n1} = a_{n2}\).
 Значи \(\forall i \in \{1, 2, \dots, n\} \; a_{i1} = a_{i2}\),
@@ -384,7 +384,7 @@ Tогава \((f(a_1), g(b_1)) = (f(a_2), g(b_2))\) понеже \(f\) и \(g\) 
 Следователно \(f\) е инекция.
 \subsubsection*{\(f\) е сюрекция:}
 Нека \(((a_1, \dots, a_{n - 1}), a_n) \in (A_1 \times \dots \times A_{n - 1}) \times A_n\).
-Очевидно \(f((a_1, a_2, \dots, a_n)) = ((a_1, \dots, a_{n - 1}), a_n)\). Тогава е в сила \\
+Очевидно \(f(a_1, a_2, \dots, a_n) = ((a_1, \dots, a_{n - 1}), a_n)\). Тогава е в сила \\
 \(\forall y \in (A_1 \times \dots \times A_{n - 1}) \times A_n \; \exists x \in A_1 \times A_2 \times \dots \times A_n \; f(x) = y\).
 Следователно \(f\) е сюрекция.
 \subsubsection*{Заключение:}
@@ -456,59 +456,44 @@ Tогава \((f(a_1), g(b_1)) = (f(a_2), g(b_2))\) понеже \(f\) и \(g\) 
 и за всеки \(m\) непразни подмножества \(A_1, \dots A_m\)
 поне едно, от които е изброимо безкрайнo е вярно,
 че \(A_1 \times \dots \times A_m\) е изброимо безкрайнo. 
-\subsubsection*{Индукционно стъпка:}
+\subsubsection*{Индукционна стъпка:}
 Нека \(A_1, \dots A_m, A_{m + 1}\) са непразни подмножества
 и поне едно от тях е изброимо безкрайнo.
 Тогава са възможни два случая за \(A_1\). \\
 \hfill \\
 \medskip
 \textbf{Случай 1 \(A_1\) е изброимо безкрайнo:} \\
-Тогава от индукционната хипотеза \(A_1 \times \dots \times A_m\)
-е изброимо безкрайнo и следователно съществува биекция
-между \(A_1 \times \dots \times A_m\) и \(\N\).
-Нека \(f \; : \; A_1 \times \dots \times A_m \to \N\) е биекция.
-От \textbf{Лема 9.} съществува биекция \(h\)
-от \(A_1 \times \dots \times A_m \times A_{m + 1}\) \\
-в \((A_1 \times \dots \times A_m) \times A_{m + 1}\).
+Тогава от индукционната хипотеза \(A_1 \times \dots \times A_m\) е изброимо безкрайнo.
+От \textbf{Лема 9.} съществува биекция
+от \(A_1 \times \dots \times A_m \times A_{m + 1}\) в \((A_1 \times \dots \times A_m) \times A_{m + 1}\). \\
 Нека \(g \; : \; A_1 \times \dots \times A_m \times A_{m + 1} \to (A_1 \times \dots \times A_m) \times A_{m + 1}\)
 e биекция.
-От \textbf{Лема 7.} за \(f\) и \(id_{A_{m + 1}}\) съществува биекция между \\
-\((A_1 \times \dots \times A_m) \times A_{m + 1}\) и \(\N \times A_{m + 1}\).
-Нека \(h \; : \; (A_1 \times \dots \times A_m) \times A_{m + 1} \to \N \times A_{m + 1}\) е биекция.
-Тогава от \textbf{Лема 3.} \(h \circ g\) е биекция
-от \(A_1 \times \dots \times A_m \times A_{m + 1}\) в \(\N \times A_{m + 1}\).
-От базата \(\N \times A_{m + 1}\) e изброимо безкрайнo.
-Тогава съществува биекция от \(\N \times A_{m + 1}\) в \(\N\).
-Нека \(p \; : \; \N \times A_{m + 1} \to \N\) е биекция.
-Тогава от \textbf{Лема 3.} \(p \circ (h \circ g)\) е биекция
+От базата \((A_1 \times \dots \times A_m) \times A_{m + 1}\) e изброимо безкрайнo.
+Тогава съществува биекция от \((A_1 \times \dots \times A_m) \times A_{m + 1}\) в \(\N\).
+Нека \(p \; : \; (A_1 \times \dots \times A_m) \times A_{m + 1} \to \N\) е биекция.
+Тогава от \textbf{Лема 3.} \(p \circ g\) е биекция
 от \(A_1 \times \dots \times A_m \times A_{m + 1}\) в \(\N\).
 Следователно \(A_1 \times \dots \times A_m \times A_{m + 1}\) е изброимо безкрайнo. \\
 \hfill \\
 \medskip
 \textbf{Случай 2 \(A_1\) е крайно:} \\
 Тогава някое от \(A_2, \dots, A_{m + 1}\) е изброимо безкрайнo.
-Тогава от индукционната хипотеза \(A_2 \times \dots \times A_{m + 1}\)
-е изброимо безкрайнo и следователно съществува биекция
-между \(A_2 \times \dots \times A_{m + 1}\) и \(\N\).
-Нека \(f \; : \; A_2 \times \dots \times A_{m + 1} \to \N\) е биекция.
-От \textbf{Лема 8.} съществува биекция \(h\)
+Тогава от индукционната хипотеза \(A_2 \times \dots \times A_{m + 1}\) е изброимо безкрайнo.
+От \textbf{Лема 8.} съществува биекция
 от \(A_1 \times A_2 \times \dots \times A_m \times A_{m + 1}\)
 в \(A_1 \times (A_2 \dots \times A_m \times A_{m + 1})\).
 Нека \(g \; : \; A_1 \times \dots \times A_m \times A_{m + 1} \to A_1 \times (A_2 \times \dots \times A_{m + 1})\)
 e биекция.
-От \textbf{Лема 7.} за \(id_{A_1}\) и \(f\) съществува биекция между
-\(A_1 \times (A_2 \dots \times A_m \times A_{m + 1})\) и \(A_1 \times \N\).
-Нека \(h \; : \; A_1 \times (A_2 \dots \times A_m \times A_{m + 1}) \to \N \times A_{m + 1}\) е биекция.
-Тогава от \textbf{Лема 3.} \(h \circ g\) е биекция
-от \(A_1 \times \dots \times A_m \times A_{m + 1}\) в \(A_1 \times \N\).
-От базата \(A_1 \times \N\) e изброимо безкрайнo.
-Тогава съществува биекция от \(A_1 \times \N\) в \(\N\).
-Нека \(p \; : \; A_1 \times \N \to \N\) е биекция.
-Тогава от \textbf{Лема 3.} \(p \circ (h \circ g)\) е биекция
+От базата \(A_1 \times (A_2 \times \dots \times A_{m + 1})\) e изброимо безкрайнo.
+Тогава съществува биекция от \(A_1 \times (A_2 \times \dots \times A_{m + 1})\) в \(\N\).
+Нека \(p \; : \; A_1 \times (A_2 \times \dots \times A_{m + 1}) \to \N\) е биекция.
+Тогава от \textbf{Лема 3.} \(p \circ g\) е биекция
 от \(A_1 \times \dots \times A_m \times A_{m + 1}\) в \(\N\).
 Следователно \(A_1 \times \dots \times A_m \times A_{m + 1}\) е изброимо безкрайнo.
 \subsubsection*{Заключение:}
 За всяко \(n \in \N\), такова че \(n > 0\) и за всеки \(A_1, \dots, A_n\) непразни множества
 поне едно, от които е изброимо безкрайнo.
 Множеството \(A_1 \times \dots \times A_n\) е изброимо безкрайнo. \(\qed\)
+\subsubsection*{Следствие:}
+За всяко \(n \in \N\) \(\N^{n + 1}\), \(\Z^{n + 1}\), \(\LN^{n + 1}\) и \((\N \times \N)^{n + 1}\) са изброимо безкрайни.
 \end{document}
