@@ -1,0 +1,113 @@
+\documentclass{article}[12pt]
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+
+\newcommand{\Lang}{\mathcal{L}}
+
+\setlength{\parindent}{0mm}
+
+\title{Задачата (с лека модификация), която казах че ще разпиша}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+
+\section*{Да се намери алгебричния вид на числото}
+\begin{align*}
+\displaystyle{\left(\frac{8 - 8\sqrt{3}i}{-4\sqrt{3} + 4i}\right)^{463}}
+\end{align*}
+
+\subsection*{Решение:}
+
+Нека \(z = \displaystyle{\frac{8 - 8\sqrt{3}i}{-4\sqrt{3} + 4i}}\). Тогава
+
+\vspace{0.5cm}
+
+\(z = \displaystyle{\frac{8(1 - \sqrt{3}i)}{4(-\sqrt{3} + i)}}
+= 2.\displaystyle{\frac{1 - \sqrt{3}i}{-\sqrt{3} + i}}
+= 2.\displaystyle{\frac{(1 - \sqrt{3}i)(-\sqrt{3} - i)}{(-\sqrt{3} + i)(-\sqrt{3} - i)}}
+= \\ 2.\displaystyle{\frac{-\sqrt{3} - i + 3i - \sqrt{3}}{3 - i^2}}
+=  2.\displaystyle{\frac{-2\sqrt{3} + 2i}{4}} = -\sqrt{3} + i \)
+
+\vspace{0.5cm}
+
+Търсим тригонометричния вид на \(z\):
+
+\vspace{0.5cm}
+
+\begin{align*}
+Re(z) = -\sqrt{3} < 0\\
+Im(z) = 1 \geq 0 \\
+|z| = \sqrt{3 + 1} = 2 \\
+y = Arg(z) \\
+\sin(x) = |\sin(y)| = \left|\displaystyle{\frac{Im(z)}{|z|}}\right| = \left|\displaystyle{\frac{1}{2}}\right| =  \frac{1}{2} \\
+x \in \left[0, \displaystyle{\frac{\pi}{2}}\right) \\
+x = \displaystyle{\frac{\pi}{6}} \\
+y = \pi - x = \pi - \displaystyle{\frac{\pi}{6}} = \displaystyle{\frac{5\pi}{6}}
+\end{align*}
+
+Така значи \(z = |z|(\cos(Arg(z)) + i sin(Arg(z)))
+= 2\left(\cos\left(\displaystyle{\frac{5\pi}{6}}\right) + i\sin\left(\displaystyle{\frac{5\pi}{6}}\right)\right)\).
+
+\vspace{0.5cm}
+
+От първата формула на Моавър, знаем че
+
+\begin{align*}
+z^n = |z|^n(\cos(n.Arg(z)) + i sin(n.Arg(z))) \text{ за \(n \in \mathbb{N}^+\)}
+\end{align*}
+
+Нека сега разгледаме частния случай когато \(Arg(z) = \displaystyle{\frac{p}{q}}\pi\). \\
+Тоест \(\displaystyle{\frac{p}{q}} \in \mathbb{Q} \cap [0, 2)\). Така \(n.Arg(z) = n\displaystyle{\frac{p}{q}}\pi \). \\
+Сега делим с частно и остатък \(np\) на \(2q\). \\
+Тоест \(np = 2qk + r\) и \(k \in \mathbb{Z}\) и \(r \in \mathbb{Z}\) и \(0 \leq r < 2q\). \\
+Така \(n.Arg(z) = n\displaystyle{\frac{p}{q}}\pi = (2qk + r)\displaystyle{\frac{\pi}{q}} = 2k\pi + \displaystyle{\frac{r}{q}}\pi\). \\
+Също така имаме \(0 \leq r < 2q\) или \(0 \leq \displaystyle{\frac{r}{q}}\pi < 2\pi\). Тоест \(\displaystyle{\frac{r}{q}}\pi \in [0, 2\pi) \). \\
+Следователно в този случай \(z^n = |z|^n\left(\cos\left(\displaystyle{\frac{r}{q}}\pi\right) + i \sin\left(\displaystyle{\frac{r}{q}}\pi\right)\right)\).
+
+\vspace{0.5cm}
+
+В задачата, която решаваме
+\begin{align*}
+n = 463 \\
+p = 5 \\
+q = 6
+\end{align*}
+
+\(np =  463.5 = 400.5 + 50.5 + 13.5 = 2000 + 250 + 65 = 2315 = \\
+2400 - 85 = 2400 - 60 - 25 = 12.200 - 12.5 - 12.2 - 1 = 12(200 - 7) - 1 = \\
+12.193 - 1 = 12.192 + 12 - 1 = 12.192 + 11\). Значи 
+
+\begin{align*}
+k = 192 \\
+r = 11
+\end{align*}
+
+Следователно \(z^{463} = 2^{463}\left(\cos\left(\displaystyle{\frac{11\pi}{6}}\right) + i\sin\left(\displaystyle{\frac{11\pi}{6}}\right)\right)\).
+Превръщаме в алгебричен вид.
+
+\vspace{0.5cm}
+
+\begin{align*}
+\displaystyle{\frac{11\pi}{6}} = 2\pi -  \displaystyle{\frac{\pi}{6}}
+\end{align*}
+
+Числото се намира в четвърти квадрант в комплексната равнина.
+Тогава \(Re(z^{463}) \geq 0\) и \(Im(z^{463}) < 0\). И значи
+
+\(z^{463} = 2^{463}\left(\cos\left(\displaystyle{\frac{\pi}{6}}\right) - i\sin\left(\displaystyle{\frac{\pi}{6}}\right)\right) =
+2^{463}\left(\displaystyle{\frac{\sqrt{3}}{2}} + i\left(-\displaystyle{\frac{1}{2}}\right)\right) = 2^{462}(\sqrt{3} - i)\).
+
+\subsection*{Отговор:}
+
+\begin{align*}
+2^{462}\sqrt{3} + i(-2^{462}).
+\end{align*}
+
+\end{document}
