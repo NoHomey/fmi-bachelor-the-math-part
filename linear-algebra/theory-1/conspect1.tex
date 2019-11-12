@@ -47,7 +47,7 @@
     Re\,z + Im\,z = 1 + (-1) = 1 - 1 = 0\)
     \section{Формули на Моавър}
     \subsection{\(z^n\)}
-    \(z^n = |z|^n(\cos{nArg\,z} + \imath\sin{nArg\,z})\)
+    \(z^n = |z|^n(\cos{\left(nArg\,z\right)} + \imath\sin{\left(nArg\,z\right)})\)
     \subsection{\(\sqrt[n]z\)}
     \(\sqrt[n]z\ = \sqrt[n]{|z|}(\cos{\frac{Arg\,z + 2k\pi}{n}} + \imath\sin{\frac{Arg\,z + 2k\pi}{n}}) \quad k = 0, \, 1, \, \dots, \, n - 1\)
     \section{Системи линейни уравнения}
@@ -63,27 +63,30 @@
     \subsection{Релации}
     \(R \, \subseteq \, A \times A;\)
     \subsubsection{симетрична релация}
-    \(\forall x, \; y \in A \; (x, \; y) \in R \implies (y, \; x) \in R \)
+    \((\forall x \in A) \; (\forall y \in A) \; [\; (x, \; y) \in R \implies (y, \; x) \in R \; ]\)
     \subsubsection{транзитивна релация}
-    \(\forall x, \; y, \; z \in A \; (x, \; y), \; (y, \; z) \in R \implies (x, \; z) \in R\)
+    \((\forall x \in A) \; (\forall y \in A) \; (\forall \; z \in A) \; [\; (x, \; y), \; (y, \; z) \in R \implies (x, \; z) \in R \;]\)
     \subsubsection{рефлексивна релация}
-    \(\forall x \in A \; (x, \; x) \in R\)
+    \((\forall x \in A) \; [\; (x, \; x) \in R \;]\)
     \subsection{Изображения}
     \(f \, : \, X \to Y\)\\
     \subsubsection{инективно изображение}
-    \(\forall x_1, \, x_2 \in X \; x_1 \neq x_2 \implies f(x_1) \neq f(x_2)\)
+    \((\forall x_1 \in X) \; (\forall x_2 \in X) \; [\; x_1 \neq x_2 \implies f(x_1) \neq f(x_2) \;]\)
     \subsubsection{сюрективно изображение}
-    \(\forall y \in Y \; \exists x \in X \; : \; y = f(x)\)
+    \((\forall y \in Y) \; (\exists x \in X) \; [\; y = f(x) \;]\)
     \subsubsection{биекция}
-    Биекция наричаме изображение, което е едновременно инкеция и сюрекция.
+    Биекция наричаме изображение, което е едновременно инкеция и сюрекция. Тоест
+    \(f \, : \, X \to Y\)\\
+    \((\forall x_1 \in X) \; (\forall x_2 \in X) \; [\; x_1 \neq x_2 \implies f(x_1) \neq f(x_2) \;]\)\\
+    \((\forall y \in Y) \; (\exists x \in X) \; [\; y = f(x) \;]\)
     \section{Бинарни операции}
     \(*: M  \times M \to M\)
     \subsection{асоциативност}
-    \(\forall a, \, b, \, c \in M \; (a \, * \, b) \, * \, c = a \, * \, (b \, * \, c) = a \, * \, b \, * \, c\)
+    \((\forall a \in M) \; (\forall b \in M) \; (\forall c \in M ) \; [\; (a \, * \, b) \, * \, c = a \, * \, (b \, * \, c) = a \, * \, b \, * \, c \;]\)
     \subsection{комутативност}
-    \(\forall a, \, b \in M \; a \, * \, b = b \, * \, a\)
+    \((\forall a \in M) \; (\forall b \in M) \; [\; a \, * \, b = b \, * \, a\;]\)
     \subsection{неутрален елемент}
-    \(\exists \, \theta \in M \; : \; \forall x \in M \; x \, * \, \theta = \theta \, * \, x = x\)
+    \((\exists \, \theta \in M) \; (\forall x \in M) \; [\; x \, * \, \theta = \theta \, * \, x = x \;]\)
     \section{Матрици}
     \subsection{\(A ^ t\)}
     \(A = (a_{ij}) \x{m}{n} \in M\x{m}{n}(F) \; (i = 1, \, 2, \, \dots, \, m, \quad j = 1, \, 2, \, \dots, \, n) \\\\
@@ -97,7 +100,7 @@
     \lambda A = C  = (c_{ij}) \x{m}{n} \in M\x{m}{n}(F) \\\\
     c_{ij} = \lambda a_{ij} \; (i = 1, \, 2, \, \dots, \, m, \quad j = 1, \, 2, \, \dots, \, n)\)
     \section{Вектори в линейно пространство}
-    F - числово поле, V - линейно пространство над F
+    Нека (F, +, .) е числово поле. Нека (V, +, .) е линейно пространство над (F, +, .).
     \subsection{нулевият вектор е единствен}
     Нека \(\theta' \, \text{и} \, \theta''\) са нулеви вектори от V. Тогава:\\\\
     \(\theta' + \theta'' = \theta''\) (защото \(\theta'\) е нулев вектор)\\\\
@@ -128,124 +131,132 @@
     \subsection{\(-1a = -a\)}
     \(a + (-1)a = 1.a + (-1)a = (1 + -1)a = 0a = \theta \implies -a = (-1)a\)
     \section{Линейно пространство, линейна комбинация и линейна зависимост/независимост}
-    F - числово поле, V - линейно пространство над F
+    Нека (F, +, .) е числово поле. Нека (V, +, .) е линейно пространство над (F, +, .).
     \subsection{линейна комбинация}
-    \(n \in \mathbb{N} \cup \{\infty\}\\\\
-    \lambda_1, \, \lambda_2, \, \dots, \, \lambda_n \in F \\\\
-    a_1, \, a_2, \, \dots, \, a_n \in V \\\\
-    \displaystyle\sum_{i=1}^{n} \lambda_i a_i \in V\) - линейна комбинация
+    Нека \(n \in \mathbb{N}\).\\\\
+    Нека \(a_1, \, a_2, \, \dots, \, a_n \in V\). \\\\
+    Нека \(\lambda_1, \, \lambda_2, \, \dots, \, \lambda_n \in F\).\\\\
+    Тогава \(\displaystyle\sum_{i=1}^{n} \lambda_i a_i \in V\) е линейна комбинация
+    на  \(a_1, \, a_2, \, \dots, \, a_n \in V\)
+    с коефициенти \(\lambda_1, \, \lambda_2, \, \dots, \, \lambda_n\).
     \subsection{линейно подпространство}
-    \(W \subseteq V\\\\
-    V \ni \theta \in W \\\\ 
-    \forall w_1, w_2 \in W \quad w_1 + w_2 \in W \\\\
-    \forall \lambda \in F, \, \forall w \in W \quad \lambda w \in W\)
+    Нека \(\emptyset \neq W \subseteq V\).\\\\
+    \(W\) е подпространство на \(V\), ако
+    \((\forall w_1 \in W) \; (\forall w_2 \in W) \; [\; w_1 + w_2 \in W  \;]\\\\
+    (\forall \lambda \in F) \; (\forall w \in W) \; [\; \lambda . w \in W  \;]\)
     \subsection{линейна обвивка}
-    Нека \(\emptyset \neq A \subseteq V\\\\
-    l(A) = \displaystyle\bigcap_{A \subseteq W \leq V} W\) \\\\
-    Алтернативна дефиниция: \\\\
-    \(l(A) = \left\{ \displaystyle\sum_{i = 1}^{|A|} \lambda_i a_i \; | \; \forall i \in \mathbb{N} : \; i \leq |A| \; \lambda_i \in F, \; a_i \in A \right \}\)
+    Нека \(\emptyset \neq A \subseteq V\)\\\\
+    Тогава \(l(A) = \displaystyle\bigcap_{A \subseteq W \leq V} W\) е линейната обвивка на множеството \(A\).
     \subsection{линейна зависимост}
-    \(n \in \mathbb{N}\\\\
-    a_1, \, a_2, \, \dots, \, a_n \in V\)\\\\
-    Ако \(\exists \lambda_1, \, \lambda_2, \, \dots, \, \lambda_n \in F \; \displaystyle\sum_{i=1}^{n} \lambda_i a_i = \theta \; : \; (\lambda_1, \, \lambda_2, \, \dots, \, \lambda_n) \neq (0, \, 0, \, \dots, \, 0)\). \\\\
-    Тогава \(a_1, \, a_2, \, \dots, \, a_n\) са ЛЗ.
+    Нека \(n \in \mathbb{N}\).\\\\
+    Нека \(a_1, \, a_2, \, \dots, \, a_n \in V\). Векторите \(a_1, \, a_2, \, \dots, \, a_n\)  са линейно зависими, ако \\\\
+    \((\exists \lambda_1 \in F) \; (\exists \lambda_2 \in F) \; \dots \; (\exists \lambda_n \in F) \; \left[\; \displaystyle\sum_{i=1}^{n} \lambda_i a_i = \theta \; \land \; (\lambda_1, \, \lambda_2, \, \dots, \, \lambda_n) \neq (0, \, 0, \, \dots, \, 0) \; \right ]\).
     \subsection{линейна независимост}
-    \(a_1, \, a_2, \, \dots, \, a_n \in V\)\\\\
-    Ако \(\forall \lambda_1, \, \lambda_2, \, \dots, \, \lambda_n \in F \; \displaystyle\sum_{i=1}^{n} \lambda_i a_i = \theta \implies (\lambda_1, \, \lambda_2, \, \dots, \, \lambda_n) = (0, \, 0, \, \dots, \, 0)\). \\\\
-    Тогава \(a_1, \, a_2, \, \dots, \, a_n\) са ЛНЗ.
+    Нека \(n \in \mathbb{N}\).\\\\
+    Нека \(a_1, \, a_2, \, \dots, \, a_n \in V\). Векторите \(a_1, \, a_2, \, \dots, \, a_n\)  са линейно независими, ако \\\\
+    \((\forall \lambda_1 \in F) \; (\forall \lambda_2 \in F) \; \dots \; (\forall \lambda_n \in F) \; \left[\; \displaystyle\sum_{i=1}^{n} \lambda_i a_i = \theta  \implies (\lambda_1, \, \lambda_2, \, \dots, \, \lambda_n) = (0, \, 0, \, \dots, \, 0) \; \right ]\).
     \section{Линейна зависимост/независимост}
-    \subsection{ако един вектор е линейно независим, то той е ненулев вектор}
+    \subsection{Aко един вектор е линейно независим, то той е ненулев вектор}
     Логически еквивалетно твърдение на "ако един вектор е линейно независим, то той е ненулев вектор" е "ако един вектор е линейно зависим, то той е нулев вектор"\\\\
     За това ще докажем него, от което ще следва и исканото твърдение. \\\\
-    \(\lambda \in F, \, a \in V : \, \lambda a = \theta \; : \; \lambda \neq 0 \\\\
-    \lambda a = \theta \, | \, \lambda^{-1}\\\\
+    Нека \(\lambda \in F, \, a \in V\) и \(\lambda a = \theta \; , \; \lambda \neq 0\). \\\\
+    Тогава \(\lambda a = \theta \, | \, \lambda^{-1}\\\\
     1.a = \theta\\\\
     a = \theta\\\\
     \implies \text{ако един вектор е линейно независим, то той е ненулев вектор}\)
-    \subsection{ако един вектор е линейно зависим то, той е нулевият вектор}
-    \(\lambda \in F, \, a \in V \; : \, \lambda a = \theta \; : \; \lambda \neq 0\\\\
-    \lambda a = \theta \, | \, \lambda^{-1}\\\\
+    \subsection{Aко един вектор е линейно зависим то, той е нулевият вектор}
+    Нека \(\lambda \in F, \, a \in V\) и \(\lambda a = \theta \; , \; \lambda \neq 0\). \\\\
+    Тогава \(\lambda a = \theta \, | \, \lambda^{-1}\\\\
     1.a = \theta\\\\
-    a = \theta\)
-    \subsection{всяка подсистема на линейно независима система от вектори е също линейно независима}
-    \(n, \, k \in \mathbb{N} \; : \; k \leq n\\\\
-    A = \{a_1, \, a_2, \, \dots, \, a_n\} \quad \text{- линейно независима система от вектори}\\\\
+    a = \theta\).
+    \subsection{Всяка подсистема на линейно независима система от вектори е също линейно независима}
+    Нека \(n, \, k \in \mathbb{N}\), са такива, че \(k \leq n\).\\\\
+    Нека \(A = \{a_1, \, a_2, \, \dots, \, a_n\} \quad \text{е линейно независими система от вектори.}\\\\
     \text{Нека БОО} \; B = \{a_1, \, a_2, \, \dots, \, a_k\} \quad \text{допускаме, че B е линейно зависима}\\\\
-    \implies \exists \lambda_1, \, \lambda_2, \, \dots, \, \lambda_k \in F \; : \; \displaystyle\sum_{i=1}^{k} \lambda_i a_i = \theta, \, \lambda_1 \neq 0\\\\
-    \implies \displaystyle\sum_{i=1}^{k} \lambda_i a_i + \displaystyle\sum_{j= k + 1}^{n} 0 a_j = \theta \\\\
-    \implies \text{противоречие с факта, че A е линейно независима система от вектори}\)
-    \subsection{ако една система от вектори съдържа линейно зависима подсистема, то тази система също е линейно зависима}
-    \(n, \, k \in \mathbb{N} \; : \; k < n\\\\
-    A = \{a_1, \, a_2, \, \dots, \, a_n\} \quad \text{- система от вектори}\\\\
-    \text{Нека БОО} \; B = \{a_1, \, a_2, \, \dots, \, a_k\} \quad \text{- линейно зависима подсистема от вектори}\\\\
-    \text{От B линейно зависима подсистема от вектори}\\\\
-    \implies \exists \lambda_1, \, \lambda_2, \, \dots, \, \lambda_k \in F \; : \; \displaystyle\sum_{i=1}^{k} \lambda_i a_i = \theta, \, \lambda_1 \neq 0\\\\
-    \implies \displaystyle\sum_{i=1}^{k} \lambda_i a_i + \displaystyle\sum_{j= k + 1}^{n} 0 a_j = \theta\\\\
-    \text{От} \quad \lambda_1 \neq 0 \implies \text{A е линейно зависима система от вектори}\)
-    \subsection{ако една система от вектори съдържа два пропорционални вектора, то тя е линейно зависима}
-    \(n \in \mathbb{N} \; : \; A = \{a_1, \, a_2, \, \dots, \, a_n\} \quad \text{- система от вектори}\\\\
+    \implies (\exists \lambda_1 \in F)\; (\exists \lambda_2 \in F) \; \dots \; (\exists \lambda_k \in F)  \; [\; (\lambda_1, \dots , \lambda_k) \neq (0, \dots, 0) \; \land \; \displaystyle\sum_{i=1}^{k} \lambda_i a_i = \theta\).\\\\
+    Нека тогава \(\lambda_1 \in F, \dots, \lambda_k \in F\) и \((\lambda_1, \dots , \lambda_k)  \neq (0, \dots, 0) \; \land \; \displaystyle\sum_{i=1}^{k} \lambda_i a_i = \theta\).
+    Тогава \((\lambda_1, \dots , \lambda_k, 0, \; \dots \; 0) \neq (0, \dots , 0, 0, \; \dots \; 0)\)
+    и \(\displaystyle\sum_{i=1}^{k} \lambda_i a_i + \displaystyle\sum_{j= k + 1}^{n} 0 a_j = \theta\). 
+    Следователно \(a_1, \, a_2, \, \dots, \, a_n\) са линейно зависими и значи A е линейно независима система от вектори.
+    Но това е Абсурд, понеже А е линейно независима. Следователно \(B\) е линейно зависима.
+    \subsection{Ако една система от вектори съдържа линейно зависима подсистема, то тази система също е линейно зависима}
+    Нека \(n, \, k \in \mathbb{N}\), са такива, че \(k \leq n\).\\\\
+    Нека \(A = \{a_1, \, a_2, \, \dots, \, a_n\} \quad \text{ са система от вектори }\\\\
+    \text{Нека БОО} \; B = \{a_1, \, a_2, \, \dots, \, a_k\} \quad \text{ е линейно зависима подсистема от вектори}\\\\
+    \text{От B линейно зависима подсистема от вектори, следва}\\\\
+    (\exists \lambda_1 \in F)\; (\exists \lambda_2 \in F) \; \dots \; (\exists \lambda_k \in F)  \; [\; (\lambda_1, \dots , \lambda_k) \neq (0, \dots, 0) \; \land \; \displaystyle\sum_{i=1}^{k} \lambda_i a_i = \theta\)\\\\
+    Нека тогава \(\lambda_1 \in F, \dots, \lambda_k \in F\) и \((\lambda_1, \dots , \lambda_k)  \neq (0, \dots, 0) \; \land \; \displaystyle\sum_{i=1}^{k} \lambda_i a_i = \theta\).
+    Тогава \((\lambda_1, \dots , \lambda_k, 0, \; \dots \; 0) \neq (0, \dots , 0, 0, \; \dots \; 0)\)
+    и \(\displaystyle\sum_{i=1}^{k} \lambda_i a_i + \displaystyle\sum_{j= k + 1}^{n} 0 a_j = \theta\). 
+    Следователно \(a_1, \, a_2, \, \dots, \, a_n\) са линейно зависими и значи A е линейно независима система от вектори.
+    \subsection{Ако една система от вектори съдържа два пропорционални вектора, то тя е линейно зависима}
+    Нека \(n \in \mathbb{N}\) и \(A = \{a_1, \, a_2, \, \dots, \, a_n\} \quad \text{- система от вектори.}\\\\
     \text{Нека БОО} \; a_2 = \lambda a_1 \implies \lambda a_1 - a_2 = \theta\\\\
     \implies \lambda a_1 + (-1)a_2 + \displaystyle\sum_{i=3}^{n} 0a_i = \theta\\\\
     \implies \text{A е линейно зависима система от вектори}\)
-    \subsection{ако в една система от поне два вектора един от векторите е линейна комбинация на останалите, то системата е линейно зависима}
-    \(n \in \mathbb{N} \; : \; n > 1\\\\
-    A = \{a_1, \, a_2, \, \dots, \, a_n\} \quad \text{- система от вектори}\\\\
+    \subsection{Ако в една система от поне два вектора един от векторите е линейна комбинация на останалите, то системата е линейно зависима}
+    Нека \(n \in \mathbb{N}^+, \\\\
+    A = \{a_1, \, a_2, \, \dots, \, a_n\} \quad \text{- система от вектори.}\\\\
     \text{Нека БОО} \; a_1 = \displaystyle\sum_{i=2}^{n} \lambda_i a_i\\\\
     \implies -a_1 + \displaystyle\sum_{i=2}^{n} \lambda_i a_i = \theta\\\\
     \implies (-1)a_1 + \displaystyle\sum_{i=2}^{n} \lambda_i a_i = \theta\\\\
     \implies \text{A е линейно зависима система от вектори}\)
-    \subsection{в една линейно зависима система от поне два вектора поне един вектор е линейна комбинация на останалите}
-    \(n \in \mathbb{N} \; : \; n > 1\\\\
-    A = \{a_1, \, a_2, \, \dots, \, a_n\} \quad \text{- линейно зависима система от поне два вектора}\\\\
-    \implies \exists \lambda_1, \, \lambda_2, \, \dots, \, \lambda_n \in F \; : \; \displaystyle\sum_{i=1}^{n} \lambda_i a_i = \theta, \, \text{Нека БОО} \; \lambda_1 \neq 0\\\\
-    \implies \displaystyle\sum_{i=1}^{n} \lambda_i a_i = \theta \, | \lambda_1^{-1} \implies a_1 + \displaystyle\sum_{i=2}^{n} \frac{\lambda_i}{\lambda_1} a_i = \theta\\\\
+    \subsection{В една линейно зависима система от поне два вектора поне един вектор е линейна комбинация на останалите}
+    Нека \(n \in \mathbb{N}^+, \\\\
+    A = \{a_1, \, a_2, \, \dots, \, a_n\} \quad \text{- линейно зависима система от поне два вектора. Тогава}\\\\
+    (\exists \lambda_1 \in F)\; (\exists \lambda_2 \in F) \; \dots \; (\exists \lambda_n \in F)  \; [\; (\lambda_1, \dots , \lambda_n) \neq (0, \dots, 0) \; \land \; \displaystyle\sum_{i=1}^{n} \lambda_i a_i = \theta\)\\\\
+    Нека тогава \(\lambda_1 \in F, \dots, \lambda_n \in F\) и \((\lambda_1, \dots , \lambda_n)  \neq (0, \dots, 0) \; \land \; \displaystyle\sum_{i=1}^{n} \lambda_i a_i = \theta\).\\
+    Нека БОО \(\lambda_1 \neq 0\). Тогава \\
+    \(\displaystyle\sum_{i=1}^{n} \lambda_i a_i = \theta \, | \lambda_1^{-1} \implies a_1 + \displaystyle\sum_{i=2}^{n} \frac{\lambda_i}{\lambda_1} a_i = \theta\\\\
     \implies a_1 = \displaystyle\sum_{i=2}^{n} -\frac{\lambda_i}{\lambda_1} a_i\)
     \section{Базис и размерност}
-    V - линейно пространство над числовото поле F
+    Нека (V, +, .) е линейно пространство над числовото поле (F, +, .).
     \subsection{Основна лема на алгебрата}
-    \(n, k \in \mathbb{N}\\\\
-    A = \{a_1, \; a_2, \; \dots, \; a_n\} \\\\
-    B = \left\{b_1, \; b_2, \; \dots, \; b_k \; | \; \forall j = 1, \, 2, \, \dots k \; \exists \; \lambda_1, \, \lambda_2, \, \dots, \, \lambda_n \in F \; : \;  b_j  = \sum_{i = 1}^{n} \lambda_i a_i \right \}\\\\
-    \text{Ако } k > n \implies \text{B е линейно зависима система от вектори}\)
+    Нека \(n, k \in \mathbb{N}\).\\\\
+    Нека \(a_1, \; a_2, \; \dots, \; a_n \in V\). \\\\
+    Нека \(b_1, \; b_2, \; \dots, \; b_k \in l(a_1, \; a_2, \; \dots, \; a_n)\).
+    Ако \(k > n\), то \(b_1, \; b_2, \; \dots, \; b_k \) са линейно зависими вектори.
     \subsection{Базис}
-    \(B \neq \emptyset \subset V \neq \{ \theta \}\\\\
-    n \in \mathbb{N} \cup \{\infty\} \\\\
-    B = \{b_1, \, b_2, \, \dots b_n\} \text{ - линейно независима система от вектори}\)\\\\
-    Ако \(V = \left \{ \displaystyle\sum_{i = 1}^{n} \lambda_i b_i \; | \; \forall i \in \mathbb{N} : \; i \leq n \; \lambda_i \in F \right \} = l(B) \)
+    Нека \(n \in \mathbb{N}\). \\\\
+    Нека \(b_1, \, b_2, \, \dots b_n \in V\).
+    \(b_1, \, b_2, \, \dots b_n\) са базис на \(V\),
+    ако \(b_1, \, b_2, \, \dots b_n\) са линейно независими и \(V = l(b_1, \, b_2, \, \dots b_n)\).
     \subsection{Крайномерно линейно пространство}
-    \(B \neq \emptyset \subset V \neq \{ \theta \}\\\\
-    n \in \mathbb{N} \\\\
-    B = \{b_1, \, b_2, \, \dots b_n\} \text{ - линейно независима система от вектори}\)\\\\
-    Ако \(V = \left \{ \displaystyle\sum_{i = 1}^{n} \lambda_i b_i \; | \; \forall i \in \mathbb{N} : \; i \leq n \; \lambda_i \in F \right \} = l(B) \)
+    Нека \(n \in \mathbb{N}^+\). \\\\
+    Нека \(b_1, \, b_2, \, \dots b_n \in V\).
+    \(b_1, \, b_2, \, \dots b_n\) са базис на \(V\),
+    ако \(b_1, \, b_2, \, \dots b_n\) са линейно независими и \(V = l(b_1, \, b_2, \, \dots b_n)\).
     \subsection{Крайнопородено линейно пространство}
-    \(\exists n \in \mathbb{N}, \; B = \{b_1, \, b_2, \, \dots b_n\} \; V = l(B) \)
+    \(V\) е крайнопородено линейно пространство, ако \\
+    \((\exists n \in \mathbb{N}^+) \; (\exists b_1 \in V) \; \dots \; (\exists b_n \in V) \; [\; V = l(b_1, \, b_2, \, \dots b_n) \;] \).
     \subsection{Размерност на линейно пространство}
-    \(\forall B \neq \emptyset \subset V \neq \{ \theta \}\\\\
-    n \in \mathbb{N} \cup \{\infty\}\\\\
-    B = \{b_1, \, b_2, \, \dots b_n\} \text{ - линейно независима система от вектори}\)\\\\
-    и \(V = \left \{ \displaystyle\sum_{i = 1}^{n} \lambda_i b_i \; | \; \forall i \in \mathbb{N} : \; i \leq n \; \lambda_i \in F \right \} = l(B)\)\\\\
-    \(dim(V) = n\) \\\\
+    Нека \(n \in \mathbb{N} \cup \{\infty\}\).
+    Нека \(b_1, \, b_2, \, \dots b_n \in V\) - са базис на \(V\).
+    Тогава размерността на \(V\) е  \(n\), бележим с \(dimV\). \\\\
     С други думи казано размерността дефинираме като броя на векторите в кой да е базис на \(V\) \\\\ 
     Ако едно крайномерно линейно пространство и едно негово линейно\\
-    подпространство имат една и съща размерност, то те съвпадат
+    подпространство имат една и съща размерност, то те съвпадат!
     \subsection{Координати на вектор в даден базис}
-    \(dimV = n\\\\
-    B = \{b_1, \, b_2, \, \dots, \, b_n\} \; : \; V = l(B)\\\\
-    v = \displaystyle\sum_{i=1}^{n} \lambda_i b_i \in V \quad \lambda_i \in F, \; i = 1, \, 2, \, \dots, \, n\\
-    \lambda_1, \, \lambda_2, \, \dots, \, \lambda_n \text{ са координатите на \(v\) в базиса } b_1, \, b_2, \, \dots, \, b_n\)
+    Нека \(n = dimV\). Нека \(b_1, \, b_2, \, \dots b_n \in V\) - са базис на \(V\). \\\\
+    Нека \(v \in V\). Нека още \(\lambda_1, \dots, \lambda_n \in F\) са такива,
+    че \(v = \displaystyle\sum_{i=1}^{n} \lambda_i b_i\).
+    Тогава \(\lambda_1, \, \lambda_2, \, \dots, \, \lambda_n\) са координатите на \(v\) в базиса \(b_1, \, b_2, \, \dots, \, b_n\).
     \section{Сума на подпространства, директна сума на подпространства и ранг на система вектори}
     \subsection{Сума на подпространства и директна сума на подпространства}
-    \(V\) - линейно пространство над числовто поле \(F\)\\
-    \(V_1, \, V_2\) - крайномерни линейни подпространства на \(V\)
-    \subsubsection{връзка между размерностите на сумата и сечението на две крайномерни линейни подпространства на дадено линейно пространство}
-    \(\dim{(V_1 + V_2)} = \dim{V_1} + \dim{V_2} - \dim{(V_1 \cap V_2)}\)
+    Нека (V, +, .) е линейно пространство над числовото поле (F, +, .).\\
+    Нека \(V_1, \, V_2\) са линейни подпространства на \(V\). \\
+    Тогава \(V_1 + V_2 = \{ v_1 + v_2 \; | \; v_1 \in V_1, \; v_2 \in V_2 \}\).
+    \subsubsection{Връзка между размерностите на сумата и сечението на две крайномерни линейни подпространства на дадено линейно пространство}
+    \(\dim{(V_1 + V_2)} = \dim{V_1} + \dim{V_2} - \dim{(V_1 \cap V_2)}\).
     \subsubsection{НДУ едно линейно пространство да е директна сума на две свои подпространства}
-    \(V = V_1 \oplus V_2 \iff V = V_1 + V_2, \; V_1 \cap V_2 = \{ \theta \}\)
+    \(V = V_1 \oplus V_2 \iff V = V_1 + V_2, \; V_1 \cap V_2 = \{ \theta \}\).
     \subsection{Ранг на система вектори}
     \subsubsection{Максимална линейно независима подсистема вектори на дадена система вектори}
-    \(T \text{ - система вектори}, 
-    S \subseteq T \text{ - лин. независима подсистема вектори}, \\\\
-    \forall v \in T \backslash S = \{a \in T \; | \; a \notin S\} \; S \cup \{v\} \text{ - е лин. зависима система} \)
+    Нека (V, +, .) е линейно пространство над числовото поле (F, +, .).\\
+    Нека \(\emptyset \neq T \subseteq V\). Нека \(\emptyset \neq S \subseteq T\).
+    \(S\) е максимална линейно независима подсистема вектори на дадена система вектори, ако \\
+    \((\forall v \in T \backslash S) \; [\; S \cup \{v\} \text{ - е лин. зависима система} \;] \)
     \subsubsection{Ранг на система вектори}
-    \(S \subseteq V, \; r(S) = dim (\, l(S))\)
+    Нека (V, +, .) е линейно пространство над числовото поле (F, +, .).\\
+    Нека \(\emptyset \neq T \subseteq V\). Ранга на \(T\) бележим с \(r(T)\) и \(r(T) = dim(l(T))\).
 \end{document}
