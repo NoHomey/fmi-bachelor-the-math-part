@@ -1,0 +1,587 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[english,bulgarian]{babel}
+\def\frak#1{\cal #1}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{shuffle}
+\usepackage{alltt}
+\usepackage{enumerate}
+\newtheorem{theorem}{Теорема}%[section]
+\newtheorem{problem}{Задача}%[section]
+\newtheorem{remark}{{Забележка}}%[section]
+\newtheorem{example}{Пример}%[section]
+\newtheorem{lemma}{{Лема}}%[section]
+\newtheorem{proposition}{Твърдение}%[section]
+\def\proof{\textbf {Доказателство: }}%[section]
+\newtheorem{corollary}{Следствие}%[section]
+\newtheorem{fact}{Факт}%[
+\newtheorem{definition}{Определение}%[section]
+
+\author{Иво Стратев}
+\title{Отговори на теоритично контролно №2, Линейна алгебра, Информатика}
+
+\begin{document}
+\maketitle
+
+\begin{definition}[Линейно изображение]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \; : \; V \to W\) е изображение от \(V\) във \(W\).
+\(\varphi\) е линейно изображение, ако:
+\begin{align*}
+(\forall v_1 \in V)(\forall v_2 \in V)[\; \varphi(v_1 \underset{V}{+} v_2) = \varphi(v_1) \underset{W}{+} \varphi(v_2)\;] \\
+(\forall \lambda \in F)(\forall v \in V)[\; \varphi(\lambda \underset{V}{.} v) = \lambda \underset{W}{.} \varphi(v)\;] 
+\end{align*}
+\end{definition}
+
+\begin{remark}
+Пишем \(\varphi \in Hom(V, W)\), ако \(\varphi \; : \; V \to W\) е линейно изображение.
+\end{remark}
+
+\begin{definition}[Линеен оператор]
+Нека \((V, \oplus, \odot)\) е Л.П. над поле \((F, +, .)\).
+Нека \(\varphi \; : \; V \to V\) е изображение от \(V\) във \(V\).
+\(\varphi\) е линеен оператор, ако:
+\begin{align*}
+(\forall v_1 \in V)(\forall v_2 \in V)[\; \varphi(v_1 \oplus v_2) = \varphi(v_1) \oplus \varphi(v_2)\;] \\
+(\forall \lambda \in F)(\forall v \in V)[\; \varphi(\lambda \odot v) = \lambda \odot \varphi(v)\;] 
+\end{align*}
+\end{definition}
+
+\begin{remark}
+Пишем \(\varphi \in Hom(V)\), ако \(\varphi\) е линеен оператор.
+\end{remark}
+
+\begin{theorem}[Съществуване и единственост на Л.И.]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+\\Нека \(V\) е крайномерно и \(n = dim(V)\).
+Нека \(b_1, b_2, \dots, b_n\) е базис на \(V\).
+\\Нека \(w_1, w_2, \dots, w_n \in W\).
+Тогава съществува единствено \(\varphi \in Hom(V, W)\), такова че
+\begin{align*}
+(\forall i \in \{1, 2, \dots, n\})[\; \varphi(b_i) = w_i\;]
+\end{align*}
+\end{theorem}
+
+\begin{definition}[Изоморфизъм на Л.П-ва]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+\((V, \underset{V}{+}, \underset{V}{.})\) е изоморфно с \((W, \underset{W}{+}, \underset{W}{.})\),
+ако съществува \(\varphi \in Hom(V, W)\), което е биекция.
+\end{definition}
+
+\begin{remark}
+Пишем \((V, \underset{V}{+}, \underset{V}{.}) \cong (W, \underset{W}{+}, \underset{W}{.})\), ако
+\((V, \underset{V}{+}, \underset{V}{.})\) е изоморфно с \((W, \underset{W}{+}, \underset{W}{.})\).
+\end{remark}
+
+\begin{proposition}[Н.Д.У. за изоморфизъм на К.М.Л.П-ва]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са К.М.Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+В сила е:
+\begin{align*}
+(V, \underset{V}{+}, \underset{V}{.}) \cong (W, \underset{W}{+}, \underset{W}{.}) \iff dim(V) = dim(W)
+\end{align*}
+\end{proposition}
+
+\begin{proposition}[Образа на нулевия вектор е нулевия при Л.И.]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\). Тогава \(\varphi(\theta_V) = \theta_W\).
+\end{proposition}
+
+\begin{proof}
+Нека \(v \in V\). Тогава
+\begin{align*}
+\varphi(\theta_V) = \varphi(0 \underset{V}{.} v ) = 0 \underset{W}{.} \varphi(v) = \theta_W \qed
+\end{align*}
+\end{proof}
+
+\begin{proposition}[Образа на противоположния вектор е противоположния на образа при Л.И.]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\). Тогава \((\forall v \in V)[\; \varphi(\underset{V}{-}v) = \underset{W}{-}\varphi(v) \; ]\).
+\end{proposition}
+
+\begin{proof}
+Нека \(v \in V\). Тогава
+\begin{align*}
+\varphi(\underset{V}{-}v) = \varphi((-1) \underset{V}{.} v ) = (-1) \underset{W}{.} \varphi(v) = \underset{W}{-}\varphi(v) \qed
+\end{align*}
+\end{proof}
+
+\begin{proposition}[Едно Л.И. изпраща Л.З-ми в Л.З-ми]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\). \\
+Нека \(k \in \mathbb{N}^+\). Нека \(v_1, v_2, \dots, v_k \in V\) са Л.З-ми.
+Тогава \(\varphi(v_1), \varphi(v_2), \dots, \varphi(v_k)\) са Л.З-ми.
+\end{proposition}
+
+\begin{proof}
+\(v_1, v_2, \dots, v_k \in V\) са Л.З-ми. Тогава
+\begin{align*}
+(\exists \lambda_1 \in F)(\exists \lambda_2 \in F)\dots(\exists \lambda_k \in F)[\; (\lambda_1, \lambda_2, \dots, \lambda_k) \neq (0, 0, \dots, 0) \\
+\& 
+\\ \lambda_1 \underset{V}{.} v_1 \underset{V}{+} \lambda_2 \underset{V}{.} v_2 \underset{V}{+} \dots \underset{V}{+} \lambda_k \underset{V}{.} v_k  = \theta_V \;]
+\end{align*}
+Нека \(\lambda_1, \lambda_2 \dots, \lambda_k \in F\) са такива, че \((\lambda_1, \lambda_2, \dots, \lambda_k) \neq (0, 0, \dots, 0)\)
+и \(\lambda_1 \underset{V}{.} v_1 \underset{V}{+} \lambda_2 \underset{V}{.} v_2 \underset{V}{+} \dots \underset{V}{+} \lambda_k \underset{V}{.} v_k  = \theta_V\).
+Тогава от
+\begin{align*}
+    \varphi(\lambda_1 \underset{V}{.} v_1 \underset{V}{+} \lambda_2 \underset{V}{.} v_2 \underset{V}{+} \dots \underset{V}{+} \lambda_k \underset{V}{.} v_k) =
+    \lambda_1 \underset{W}{.} \varphi(v_1) \underset{W}{+} \lambda_2 \underset{W}{.} \varphi(v_2) \underset{W}{+} \dots \underset{W}{+} \lambda_k \underset{W}{.} \varphi(v_k) \\
+    \& \\
+    \lambda_1 \underset{V}{.} v_1 \underset{V}{+} \lambda_2 \underset{V}{.} v_2 \underset{V}{+} \dots \underset{V}{+} \lambda_k \underset{V}{.} v_k  = \theta_V \\
+    \& \\
+    \varphi(\theta_V) = \theta_W
+\end{align*}
+Получаваме \(\lambda_1 \underset{W}{.} \varphi(v_1) \underset{W}{+} \lambda_2 \underset{W}{.} \varphi(v_2) \underset{W}{+} \dots \underset{W}{+} \lambda_k \underset{W}{.} \varphi(v_k) = \theta_W\).
+\\
+Но имаме \((\lambda_1, \lambda_2, \dots, \lambda_k) \in F^k \setminus \{(0, 0, \dots, 0)\}\),
+следователно \(\varphi(v_1), \varphi(v_2), \dots, \varphi(v_k)\) са Л.З-ми. \(\qed\)
+\end{proof}
+
+\begin{definition}[Сума на Л.И.]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\) и \(\psi \in Hom(V, W)\).
+Тогава \(\varphi + \psi \; : \; V \to W\) е сумата на \(\varphi\) и \(\psi\)
+и е в сила:
+\begin{align*}
+(\forall v \in V)[\; (\varphi + \psi)(v) = \varphi(v) \underset{W}{+} \psi(v) \;]
+\end{align*}
+\end{definition}
+
+\begin{definition}[Умножение на Л.И. със скалар]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\) и нека \(\lambda \in F\).
+Тогава \(\lambda . \varphi \; : \; V \to W\) е умножението на \(\varphi\) с \(\lambda\)
+и е в сила:
+\begin{align*}
+(\forall v \in V)[\; (\lambda . \varphi)(v) = \lambda \underset{W}{.} \varphi(v) \;]
+\end{align*}
+\end{definition}
+
+\begin{definition}[Произведение на Л.И.]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\),
+\((W, \underset{W}{+}, \underset{W}{.})\)
+и \((U, \underset{U}{+}, \underset{U}{.})\)
+са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\)
+Нека \(\varphi \in Hom(V, W)\) и \(\psi \in Hom(U, V)\).
+Тогава \(\varphi \circ \psi \; : \; U \to W\) е произведението на \(\varphi\) и \(\psi\)
+и е в сила:
+\begin{align*}
+(\forall v \in V)[\; (\varphi \circ \psi)(v) = \varphi(\psi(v)) \;]
+\end{align*}
+\end{definition}
+
+\begin{definition}[Матрица на Л.И. спрямо фиксирани базиси]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са К.М.Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\).
+Нека \(n = dim(V)\) и \(m = dim(W)\).
+Нека \(b_1, b_2, \dots, b_n\) е базис на \(V\)
+и нека \(a_1, a_2, \dots, a_m\) е базис на \(W\).
+Нека
+\begin{align*}
+\varphi(b_i) = \gamma_{1i}\underset{W}{.}a_1 \underset{W}{+} \gamma_{2i}\underset{W}{.}a_2 \underset{W}{+} \dots \underset{W}{+} \gamma_{mi}\underset{W}{.}a_m
+\end{align*}
+за \(i \in \{1, 2, \dots, n\}\).
+Тогава матрицата на \(\varphi\)
+спрямо базисите \(b_1, b_2, \dots, b_n\) и \(a_1, a_2, \dots, a_m\) е
+\begin{align*}
+\begin{pmatrix}
+    \gamma_{11} & \gamma_{12} & \dots & \gamma_{1n} \\
+    \gamma_{21} & \gamma_{22} & \dots & \gamma_{2n} \\
+    \vdots    & \vdots  & \ddots & \vdots \\
+    \gamma_{m1} & \gamma_{m2} & \dots & \gamma_{mn}
+\end{pmatrix}
+\end{align*}
+\end{definition}
+
+\begin{remark}
+Матрицата на \(\varphi\)
+спрямо базисите \(b_1, b_2, \dots, b_n\) и \(a_1, a_2, \dots, a_m\) ще белим с \(\mathcal{M}_{a_1, a_2, \dots, a_m}^{b_1, b_2, \dots, b_n}(\varphi)\).
+\end{remark}
+
+\begin{definition}[Действие на матрицата на Л.И.]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са К.М.Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\).
+Нека \(n = dim(V)\) и \(m = dim(W)\).
+Нека \(b_1, b_2, \dots, b_n\) е базис на \(V\)
+и нека \(a_1, a_2, \dots, a_m\) е базис на \(W\).
+Нека \(v = x_1\underset{V}{.}b_1 \underset{V}{+} x_2\underset{V}{.}b_2 \underset{V}{+} \dots \underset{V}{+} x_n\underset{V}{.}b_n \in V\)
+и нека 
+\begin{align*}
+\varphi(b_i) = \gamma_{1i}\underset{W}{.}a_1 \underset{W}{+} \gamma_{2i}\underset{W}{.}a_2 \underset{W}{+} \dots \underset{W}{+} \gamma_{mi}\underset{W}{.}a_m
+\end{align*}
+за \(i \in \{1, 2, \dots, n\}\).
+Нека \(y_1\underset{W}{.}a_1 \underset{W}{+} y_2\underset{W}{.}a_2 \underset{W}{+} \dots \underset{W}{+} y_m\underset{W}{.}a_m\)
+Тогава матрицата на \(\varphi\)
+спрямо базисите \(b_1, b_2, \dots, b_n\) и \(a_1, a_2, \dots, a_m\) е
+\begin{align*}
+\begin{pmatrix}
+    \gamma_{11} & \gamma_{12} & \dots & \gamma_{1n} \\
+    \gamma_{21} & \gamma_{22} & \dots & \gamma_{2n} \\
+    \vdots    & \vdots  & \ddots & \vdots \\
+    \gamma_{m1} & \gamma_{m2} & \dots & \gamma_{mn}
+\end{pmatrix}
+\end{align*}
+и връзката между координатите на един вектор и неговия образ е:
+\begin{align*}
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_m
+\end{pmatrix}
+=
+\begin{pmatrix}
+    \gamma_{11} & \gamma_{12} & \dots & \gamma_{1n} \\
+    \gamma_{21} & \gamma_{22} & \dots & \gamma_{2n} \\
+    \vdots    & \vdots  & \ddots & \vdots \\
+    \gamma_{m1} & \gamma_{m2} & \dots & \gamma_{mn}
+\end{pmatrix}
+.
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{pmatrix}
+\end{align*}
+\end{definition}
+
+\begin{remark}
+Нека \(V, \oplus, \odot\) е K.M.Л.П. над поле \((F, +, .)\).
+Нека \(n = dim(V)\) и нека \(b_1, b_2, \dots, b_n\) е базис на \(V\).
+Нека \(v = \lambda_1 \odot b_1 \oplus \lambda_2 \odot b_2 \oplus \dots \oplus \lambda_n \odot b_n \in V\).
+Тогава с \([v]_{b_1, b_2, \dots, b_n}\) ще бележим координатния стълб съотвестващ на вектора \(v\).
+Тоест
+\begin{align*}
+[v]_{b_1, b_2, \dots, b_n}
+=
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{pmatrix}
+\end{align*}
+\end{remark}
+
+\begin{remark}
+При така направените означения връзката между координатите от предното определение може да бъде записана
+съкратено, но не и на ТК-то, като
+\begin{align*}
+[\varphi(v)]_{a_1, a_2, \dots, a_m}
+=
+\mathcal{M}_{a_1, a_2, \dots, a_m}^{b_1, b_2, \dots, b_n}(\varphi)
+.
+[v]_{b_1, b_2, \dots, b_n}
+\end{align*}
+\end{remark}
+
+\begin{proposition}[Матрица на сума на Л.И.]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са К.М.Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\) и \(\psi \in Hom(V, W)\).
+Нека \(n = dim(V)\) и \(m = dim(W)\).
+Нека \(b_1, b_2, \dots, b_n\) е базис на \(V\)
+и нека \(a_1, a_2, \dots, a_m\) е базис на \(W\).
+Тогава
+\begin{align*}
+\mathcal{M}_{a_1, a_2, \dots, a_m}^{b_1, b_2, \dots, b_n}(\varphi + \psi)
+=
+\mathcal{M}_{a_1, a_2, \dots, a_m}^{b_1, b_2, \dots, b_n}(\varphi)
++
+\mathcal{M}_{a_1, a_2, \dots, a_m}^{b_1, b_2, \dots, b_n}(\psi)
+\end{align*}
+\end{proposition}
+
+\begin{proposition}[Матрица на умножение на Л.И. със скалар]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са К.М.Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\) и нека \(\lambda \in F\).
+Нека \(n = dim(V)\) и \(m = dim(W)\).
+Нека \(b_1, b_2, \dots, b_n\) е базис на \(V\)
+и нека \(a_1, a_2, \dots, a_m\) е базис на \(W\).
+Тогава
+\begin{align*}
+\mathcal{M}_{a_1, a_2, \dots, a_m}^{b_1, b_2, \dots, b_n}(\lambda . \varphi)
+=
+\lambda
+.
+\mathcal{M}_{a_1, a_2, \dots, a_m}^{b_1, b_2, \dots, b_n}(\varphi)
+\end{align*}
+\end{proposition}
+
+\begin{proposition}[Матрица на произведение на Л.И.]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\),
+\((W, \underset{W}{+}, \underset{W}{.})\)
+и \((U, \underset{U}{+}, \underset{U}{.})\)
+са К.М.Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\)
+Нека \(\varphi \in Hom(V, W)\) и \(\psi \in Hom(U, V)\).
+Нека \(n = dim(V)\), \(m = dim(W)\) и \(k = dim(U)\).
+Нека \(b_1, b_2, \dots, b_n\) е базис на \(V\),
+нека \(a_1, a_2, \dots, a_m\) е базис на \(W\)
+и нека \(c_1, c_2, \dots, c_k\) е базис на \(U\).
+Тогава
+\begin{align*}
+\mathcal{M}_{a_1, a_2, \dots, a_m}^{c_1, c_2, \dots, c_k}(\varphi \circ \psi)
+=
+\mathcal{M}_{a_1, a_2, \dots, a_m}^{b_1, b_2, \dots, b_n}(\varphi)
+.
+\mathcal{M}_{b_1, b_2, \dots, b_n}^{c_1, c_2, \dots, c_k}(\psi)
+\end{align*}
+\end{proposition}
+
+\begin{proposition}[Размерност на Л.П-во на Л.И-ния между две К.К.Л.П-ва]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са К.М.Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Тогава
+\begin{align*}
+dim(Hom(V, W)) = dim(V).dim(W)
+\end{align*}
+\end{proposition}
+
+\begin{definition}[Ядро на Л.И.]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\).
+Тогава ядро на \(\varphi\) наричаме следното множество:
+\begin{align*}
+Ker(\varphi) = \{v \in V \; | \; \varphi(v) = \theta_W\}
+\end{align*}
+\end{definition}
+
+\begin{definition}[Образ на Л.И.]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\).
+Тогава образ на \(\varphi\) наричаме следното множество:
+\begin{align*}
+Im(\varphi) = \{\varphi(v) \; | \; v \in V\}
+\end{align*}
+\end{definition}
+
+\begin{definition}[Дефект на Л.И.]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\).
+Тогава дефект на \(\varphi\) наричаме \(dim(Ker(\varphi))\).
+Бележим с \(d(\varphi)\), тоест \(d(\varphi) = dim(Ker(\varphi))\).
+\end{definition}
+
+\begin{definition}[Ранг на Л.И.]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\).
+Тогава ранг на \(\varphi\) наричаме \(dim(Im(\varphi))\).
+Бележим с \(r(\varphi)\), тоест \(r(\varphi) = dim(Im(\varphi))\).
+\end{definition}
+
+\begin{theorem}[Теорема за ранга и дефекта]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\).
+Тогава
+\begin{align*}
+r(\varphi) + d(\varphi) = dim(V)
+\end{align*}
+\end{theorem}
+
+\begin{proposition}[Връзка между ранга на Л.И. и ранга на матрицата му спрямо произволни базиси]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са К.М.Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\).
+Нека \(n = dim(V)\) и \(m = dim(W)\).
+Нека \(b_1, b_2, \dots, b_n\) е базис \(V\)
+и нeка \(a_1, a_2, \dots, a_m\) е базис \(W\).
+Тогава
+\begin{align*}
+r(\varphi) = r\left(\mathcal{M}_{a_1, a_2, \dots, a_m}^{b_1, b_2, \dots, b_n}(\varphi)\right)
+\end{align*}
+\end{proposition}
+
+\begin{definition}[Обратимо линейно изобрабжение]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\), \(\varphi\) е обратимо линейно изобрабжение,
+ако
+\begin{align*}
+(\exists \psi \in Hom(W, V))[\; \varphi \circ \psi = id_W \; \& \; \psi \circ \varphi = id_V \;]
+\end{align*}
+\end{definition}
+
+\begin{definition}[Обратно линейно изобрабжение]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\) е обратимо и нека \(\psi \in Hom(W, V)\).
+\(\psi\) е обратното на \(\varphi\), ако
+\begin{align*}
+\varphi \circ \psi = id_W \; \& \; \psi \circ \varphi = id_V
+\end{align*}
+\end{definition}
+
+\begin{remark}
+Доказва се, че обратното изображение на \(\varphi\) е единствено и за това го бележим с \(\varphi^{-1}\).
+\end{remark}
+
+\begin{proposition}[Обратния линеен оператор на един обратим линеен оператор е също обратим]
+Нека \((V, \oplus, \odot)\) е Л.П. над поле \((F, +, .)\).
+Нека \(\varphi \in Hom(V)\) е обратим.
+Тогава \(\varphi^{-1}\) също е обратим.
+\end{proposition}
+
+\begin{proof}
+В сила е \(\varphi \circ \varphi^{-1} = id_V\) и \(\varphi^{-1} \circ \varphi = id_V\),
+тоест \(\varphi^{-1} \circ \varphi = id_V\) и \(\varphi \circ \varphi^{-1} = id_V\).
+Следователно \(\varphi^{-1}\) е обратим, защото \(\varphi \in Hom(V)\). \(\qed\)
+\end{proof}
+
+\begin{proposition}[Едно Л.И. е инекция Т.С.Т.К. ядрото му е нулевото]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\). Тогава
+\(\varphi\) е инекция Т.С.Т.К. \(Ker(\varphi) = \{\theta_V\}\).
+\end{proposition}
+
+\begin{proof}
+1. Нека \(\varphi\) е инекция.
+Нека \(v \in Ker(\varphi)\). Тогава \(\varphi(v) = \theta_W\),
+но \(\varphi(\theta_V) = \theta_W\) и \(\varphi\) е инекция.
+Следователно \(v = \theta_V\). Така \(\{\theta_V\} \subseteq Ker(\varphi) \subseteq \{\theta_V\}\).
+Значи \(Ker(\varphi) = \{\theta_V\}\).
+\newline
+\vspace{2mm}
+\newline
+2. Нека \(Ker(\varphi = \{\theta_V\})\).
+Нека \(v_1 \in V\) и \(v_2 \in V\) и са такива, че
+\(\varphi(v_1) = \varphi(v_2)\). От тук последователно получаваме:
+\begin{align*}
+\varphi(v_1) \underset{W}{-} \varphi(v_2) = \theta_W \\
+\varphi(v_1 \underset{V}{-} v_2) = \theta_W \\
+v_1 \underset{V}{-} v_2 \in Ker(\varphi) = \{\theta_V\} \\
+v_1 \underset{V}{-} v_2 = \theta_V \\
+v_1 = v_2
+\end{align*}
+Следователно
+\begin{align*}
+(\forall a \in V)(\forall b \in V)[\; \varphi(a) = \varphi(b) \implies a = b \;]
+\end{align*}
+тоест
+\begin{align*}
+(\forall a \in V)(\forall b \in V)[\; a \neq b \implies \varphi(a) \neq \varphi(b) \;]
+\end{align*}
+и значи \(\varphi\) е инекция. \(\qed\)
+\end{proof}
+
+\begin{proposition}[Едно обратимо Л.И. изпраща Л.Н.З. в Л.Н.З.]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\) е обратимо.
+Нека \(k \in \mathbb{N}^+\) и нека \(v_1, v_2, \dots, v_k \in V\) са Л.Н.З.
+Тогава \(\varphi(v_1), \varphi(v_2), \dots, \varphi(v_k)\) също са Л.Н.З. 
+\end{proposition}
+
+\begin{proof}
+Да допуснем, че \(\varphi(v_1), \varphi(v_2), \dots, \varphi(v_k)\) са Л.З.
+Тогава нека \(\lambda_1, \lambda_2, \dots, \lambda_k \in F\) и \((\lambda_1, \lambda_2, \dots, \lambda_k) \neq (0, 0, \dots, 0)\)
+са такива, че \(\lambda_1 \underset{W}{.} \varphi(v_1) \underset{W}{+} \lambda_2 \underset{W}{.} \varphi(v_2) \underset{W}{+} \dots \underset{W}{+} \lambda_k \underset{W}{.} \varphi(v_k) = \theta_W\).
+Тогава \(\varphi^{-1}(\lambda_1 \underset{W}{.} \varphi(v_1) \underset{W}{+} \lambda_2 \underset{W}{.} \varphi(v_2) \underset{W}{+} \dots \underset{W}{+} \lambda_k \underset{W}{.} \varphi(v_k)) = \varphi^{-1}(\theta_W)\),
+тоест \(\lambda_1 \underset{V}{.} \varphi^{-1}(\varphi(v_1)) \underset{V}{+} \lambda_2 \underset{V}{.} \varphi^{-1}(\varphi(v_2)) \underset{V}{+} \dots \underset{V}{+} \lambda_k \underset{V}{.} \varphi^{-1}(\varphi(v_k)) = \theta_V\)
+и значи \(\lambda_1 \underset{V}{.} v_1 \underset{V}{+} \lambda_2 \underset{V}{.} v_2 \underset{V}{+} \dots \underset{V}{+} \lambda_k \underset{V}{.} v_k = \theta_V\),
+но \((\lambda_1, \lambda_2, \dots, \lambda_k) \neq (0, 0, \dots, 0)\).
+Следователно \(v_1, v_2, \dots, v_k\) са Л.З., но това е Абсурд, защото са Л.Н.З. \(\qed\)
+\end{proof}
+
+\begin{definition}[Матрица на прехода от един базис към друг]
+Нека \((V, \oplus, \odot)\) е K.M.Л.П. над поле \((F, +, .)\).
+Нека \(n = dim(V)\) и нека
+\(b_1, b_2, \dots, b_n\) и \(a_1, a_2, \dots, a_n\) са два базиса на \(V\). \\
+Нека още \(a_i = \lambda_{1i} \odot b_1 \oplus \lambda_{2i} \odot b_2 \oplus \dots \oplus \lambda_{ni} \odot b_n\).
+Тогава
+\begin{align*}
+T_{b_1, b_2, \dots, b_n \to a_1, a_2, \dots, a_n}
+=
+\begin{pmatrix}
+    \lambda_{11} & \lambda_{12} & \dots & \lambda_{1n} \\
+    \lambda_{21} & \lambda_{22} & \dots & \lambda_{2n} \\
+    \vdots    & \vdots  & \ddots & \vdots \\
+    \lambda_{n1} & \lambda_{n2} & \dots & \lambda_{nn}
+\end{pmatrix}
+\end{align*}
+е матрицата на прехода от \(b_1, b_2, \dots, b_n\) към \(a_1, a_2, \dots, a_n\).
+\end{definition}
+
+\begin{proposition}[Връзка между координатите при смяна на базиса]
+Нека \((V, \oplus, \odot)\) е K.M.Л.П. над поле \((F, +, .)\).
+Нека \(n = dim(V)\) и нека
+\(b_1, b_2, \dots, b_n\) и \(a_1, a_2, \dots, a_n\) са два базиса на \(V\). \\
+Нека още \(a_i = \lambda_{1i} \odot b_1 \oplus \lambda_{2i} \odot b_2 \oplus \dots \oplus \lambda_{ni} \odot b_n\). \\
+Нека \(v = y_1 \odot b_1 \oplus y_2 \odot b_2 \oplus \dots \oplus y_n \odot b_n
+= x_1 \odot a_1 \oplus x_2 \odot a_2 \oplus \dots \oplus x_n \odot a_n\).
+Тогава в сила е връзката:
+\begin{align*}
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
+\end{pmatrix}
+=
+\begin{pmatrix}
+    \lambda_{11} & \lambda_{12} & \dots & \lambda_{1n} \\
+    \lambda_{21} & \lambda_{22} & \dots & \lambda_{2n} \\
+    \vdots    & \vdots  & \ddots & \vdots \\
+    \lambda_{n1} & \lambda_{n2} & \dots & \lambda_{nn}
+\end{pmatrix}
+.
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{pmatrix}
+\end{align*}
+\end{proposition}
+
+\begin{remark}
+Горната връзка може да се запише още така при въведените означения,
+но не и на ТК-то :)
+\begin{align*}
+[v]_{b_1, b_2, \dots, b_n}
+=
+T_{b_1, b_2, \dots, b_n \to a_1, a_2, \dots, a_n}
+.
+[v]_{a_1, a_2, \dots, a_n}
+\end{align*}
+\end{remark}
+
+\begin{proposition}[Промяна на матрицата на Л.И. при смяна на базисите]
+Нека \((V, \underset{V}{+}, \underset{V}{.})\) и \((W, \underset{W}{+}, \underset{W}{.})\) са К.М.Л.П-ва над поле \((F, \underset{F}{+}, \underset{F}{.})\).
+Нека \(\varphi \in Hom(V, W)\).
+Нека \(n = dim(V)\) и \(m = dim(W)\).
+Нека \(b_1, b_2, \dots, b_n\) и \(d_1, d_2, \dots d_n\) са два базиса на \(V\)
+и нeка \(a_1, a_2, \dots, a_m\) и \(c_1, c_2, \dots c_m\) са два базиса на \(W\).
+Тогава в сила е връзката:
+\begin{align*}
+\mathcal{M}_{c_1, c_2, \dots, c_m}^{d_1, d_2, \dots, d_n}(\varphi)
+=
+T_{c_1, c_2, \dots, c_m \to a_1, a_2, \dots, a_m}
+.
+\mathcal{M}_{a_1, a_2, \dots, a_m}^{b_1, b_2, \dots, b_n}(\varphi)
+.
+T_{b_1, c_2, \dots, b_n \to d_1, d_2, \dots, d_n}
+\end{align*}
+\end{proposition}
+
+\begin{proposition}[Промяна на матрицата на Л.О. при смяна на базисa]
+Нека \((V, \oplus, \odot)\) е K.M.Л.П. над поле \((F, +, .)\).
+Нека \(n = dim(V)\) и нека
+\(b_1, b_2, \dots, b_n\) и \(a_1, a_2, \dots, a_n\) са два базиса на \(V\). \\
+Тогава в сила е връзката:
+\begin{align*}
+\mathcal{M}_{a_1, a_2, \dots, a_n}(\varphi)
+=
+\left(T_{b_1, b_2, \dots, b_n \to a_1, a_2, \dots, a_n}\right)^{-1}
+.
+\mathcal{M}_{b_1, b_2, \dots, b_n}(\varphi)
+.
+T_{b_1, b_2, \dots, b_n \to a_1, a_2, \dots, a_n}
+\end{align*}
+\end{proposition}
+
+\begin{theorem}[Първа теорема за ранг на матрици]
+Нека \((F, +, .)\) е поле и \(m, n \in \mathbb{N}^+\) и \(A \in M_{m \times n}(F)\).
+Тогава \(r(A) = r(A^t)\).
+\end{theorem}
+
+\end{document}
