@@ -16,6 +16,8 @@
 
 \begin{document}
 \maketitle
+\tableofcontents
+\newpage
 
 \section{Подгрупи на циклични групи}
 Нека си припомним каква ни беше дефиницията за подгрупа на дадена група.
@@ -51,7 +53,7 @@
 \vspace{2mm}
 \\
 От лекции знаем, че \(<\mathbb{Z}, 0, +, ->\) е циклична група,
-защото \(<1> = 1\mathbb{Z} = \{z.1 \; | \; z \in \mathbb{Z}\} = \mathbb{Z}\).
+защото \(<1> \; = 1\mathbb{Z} = \{z.1 \; | \; z \in \mathbb{Z}\} = \mathbb{Z}\).
 Също така, знаем, че с точност до изоморфизъм това е единствената циклична група от безкраен ред.
 Както и ако \(n \in \mathbb{N}^+\), то групата на \(n\)-тите корени на единицата
 \(<\mathbb{C}_n, 1, . , ()^{-1}>\) е циклична група (поражда се от елемента \(\omega_n^1\)) и с точност до изоморфизъм е единствената циклична от ред \(n\).
@@ -85,7 +87,7 @@
 \vspace{2mm}
 \\
 Сега на въпроса каква е връзката между подгрупите на \(<\mathbb{Z}, 0, +, ->\).
-Нека \(n \in \mathbb{N}\) и \(m \mathbb{N}\). Както видяхме \(n\mathbb{Z}\) и \(m\mathbb{Z}\) образуват подгрупи на \(<\mathbb{Z}, 0, +, ->\).
+Нека \(n \in \mathbb{N}\) и \(m \in \mathbb{N}\). Както видяхме \(n\mathbb{Z}\) и \(m\mathbb{Z}\) образуват подгрупи на \(<\mathbb{Z}, 0, +, ->\).
 Очевидно \(n\mathbb{Z}\) е подгрупа на \(m\mathbb{Z}\) ТСТК \(n\mathbb{Z} \subseteq m\mathbb{Z}\) понеже и двете са подгрупи на \(<\mathbb{Z}, 0, +, ->\).
 От друга страна \(n\mathbb{Z} \subseteq m\mathbb{Z} \longleftrightarrow (\forall z \in \mathbb{Z})(m \mid z.n)\). В частност при \(z = 1\) получаваме \(m \mid n\), тоест
 \begin{align*}
@@ -301,11 +303,11 @@
 \end{enumerate}
 \subsection{Решение}
 \begin{enumerate}[label=\alph*)]
-    \item Човек трябва да е много съобразителен и да забележи, че липсва една 2-ка в числителя ... Ей това е нещото дето убива невнимателните млади Информатици ...
+    \item Човек трябва да е много съобразителен и да забележи, че липсва една 2-ка в числителя ... Ей това е нещото, което наказва невнимателните млади Информатици ...
     Така \(\alpha = \cos\left(\displaystyle\frac{2\pi}{66}\right) + i\sin\left(\displaystyle\frac{2\pi}{66}\right) = \omega_{66}^1\).
     Тогава \(G = \; <\alpha> \; = \; <\omega_{66}^1> \; = \mathbb{C}_{66}\).
     Така \(ord(\alpha) = |G| = |\mathbb{C}_{66}| = 66\).
-    За \(\beta\) имаме \(\beta = \alpha^{28} = (\omega_{66}^1)^{28} = \omega_{66}^{28} = \omega_{2.3.11}^{2.2.7} = \omega_{33}^{14}\). Използвайки, че \(gcd(33, 14) = 1\) получаваме, че \(H = <\beta> = <\omega_{33}^{14}> = \mathbb{C}_{33}\) и значи
+    За \(\beta\) имаме \(\beta = \alpha^{28} = (\omega_{66}^1)^{28} = \omega_{66}^{28} = \omega_{2.3.11}^{2.2.7} = \omega_{33}^{14}\). Използвайки, че \(gcd(33, 14) = 1\) получаваме, че \(H = \; <\beta> \; = \; <\omega_{33}^{14}> \; = \; \mathbb{C}_{33}\) и значи
     \(ord(\beta) = |H| = |\mathbb{C}_{33}| = 33\).
     \item От предната \(G = \mathbb{C}_{66}\). \\
     Естествените делители на \(66\) са \(\{1, 2, 3, 6, 11, 22, 33, 66\}\).
@@ -373,7 +375,7 @@
 \end{align*}
 Значи искаме \(x\) и \(y\) да имат един и същ образ ТСТК \(x *_{\mathcal{A}} inv_{\mathcal{A}}(y) \in C\). Сега ако \(\mathrm{Ker}(\varphi) = C\), то \(C\) образува нормална подгрупа на \(\mathcal{A}\) и тогава \(x *_{\mathcal{A}} inv_{\mathcal{A}}(y) \in C\) е еквивалетно с \(x *_{\mathcal{A}} C = y *_{\mathcal{A}} C\). Това е просто вметка,
 която цели да ни каже, че същност искаме двете релации \(\varphi(x) = \varphi(y)\) и \(x *_{\mathcal{A}} C = y *_{\mathcal{A}} C\) да съвпадат!
-Та ако имаме хубав критерий (под хубав имаме предвид такъв, който включва равенство!) за принадлежност към множеството \(C\) сравнително лесно можем да се досетим какво да изображението вземайки предвид, че образите искаме да са елементите на \(B\)! Нека видим няколко примера :)
+Та ако имаме хубав критерий (под хубав имаме предвид такъв, който включва равенство!) за принадлежност към множеството \(C\) сравнително лесно можем да се досетим какво да е изображението вземайки предвид, че образите искаме да са елементите на \(B\)! Нека видим няколко примера :)
 
 \section{Първа порция примери}
 Нека \(\mathcal{C} = <\mathbb{C}^*, 1, ., ()^{-1}>\).
@@ -513,7 +515,7 @@
         \item Нека \(z \in \mathbb{U}\). Имаме, че \(\varphi(z) = z^n\).
         Нека \(s = \sqrt[n]{z}\). Тогава \(|s| = \sqrt[n]{|z|} = \sqrt[n]{1} = 1\).
         Значи \(s \in \mathbb{U}\).
-        От друга страна \(\varphi(s) = s^n = \sqrt[n]{z}^n = z\). Значи \(\varphi\) е сюрекция.
+        От друга страна \(\varphi(s) = s^n = (\sqrt[n]{z})^n = z\). Значи \(\varphi\) е сюрекция.
         \item Имаме \(x \in \mathbb{C}_n \iff x \in \mathbb{U} \; \& \; x^n = 1 \iff x \in \mathbb{U} \; \& \; \varphi(x) = 1 \iff x \in \mathrm{Ker}(\varphi)\).
         Значи \(\mathrm{Ker}(\varphi) = \mathbb{C}_n\).
     \end{enumerate}
@@ -565,7 +567,7 @@
     \displaystyle\frac{x^{n^2}}{|x|^{n^2}} =
     \displaystyle\frac{|x|^{n^2}}{|x|^{n^2}} = 1\).
     Значи да ако, \(x \in H_{n^2}\), то \(\displaystyle\frac{x^n}{|x|^n} \in \mathbb{C}_n\).
-    Значи \(\varphi(x) = \displaystyle\frac{x^n}{|x|^n}\) е коректно изображение от \(H_{n^2}\) към \(\mathbb{C}_n\). Да проверим че ни върши работа.
+    Значи \(\varphi(x) = \displaystyle\frac{x^n}{|x|^n}\) е коректно изображение от \(H_{n^2}\) към \(\mathbb{C}_n\). Да проверим, че ни върши работа.
     \begin{enumerate}
         \item \(\varphi(x.y) = \displaystyle\frac{(x.y)^n}{|x.y|^n} = \displaystyle\frac{x^n.y^n}{|x|^n.|y|^n} = \displaystyle\frac{x^n}{|x|^n}. \displaystyle\frac{y^n}{|y|^n} = \varphi(x) . \varphi(y)\). Значи \(\varphi\) е ХММ.
         \item Искаме да видим, че \(\varphi\) е сюрекция.
@@ -611,9 +613,167 @@
 \end{enumerate}
 \subsection{Решение:}
 \begin{enumerate}[label=\alph*)]
-    \item
+    \item Следкато искаме да докажем, че \(G\) образува група относно операцията умножение на квадратни матрици с рационални коефициенти.
+    То логично е проверим, че \(G \subseteq GL_2(\mathbb{Q})\).
+    Нека \(a \in \mathbb{Q}^*\) и \(b \in \mathbb{Q}\) и нека \(m = \begin{pmatrix}
+    a & b \\
+    0 & 1
+    \end{pmatrix}\). Тогава \(\mathrm{det}(m) = a \neq 0\). Значи \(m\) е неособена матрица с рационални коефициенти, знаем че рационалните числа образуват поле, значи \(m\) е обратима. Тоест \(m \in GL_2(\mathbb{Q})\). Следователно \(G \subseteq GL_2(\mathbb{Q})\). Знаем, че \(<GL_2(\mathbb{Q}), E_2, ., ()^{-1}>\) образува група, така че ще покажем, че \(G\) образува нейна подгрупа.
+    Нека \(a \in \mathbb{Q}^*\) и \(b \in \mathbb{Q}\) и нека \(m = \begin{pmatrix}
+    a & b \\
+    0 & 1
+    \end{pmatrix}\).
+    Нека \(c \in \mathbb{Q}^*\) и \(d \in \mathbb{Q}\) и нека \(t = \begin{pmatrix}
+    c & d \\
+    0 & 1
+    \end{pmatrix}\). Тогава \(m.t = \begin{pmatrix}
+    a & b \\
+    0 & 1
+    \end{pmatrix}.\begin{pmatrix}
+    c & d \\
+    0 & 1
+    \end{pmatrix} = \begin{pmatrix}
+    ac & ad + b \\
+    0 & 1
+    \end{pmatrix}\).
+    Сега понеже \(a \in \mathbb{Q}^*\) и \(c \in \mathbb{Q}^*\).
+    То \(ac \mathbb{Q}^*\). Очевидно \(ad + b \in \mathbb{Q}\).
+    Значи \(m.t \in G\). Значи \(G\) е затворено отнсно умножение на матрици.
+    Понеже \(1 \in \mathbb{Q}^*\) и \(0 \in \mathbb{Q}\), то \(E_2 \in G\).
+    Ако се сетим за практическото правило за намиране на обратна матрица от ред 2.
+    Което беше по главния диагонал разменяме местата, а във вторични сменяме знаците и делим на детерминантата. То \(m^{-1} = \displaystyle\frac{1}{\mathrm{det}(m)}\begin{pmatrix}
+    1 & -b \\
+    -0 & a
+    \end{pmatrix} = \displaystyle\frac{1}{a}\begin{pmatrix}
+    1 & -b \\
+    0 & a
+    \end{pmatrix} = \begin{pmatrix}
+    a^{-1} & -b.a^{-1} \\
+    -0 & 1
+    \end{pmatrix}\) и очевидно \(m^{-1} \in G\).
+    Значи \(G\) образува подгрупа на \(<GL_2(\mathbb{Q}), E_2, ., ()^{-1}>\).
+    \item Ще докажем, че \(<M, E_2, ., ()^{-1}> \; \cong \; <\mathbb{Q}^*, 1, ., ()^{-1}>\) и тогава по изоморфизъм \(<M, E_2, ., ()^{-1}>\) ще е група, понеже
+    \(<\mathbb{Q}^*, 1, ., ()^{-1}>\) е група. Поглеждайки множеството \(M\) смятам, че е задължително студент във ФМИ втори семестър не зависимо кой курс да съобрази, кое изображение е очевидна биекция от \(M\) към \(\mathbb{Q}^*\). Именно
+    \(\varphi\left(\begin{pmatrix}
+    q & 0 \\
+    0 & 1
+    \end{pmatrix}\right) = q\).
+    След като, това че \(\varphi : M \to \mathbb{Q}^*\) е очевидно, че е биекция остава да видим, че \(\varphi\) запазва бинарната операция.
+    Нека \(x \in \mathbb{Q}^*\) и нека \(y \in \mathbb{Q}^*\). Тогава
+    \(\varphi\left(\begin{pmatrix}
+    x & 0 \\
+    0 & 1
+    \end{pmatrix}.\begin{pmatrix}
+    y & 0 \\
+    0 & 1
+    \end{pmatrix}\right) = \varphi\left(\begin{pmatrix}
+    x.y & 0 \\
+    0 & 1
+    \end{pmatrix}\right) = x.y = \varphi\left(\begin{pmatrix}
+    x & 0 \\
+    0 & 1
+    \end{pmatrix}\right).\varphi\left(\begin{pmatrix}
+    y & 0 \\
+    0 & 1
+    \end{pmatrix}\right)\). Значи \(\varphi\) е биективен хомоморфизъм, тоест изоморфизъм. Следователно \(<M, E_2, ., ()^{-1}>\) е група.
+    Това, че е подгрупа на \(<G, E_2, ., ()^{-1}>\)
+    е очевидно, защото е очевидно, че \(M \subseteq G\).
+    \item Използвайки първата теорема за хомоморфизмите ще докажем \(G / H \cong <\mathbb{Q}^*, 1, . , ()^{-1}>\), с което "безплатно" ще получим, че \(H\) образува нормална подгрупа на  \(<G, E_2, ., ()^{-1}>\).
+    Първо ни трябва критерий за принадлежност към \(H\), който да отделя от елементите на \(G\) със свойство, което е изразимо с равенство.
+    Ами поглеждайки, че \(H = \left\{\begin{pmatrix}
+    1 & b \\
+    0 & 1
+    \end{pmatrix} \; \Big| \; b \in \mathbb{Q}\right\}\).
+    То очевидно \(H = \left\{\begin{pmatrix}
+    a & b \\
+    0 & 1
+    \end{pmatrix} \in G \; \Big| \; a = 1\right\}\).
+    Значи пробваме с този критерий. Като търсим изображение \(\psi : G \to \mathbb{Q}^*\),
+    което е сюрективен хомоморфизъм и \(\mathrm{Ker}(\psi) = H\).
+    \begin{align*}
+        \psi\left(\begin{pmatrix}
+        a & b \\
+        0 & 1
+        \end{pmatrix}\right) = \psi\left(\begin{pmatrix}
+        c & d \\
+        0 & 1
+        \end{pmatrix}\right) \longleftrightarrow
+        \begin{pmatrix}
+        a & b \\
+        0 & 1
+        \end{pmatrix} . \begin{pmatrix}
+        c & d \\
+        0 & 1
+        \end{pmatrix}^{-1} \in H \longleftrightarrow \\
+        \begin{pmatrix}
+        a & b \\
+        0 & 1
+        \end{pmatrix}. \begin{pmatrix}
+        c^{-1} & -d.c^{-1} \\
+        0 & 1
+        \end{pmatrix} \in H \longleftrightarrow
+        \begin{pmatrix}
+        ac^{-1} & b - adc^{-1} \\
+        0 & 1
+        \end{pmatrix} \in H \longleftrightarrow \\
+        ac^{-1} = 1 \longrightarrow a = c
+    \end{align*}
+    Значи \begin{align*}
+        \psi\left(\begin{pmatrix}
+        a & b \\
+        0 & 1
+        \end{pmatrix}\right) = \psi\left(\begin{pmatrix}
+        c & d \\
+        0 & 1
+        \end{pmatrix}\right) \longleftrightarrow a = c
+    \end{align*}
+    Значи информацията, която искаме да прехвърляме е каква е стойността на елемента на  първи ред и първи стълб. 
+    Aко \(\begin{pmatrix}
+        a & b \\
+        0 & 1
+        \end{pmatrix} \in G\), то \(a \in \mathbb{Q}^*\).
+    Значи \(\psi\left(\begin{pmatrix}
+        a & b \\
+        0 & 1
+        \end{pmatrix}\right) = a\) е коректно дефинирано изображение от \(G\) към \(\mathbb{Q}^*\). Ще покажем, че то ни върши работа.
+    \begin{enumerate}[label=\arabic*.]
+        \item \(\psi\left(\begin{pmatrix}
+            a & b \\
+            0 & 1
+            \end{pmatrix}.\begin{pmatrix}
+            c & d \\
+            0 & 1
+            \end{pmatrix}\right) = \psi\left(\begin{pmatrix}
+    ac & ad + b \\
+    0 & 1
+    \end{pmatrix}\right) = \\
+    a.c = \psi\left(\begin{pmatrix}
+            a & b \\
+            0 & 1
+            \end{pmatrix}\right).\psi\left(\begin{pmatrix}
+            c & d \\
+            0 & 1
+            \end{pmatrix}\right)\).
+    Значи \(\psi\) е хомоморфизъм.
+    \item Искаме да видим, че \(\psi\) е сюрекция.
+    Нека \(q \in \mathbb{Q}^*\). \\
+    Тогава \(\begin{pmatrix}
+            q & 0 \\
+            0 & 1
+            \end{pmatrix} \in G\) и \(\psi\left(\begin{pmatrix}
+            q & 0 \\
+            0 & 1
+            \end{pmatrix}\right) = q\).
+    Значи \(\psi\) е сюрекция.
+    \item Както видяхме \(H = \left\{\begin{pmatrix}
+    a & b \\
+    0 & 1
+    \end{pmatrix} \in G \; \Big| \; a = 1\right\}\). \\
+    Очевидно \(H = \{g \in G \; | \; \psi(g) = 1\} = \mathrm{Ker}(\psi)\).
+    \end{enumerate}
+    Така от първата теорема за хомоморфизмите \(G / H \cong <\mathbb{Q}^*, 1, . , ()^{-1}>\) и \(H\) образува нормална подгрупа на \(<G, E_2, . , ()^{-1}>\).
 \end{enumerate}
-\section{Задача от теория на числата!}
+\section{Задача от теория на числата}
 Нека \(a, b \in \mathbb{Z}\) са такива, че \(gcd(a, b) = 5\).
 Да се намери на колко може да е равно \(gcd(13a + 36b, 2a + 5b)\) ?
 \subsection{Решение:}
