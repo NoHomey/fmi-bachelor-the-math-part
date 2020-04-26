@@ -1,0 +1,285 @@
+\documentclass{article}[12pt]
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+
+\newcommand{\Lang}{\mathcal{L}}
+
+\setlength{\parindent}{0mm}
+
+\title{Линейни пространства}
+\author{Иво Стратев}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\pagebreak
+
+\section{Еквивалентни дефиниции на поле}
+
+\subsection{Стандартна със съществуване}
+
+\((\mathbb{F}, +, .)\) е поле ако:
+
+\begin{enumerate}
+\item \(\mathbb{F}\) е непразно множество и \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})[\; a + b \in \mathbb{F} \; \land \; a.b \in \mathbb{F} \;]\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})(\forall c \in \mathbb{F})[\; (a + b) + c = a + (b + c) \;]\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})[\; a + b = b + a \;]\);
+\item \((\exists 0 \in \mathbb{F})(\forall a \in \mathbb{F})[\; 0 + a = a \; \land \; (\exists -a \in \mathbb{F})[\; a + (-a) = 0 \;] \;]\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})(\forall c \in \mathbb{F})[\; (a . b) . c = a . (b . c) \;]\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})[\; a . b = b . a \;]\);
+\item \((\exists 1 \in \mathbb{F})(\forall a \in \mathbb{F})[\; 1 . a = a \;]\);
+\item \((\forall a \in \mathbb{F})[\; a \neq 0 \implies (\exists a^{-1} \in \mathbb{F})[\; a . a^{-1} = 1 \;] \;]\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})(\forall c \in \mathbb{F})[\; a.(b + c) = a.b + a.c \;]\);
+\end{enumerate}
+
+\subsection{Еквивалентна с операции и константи (инфиксен запис)}
+
+\((\mathbb{F}, 0, 1, +, -, .)\) е поле ако:
+
+\begin{enumerate}
+\item \(\mathbb{F}\) е непразно множество, \(0 \in \mathbb{F}\), \(1 \in \mathbb{F}\), \(+ \; : \; \mathbb{F} \times \mathbb{F} \to \mathbb{F}\), \(- \; : \; \mathbb{F} \to \mathbb{F}\) и \(. \; : \; \mathbb{F} \times \mathbb{F} \to \mathbb{F}\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})(\forall c \in \mathbb{F})[\; (a + b) + c = a + (b + c) \;]\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})[\; a + b = b + a \;]\);
+\item \((\forall a \in \mathbb{F})[\; 0 + a = a \;]\);
+\item \((\forall a \in \mathbb{F})[\; a + (-a) = 0 \;]\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})(\forall c \in \mathbb{F})[\; (a . b) . c = a . (b . c) \;]\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})[\; a . b = b . a \;]\);
+\item \((\forall a \in \mathbb{F})[\; 1 . a = a \;]\);
+\item \((\forall a \in \mathbb{F})[\; a \neq 0 \implies (\exists a^{-1} \in \mathbb{F})[\; a . a^{-1} = 1 \;] \;]\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})(\forall c \in \mathbb{F})[\; a.(b + c) = a.b + a.c \;]\);
+\end{enumerate}
+
+\subsection{Еквивалентна с функции и константи (функционален запис)}
+
+\((\mathbb{F}, 0, 1, add, inv, mul)\) е поле ако:
+
+\begin{enumerate}
+\item \(\mathbb{F}\) е непразно множество, \(0 \in \mathbb{F}\), \(1 \in \mathbb{F}\), \(add \; : \; \mathbb{F} \times \mathbb{F} \to \mathbb{F}\), \(inv \; : \; \mathbb{F} \to \mathbb{F}\) и \(mul \; : \; \mathbb{F} \times \mathbb{F} \to \mathbb{F}\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})(\forall c \in \mathbb{F})[\; add(add(a, b), c) = add(a, add(b, c)) \;]\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})[\; add(a, b) = add(b, a) \;]\);
+\item \((\forall a \in \mathbb{F})[\; add(0, a) = a \;]\);
+\item \((\forall a \in \mathbb{F})[\; add(a, inv(a)) = 0 \;]\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})(\forall c \in \mathbb{F})[\; mul(mul(a, b), c) = mul(a, mul(b, c)) \;]\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})[\; mul(a, b) = mul(b, a) \;]\);
+\item \((\forall a \in \mathbb{F})[\; mull(1, a) = a \;]\);
+\item \((\forall a \in \mathbb{F})[\; a \neq 0 \implies (\exists a^{-1} \in \mathbb{F})[\; mul(a,  a^{-1}) = 1 \;] \;]\);
+\item \((\forall a \in \mathbb{F})(\forall b \in \mathbb{F})(\forall c \in \mathbb{F})[\; mul(a, add(b, c)) = add(mul(a, b), mul(a, c)) \;]\);
+\end{enumerate}
+
+\section{Еквивалентни дефиниции на линейно пространство}
+
+\subsection{Стандартна със съществуване}
+
+Нека \((\mathbb{F}, +, .)\) е поле.
+
+\((\mathbb{V}, \oplus, \odot)\) е линейно пространство над полето \((\mathbb{F}, +, .)\), ако:
+
+\begin{enumerate}
+\item \(\mathbb{V}\) е непразно множество, \\
+\((\forall a \in \mathbb{V})(\forall b \in \mathbb{V})[\; a \oplus b \in \mathbb{V}  \;]\)
+и \((\forall \lambda \in \mathbb{F})(\forall v \in \mathbb{V})[\; \lambda \odot v \in \mathbb{V} \;]\);
+\item \((\forall a \in \mathbb{V})(\forall b \in \mathbb{V})(\forall c \in \mathbb{V})[\; (a \oplus b) \oplus c = a \oplus (b \oplus c) \;]\);
+\item \((\forall a \in \mathbb{V})(\forall b \in \mathbb{V})[\; a \oplus b = b \oplus a \;]\);
+\item \((\exists \theta \in \mathbb{V})(\forall a \in \mathbb{V})[\; \theta \oplus a = a \; \land \; (\exists \ominus a \in \mathbb{V})[\; a \oplus (\ominus a) = \theta \;] \;]\);
+\item \((\forall a \in \mathbb{V})[\; 1 \odot a = a \;]\);
+\item \((\forall \lambda \in \mathbb{F})(\forall \mu \in \mathbb{F})(\forall v \in \mathbb{V})[\; (\lambda . \mu) \odot v = \lambda \odot (\mu \odot v) \;]\);
+\item \((\forall \lambda \in \mathbb{F})(\forall b \in \mathbb{V})(\forall c \in \mathbb{V})[\; \lambda \odot (b \oplus c) = (\lambda \odot b) \oplus (\lambda \odot c) \;]\);
+\item \((\forall \lambda \in \mathbb{F})(\forall \mu \in \mathbb{F})(\forall v \in \mathbb{V})[\; (\lambda + \mu) \odot v = (\lambda \odot v) \oplus (\mu \odot v) \;]\);
+\end{enumerate}
+
+\subsection{Еквивалентна с операции и константи (инфиксен запис)}
+
+Нека \((\mathbb{F}, 0, 1, +, -, .)\) е поле.
+
+\((\mathbb{V}, \theta, \oplus, \ominus, \odot)\) е линейно пространство над полето \((\mathbb{F}, 0, 1, +, -, .)\), ако:
+
+\begin{enumerate}
+\item \(\mathbb{V}\) е непразно множество, \\
+\(\theta \in \mathbb{V}\), \(\oplus \; : \; \mathbb{V} \times \mathbb{V} \to \mathbb{V}\), \(\ominus \; : \; \mathbb{V} \to \mathbb{V}\) и \(\odot \; : \; \mathbb{F} \times \mathbb{V} \to \mathbb{V}\);
+\item \((\forall a \in \mathbb{V})(\forall b \in \mathbb{V})(\forall c \in \mathbb{V})[\; (a \oplus b) \oplus c = a \oplus (b \oplus c) \;]\);
+\item \((\forall a \in \mathbb{V})(\forall b \in \mathbb{V})[\; a \oplus b = b \oplus a \;]\);
+\item \((\forall a \in \mathbb{V})[\; \theta \oplus a = a \;]\);
+\item \((\forall a \in \mathbb{V})[\; a \oplus (\ominus a) = \theta \;]\);
+\item \((\forall a \in \mathbb{V})[\; 1 \odot a = a \;]\);
+\item \((\forall \lambda \in \mathbb{F})(\forall \mu \in \mathbb{F})(\forall v \in \mathbb{V})[\; (\lambda . \mu) \odot v = \lambda \odot (\mu \odot v) \;]\);
+\item \((\forall \lambda \in \mathbb{F})(\forall b \in \mathbb{V})(\forall c \in \mathbb{V})[\; \lambda \odot (b \oplus c) = (\lambda \odot b) \oplus (\lambda \odot c) \;]\);
+\item \((\forall \lambda \in \mathbb{F})(\forall \mu \in \mathbb{F})(\forall v \in \mathbb{V})[\; (\lambda + \mu) \odot v = (\lambda \odot v) \oplus (\mu \odot v) \;]\);
+\end{enumerate}
+
+\subsection{Еквивалентна с функции и константи (функционален запис)}
+
+Нека \((\mathbb{F}, 0, 1, add, inv, mul)\) е поле.
+
+\((\mathbb{V}, \theta, vecAdd, vecInv, scalMul)\) е линейно пространство над полето \((\mathbb{F}, 0, 1, add, inv, mul)\), ако:
+
+\begin{enumerate}
+\item \(\mathbb{V}\) е непразно множество, \\
+\(\theta \in \mathbb{V}\), \(vecAdd \; : \; \mathbb{V} \times \mathbb{V} \to \mathbb{V}\), \(vecInv \; : \; \mathbb{V} \to \mathbb{V}\) и \(scalMul \; : \; \mathbb{F} \times \mathbb{V} \to \mathbb{V}\);
+\item \((\forall a \in \mathbb{V})(\forall b \in \mathbb{V})(\forall c \in \mathbb{V})[\; vecAdd(vecAdd(a, b), c) = a vecAdd(a, vecAdd(b, c)) \;]\);
+\item \((\forall a \in \mathbb{V})(\forall b \in \mathbb{V})[\; vecAdd(a, b) = vecAdd(b, a) \;]\);
+\item \((\forall a \in \mathbb{V})[\; vecAdd(\theta, a) = a \;]\);
+\item \((\forall a \in \mathbb{V})[\; vecAdd(a, vecInv(a)) = \theta \;]\);
+\item \((\forall a \in \mathbb{V})[\; scalMul(1, a) = a\;]\);
+\item \((\forall \lambda \in \mathbb{F})(\forall \mu \in \mathbb{F})(\forall v \in \mathbb{V})[\; scalMul(mul(\lambda, \mu), v) = scalMul(\lambda, scalMul(\mu, v)) \;]\);
+\item \((\forall \lambda \in \mathbb{F})(\forall b \in \mathbb{V})(\forall c \in \mathbb{V})[\; scalMul(\lambda, vecAdd(b, c)) = vecAdd(scalMul(\lambda, b), scalMul(\lambda, c)) \;]\);
+\item \((\forall \lambda \in \mathbb{F})(\forall \mu \in \mathbb{F})(\forall v \in \mathbb{V})[\; scalMul(add(\lambda + \mu), v) = vecAdd(scalMul(\lambda, v), scalMul(\mu, v)) \;]\);
+\end{enumerate}
+
+\section{НДУ за подпространство}
+
+Нека \((\mathbb{V}, \oplus, \odot)\) е ЛП над поле \((\mathbb{F}, +, .)\).
+
+\((\mathbb{U}, \oplus, \odot)\) е подпространство на \((\mathbb{V}, \oplus, \odot)\) ТСТК:
+
+\begin{enumerate}
+\item \(\mathbb{U} \subseteq \mathbb{V}\);
+\item \((\forall a \in \mathbb{U})(\forall b \in \mathbb{U})[\; a \oplus b \in \mathbb{U}\;]\);
+\item \((\forall \lambda \in \mathbb{F})(\forall u \in \mathbb{U})[\; \lambda \odot u \in \mathbb{U}\;]\).
+\end{enumerate}
+
+\section{Две доказателства на подпространства}
+
+\subsection{Нечетни реални функции}
+
+Да се докаже, че множеството от нечетните реални функции е линейно пространство
+над полето на реалните числа относо стандартните операции за събиране на функции
+и умножение на функция с число.
+
+\subsubsection{Решение:}
+
+Очевидно множеството от нечетните функции е подмножество на всички реални функции.
+Показваме затвореност.
+
+Нека \(f\) и \(g\) са нечетни функции. Тогава
+
+\begin{align*}
+(\forall x \in \mathbb{R})[\; f(-x) = -f(x) \;] \; \land \;
+(\forall x \in \mathbb{R})[\; g(-x) = -g(x) \;]
+\end{align*}
+
+Нека \(x \in \mathbb{R}\) тогава \((f \oplus g)(-x) = f(-x) + g(-x) = -f(x) + (-g(x)) = -(f(x) + g(x)) = -(f \oplus g)(x)\).
+Следователно \\ \((\forall x \in \mathbb{R})[\; (f \oplus g)(-x) = -(f \oplus g)(x) \;]\).
+Тоест сума на нечетни функции е отново нечетна функция.
+Тоест доказахме затвореност относно събирането.
+
+
+Нека \(h\) е нечетна функция и нека \(\lambda \in \mathbb{R}\).
+Нека \(x \in \mathbb{R}\) тогава \((\lambda \odot h)(-x) = \lambda.h(-x) = \lambda.(-h(x)) = -\lambda.h(x) = -(\lambda \odot h)(x)\).
+Следователно \\ \((\forall x \in \mathbb{R})[\; (\lambda \odot h)(-x) = -(\lambda \odot h)(x) \;]\).
+Тоест нечетна функция умножена с число отново е нечетна функция.
+Тоест доказахме затвореност относно умножение с число.
+
+
+Така множеството на нечетните функции относно стандартните операции е линейно подпространство.
+В частност линейо пространство над реалните числа.
+
+\subsection{"Интересни" \; функции}
+
+Нека \(\mathbb{W} = \{(a \odot sinx) \oplus (b \odot x^2) \oplus c \; | \; (a, b, c) \in \mathbb{R}^3 \}\).
+Да се докаже, че \(\mathbb{W}\) е линейно пространство относно стандартните операции за събиране на функции и умножение на функция с число.
+
+\subsubsection{Решение:}
+
+Очевидно всеки елемент на множеството \(\mathbb{W}\) е функция от реални числа в реални числа.
+Тоест очевидно \(\mathbb{W} \subseteq \{f \; | \; f \; : \; \mathbb{R} \to \mathbb{R} \}\).
+
+Ние знаем (може би още не съвсем, но вие ще го докажете, вярвам във вас!),
+че относно стандартните операции за събиране на функции и умножение на функция с число
+\(\{f \; | \; f \; : \; \mathbb{R} \to \mathbb{R} \}\) е ЛП над полето на реалните числа.
+
+Тогава ни остава да докажем затвореност относно операциите!
+
+Нека \(w_1 \in  \mathbb{W}\) и нека \(w_2 \in  \mathbb{W}\) и са произволни. \\
+Тогава съществуват \((a_1, b_1, c_1) \in \mathbb{R}^3\), такива че \(w_1 = (a_1 \odot  sinx) \oplus (b_1 \odot x^2) \oplus c_1\)
+и съществуват \((a_2, b_2, c_2) \in \mathbb{R}^3\), такива че \(w_2 = (a_2 \odot  sinx) \oplus (b_2 \odot x^2) \oplus c_2\).
+Нека тогава \((a_1, b_1, c_1) \in \mathbb{R}^3\) и нека \((a_2, b_2, c_2) \in \mathbb{R}^3\)
+и нека \(w_1 = (a_1 \odot  sinx) \oplus (b_1 \odot x^2) \oplus c_1\) и \(w_2 = (a_2 \odot  sinx) \oplus (b_2 \odot x^2) \oplus c_2\).
+Така \(w_1 \oplus w_2 = ((a_1 \odot  sinx) \oplus (b_1 \odot x^2) \oplus c_1) \oplus ((a_2 \odot  sinx) \oplus (b_2 \odot x^2) \oplus c_2) =
+((a_1 + a_2) \odot sinx) \oplus ((b_1 + b_2) \odot x^2) \oplus (c_1 + c_2)\)
+\\  и \((a_1 + a_2, b_1 + b_2, c_1 + c_2) \in \mathbb{R}^3\).
+Следователно \(w_1 \oplus w_2 \in  \mathbb{W}\). \\
+Следователно \((\forall w_1 \in \mathbb{W})(\forall w_2 \in \mathbb{W})[\; w_1 \oplus w_2 \in \mathbb{W} \;]\).
+
+Нека \(\mu \in \mathbb{R}\) и нека \(w \in  \mathbb{W}\) и са произволни.
+Тогава съществуват \\
+\((a, b, c) \in \mathbb{R}^3\), такива че \(w = (a \odot sinx) \oplus (b \odot x^2) \oplus c\).
+Нека тогава \((a, b, c) \in \mathbb{R}^3\) и нека \(w = (a \odot sinx) \oplus (b \odot x^2) \oplus c\).
+Така \(\mu \odot w = \mu \odot ((a \odot sinx) \oplus (b \odot x^2) \oplus c) = \\
+((\mu.a) \odot sinx) \oplus ((\mu.b) \odot x^2) \oplus (\mu.c)\) и \((\mu.a, \mu.b, \mu.c) \in \mathbb{R}^3\).
+Следователно \(\mu \odot w \in  \mathbb{W}\).
+Следователно \((\forall \mu \in \mathbb{F})(\forall w \in \mathbb{W})[\; \mu \odot w \in \mathbb{W} \;]\).
+
+
+Значи \((\mathbb{W}, \oplus, \odot)\) е подпространсто на функците от реални в реални числа.
+В частност \((\mathbb{W}, \oplus, \odot)\) е линейно пространство.
+
+\section{Задачи за домашно}
+
+\subsection{Задачи, които са задължителни}
+
+\subsubsection{Всяко поле е ЛП над себе си}
+
+Докажете, че ако \((F, +, .)\) е поле, то \((F, +, .)\) e ЛП над полето \((F, +, .)\).
+
+\subsubsection{Задачата за функциите}
+
+Нека \(X\) е непразно множество и нека \((F, +, .)\) е поле.
+
+Нека \(Func(X, F) = \{f \; | \; f \; : \; X \to F\}\).
+
+Дефинираме естествените операции събиране на функции и умножение на функция с число по следните правила:
+
+\begin{align*}
+(\forall f \in Func(X, F))(\forall g \in Func(X, F))(\forall x \in X)[\; (f \oplus g)(x) = f(x) + g(x) \;] \\
+(\forall \lambda \in F)(\forall f \in Func(X, F))(\forall x \in X)[\; (\lambda \odot f)(x) = \lambda.f(x) \;]
+\end{align*}
+
+Докажете, че \((Func(X, F), \oplus, \odot)\) е ЛП над \((F, +, .)\).
+
+
+Асоциативността е по желание!
+
+Равенство на функции се дефинира като равенство между функционалните им стойности. Тоест
+\begin{align*}
+(\forall f \in Func(X, F))(\forall g \in Func(X, F))[\; f = g \iff (\forall x \in X)[\; f(x) = g(x) \;] \; ]
+\end{align*}
+
+Нулевата функция се дефинира така:
+\begin{align*}
+(\forall x \in X)[\; \theta(x) = 0 \;] 
+\end{align*}
+
+Тоест константа \(0\), която е нулата на полето!
+
+Противоположна функция се дефинира така:
+\begin{align*}
+(\forall f \in Func(X, F))(\forall x \in X)[\; (\ominus f)(x) = -f(x) \;]
+\end{align*}
+
+Тоест функцията, която връща противоположните стойности.
+
+\subsection{Задачи за упражнение}
+
+\subsubsection{Четните реални функции образуват ЛП}
+
+\subsubsection{Полиномите състоящи се само от четни степени образуват ЛП}
+
+\subsubsection{Множеството \(\{(p, 0, -p) \; | \; p \in \mathbb{Q}\}\) образува ЛП}
+
+\subsubsection{Задача 3.9 от сборника}
+
+\subsubsection{Задача 3.7 от сборника}
+
+\subsection{Нека \((V, \oplus, \odot)\) е ЛП над \((F, +, .)\) и \(A\) е крайно подмножество на \(V\). Тогава \(l(A)\) е ЛП}
+
+\end{document}
