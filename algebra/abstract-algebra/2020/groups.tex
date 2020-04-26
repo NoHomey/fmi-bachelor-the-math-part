@@ -1,0 +1,78 @@
+\documentclass{article}[12pt]
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{lipsum}
+\usepackage{stmaryrd}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+
+\setlength{\parindent}{0mm}
+
+\title{Задачи за групи}
+\author{Иво Стратев}
+
+\begin{document}
+
+\maketitle
+
+\section*{Еквивалентна дефиниция за Група}
+
+\((G, e, *, inv)\) е група тогава и само тогава когато:
+
+\begin{enumerate}
+\item \(G\) е непразно множество;
+\item \(e \in G\);
+\item \(* \; : G \times G \to G\) - бинарна операция;
+\item \(inv \; : \; G \to G\) - унарна операция;
+\item \((\forall a \in G)(\forall b \in G)(\forall c \in G)[\; (a * b) * c = a * (b * c) \;]\);
+\item \((\forall g \in G)[\; g * e = g = e * g \;]\);
+\item \((\forall g \in G)[\; g * inv(g) = e = inv(g) * g \;]\)
+\end{enumerate}
+
+\section*{Задача 1.}
+
+Нека \((G, e_G, *, inv_G)\) и \((K, e_K, \odot, inv_K)\) са групи.
+
+Разглеждаме декартовото произведение на \(G\) и \(K\).
+
+Тоест \(G \times K = \{<g, k> \; | \; g \in G, \; k \in K\}\).
+
+Дефинираме 
+
+\begin{align*}
+<a, b> \; \oplus \; <c, d> = <a * c, b \odot d> \\
+e = <e_G, e_K> \\
+inv(<g, k>) = <inv_G(g), inv_K(k)>
+\end{align*}
+
+Докажете, че 
+
+\begin{itemize}
+\item \((\forall a \in G)(\forall c \in G)(\forall b \in K)(\forall d \in K)[\; <a, b> \; \oplus \; <c, d> \; \in G \times K] \;\)
+\item \((\forall g \in G)(\forall k \in K)[\; inv(<g, k>) \in G \times K \;]\)
+\item \((G \times K, e, \oplus, inv)\) е група.
+\end{itemize}
+
+\section*{Задача 2.}
+
+Нека \((G, e_G, *, inv_G)\) е група. Нека \(X\) е непразно множество.
+
+Нека \(Func(X, G) = \{f \; | \; f \; : \; X \to G\}\) е множеството на фукциите от \(X\) в \(G\).
+
+Нека \(\theta = (x \mapsto e_G) \in Func(X, G)\) е константната функция, която на всеки елемент от \(X\) съпоставя \(e_G\).
+
+Нека \(inv(f) = (x \mapsto inv_G(f(x)))\). Тоест \(inv = (f \mapsto (x \mapsto inv_G(f(x))))\).
+
+Проверете, че \(inv \; : \; Func(X, G) \to Func(X, G)\).
+
+Нека \(f \in Func(X, G)\) и \(g \in Func(X, G)\) и нека означим \\
+\(f \otimes g = (x \mapsto f(x) * g(x))\).
+
+Проверете, че \((\forall f \in Func(X, G))(\forall g \in Func(X, G))[\; f \otimes g \in Func(X, G) \;]\).
+
+Докажете, че \((Func(X, G), \theta, \otimes, inv)\) е група.
+
+\end{document}
