@@ -1,0 +1,257 @@
+\documentclass[a4paper,9pt]{extarticle}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}                
+\usepackage{enumerate}
+\usepackage{multirow}
+\usepackage{alltt}
+\usepackage{euler}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Зад.}
+\newtheorem{solution}{Решение на Зад.}
+
+\setlength{\textwidth}{210mm} 
+\setlength{\textheight}{297mm} 
+\parindent 0.5cm
+\oddsidemargin 0cm
+\evensidemargin 0cm
+
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Int}{\mathbb{Z}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\F}{\mathcal{F}}
+\def\dotminus{\mathbin{\ooalign{\hss\raise1ex\hbox{.}\hss\cr\mathsurround=0pt$-$}}}
+
+\begin{document}
+
+\begin{problem} Нека  $\Gamma\!: \F_1 \rightarrow \F_1$ и  $\Delta\!: \F_1 \rightarrow \F_1$ са следните оператори:
+   $$\Gamma(f)(x) \simeq
+  \begin{cases}
+   0, & \text{ако } x=0\\
+    x.f(x-1), & \text{иначе. }
+  \end{cases}
+ {}\quad  \text{и}\quad \Delta(f) = f\circ f.
+$$ \\
+а) Определете операторите $\Gamma\circ \Delta$ и $\Delta\circ \Delta$. \\
+б) Намерете  явния вид на  функциите $\Gamma(f)$, $(\Gamma\circ \Delta)(f)$ и $(\Delta\circ \Delta)(f)$, 
+\vskip1pt    
+
+където   $f(x)= x+1 $ за всяко $x\in \Nat.$
+\end{problem}
+
+\begin{solution}
+а) \((\Gamma\circ \Delta)(f)(x) \simeq \Gamma(\Delta(f))(x) \simeq \Gamma(f \circ f)(x) \simeq \begin{cases}
+    0 &, \; x = 0 \\
+    x.f(f(x - 1)) &, \; x > 0
+\end{cases}\).
+
+\vskip7pt
+
+\((\Delta\circ \Delta)(f) = \Delta(\Delta(f)) = \Delta(f \circ f) = (f \circ f) \circ (f \circ f) = f^4\).
+
+\vskip7pt
+
+б) \(\Gamma(f)(x) \simeq \begin{cases}
+    0 &, \; x = 0 \\
+    x.((x - 1) + 1) &, \; x > 0
+\end{cases} \simeq \begin{cases}
+    0 &, \; x = 0 \\
+    x^2 &, \; x > 0
+\end{cases}\).
+
+\vskip7pt
+
+\((\Gamma \circ \Delta)(f)(x) \simeq \begin{cases}
+    0 &, \; x = 0 \\
+    x.(((x - 1) + 1) + 1) &, \; x > 0
+\end{cases} \simeq \begin{cases}
+    0 &, \; x = 0 \\
+    x(x +1) &, \; x > 0
+\end{cases}\).
+
+\vskip7pt
+
+\((\Delta \circ \Delta)(f)(x) \simeq f^4(x) \simeq ((((x + 1) + 1) + 1) + 1) = x + 4\).
+
+
+\end{solution}
+
+\newpage
+
+\begin{problem} а) Определете дали следната функция $f\!:\ \Nat_\bot^2 \rightarrow \Nat_\bot$: 
+    $$f(x,y) =
+  \begin{cases}
+   0, & \text{ако } x=0\\
+    x.y, & \text{ако } x>0\ \&\ y\geq 0\\
+   \bot, & \text{в останалите случаи} 
+  \end{cases}
+$$ \\
+е точна, монотонна или непрекъсната. Обосновете се.
+\vskip3pt
+б) Нека  $f, g_1$ и $ g_2$ са  функции от $\F_2^\bot$. Вярно ли е, че:
+\vskip2pt
+--   ако $f, g_1$ и $ g_2$ са точни функции, то и $f(g_1, g_2)$   е точна;
+\vskip2pt
+--   ако $f, g_1$ и $g_2$ са монотонни, то и $f(g_1, g_2)$  е монотонна?
+\vskip2pt
+Обосновете отговорите си.
+\end{problem}
+
+\begin{solution}
+а) От лекции знаем, че ако една функция е точна, то тя е монотонна и \\
+една функция е монотонна ТСТК е непрекъсната. \\
+Тоест ако покажем, че $f$ е точна, то тя ще е и монотонна и непрекъсната. \\
+Обаче $f$ не е точна, защото $f(0, \bot) = 0 \neq \bot$.
+Нека проверим дали е монотонна, \\
+като се възползваме от следното твърдение от лекции: \\
+\textit{Една функция е монотонна ТСТК е монотонна по всеки аргумент}.
+\begin{itemize}
+    \item (по първия аргумент): Нека $a \in \Nat$ и $b \in \Nat_\bot$. Тогава $f(\bot, b) = \bot \sqsubseteq f(a, b)$ \\
+    и значи $f$ е монотнна по първия си аргумент.
+    \item (по втория): Нека $a \in \Nat_\bot$ и $b \in \Nat$. Тогава са възможни два случая.
+    \begin{enumerate}
+        \item $a = \bot$. Тогава $f(a, \bot) = \bot = f(a, b)$.
+        \item $a \in \Nat$. Тогава $f(a, \bot) = \bot \sqsubseteq a.b = f(a, b)$.
+    \end{enumerate}
+    Следователно $f$ е монотнна по втория си аргумент.
+\end{itemize}
+Следователно $f$ е монотнна и непрекъсната.
+
+\vskip9pt
+
+б) \begin{itemize}
+    \item (\textit{точност}): Нека $a, b \in \Nat_\bot$ са такива, че $a = \bot \lor b = \bot$. \\
+    Тогава $g_1(a, b) = \bot$ и значи $(f(g_1, g_2))(a, b) = f(g_1(a, b), g_2(a, b)) = f(\bot, g_2(a, b)) = \bot$. \\
+    Следователно $f(g_1, g_2)$ е точна, защото $g_1, g_2, f$ са точни.
+    \item (\textit{монотонност}): Нека $a, b, c, d \in \Nat_\bot$ са такива, че $(a, b) \sqsubseteq (c, d)$. \\
+    Тогава $g_1(a, b) \sqsubseteq g_1(c, d)$ и  $g_2(a, b) \sqsubseteq g_2(c, d)$. \\
+    Следователно $(g_1(a, b), g_2(a, b)) \sqsubseteq (g_1(c, d), g_2(c, d))$. \\
+    Следователно $(f(g_1, g_2))(a, b) \sqsubseteq (f(g_1, g_2))(c, d)$, понеже $f$ е монотонна. \\
+    Следователно $f(g_1, g_2)$ е монотонна.
+\end{itemize}
+\end{solution}
+
+\newpage
+
+\begin{problem} Нека $(A, \leqslant, a_0)$ и $(B, \leqslant', b_0)$  са ОС, а $f\!: A \rightarrow B$ е сюрективно изображение, такова че за всички $a_1, a_2\in A$:
+$$a_1\leqslant a_2\ \Longrightarrow\ f(a_1)\leqslant'f(a_2).$$
+Докажете, че:
+
+\vskip1pt
+
+a) $f(a_0) = b_0$.
+
+\vskip2pt
+
+
+б) Ако редицата $\{a_n\}_{n \in \Nat}$  е монотонно растяща в $A$, то редицата $\{f(a_n)\}_{n \in \Nat}$ е монотонно растяща в $B$.
+
+\vskip2pt
+
+в) За всяка монотонно растяща  редица $\{a_n\}_{n \in \Nat}$ в $A$  е изпълнено:
+$$\underset{n \in \Nat}{lub'}\hspace{1pt} f(a_n)\ \leqslant'f( \underset{n \in \Nat}{lub}\ a_n),$$
+където с  $lub$ и $lub'$ са означени т.г.гр. в $A$ и $B$, съответно.
+
+\vskip2pt
+
+г) Дайте пример за ОС, за които $\underset{n \in \Nat}{lub'}\hspace{1pt} f(a_n)\  \neq \ f( \underset{n \in \Nat}{lub}\ a_n)$.
+
+\end{problem} 
+
+\vskip7pt 
+
+\begin{solution}
+а) Понеже \(f(a_0) \in B\), то \(b_0 \leqslant' f(a_0)\).
+Но \(f\) е сюрекция. Нека тогава \(a \in A\) е такова, че \(b_0 = f(a)\). \\
+Тогава \(a_0 \leqslant a\) и значи \(f(a_0) \leqslant' f(a) = b_0\).
+Така \(b_0 \leqslant' f(a_0)\) и \(f(a_0) \leqslant' b_0\) и понеже $\leqslant'$ е антисиметрична, то \(f(a_0) = b_0\).
+
+\vskip7pt 
+
+б) Нека \(n \in \Nat\). Тогава \(a_n \leqslant a_{n + 1}\) и значи \(f(a_n) \leqslant' f(a_{n + 1})\).
+Следователно \(\{f(a_n)\}_{n \in \Nat}\) е монотонно растяща в $(B, \leqslant', b_0)$.
+
+\vskip7pt 
+
+в) Нека $\{a_n\}_{n \in \Nat}$ е монотонно растяща редица в $(A, \leqslant, a_0)$.
+Тогава от б) следва, че \(\{f(a_n)\}_{n \in \Nat}\) е монотонно \\
+растяща в $(B, \leqslant', b_0)$ и значи $\underset{n \in \Nat}{lub'}\hspace{1pt} f(a_n)$ съществува.
+Нека $n \in \Nat$ тогава $a_n \leqslant \underset{n \in \Nat}{lub}\ a_n$ и значи
+$f(a_n) \leqslant' f\left(\underset{n \in \Nat}{lub}\ a_n\right)$. \\
+Но тогава $f\left(\underset{n \in \Nat}{lub}\ a_n\right)$ е горна граница за $\{f(a_n)\}_{n \in \Nat}$.
+Следователно $\underset{n \in \Nat}{lub'}\hspace{1pt} f(a_n)\ \leqslant'f( \underset{n \in \Nat}{lub}\ a_n)$.
+
+\vskip7pt
+
+г) Нека \(K = \Nat \cup \{\Nat\}\) и нека \(\leqslant\) е следната наредба $a \leqslant b \overset{def}{\iff} (a \in \Nat \;\&\; b \in \Nat \;\&\; a \leq_\Nat b) \;\lor\; b = \Nat$. \\
+Ясно е, че $(K, \leqslant, 0)$ е ОС. 
+Нека \(T = \{\emptyset, \; \{\emptyset\}\}\) и нека \(\prec = \{\{(\emptyset, \{\emptyset\})\}\}\).
+Нека \(\preceq\) е рефлексивното затваряне на $\prec$ в $T$. \\
+Тогава $(T, \preceq, \emptyset)$ е ОС. Нека \(q = \{n\}_{n \in \Nat}\). Тогава $q$ е монотонно растяща редица в $(K, \leqslant, 0)$ и т.г.гр. е $\Nat$. \\
+Нека \(f : K \to T\) е таква, че \(f(x) = \begin{cases}
+    \emptyset &, \; x \in \Nat \\
+    \{\emptyset\} &, \; x = \Nat
+\end{cases}\). Тогава $\underset{n \in \Nat}{lub_\preceq}\hspace{1pt} f(q_n) = \underset{n \in \Nat}{lub_\preceq}\hspace{1pt} f(n) = \underset{n \in \Nat}{lub_\preceq}\hspace{1pt} \emptyset = \emptyset$. \\
+От друга страна $f\left(\underset{n \in \Nat}{lub_\leqslant}\hspace{1pt} q_n\right) = f(\Nat) = \{\emptyset\}$ и значи $\underset{n \in \Nat}{lub_\preceq}\hspace{1pt} f(q_n) = \emptyset \prec \{\emptyset\} = f\left(\underset{n \in \Nat}{lub_\leqslant}\hspace{1pt} q_n\right)$. \\
+Следователно $\underset{n \in \Nat}{lub_\preceq}\hspace{1pt} f(q_n) \neq f\left(\underset{n \in \Nat}{lub_\leqslant}\hspace{1pt} q_n\right)$.
+
+\vskip9pt
+
+\textbf{Колегата Данчо} (\textit{Йордан Петров}) се сети за аналогичен на този пример. \\
+\textbf{Може би неговият беше по-ясен}, но този е малко по-\textit{интересен}.  
+
+\end{solution}
+
+\newpage
+
+\begin{problem} Нека $\Gamma\!: \F_1 \rightarrow \F_1$  е непрекъснат оператор. Докажете, че за всяко $n\geq 1$ са еквивалентни условията:
+
+\vskip2pt
+
+\begin{itemize}
+    \item $f\in \F_1$ е най-малката функция със свойството $\Gamma(f)\subseteq f$;
+    \item $f\in \F_1$ е най-малката функция със свойството $\Gamma^n(f)\subseteq f$.
+\end{itemize}
+
+\end{problem}
+
+\begin{solution}
+Както знаем от лекции понеже $\Gamma$ е непрекъснат, \\
+то най-малката функция със свойството $\Gamma(f)\subseteq f$ 
+съвпада с най-малката неподвижна точка на $\Gamma$. \\
+Лесно се доказва по индукция, че за всяко $n \in \Nat_+$ операторът $\Gamma^n$ е непрекъснат. \\
+Нека \(n \in \Nat\).
+Ще докажем, че е в сила $lfp(\Gamma^{n + 1}) = lfp(\Gamma)$. От където ще следва условието на задачата.
+
+\vskip9pt
+
+От теорията знаем, че $lpf(\Gamma^{n + 1}) = \displaystyle\bigcup_{k \in \Nat} (\Gamma^{n + 1})^k(\emptyset) = \displaystyle\bigcup_{k \in \Nat} \Gamma^{kn + k}(\emptyset)$ и $lfp(\Gamma) = \displaystyle\bigcup_{k \in \Nat} \Gamma^k(\emptyset)$ \\
+и редиците $\{\Gamma^{kn + k}(\emptyset)\}_{k \in \Nat}$ и $\{\Gamma^{k}(\emptyset)\}_{k \in \Nat}$ са монотонно растащи и сходящи. \\
+
+Сега ще докажем частен случай на добре познато твърдение от Анализа: \\
+\textit{Границата на подредица на сходяща редица съвпада с границата на самата редицата}.
+
+\vskip9pt
+
+Нека $k \in \Nat$. Тогава $\Gamma^k \subseteq \Gamma^{kn + k} \subseteq \displaystyle\bigcup_{l \in \Nat} \Gamma^{ln + l}(\emptyset) = lfp(\Gamma^{n + 1})$ и значи $lfp(\Gamma^{n + 1})$ е горна граница за редицата $\{\Gamma^{l}(\emptyset)\}_{l \in \Nat}$. \\
+Следователно $lfp(\Gamma) = \displaystyle\bigcup_{l \in \Nat} \Gamma^{l}(\emptyset) \subseteq lfp(\Gamma^{n + 1})$.
+
+\vskip9pt
+
+Нека $k \in \Nat$. Тогава $\Gamma^{kn + k} \subseteq \displaystyle\bigcup_{l \in \Nat} \Gamma^l(\emptyset) = lfp(\Gamma)$,
+защото $\displaystyle\bigcup_{l \in \Nat} \Gamma^l(\emptyset)$ е т.г.гр. на редицата $\{\Gamma^{l}(\emptyset)\}_{l \in \Nat}$, a $kn + k \in \Nat$. \\ Следователно $lfp(\Gamma)$ е горна граница за редицата $\{\Gamma^{ln + l}(\emptyset)\}_{l \in \Nat}$.
+Следователно $lfp(\Gamma^{n + 1}) = \displaystyle\bigcup_{l \in \Nat} \Gamma^{ln + l}(\emptyset) \subseteq lfp(\Gamma)$.
+
+\vskip9pt
+
+Така $lfp(\Gamma^{n + 1}) = lfp(\Gamma)$ и от това следва условието на задачата.
+
+
+\end{solution}
+
+\end{document}
