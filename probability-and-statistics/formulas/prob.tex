@@ -1,0 +1,222 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,bulgarian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{geometry}
+\geometry{
+a4paper,
+margin=3mm
+}
+
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\expect}{\mathbb{E}}
+\newcommand{\disp}{\mathbb{D}}
+\newcommand{\indep}{\perp \!\!\! \perp}
+
+\begin{document}
+\(\prob(\bar{A}) = 1 - \prob(A)\). \quad \(A \indep B \iff \prob(A \cap B) = \prob(A)\prob(B)\).
+\\
+\\
+Условна вероятност
+\(\prob(A | B) = \displaystyle\frac{\prob(A \cap B)}{\prob(B)}\).
+\\
+\\
+\(\prob(A \cap B) = \prob(A | B)\prob(B) = \prob(B \cap A) = \prob(B | A)\prob(A)\).
+\\
+\\
+Форула на Бейс
+\(\prob(B | A)
+= \displaystyle\frac{\prob(B \cap A)}{\prob(A)}
+= \displaystyle\frac{\prob(A \cap B)}{\prob(A)}
+=\displaystyle\frac{\prob(A | B)\prob(B)}{\prob(A)}\).
+\\
+\\
+Пълна вероятност \(H_1, \dots, H_k\) разбиване на \(\Omega\).
+\(\prob(A)
+= \displaystyle\sum_{i = 1}^k \prob(A \cap H_i)
+= \displaystyle\sum_{i = 1}^k \prob(A | H_i)\prob(H_i)\).
+\\
+\hrule
+\vspace*{3mm}
+Дискретна случайна величина \(X\).
+\\
+\\
+Математическо очакване \(\expect(X) = \displaystyle\sum_{k = 1} x_k \prob(X = x_k)\).
+\(\expect(h(X)) = \displaystyle\sum_{k = 1} h(x_k) \prob(X = x_k)\).
+\\
+\\
+\(\expect(a.X + b) = \expect(a.X) + \expect(b) = a\expect(X) + b\).
+\\
+\\
+Дисперсия \(\disp(X) = \expect((X - \expect(X))^2) = \expect(X^2) - \expect(X)^2\).
+\\
+\\
+\(\disp(a.X + b) = \disp(a.X) + \disp(b) = a^2\disp(X) + 0 = a^2\disp(X)\).
+\\
+\\
+Стандартно отколонение \(\sigma_X = \sqrt{\disp(X)}\). \quad \(\disp(X) = \sigma_X^2\).
+\\
+\hrule
+\vspace*{3mm}
+Пораждаща функция \(g_X(s) = \expect(s^X) = \displaystyle\sum_{k = 1} \prob(X = x_k) s^{x_k} \).
+\\
+\vspace*{1mm}
+\\
+\(\prob(X = m) = \displaystyle\frac{g_X^{(m)}(0)}{m!}
+= \displaystyle\frac{\displaystyle\frac{\partial^m g_X}{\partial s^m}(0)}{m!}\),
+\quad \(m \in \mathbb{N}\).
+\\
+\\
+\(\expect(X) = g_X'(1)\). \quad \(\disp(X) = g_X''(1) + g_X'(1) - (g_X'(1))^2\).
+\\
+\\
+\(X \indep Y \implies g_{X + Y}(s) = g_X(s).g_Y(s)\).
+\\
+\hrule
+\vspace*{3mm}
+Дискретни разпределения:
+\\
+\\
+Бернулиево (1 опит с някаква вероятност \(p\)):
+\(X \sim Ber(p) \iff \prob(X = 0) = 1 - p \; \& \; \prob(X = 1) = p\), \;
+\(\expect(X) = p\), \; \(\disp(X) = p(1 - p)\).
+\\
+\\
+Биномно (Брой успешни опита от \(n\) независими опита всеки с вероятност \(p\)):\\
+\(X \sim Bi(n, p) \iff (\forall k \in \{0, 1, \dots, n\})\;\prob(X = k) = \binom{n}{k}p^k(1 -p)^{n - k}\), \quad
+\(\expect(X) = np\), \quad \(\disp(X) = np(1 - p)\).
+\\
+\\
+Геометрично (Брой неуспехи до пръв успех всеки опит е с вероятност \(p\)):\\
+\(X \sim Ge(p) \iff (\forall k \in \mathbb{N})\;\prob(X = k) = (1 -p)^k p\), \quad
+\(\expect(X) = \displaystyle\frac{1 - p}{p}\), \quad
+\(\disp(X) = \displaystyle\frac{1 - p}{p^2}\).
+\\
+\\
+Хипергеометрично (Брой читави при извадка без връщане на \(n\) обекта от \(N\) обекта, \(K\), от които са читави):
+\(X \sim HG(N, K, n) \iff (\forall k \in \{max(0, n + K - N), \dots, min(n, K)\})\
+\prob(X = k) = \displaystyle\frac{\binom{K}{k}\binom{N - K}{n - k}}{\binom{N}{n}}\), \quad
+\(\expect(X) = n\displaystyle{K}{N}\), \quad
+\(\disp(X) = n\displaystyle\frac{K(N - K)(N - n)}{N^2(N - 1)}\).
+\\
+\\
+Поасоново (Брой случили се събития в даден непрекъснат интервал от време при очакван среден брой \(\lambda\)): \\
+\(X \sim Po(\lambda) \iff (\forall k \in \mathbb{N}) \; \prob(X = k) = \displaystyle\frac{\lambda^k e^{-\lambda}}{k!} \), \quad
+\(\expect(X) = \lambda\), \quad \(\disp(X) = \lambda\). 
+\\
+\\
+\hrule
+\vspace*{3mm}
+Две случайни дискретни величини и двумерно дискретно.
+\\
+\vspace*{1mm}
+\\
+\(\expect(X + Y) = \expect(X) + \expect(Y)\).
+\\
+\\
+\(X \indep Y \implies \disp(X + Y) = \disp(X) + \disp(Y)\).
+\\
+\\
+\(X \indep Y \implies g_{X + Y}(s) = g_X(s).g_Y(s)\).
+\\
+\\
+Съвместно разпределение: \(p_{ij} = \prob((X, Y) = (x_i, x_j)) = \prob(X = x_i \cap Y = x_j)\).
+\\
+\\
+Маргинални (безусловни) разпределения (вероятности): \\
+\(p_{i*} = \prob(X = x_i) = \displaystyle\sum_{j = 1}^m p_{ij}\), \quad
+\(p_{*j} = \prob(Y = y_j) = \displaystyle\sum_{i = 1}^n p_{ij}\).
+\\
+\\
+Условни разпределения (вероятности):
+\(\prob(X = x_i|Y = y_j) = \displaystyle\frac{p_{ij}}{p_{*j}}\), \quad
+\(\prob(Y = y_j|X = x_i) = \displaystyle\frac{p_{ij}}{p_{i*}}\).
+\\
+\\
+Условни очаквания \(\expect(X | Y = y_j) = \displaystyle\sum_{i = 1}^n x_i \prob(X = x_i | Y = y_j)\), \quad
+\(\expect(Y | X = x_i) = \displaystyle\sum_{i = 1}^n y_j \prob(Y = y_j | X = x_i)\).
+\\
+\\
+Критерии за зависимост / независимост: \\
+\(X \indep Y \iff (\forall i \in \{1, 2, \dots, n\})(\forall j \in \{1, 2, \dots, m\})\;(p_{ij} = p_{i*}p_{*j})\).
+\\
+\(X \not\indep Y \iff (\exists i \in \{1, 2, \dots, n\})(\exists j \in \{1, 2, \dots, m\})\;(p_{ij} \neq p_{i*}p_{*j})\).
+\\
+\\
+Очакване на двумерно: \(\expect(XY) = \displaystyle\sum_{i = 1}^n\displaystyle\sum_{j = 1}^m x_i x_j p_{ij}\).
+\\
+\\
+Ковариация: \(Cov(X, Y) = \expect((X - \expect(X))(Y - \expect(Y)))
+= \expect(XY) - \expect(X).\expect(Y) \in R\).
+\\
+\\
+\(X \indep Y \implies Cov(X, Y) = 0\).
+\\
+\\
+\(\disp(X + Y) = \disp(X) + \disp(Y) + 2 Cov(X, Y)\).
+\\
+\\
+Коефициент на корелация: \(\rho_{X, Y} = \displaystyle\frac{Cov(X, Y)}{\sqrt{\disp(X).\disp(Y)}} \in [-1, 1]\).
+\\
+\hrule
+\vspace*{3mm}
+Непрекъснати величини: \\
+Случайната величина \(X\) има плътносттна функция \(f_X\) и комулативна дистрибутивна функция \(F_X\). В сила са: \\
+\(f_X\) е неотрицателна и \(\displaystyle\int_{-\infty}^\infty f_X(s) ds = 1\).
+\(f_X(s) = \displaystyle\frac{\partial F_X(s)}{\partial s}\) или \(f_X = F_X'\).
+\\
+\\
+\(\prob(X \leq t) = F_X(t) = \displaystyle\int_{-\infty}^t f_X(s) ds\), \quad
+\(\prob(a \leq X \leq b) = \displaystyle\int_{a}^b f_X(s) ds = F_X(b) - F_X(a)\).
+\\
+\\
+\(\prob(X \geq t) = 1 - \prob(X \leq t) = 1 - F_X(t)\).
+\\
+\\
+Математическо очакване \(\expect(X) = \displaystyle\int_{-\infty}^\infty s f_X(s) ds\)
+и \(\expect(h(X)) = \displaystyle\int_{-\infty}^\infty h(s) f_X(s) ds\).
+\\
+\\
+Дисперсия \(\disp(X) = \expect((X - \expect(X))^2) = \expect(X^2) - \expect(X)^2\).
+\\
+\\
+Плътност при смяна на променливите: Ако \(Y = h(X)\),
+то \(f_Y(t) = f_X(h^{-1}(t))\left|\displaystyle\frac{\partial h^{-1} (t)}{\partial t}\right|\).
+\\
+\hrule
+\vspace*{3mm}
+Непрекъснати случайни величини: \\
+Равномерно (Равновероятно) (Uniform) в интервала \([a, b]\): \(X \sim U(a, b) \iff
+(\forall s \in [a, b]) \; \left(f_X(s) = \displaystyle\frac{1}{b - a} \; \& \; F_X(s) = \displaystyle\frac{s - a}{b - a}\right)\), \\
+\(\expect(X) = \frac{1}{2}(a + b)\), \quad \(\disp(X) = \frac{1}{12}(b - a)^2\).
+\\
+\\
+Експоненциално (време между независими събития в интервал от време с константно очакване \(\lambda^{-1}\)): \\
+\(X \sim Exp(\lambda) \iff f_X(s) = \begin{cases}
+    \lambda e^{-\lambda s}, & s \geq 0 \\
+    0 , & s < 0
+\end{cases}\), \quad \(F_X(s) = 1 - e^{-\lambda s}\), \quad \(\expect(X) = \lambda^{-1}\), \quad \(\disp(X) = \lambda^{-2}\).
+\\
+\\
+Нормално разпределение (таблица) Ако \(X \sim \mathcal{N}(\mu, \sigma^2)\), то
+\(\expect(X) = \mu\), \quad \(\disp(X) = \sigma^2\) и \(Y = \displaystyle\frac{X - \mu}{\sigma}\) и \(Y \sim \mathcal{N}(0, 1)\) и \(F_Y = \Phi\).
+\\
+\(\prob(X \leq c) = F_X(c) = \Phi\left(\displaystyle\frac{c - \mu}{\sigma}\right)\), \quad
+\(\prob(X \leq -\alpha) = \prob(X \geq \alpha) = 1 - \prob(X \leq \alpha)\). (симетрия)
+\\
+\hrule
+\vspace*{3mm}
+Интеграли: \\\\
+\(\int x^n dx = \displaystyle\frac{x^{n + 1}}{n + 1}\), \quad
+\(\int x^{-1} dx = ln|x|\), \quad
+\(\int sinx dx = -cosx\), \quad
+\(\int cosx dx = sinx\), \quad
+\(\int \displaystyle\frac{1}{1 + x^2} dx = arctanx\), \quad
+\(\int a^x dx = \displaystyle\frac{a^x}{lna}\), \\\\
+\(\int lnx dx = xln|x| - x\), \quad
+\(\int f(x) dg(x) = f(x)g(x) - \int g(x) df(x)\).
+\end{document}
