@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[english,bulgarian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{relsize}
+\usepackage{tensor}
+
+\title{Задачи за упражнение върху (не)Определимост}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+
+\section{Любима задача на Иво}
+Нека \(\mathcal{N}\) е структура с универсум \(\mathcal{P}(\mathbb{N})\) (степенното множество на \(\mathbb{N}\)) за език с единствен двуместен претикатен символ \(p\). \\
+Където \(<A, B> \; \in p^{\mathcal{N}} \longleftrightarrow A \subseteq B\).
+
+Да се докаже, че са определими множествата:
+\begin{itemize}
+    \item \(\{\emptyset\}\)
+    \item \(\{\mathbb{N}\}\)
+    \item \(\emptyset\)
+    \item \(\mathcal{P}(\mathbb{N})\)
+    \item \(\{<A, A> \; | \; A \in \mathcal{P}(\mathbb{N})\}\)
+    \item \(\{<A, B, C> \; \in \mathcal{P}(\mathbb{N})^3 \; | \; C = A \cup B \}\)
+    \item \(\{<A, B, C> \; \in \mathcal{P}(\mathbb{N})^3 \; | \; C = A \cap B \}\)
+    \item \(\{<A, B> \; \in \mathcal{P}(\mathbb{N})^2 \; | \; B = \mathbb{N} \setminus A \}\)
+    \item \(\{<A, B, C> \; \in \mathcal{P}(\mathbb{N})^3 \; | \; C = A \setminus B \}\)
+    \item \(\{ \{n\} \; | \; n \in \mathbb{N}\} \)
+    \item \(\{ \{n, m\} \; | \; n \in \mathbb{N} \; \& \; m \in \mathbb{N} \; \& \; n \neq m\} \)
+\end{itemize}
+
+Поглеждайки само домейна на структурата може ли да кажем, че има неопределими елементи ? Защо ?
+
+Вярно ли е, че неопределимите елементи са повече от определимите елементи ? В какъв смисъл повече ?
+
+Докажете, че единствените определими елементи са \(\emptyset\) и \(\mathbb{N}\).
+
+\section{Хубава задача за усещане що е то Автоморфизъм}
+На първото упражнение разгледахме следната структура 
+\(\mathcal{N} = \; <\mathbb{N}, f^{\mathcal{N}}, g^{\mathcal{N}}>\)
+за език с формално равенство и два функционални символа \(f\) (двуместен) и \(g\) (едноместен). Където
+\begin{align*}
+    f^{\mathcal{N}}(a, b) = a ._{\small\mathbb{N}} b \\
+    g^{\mathcal{N}}(a) = mod(a, 7)
+\end{align*}
+
+Първо докажете, че има два неопределими елемента, след това докажете, че има изброимо (безкрайно) много неопределими елементи. Като подсказка забележете, че тази структура е  някак по-богата от структурата на естенствените числа разгледани само с умножението им (и равенство разбира се). 
+
+\end{document}
