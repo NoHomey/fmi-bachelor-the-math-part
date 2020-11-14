@@ -1,0 +1,305 @@
+\documentclass[14pt]{extarticle}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,bulgarian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathabx}
+\usepackage{relsize}
+\usepackage{euler}
+\usepackage[a4paper, portrait, margin=1.8cm]{geometry}
+
+\title{Транслируемост на схеми и програми}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+\section*{Транслируемост от стандартни схеми/програми към рекурсивни}
+\subsection*{Транслируемост от стандартна схема към рекурсивна схема}
+Разглеждаме следната стандартна схема
+\begin{align*}
+    & input(X); \; output(Y) \\
+    & \quad 1 \; : \; Y := \mathbf c \\
+    & \quad 2 \; : \; \mathsf{if} \; \mathbf p(X) \; \mathsf{then} \; \mathtt{goto} \; 6  \; \mathsf{else} \; \mathtt{goto} \; 3 \\
+    & \quad 3 \; : \; Y := \mathbf g(X, Y) \\
+    & \quad 4 \; : \; X := \mathbf f(X) \\
+    & \quad 5 \; : \; \mathtt{goto} \; 2 \\
+    & \quad 6 \; : \; \mathsf{stop}
+\end{align*}
+Прилагаме алгоритъма от \textbf{Теоремата на Маккарти}, за да транслираме горната стандартна схема до рекурсивна.
+\begin{align*}
+    & F_1(X, X) \; \mathsf{where} \\
+    & \quad  F_1(X, Y) = F_2(X, \mathbf c) \\
+    & \quad F_2(X, Y) = \mathsf{if} \; \mathbf p(X) \; \mathsf{then} \; F_6(X, Y)  \; \mathsf{else} \; F_3(X, Y) \\
+    & \quad F_3(X, Y) = F_4(X, \mathbf g(X, Y)) \\
+    & \quad F_4(X, Y) = F_5(\mathbf f(X), Y) \\
+    & \quad F_5(X, Y) = F_2(X, Y) \\
+    & \quad F_6(X, Y) = Y
+\end{align*}
+Забелязваме, че доста неща могат да бъдат оптимизирани.
+Например \(F_6\) е селектираща функция, \(F_5\) е преименуваща затова като първа стъпка ще ги inline-нем.
+\begin{align*}
+    & F_1(X, X) \; \mathsf{where} \\
+    & \quad  F_1(X, Y) = F_2(X, \mathbf c) \\
+    & \quad F_2(X, Y) = \mathsf{if} \; \mathbf p(X) \; \mathsf{then} \; \textcolor{green}{Y}  \; \mathsf{else} \; F_3(X, Y) \\
+    & \quad F_3(X, Y) = F_4(X, \mathbf g(X, Y)) \\
+    & \quad F_4(X, Y) = \textcolor{green}{F_2}(\mathbf f(X), Y) \\
+    & \quad \color{red} F_5(X, Y) = F_2(X, Y) \\
+    & \quad \color{red} F_6(X, Y) = Y
+\end{align*}
+Така достигаме до рекурсивната схема
+\begin{align*}
+    & F_1(X, X) \; \mathsf{where} \\
+    & \quad  F_1(X, Y) = F_2(X, \mathbf c) \\
+    & \quad F_2(X, Y) = \mathsf{if} \; \mathbf p(X) \; \mathsf{then} \; Y  \; \mathsf{else} \; F_3(X, Y) \\
+    & \quad F_3(X, Y) = F_4(X, \mathbf g(X, Y)) \\
+    & \quad F_4(X, Y) = F_2(\mathbf f(X), Y)
+\end{align*}
+След това започваме последователно inline-ване на функциите, които позволяват това. Започваме от \(F_4\).
+\begin{align*}
+    & F_1(X, X) \; \mathsf{where} \\
+    & \quad  F_1(X, Y) = F_2(X, \mathbf c) \\
+    & \quad F_2(X, Y) = \mathsf{if} \; \mathbf p(X) \; \mathsf{then} \; Y  \; \mathsf{else} \; \textcolor{green}{F_2(\mathbf f(X), \mathbf g(X, Y))} \\
+    & \quad \color{red} F_3(X, Y) = F_2(\mathbf f (X), \mathbf g(X, Y))
+\end{align*}
+Така достигаме до рекурсивната схема
+\begin{align*}
+    & F_1(X, X) \; \mathsf{where} \\
+    & \quad  F_1(X, Y) = F_2(X, \mathbf c) \\
+    & \quad F_2(X, Y) = \mathsf{if} \; \mathbf p(X) \; \mathsf{then} \; Y  \; \mathsf{else} \; F_2(\mathbf f(X), \mathbf g(X, Y))
+\end{align*}
+Забелязваме, че \(F_1\) изглежда някак излишна. Затова ще я премахнем със следната трансформация
+\begin{align*}
+    & \textcolor{green}{F_2(X, \mathbf c)} \; \mathsf{where} \\
+    & \color{red} \quad  F_1(X, Y) = F_2(X, \mathbf c) \\
+    & \quad F_2(X, Y) = \mathsf{if} \; \mathbf p(X) \; \mathsf{then} \; Y  \; \mathsf{else} \; F_2(\mathbf f(X), \mathbf g(X, Y))
+\end{align*}
+Така получаваме рекурсивна схема от едно единствено уравнение.
+\begin{align*}
+    & F_2(X, \mathbf c) \; \mathsf{where} \\
+    & \quad F_2(X, Y) = \mathsf{if} \; \mathbf p(X) \; \mathsf{then} \; Y  \; \mathsf{else} \; F_2(\mathbf f(X), \mathbf g(X, Y))
+\end{align*}
+Сега ако интерпретираме рекурсивната схема в типа данни (едносортната структура)
+\(\langle \mathbb N;\; 1;\; x \mapsto x \dotdiv 1,\; x, y \mapsto x.y;\; x \;\propto\; x = 0  \rangle\) получаваме рекурсивната програма
+\begin{align*}
+    & F_2(X, \mathbf 1) \; \mathsf{where} \\
+    & \quad F_2(X, Y) = \mathsf{if} \; X = 0 \; \mathsf{then} \; Y  \; \mathsf{else} \; F_2(\mathbf X \dotdiv 1 , \mathbf X.Y)
+\end{align*}
+\subsection*{Транслируемост от стандартна програма към рекурсивна програма и определяне на семантики на опашкови функции}
+Разглеждаме следната стандартна схема
+\begin{align*}
+    & input(X); \; output(Y) \\
+    & \quad 1 \; : \; Y := \mathbf 0 \\
+    & \quad 2 \; : \; \mathsf{if} \; X \;\mathbf{\leq}\; \mathbf 1 \; \mathsf{then} \; \mathtt{goto} \; 6  \; \mathsf{else} \; \mathtt{goto} \; 3 \\
+    & \quad 3 \; : \; X := X \;\mathbf{div}\; \mathbf 2 \\
+    & \quad 4 \; : \; Y := Y \;\mathbf{+}\; \mathbf 1 \\
+    & \quad 5 \; : \; \mathtt{goto} \; 2 \\
+    & \quad 6 \; : \; \mathsf{stop}
+\end{align*}
+Прилагаме алгоритъма от \textbf{Теоремата на Маккарти}, за да транслираме горната стандартна схема до рекурсивна.
+\begin{align*}
+    & F_1(X, X) \; \mathsf{where} \\
+    & \quad  F_1(X, Y) = F_2(X, \mathbf 0) \\
+    & \quad F_2(X, Y) = \mathsf{if} \; X \;\mathbf{\leq}\; \mathbf 1 \; \mathsf{then} \; F_6(X, Y)  \; \mathsf{else} \; F_3(X, Y) \\
+    & \quad F_3(X, Y) = F_4(X \;\mathbf{div}\; \mathbf 2, Y) \\
+    & \quad F_4(X, Y) = F_5(X, Y \;\mathbf{+}\; \mathbf 1) \\
+    & \quad F_5(X, Y) = F_2(X, Y) \\
+    & \quad F_6(X, Y) = Y
+\end{align*}
+Правим първи пас на inline-ването.
+\begin{align*}
+    & \textcolor{green}{F_2(X, \mathbf 0)} \; \mathsf{where} \\
+    & \color{red} \quad  F_1(X, Y) = F_2(X, \mathbf 0) \\
+    & \quad F_2(X, Y) = \mathsf{if} \; X \;\mathbf{\leq}\; \mathbf 1 \; \mathsf{then} \; \textcolor{green}{Y}  \; \mathsf{else} \; \textcolor{green}{F_4(X \;\mathbf{div}\; \mathbf 2, Y)} \\
+    & \color{red} \quad F_3(X, Y) = F_4(X \;\mathbf{div}\; \mathbf 2, Y) \\
+    & \quad F_4(X, Y) = \textcolor{green}{F_2}(X, Y \;\mathbf{+}\; \mathbf 1) \\
+    & \color{red} \quad F_5(X, Y) = F_2(X, Y) \\
+    & \color{red} \quad F_6(X, Y) = Y
+\end{align*}
+Така достигаме до следната рекурсивна програма
+\begin{align*}
+    & F_2(X, \mathbf 0) \; \mathsf{where} \\
+    & \quad F_2(X, Y) = \mathsf{if} \; X \;\mathbf{\leq}\; \mathbf 1 \; \mathsf{then} \; Y  \; \mathsf{else} \; F_4(X \;\mathbf{div}\; \mathbf 2, Y) \\
+    & \quad F_4(X, Y) = F_2(X, Y \;\mathbf{+}\; \mathbf 1)
+\end{align*}
+Сега ясно се вижда, че остава \(F_4\) да бъде inline-ната и така получаваме рекурсивната програма
+\begin{align*}
+    & F_2(X, \mathbf 0) \; \mathsf{where} \\
+    & \quad F_2(X, Y) = \mathsf{if} \; X \;\mathbf{\leq}\; \mathbf 1 \; \mathsf{then} \; Y  \; \mathsf{else} \; F_2(X \;\mathbf{div}\; \mathbf 2, Y \;\mathbf{+}\; \mathbf 1)
+\end{align*}
+Сравнително лесно се забелязва, че денотационната семантика по стойност на \(F_2\) е функцията \(f_2\) дефинирана посредством правилото
+\begin{align*}
+    f_2(x, y) \simeq y + Log(x),
+\end{align*}
+където \(Log\) е фукцията дефинирана по средством правилото
+\begin{align*}
+    Log(x) \simeq \begin{cases}
+        0 & ,\; x \leq 1 \\
+        \left\lfloor \displaystyle \log_2(X) \right\rfloor &, \; x > 1
+    \end{cases}
+\end{align*}
+Така денотационната семантика по стойност на програмата лесно се съобразява, че е \(Log\). \\
+
+Сега ако се върнем на рекурсивната програма, от която тръгнахме
+\begin{align*}
+    & F_1(X, XY) \; \mathsf{where} \\
+    & \quad  F_1(X, Y) = F_2(X, \mathbf 0) \\
+    & \quad F_2(X, Y) = \mathsf{if} \; X \;\mathbf{\leq}\; \mathbf 1 \; \mathsf{then} \; F_6(X, Y)  \; \mathsf{else} \; F_3(X, Y) \\
+    & \quad F_3(X, Y) = F_4(X \;\mathbf{div}\; \mathbf 2, Y) \\
+    & \quad F_4(X, Y) = F_5(X, Y \;\mathbf{+}\; \mathbf 1) \\
+    & \quad F_5(X, Y) = F_2(X, Y) \\
+    & \quad F_6(X, Y) = Y
+\end{align*}
+Имайки семантиката на функцията, определена от \(F_2\), можем да намерим денотационната семантика по стойност на всяка една от шестте опашкови функции. Нека семантиките са \(f_1, f_2, \dots, f_6\). Тогава лесно се съобразват семантиките на \(f_1, f_2, f_5, f_6\) и те са
+\begin{align*}
+    f_1(x, y) \simeq Log(x) \\
+    f_2(x, y) \simeq y + Log(x) \\
+    f_5(x, y) \simeq y + Log(x) \\
+    f_6(x, y) \simeq y
+\end{align*}
+Откъдето вече лесно се съобразяват и \(f_4\) и \(f_3\).
+\begin{align*}
+    f_4(x, y) \simeq y + 1 + Log(x) \\
+    f_3(x, y) \simeq y + 1 + Log(x \;\mathbf{div}\; 2) \simeq y + Log(x)
+\end{align*}
+\section*{Свеждане на опашкова рекурсия до итерация}
+\subsection*{Tail call рекурсия}
+Разглеждаме следната двуместна частична функция над естествени числа
+\begin{align*}
+    f(x, y) \simeq \begin{cases}
+    \lnot! &, \; y = 0 \\
+    x \;\mathbf{mod}\; y &,\; y > 0
+    \end{cases}
+\end{align*}
+Сравнително лесно можем да се досетим за рекурсивна програма, на която тя е семантика.
+За целта ни трябват само две съображения. Първо, недефинираност лесно се моделира със зацикляне и \((Q + 1).Y + K \;\mathbf{mod}\; Y\) очевидно е \(K\), ако \(K < Y\), но също така е \(Q.Y + K \;\mathbf{mod}\; Y\), което е \(((Q + 1).Y + K) - Y \;\mathbf{mod}\; Y\).
+Така достигаме до следната рекурсивна програма
+\begin{align*}
+    F(X,Y) \; \mathsf{where} \\
+    & F(X, Y) = \mathsf{if} \; Y \;\mathbf{=}\; \mathbf 0 \; \mathsf{then} \; F(X, Y)  \; \mathsf{else} \; \mathsf{if} \; X \;\mathbf{<}\; Y \; \mathsf{then} \; X  \; \mathsf{else} \; F(X \dotdiv Y, Y)
+\end{align*}
+Добре е да забележим, че е излишно да повтаряме всеки път проверката \(Y = 0\). За да я избегнем, разделяме програмата на две фукции.
+\begin{align*}
+    F_1(X,Y) \; \mathsf{where} \\
+    & F_1(X, Y) = \mathsf{if} \; Y \;\mathbf{=}\; \mathbf 0 \; \mathsf{then} \; F_1(X, Y)  \; \mathsf{else} \; F_2(X, Y) \\
+    & F_2(X, Y) =  \mathsf{if} \; X \;\mathbf{<}\; Y \; \mathsf{then} \; X  \; \mathsf{else} \; F_2(X \dotdiv Y, Y)
+\end{align*}
+Сега лесно се забелязва, че самата \(F_2\) също пресмята \(f\).
+Също така обръщенията към \(F_2\) в \(else\) клона и към \(F_1\) и \(F_2\) в тялото на \(F_1\) са recursive tail call.
+Резултатът \(Y\) в основният клон на \(if\)-а за \(F_2\) също можем да си мислим, че е tail call към селектираща функция. Така понеже резултатът във всеки клон е tail call, то гарантирано рекурсивната програма може да бъде сведена до итеративна (стандартна) програма. \\
+
+\par Първо да забележим, че променливата, която е резултатна, е \(X\).
+След това да направим обратното на това, което правихме до сега, без да попълваме етикетите на скоковете (jump-овете).
+\begin{align*}
+    & input(X, Y); \; output(X) \\
+    & \quad 1 \; : \; \mathsf{if} \; Y \;\mathbf{=}\; \mathbf 0 \; \mathsf{then} \; \mathtt{goto} \; \sqcup  \; \mathsf{else} \; \mathtt{goto} \; \sqcup \\
+    & \quad 2 \; : \; \mathsf{if} \; X \;\mathbf{<}\; Y \; \mathsf{then} \; \mathtt{goto} \; \sqcup  \; \mathsf{else} \; \mathtt{goto} \; \sqcup \\
+    & \quad 3 \; : \; X := X \;\mathbf{\dotdiv}\;  Y \\
+    & \quad 5 \; : \; \mathtt{goto} \; \sqcup \\
+    & \quad 6 \; : \; \mathsf{stop}
+\end{align*}
+Етикетите на скоковете би трябвало вече да са ясни, така че направо ги попълваме и получаваме програмата
+\begin{align*}
+    & input(X, Y); \; output(X) \\
+    & \quad 1 \; : \; \mathsf{if} \; Y \;\mathbf{=}\; \mathbf 0 \; \mathsf{then} \; \mathtt{goto} \; 1  \; \mathsf{else} \; \mathtt{goto} \; 2 \\
+    & \quad 2 \; : \; \mathsf{if} \; X \;\mathbf{<}\; Y \; \mathsf{then} \; \mathtt{goto} \; 6  \; \mathsf{else} \; \mathtt{goto} \; 3 \\
+    & \quad 3 \; : \; X := X \;\mathbf{\dotdiv}\; Y \\
+    & \quad 5 \; : \; \mathtt{goto} \; 2 \\
+    & \quad 6 \; : \; \mathsf{stop}
+\end{align*}
+\subsection*{Последен пример}
+Разглеждаме следната рекурсивна схема
+\begin{align*}
+    F(X) \; \mathsf{where} \\
+    F(X) = \mathsf{if} \; \mathbf{isBaseCase}(X) \; \mathsf{then} \; \mathbf{base}(X)  \; \mathsf{else} \; \mathbf{cons}(X,\; F(\mathbf{left}(X)),\;  F(\mathbf{right}(X)))
+\end{align*}
+Въпрос: Ако интерпретираме тази схема в типа данни на наредените двоичните крайни коренови дървета с върхове финитно подмножество на естествените числа, където интерпретацията на \textbf{isBaseCase} е проверка дали дървото e празно (множеството от върхове е празно), \textbf{base} се интерпретира като идентитет, а \textbf{left} и \textbf{right} като ляво поддърво и дясно поддърво и \textbf{cons} връща дърво с корен - корена на \(X\), увеличен с единица, и поддървета - другите два аргумента. Тогава вярно ли е, че рекурсивната програма може да бъде транслирана до стандартна? \\
+
+Сега ще покажем, че ако схемата бъде интерпретирана в един конкретен тип данни обаче може да бъде транслирана. Разглеждаме типа дани \(\langle \mathbb N;\; b,\; l,\; r,\; t;\; s \rangle \),
+където \(s = \{0, 1\}\), \(t(n, k, u) = n + k.u\), \(l(n) = n \dotdiv 2\), \(r(n) = n \dotdiv 1\) и
+\begin{align*}
+    b(x) = \begin{cases}
+        2 &,\; x = 0 \\
+        3 &,\; x = 1 \\
+        x &, \; x > 1
+    \end{cases}
+\end{align*}
+Така получаваме рекурсивната програма.
+\begin{align*}
+    F(X) \; \mathsf{where} \\
+    F(X) = \mathsf{if} \; X \leq 1 \; \mathsf{then} \; \mathbf{b}(X)  \; \mathsf{else} \; X + F(X \dotdiv 2).F(X \dotdiv 1)
+\end{align*}
+Семантиката на тази програма реално е една рекурентна изброима редица с елементи естествени числа, съотвестваща на рекурентното уравнение.
+\begin{align*}
+    a_0 = 2 \\
+    a_1 = 3 \\
+    a_{n + 2} = n + 2 + a_n.a_{n + 1}
+\end{align*}
+Рекуретната връзка е нелинейна, но рекурентното уравнение, задаващо редицата, е с крайна история.
+Затова можем да напишем почти екивалетна акумулаторна рекурсивна програма, която да транслираме до стандартна. Почти еквивалетна, защото трябва да обогатим типа данни (структурата) с три константи и една операция.
+\begin{align*}
+    F(X) \; \mathsf{where} \\
+    F(X) = \mathsf{if} \; X \leq 1 \; \mathsf{then} \; \mathbf{b}(X)  \; \mathsf{else} \; G(X, \;  2,\; \mathbf{b}(0),\; \mathbf{b}(1)) \\
+    G(X, U, Y, Z) = \mathsf{if} \; X \leq 1 \; \mathsf{then} \; Z  \; \mathsf{else} \; G(X \dotdiv 1,\;  U + 1,\; Z,\; U + Y.Z)
+\end{align*}
+При транслирането ще имаме нужда от още една променлива, защото иначе не бихме могли да извършим транслацията. Допълнителната променлива ще е \(T\). Отново първо пишем код без етикети на скоковете, след това ги съобразяваме.
+\begin{align*}
+    & input(X); \; output(Z) \\
+    & \quad 1 \; : \; \mathsf{if} \; X \;\mathbf{\leq}\; \mathbf 1 \; \mathsf{then} \; \mathtt{goto} \; \sqcup  \; \mathsf{else} \; \mathtt{goto} \; \sqcup \\
+    & \quad 2 \; : \; \mathsf{if} \; X \;\mathbf{\leq}\; \mathbf 1 \; \mathsf{then} \; \mathtt{goto} \; \sqcup  \; \mathsf{else} \; \mathtt{goto} \; \sqcup \\
+    & \quad 3 \; : \; Z := \mathbf{b}(X) \\
+    & \quad 4 \; : \; \mathtt{goto} \; \sqcup \\
+    & \quad 5 \; : \; U := \mathbf 2 \\
+    & \quad 6 \; : \; Y := \mathbf{b}(\mathbf 0) \\
+    & \quad 7 \; : \; Z := \mathbf{b}(\mathbf 1) \\
+    & \quad 8 \; : \; \mathtt{goto} \; \sqcup \\
+    & \quad 9 \; : \; T := U + Y.Z \\
+    & \quad 10 \; : \; X := X \dotdiv 1 \\
+    & \quad 11 \; : \; U := U + 1 \\
+    & \quad 12 \; : \; Y := Z \\
+    & \quad 13 \; : \; Z := T \\
+    & \quad 14 \; : \; \mathtt{goto} \; \sqcup \\
+    & \quad 15 \; : \; \mathsf{stop}
+\end{align*}
+Като сложим етикети на скоковете, получаваме програмата.
+\begin{align*}
+    & input(X); \; output(Z) \\
+    & \quad 1 \; : \; \mathsf{if} \; X \;\mathbf{\leq}\; \mathbf 1 \; \mathsf{then} \; \mathtt{goto} \; 3  \; \mathsf{else} \; \mathtt{goto} \; 5 \\
+    & \quad 2 \; : \; \mathsf{if} \; X \;\mathbf{\leq}\; \mathbf 1 \; \mathsf{then} \; \mathtt{goto} \; 15  \; \mathsf{else} \; \mathtt{goto} \; 9 \\
+    & \quad 3 \; : \; Z := \mathbf{b}(X) \\
+    & \quad 4 \; : \; \mathtt{goto} \; 15 \\
+    & \quad 5 \; : \; U := \mathbf 2 \\
+    & \quad 6 \; : \; Y := \mathbf{b}(\mathbf 0) \\
+    & \quad 7 \; : \; Z := \mathbf{b}(\mathbf 1) \\
+    & \quad 8 \; : \; \mathtt{goto} \; 2 \\
+    & \quad 9 \; : \; T := U + Y.Z \\
+    & \quad 10 \; : \; X := X \dotdiv 1 \\
+    & \quad 11 \; : \; U := U + 1 \\
+    & \quad 12 \; : \; Y := Z \\
+    & \quad 13 \; : \; Z := T \\
+    & \quad 14 \; : \; \mathtt{goto} \; 2 \\
+    & \quad 15 \; : \; \mathsf{stop}
+\end{align*}
+Сега ако влезем в ролята на компилатор, който оптимизира инструкциите, така че да са близки при повторение, за да се съберат в кеша за инструкции бихме пренаредили инструкциите по следния начин
+\begin{align*}
+    & input(X); \; output(Z) \\
+    & \quad 1 \; : \; \mathsf{if} \; X \;\mathbf{\leq}\; \mathbf 1 \; \mathsf{then} \; \mathtt{goto} \; 2  \; \mathsf{else} \; \mathtt{goto} \; 4 \\
+    & \quad 2 \; : \; Z := \mathbf{b}(X) \\
+    & \quad 3 \; : \; \mathtt{goto} \; 14 \\
+    & \quad 4 \; : \; U := \mathbf 2 \\
+    & \quad 5 \; : \; Y := \mathbf{b}(\mathbf 0) \\
+    & \quad 6 \; : \; Z := \mathbf{b}(\mathbf 1) \\
+    & \quad 7 \; : \; \mathsf{if} \; X \;\mathbf{\leq}\; \mathbf 1 \; \mathsf{then} \; \mathtt{goto} \; 14  \; \mathsf{else} \; \mathtt{goto} \; 8 \\
+    & \quad 8 \; : \; T := U + Y.Z \\
+    & \quad 9 \; : \; X := X \dotdiv 1 \\
+    & \quad 10 \; : \; U := U + 1 \\
+    & \quad 11 \; : \; Y := Z \\
+    & \quad 12 \; : \; Z := T \\
+    & \quad 13 \; : \; \mathtt{goto} \; 7 \\
+    & \quad 14 \; : \; \mathsf{stop}
+\end{align*}
+\end{document}
