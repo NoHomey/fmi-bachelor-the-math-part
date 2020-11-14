@@ -1,0 +1,76 @@
+\documentclass[17pt]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,bulgarian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathabx}
+\usepackage{relsize}
+\usepackage{euler}
+\usepackage[a4paper, portrait, margin=1.8cm]{geometry}
+
+\begin{document}
+\section*{Задача 1.}
+Нека \(p\) и \(q\) са прости числа. Нека \(n\) е естествно число, такова че \(n \geq 2\).
+
+
+\begin{itemize}
+    \item (5т) Докажете, че \(\varphi(pq) \geq |p - q|\);
+    \item (5т) Докажете, че \(\varphi(p^n) \leq (2p)^n\);
+    \item (5т) Докажете, че ако \(p \neq 2\), то \(\varphi(p^n) \geq np\);
+    \item (5т) Намерете решенията на уравнението \(\varphi(p^s q^k) = \varphi(q^l)\);
+    \item (5т) Намерете решенията на уравнението \(\varphi(\varphi(n)) = p\).
+\end{itemize}
+
+\newpage
+
+\section*{Задача 2.}
+Нека \(G\) е непразно множество и нека, то образува група относно бинарна операция \(*\).
+Нека \(f\) е функция от \(G\) в \(G\), която е хомоморфизъм на групата образувана от \(G\) относно \(*\) в себе си. \\
+Нека \(K = \{(x, y) \in G \times G \mid (\exists g \in G)(y = f(g))\}\). \\
+Въвеждаме бинарна операция \(\otimes\) в \(K\) по правилото
+\[ (x, y) \otimes (z, t) = (x * z, y * t).  \]
+
+\begin{itemize}
+    \item (5т) Докажете, че \(K\) образува група относно операцията \(\otimes\);
+    \item (5т) Докажете, че групата, която \(K\) образува относно \(\otimes\) има подгрупа, която е изоморфна на групата образувана от \(G\) относно \(*\);
+    \item (5т) Докажете, че групата, която \(K\) образува относно \(\otimes\) има подгрупа, която е изоморфна на подгрупата образувана от \(\mathrm{Ker}(f)\) на групата образувана от \(G\) относно \(*\);
+    \item (5т) Докажете, че групата, която \(K\) образува относно \(\otimes\) има подгрупа, която е изоморфна на подгрупата образувана от \(\mathrm{Im}(f)\) на групата образувана от \(G\) относно \(*\);
+    \item (5т) Нека \(h : G \times G \to G\), която действа по правилото \(h(a, b) = f(a) * b\). Докажете, че \(h\) задава действие на групата, образувана от \(G\) относно \(*\), върху множеството \(G\).
+\end{itemize}
+
+\newpage
+
+\section*{Задача 3.}
+Нека \(R\) е непразно множество, което образува пръстен. Нека този пръстен означим с \(\mathcal R\).
+Нека \(Root : \mathcal{P}(R) \to \mathcal{P}(R)\) е функция, действаща по правилото
+\(Root(K) = \{x \in R \mid (\exists n \in \mathbb N_+)(x^{n} \in K)\}\).
+Нека \(f : R \to R\) и \(f\) е хомоморфизъм на \(\mathcal R\) в \(\mathcal R\). \\
+Нека \(Image : \mathcal{P}(R) \to \mathcal{P}(R)\) е функция, действаща по правилото
+\(Image(K) = \{y \in R \mid (\exists x \in K)(y = f(x))\}\). \\
+Нека \(PreImage : \mathcal{P}(R) \to \mathcal{P}(R)\) е функция, действаща по правилото
+\(PreImage(K) = \{x \in R \mid (\exists y \in K)(y = f(x))\}\). \\
+Нека \(I \in \mathcal{P}(R) \setminus \{\emptyset\}\) и \(I\) образува идеал на \(\mathcal R\).
+
+\begin{itemize}
+    \item (5т) Докажете, че \(Image(Root(I)) \subseteq Root(Image(I))\);
+    \item (10т) \(Root(PreImage(I)) = PreImage(Root(I))\);
+    \item (10т) Ако \(\mathrm{Img}(f) = R\) и \(\mathrm{Ker}(f) \subseteq I\), то  \(Image(Root(I)) = Root(Image(I))\).
+\end{itemize}
+
+\textbf{Забележка}: \(\mathcal{P}(R)\) е означение за степенното множество на \(R\), тоест множеството от всички подмножества на \(R\).
+
+\newpage
+
+\section*{Задача 4. (4т + 4т + 4т)}
+Нека \(p\) е просто число.
+Нека \(f\), \(g\) и \(h\) са полиноми с комплексни коефициенти, такива че
+\begin{align*}
+    f(x) = x^3 - 2x - p \\
+    g(x) = x^3 + 5x + 3 \\
+    h(x) = x^3 + ax^2 + bx + c.
+\end{align*}
+Нека \(x_1\), \(x_2\) и \(x_3\) са корените на \(f\).
+Определете коефициентите \(a\), \(b\) и \(c\), така че \(g(x_1)\), \(g(x_2)\) и \(g(x_3)\) да са корените на \(h\).
+\end{document}
