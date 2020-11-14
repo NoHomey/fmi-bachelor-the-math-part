@@ -1,0 +1,219 @@
+\documentclass[17pt]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,bulgarian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathabx}
+\usepackage{relsize}
+\usepackage{euler}
+\usepackage{csquotes}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning, arrows}
+\tikzset{
+->, >=stealth, node distance=4cm,
+every state/.style={thick, fill=gray!10},
+initial text=$ $
+}
+\usepackage[a4paper, portrait, margin=1.8cm]{geometry}
+
+\title{Подготoвка за изпит по Логическо}
+\author{Иво Стратев}
+
+\begin{document}
+
+\maketitle
+
+\section{Изпълнимост}
+
+\subsection{Директен модел}
+Докажете, че е изпълнимо множеството от формули \\
+\(\{\varphi_1, \varphi_2, \varphi_3, \varphi_4, \varphi_5, \varphi_6\}\), където
+\begin{align*}
+    & \varphi_1 = \forall x  (\lnot p(x, x) \;\&\;  \exists y \; p(x, y)) \\
+    & \varphi_2 = \forall x \forall y (p(x, y) \lor p(y, x) \lor x \doteq y) \\
+    & \varphi_3 = \forall x \forall y (p(x, y) \implies \exists z (p(x, z) \;\&\; p(z, y))) \\
+    & \varphi_4 = \forall x \forall y (p(x, y) \implies f(x, y) \doteq y) \\
+    & \varphi_5 = \exists x \forall y (\lnot x \doteq y \implies p(x, y)) \\
+    & \varphi_6 = \forall x \forall y (f(x, y) \doteq y \implies (p(x, y) \lor x \doteq y))
+\end{align*}
+
+\subsubsection{Решение}
+Нека с \(\mathcal S\) означим структурата \(\langle \mathbb{Q}_{\geq 0}, \; max, \; < \rangle\).
+Тя е модел за множеството от затворени формули \(\{\varphi_1, \varphi_2, \varphi_3, \varphi_4, \varphi_5, \varphi_6\}\).
+Това, че в \(\mathcal S\) формулите \(\varphi_1, \varphi_2, \varphi_4\) са истина оставяме за упражнение. Ще покажем, че \(\mathcal S\) е модел за останалите формули.
+
+\vspace{5mm}
+
+\par Първо ще покажем за \(\varphi_3\). Семантиката на формулата е:
+
+\begin{displayquote}
+за всяко \(a \in \mathbb{Q}_{\geq 0}\), за всяко \(b \in \mathbb{Q}_{\geq 0}\) ако \(a < b\), то съществува \(c \in \mathbb{Q}_{\geq 0}\), такова че \(a < c\) и \(c < b\).
+\end{displayquote}
+
+Нека \(a \in \mathbb{Q}_{\geq 0}\). Нека \(b \in \mathbb{Q}_{\geq 0}\). Нека \(a < b\). Да означим с \(c\) елемента \(\displaystyle\frac{a + b}{2}\).
+Тогава в сила са
+
+\begin{itemize}
+    \item \(a = \displaystyle\frac{a + a}{2} < \displaystyle\frac{a + b}{2} = c\)
+    \item \(c = \displaystyle\frac{a + b}{2} < \displaystyle\frac{b + b}{2} = b\)
+\end{itemize}
+
+Така показахме, че  \(a < c\) и \(c < b\).
+След обобщение на разсъждението, следва че \(\mathcal S\) е модел за \(\varphi_3\).
+
+\vspace{5mm}
+
+\par Сега ще покажем за \(\varphi_5\). Семантиката на формулата е:
+
+\begin{displayquote}
+съществува \(a \in \mathbb{Q}_{\geq 0}\), такова, че за всяко \(b \in \mathbb{Q}_{\geq 0}\) ако \(a \neq b\), то \(a < b\).
+\end{displayquote}
+
+Очевидно \(0 \in \mathbb{Q}_{\geq 0}\). Нека \(b \in \mathbb{Q}_{\geq 0}\) и нека \(b\) е произволно.
+Нека \(0 \neq b\), тогава \(b \in \mathbb{Q}_{\geq 0} \setminus \{0\} = \mathbb{Q}_{> 0}\) и значи \(b > 0\) от където следва, че \(0 < b\).
+Следователно \(\mathcal S\) е модел за \(\varphi_5\).
+
+\vspace{5mm}
+
+\par Остава да видим за \(\varphi_6\). Семантиката на формулата е:
+
+\begin{displayquote}
+за всяко \(a \in \mathbb{Q}_{\geq 0}\), за всяко \(b \in \mathbb{Q}_{\geq 0}\) ако \(max(a, b) = b\), то \(a < b\) или \(a = b\).
+\end{displayquote}
+
+Нека \(a \in \mathbb{Q}_{\geq 0}\). Нека \(b \in \mathbb{Q}_{\geq 0}\). Нека \(max(a, b) = b\). Тогава \(a \leq b\) и значи \(a < b\) или \(a = b\).
+Следователно \(\mathcal S\) е модел за \(\varphi_6\).
+
+\vspace{5mm}
+
+\par \textbf{За упражнение:}
+Докажете, че е изпълнимо множеството от формули
+\(\{\varphi_1, \varphi_2, \varphi_3, \varphi_4, \varphi_5\}\), където
+\begin{align*}
+    & \varphi_1 = \exists x \forall y \forall z \; f(y, z, x) \doteq f(z, y, x) \\
+    & \varphi_2 = \forall z \; f(a, z, b) \doteq z \\
+    & \varphi_3 = \forall z \exists t \; f(a, z, t) \doteq b \\
+    & \varphi_4 = \forall z  (\lnot z \doteq b \implies \exists t \; f(t, z, b) \doteq a) \\
+    & \varphi_5 = \exists x \exists y \exists z \; (\lnot x \doteq y \;\&\; \lnot y \doteq z \;\&\; \lnot z \doteq x)
+\end{align*}
+
+\subsection{Метод на крайните графи}
+Докажете, че е изпълнимо множеството от формули \\
+\(\{\varphi_1, \varphi_2, \varphi_3, \varphi_4, \varphi_5, \varphi_6\}\), където
+\begin{align*}
+    & \varphi_1 = \exists x \forall y \; \lnot p(x, y) \\
+    & \varphi_2 = \exists x \forall y \; \lnot p(y, x) \\
+    & \varphi_3 = \exists x \forall y \; (x \neq y \implies p(x, y)) \\
+    & \varphi_4 = \exists x \forall y \; (x \neq y \implies p(y, x)) \\
+    & \varphi_5 = \exists x \exists y \exists z \; (\lnot x \doteq y \;\&\; \lnot y \doteq z \;\&\; \lnot z \doteq x) \\
+    & \varphi_6 = \lnot \exists x \exists y (p(x, y) \;\&\; p(y, x))
+\end{align*}
+\subsubsection{Решение}
+
+\begin{center}
+\begin{tikzpicture}
+    \node[state] (q0) {$0$};
+    \node[state, right of=q0] (q1) {$1$};
+    \node[state, below of=q0] (q2) {$2$};
+    \node[state, below of=q1] (q3) {$3$};
+    
+    \draw (q0) edge[above] node{$p$} (q1);
+    \draw (q0) edge[left] node{$p$} (q2);
+    \draw (q2) edge[below] node{$p$} (q3);
+    \draw (q1) edge[right] node{$p$} (q3);
+    \draw (q0) edge[above right] node{$p$} (q3);
+\end{tikzpicture}
+\end{center}
+
+Да означим с \(\mathcal T\) структурата
+\[\langle \{0, 1, 2, 3\}, \; \{\langle 0, 1 \rangle, \langle 0, 2 \rangle, \langle 2, 3 \rangle, \langle 1, 3 \rangle, \langle 0, 3 \rangle\} \rangle\]
+Кратка аргуметация, защо тя е модел.
+
+\begin{itemize}
+    \item \(\varphi_1\): връх \(3\) не сочи никой връх;
+    \item \(\varphi_2\): връх \(0\) не е сочен от никой връх;
+    \item \(\varphi_3\): връх \(0\) сочи всеки друг връх;
+    \item \(\varphi_4\): връх \(3\) е сочен от всеки друг връх;
+    \item \(\varphi_5\): има поне 3 върха;
+    \item \(\varphi_6\): няма два върха, които да се сочат един друг.
+\end{itemize}
+
+\section{Определимост}
+Нека \(\mathcal L\) е ЕПСПР с формално равенство и единствен триместен функционален символ \(f\).
+Разглеждаме структурата \(\mathcal S\) за езика \(\mathcal L\), която е с универсум \(\mathbb{Z}_3\) и в която интерпретацията на \(f\) се задава с правилото
+\(f^{\mathcal S}(a, b, c) = ab + c\).
+
+Докажете, че за всяко естествено число \(n\), което е по-голямо от \(2\), всяко подмножество на \(\mathbb{Z}_3^n\) е определимо множество.
+
+\subsection{Решение}
+Първо ще покажем, че всеки елемент е определим. Тоест всеки синглетон е определимо множество.
+
+\subsubsection{\(\overline 0\)}
+\[\varphi_{\overline 0}(x) \leftrightharpoons x \doteq f(x, x, x)\]
+Коректност на формулата:
+\begin{align*}
+    \mathcal S \models \varphi_{\overline 0}[a] \longleftrightarrow \\
+    a = f^{\mathcal S}(a, a, a) \longleftrightarrow \\
+    a = aa + a \longleftrightarrow \\
+    a^2 = \overline 0 \longleftrightarrow \\
+    a = \overline 0 \longleftrightarrow \\
+    a \in \{\overline 0\}
+\end{align*}
+
+\subsubsection{\(\overline 1\)}
+\[\varphi_{\overline 1}(x) \leftrightharpoons \exists y(\varphi_{\overline 0}(y) \;\&\; \forall z \; z \doteq f(x, z, y))\]
+Коректност на формулата:
+Нека \(a \in \mathbb{Z}_3\) и \(\mathcal S \models \varphi_{\overline 1}[a]\). Тогава e в сила \(\overline 1 = a.\overline 1 + \overline 0\) и значи \(a = \overline 1\). Тоест \(a \in \{\overline 1\}\). Сега ще видим и че \(\mathcal S \models \varphi_{\overline 1}[\overline 1]\). Нека \(b \in \mathbb{Z}_3\).
+Тогава \(f^{\mathcal S}(\overline 1, b, \overline 0) = \overline{1}.b + \overline{0} = b\). Така \(\mathcal S \models \varphi_{\overline 1}[\overline 1]\).
+
+\subsubsection{\(\overline 2\)}
+\[\varphi_{\overline 2}(x) \leftrightharpoons \exists y \exists z (\varphi_{\overline 0}(y) \;\&\; \varphi_{\overline 1}(z) \;\&\; z \doteq f(x, x, y) \;\&\; \lnot x \doteq z)\]
+Коректност на формулата:
+\begin{align*}
+    \mathcal S \models \varphi_{\overline 2}[a] \longleftrightarrow \\
+    \overline 1 = f^{\mathcal S}(a, a, \overline 0) \;\&\&\; a \neq \overline 1 \longleftrightarrow \\
+    \overline 1 = aa + \overline 0 \;\&\&\; a \neq \overline 1 \longleftrightarrow \\
+    a^2 = \overline 1 \;\&\&\; a \neq \overline 1 \longleftrightarrow \\
+    a \in \{\overline 1, \overline 2\} \;\&\&\; a \notin \{\overline 1\} \longleftrightarrow \\
+    a \in \{\overline 2\}
+\end{align*}
+Нека \(n \in \mathbb N\) и нека \(\geq 3\). Нека \(M \in \mathcal{P}(\mathbb{Z}_3^n)\).
+Възможни са три случая.
+
+\subsubsection{\(M = \emptyset\)}
+Тогава една формула, с която можем да го определим е формулата
+\[\lnot x_1 \doteq x_1 \;\lor\; \lnot x_2 \doteq x_2 \;\lor\; \dots \;\lor\; \lnot x_n \doteq x_n\]
+
+\subsubsection{\(M = \mathbb{Z}_3^n\)}
+Тогава една формула, с която можем да го определим е формулата
+\[x_1 \doteq x_1 \;\&\; x_2 \doteq x_2 \;\&\; \dots \;\&\; x_n \doteq x_n\]
+
+\subsubsection{\(\emptyset \subset M \subset \mathbb{Z}_3^n\)}
+Понеже \(M \subset \mathbb{Z}_3^n\), то \(M\) е крайно. Нека \(t = |M|\) и нека \(M = \{ \langle a_{1, 1}, a_{1, 2}, \dots, a_{1, n} \rangle, \dots,  \langle a_{t, 1}, a_{t, 2}, \dots, a_{t, n} \rangle \}\). Тогава една формула, с която можем да определим \(M\) е формулата
+\begin{align*}
+(\varphi_{a_{1, 1}}(x_1) \;\&\; \varphi_{a_{1, 2}}(x_2) \;\&\; \dots \;\&\; \varphi_{a_{1, n}}(x_n)) \\
+\lor\; \dots \; \lor \\
+(\varphi_{a_{t, 1}}(x_1) \;\&\; \varphi_{a_{t, 2}}(x_2) \;\&\; \dots \;\&\; \varphi_{a_{t, n}}(x_n))
+\end{align*}
+
+\section{Prolog}
+
+\subsection{Разпознавател}
+Да се дефинира на Prolog двуместен предикат \(canEval\),
+който по даден списък от цели числа \([A_1, A_2, \dots, A_N]\) и цяло число \(Z\)
+проверява дали e възможно в редицата от числа \(A_1, A_2, \dots, A_N\) да се вмъкнат по такъв начин символи
+\begin{itemize}
+    \item (
+    \item )
+    \item -
+\end{itemize}
+че да се получи коректен аритметичен израз със стойност \(Z\).
+
+\subsection{Генератор}
+Да се дефинира на Prolog четириместен предикат \(genVectors\),
+който по дадени две положителни цели числа \(N\) и \(K\) генерира два \(N\)-елементни списъка \(A\) и \(B\), от цели числа в интервала \([-K, K]\),
+такива че \(\displaystyle\sum_{I = 1}^{N} (A_I \cdot B_I) = 0\) и \(\displaystyle\prod_{I = 1}^{N} |B_I| \cdot \displaystyle\sum_{I = 1}^{N} A_I^2\) е максимално.
+
+\end{document}
