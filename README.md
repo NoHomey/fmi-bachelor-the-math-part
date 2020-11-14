@@ -1,2 +1,2 @@
 # fmi-bachelor-the-math-part
-This project is related to the match courses I've taken during my bachelor. Mainly for theorem provings
+This repository contains a lot of my Math writings (home works, study materials, guides and proofs) which I wrote during my Bachelor of Informatics.
