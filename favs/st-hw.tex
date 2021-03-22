@@ -1,0 +1,1530 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[T2A]{fontenc}
+\usepackage[english,bulgarian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{relsize}
+\usepackage{tensor}
+
+\newcommand{\injection}[0]{\,\mathlarger{\mathlarger{\rightarrowtail}}\,}
+\newcommand{\surjection}[0]{\,\mathlarger{\mathlarger{\twoheadrightarrow}}\,}
+\newcommand{\bijection}[0]{\mathbin{\mathlarger{\mathlarger{\rightarrowtail}} \hspace{-14pt} \mathlarger{\mathlarger{\twoheadrightarrow}}}}
+
+\title{Задачи по ТМ}
+\author{Иво Стратев}
+
+\begin{document}
+\maketitle
+
+Нека \(RelEq(R, A)\) е съкращение за "\(R\) е релация на еквивалетност в \(A\)".
+Разбира се това е изразимо в езика на теория на множествата.
+
+\section*{Задача 1.}
+
+Нека \(R\) и \(S\) са релации на еквивалетност в \(A\).
+Тогава
+\begin{align*}
+RelEq(R \cup S, A) \iff (\forall a \in A)([a]_R \subseteq [a]_S \; \lor \; [a]_S \subseteq [a]_R).
+\end{align*}
+\subsection*{Решение:}
+Ако \(A = \emptyset\), то \(R = S = R \cup S = \emptyset\).
+В такъв случай твърдението е вярно.
+\\
+\vspace{5mm}
+\\
+Нека тогава \(A \neq \emptyset\).
+От \(RelEq(R, A)\), \(RelEq(S, A)\) и \(A \neq \emptyset\),
+следва че \(Id_A \subseteq R\) и \(Id_A \subseteq S\) и тогава
+\((\exists a \in A) \; \& \; (\forall a \in A)(a \in [a]_R \; \& \; a \in [a]_S)\).
+Тоест \((\forall a \in A)([a]_R \neq \emptyset \; \& \; [a]_S \neq \emptyset)\).
+
+\subsubsection*{(\(\implies\))}
+Нека \(RelEq(R \cup S, A)\).
+Допускаме, че не е вярно
+\\
+\((\forall a \in A)([a]_R \subseteq [a]_S \; \lor \; [a]_S \subseteq [a]_R)\).
+\\
+Тогава е вярно\((\exists a \in A)([a]_R \not\subseteq [a]_S \; \& \; [a]_S \not\subseteq [a]_R)\).
+\\
+Значи е вярно
+\((\exists a \in A)([a]_R \setminus [a]_S \neq \emptyset \; \& \; [a]_S \setminus [a]_R \neq \emptyset)\).
+\\
+\vspace{1mm}
+\\
+Нека тогава \(a \in A\) и \([a]_R \setminus [a]_S \neq \emptyset \; \& \; [a]_S \setminus [a]_R \neq \emptyset\).
+\\
+Нека тогава \(r \in [a]_R \setminus [a]_S\) и \(s \in [a]_S \setminus [a]_R\).
+\\
+Тогава \(<a, r> \; \in R \setminus S\) и \(<a, s> \; \in S \setminus R\).
+\\
+Тогава \(<a, r> \; \in R \cup S\) и \(<a, s> \; \in R \cup S\).
+\\
+Но понеже \(RelEq(R \cup S, A)\), то \(<r, a> \; \in R \cup S\) и \(<r, s> \; \in R \cup S\).
+\\
+Възможни са два случая.
+\\
+\vspace{1mm}
+\\
+Случай 1: \(<r, s> \; \in R\).
+\\
+\vspace{1mm}
+\\
+Тогава \(<a, r> \; \in R\) и \(<r, s> \; \in R\), но \(RelEq(R, A)\)
+и значи \(<a, s> \; \in R\), но това е Абсурд, защото \(<a, s> \; \notin R\).
+\\
+\vspace{1mm}
+\\
+Случай 2: \(<r, s> \; \notin R\).
+\\
+\vspace{1mm}
+\\
+Тогава \(<r, s> \; \in S\). Но тогава \(<s, a> \; \in S\)
+и \(<r, s> \; \in S\), защото \(RelEq(S, A)\).
+Но тогава \(<r, a> \; \in S\) и \(<a, r> \; \in S\), но това е Абсурд!
+\\
+\vspace{1mm}
+\\
+Така и в двата възможни случая достигнахме до Абсурд,
+който е следствие на допускането, че не е вярно
+\((\forall a \in A)([a]_R \subseteq [a]_S \; \lor \; [a]_S \subseteq [a]_R)\).
+\\
+Тогава е вярно
+\((\forall a \in A)([a]_R \subseteq [a]_S \; \lor \; [a]_S \subseteq [a]_R)\).
+
+\subsubsection*{(\(\impliedby\))}
+Нека \((\forall a \in A)([a]_R \subseteq [a]_S \; \lor \; [a]_S \subseteq [a]_R)\).
+Ще покажем, че е в сила \(RelEq(R \cup S, A)\).
+\\
+\vspace{1mm}
+\\
+Рефлексивност:
+\\
+\vspace{1mm}
+\\
+Понеже \(RelEq(R, A)\), то \(Id_A \subseteq R\) и значи \(Id_A \subseteq R \cup S\).
+Значи \(R \cup S\) е рефлексивна в \(A\).
+\\
+\vspace{1mm}
+\\
+Симетричност:
+\\
+\vspace{1mm}
+\\
+Нека \(<a, b> \; \in R \cup S\).
+Тогава ако \(<a, b> \; \in R\), то понеже \(RelEq(R, A)\),
+следва че \(<b, a> \; \in R\), а значи и \(<b, a> \; \in R \cup S\).
+Ако пък \(<a, b> \; \in S\), то понеже \(RelEq(S, A)\),
+следва че \(<b, a> \; \in S\), а значи и \(<b, a> \; \in R \cup S\).
+И е в сила \(<a, b> \; \in R \; \lor <a, b> \; \in S\).
+Значи \(<b, a> \; \in R \cup S\).
+Следователно \(R \cup S\) е симетрична.
+\\
+\vspace{1mm}
+\\
+Транзитивност:
+\\
+\vspace{1mm}
+\\
+Нека \(<a, b> \; \in R \cup S\) и \(<b, c> \; \in R \cup S\).
+Тогава са възможни два случая.
+\\
+\vspace{1mm}
+\\
+Случай 1 \((<a, b> \; \in R \; \& <b, c> \; \in R) \; \lor (<a, b> \; \in S \; \& <b, c> \; \in S)\):
+\\
+\vspace{1mm}
+\\
+Възможни са два случая (под слуачая).
+\\
+\vspace{1mm}
+\\
+Случай 1.1 \(<a, b> \; \in R \; \& <b, c> \; \in R\):
+\\
+\vspace{1mm}
+\\
+Тогава понеже \(RelEq(R, A)\), то \(<a, c> \; \in R\), а значи и \(<a, c> \; \in R \cup S\).
+\\
+\vspace{1mm}
+\\
+Случай 1.2 \(<a, b> \; \in S \; \& <b, c> \; \in S\):
+\\
+\vspace{1mm}
+\\
+Тогава понеже \(RelEq(S, A)\), то \(<a, c> \; \in S\), а значи и \(<a, c> \; \in R \cup S\).
+\\
+\vspace{1mm}
+\\
+Случай 2 \((<a, b> \; \in R \setminus S \; \& <b, c> \; \in S \setminus R) \; \lor (<a, b> \; \in S \setminus R \; \& <b, c> \; \in S \setminus R)\):
+\\
+\vspace{1mm}
+\\
+Ще покажем, че това не е възможно.
+Нека \(<u, v> \; \in R \setminus S\)
+\\
+и \(<v, w> \; \in S \setminus R\).
+Понеже \([v]_R \subseteq [v]_S \; \lor \; [v]_S \subseteq [v]_R\), то са възможни два случая.
+\\
+Ако \([v]_R \subseteq [v]_S\), тогава \(u \in [v]_S\) и значи \(<u, v> \; \in S\), но това e Абсурд!
+\\
+Ако \([v]_S \subseteq [v]_R\), тогава \(w \in [v]_R\) и значи \(<v, w> \; \in R\), но това е Абсурд!
+\\
+\vspace{1mm}
+\\
+Излезе, че този логически случай не е възможен, поради връзката между двете реалции.
+Тогава тривиално следва, че \(<a, c> \; \in R \cup S\).
+\\
+\vspace{1mm}
+\\
+Така и в двата случая излезе, че \(<a, c> \; \in R \cup S\) (във втория предпоставката, че има такива двойки просто не е вярна и тогава следствието е тривиално).
+Следователно \(R \cup S\) е транзитивна.
+\\
+\vspace{1mm}
+\\
+Следователно \(RelEq(R \cup S, A)\). \(\qed\)
+
+\section*{Задача 2.}
+Нека \(A\), \(B\) и \(C\) са такива, че
+\(\overline{\overline{A \cup B}} = \overline{\overline{C \times C}}\).
+Тогава
+\begin{align*}
+    \exists g (g : A \surjection C) \; \lor \; \exists h (h : C \injection B)
+\end{align*}
+
+\subsection*{Решение:}
+След като \(\overline{\overline{A \cup B}} = \overline{\overline{C \times C}}\).
+Нека \(f : A \cup B \bijection C \times C\).
+\\
+\vspace{1mm}
+\\
+Възможни са два случая.
+\\
+\vspace{1mm}
+\\
+Случай 1 \((\forall c \in C)(\exists a \in A)(\exists d \in C)(f(a) = <c, d>)\):
+\\
+\vspace{1mm}
+\\
+Понеже \(f : A \cup B \bijection C \times C\), то \(f_{\restriction A} : A \to C \times C\).\\
+Нека \(left : C \times C \to C\) и \((\forall x \in C)(\forall y \in C)(left(<x, y>) = x)\).
+\\
+Понеже \((\forall c \in C)(left(<c, c>) = c)\), то \(left : C \times C \surjection C\).
+\\
+Ще покажем, че \(f_{\restriction A} \circ left : A \surjection C\).
+За сега имаме \(f_{\restriction A} \circ left : A \to C\),
+\\
+понеже \(Dom(left) = C \times C\),
+\(Range(left) = C\), \(Dom(f_{\restriction A}) = A\)
+\\
+и \(Range(f_{\restriction A}) \subseteq C \times C\).
+Нека \(c \in C\). Тогава
+\\
+\((\exists a \in A)(\exists d \in C)(f(a) = <c, d>)\).
+Нека тогава \(a \in A\) и \(d \in C\) и са такива, че \(f(a) = <c, d>\).
+Тогава \((f_{\restriction A} \circ left)(a) = left(f_{\restriction A}(a)) = left(<c, d>) = c\).
+\\
+Следователно \((\forall y \in C)(\exists x \in A)((f_{\restriction A} \circ left)(x) = y)\).
+\\
+Тоест \(f_{\restriction A} \circ left : A \surjection C\).
+\\
+Следователно \(\exists g (g : A \surjection C) \; \lor \; \exists h (h : C \injection B)\). 
+\\
+\vspace{1mm}
+\\
+Случай 2 \((\exists c \in C)(\forall a \in A)(\forall d \in C)(f(a) \neq <c, d>)\):
+\\
+\vspace{1mm}
+\\
+Нека тогава \(c \in C\) е такова, че
+\((\forall a \in A)(\forall d \in C)(f(a) \neq <c, d>)\).
+\\
+\(f : A \cup B \bijection C \times C\) следователно \(f^{-1} : C \times C \bijection  A \cup B\).
+\\
+Ще докажем, че \((\forall x \in C)(f^{-1}(<c, x>) \in B)\) е истина.
+\\
+Тоест \(Range(f^{-1}_{\restriction \{c\} \times C}) \subseteq B\).
+Нека \(d \in C\). Нека \(z = f^{-1}(<c, x>)\).
+\\
+Да допуснем, че \(z \notin B\).
+Тогава \(z \in A\) понеже \(z \in A \cup B\).
+\\
+Но тогава \(f(z) = <c, d>\) и \(d \in C\) и \(z \in A\).
+Това е Абсурд!
+\\
+Следователно \(z \in B\).
+Следователно \((\forall x \in C)(f^{-1}(<c, x>) \in B)\).
+\\
+Това значи, че \(Range(f^{-1}_{\restriction \{c\} \times C}) \subseteq B\).
+\\
+Но \(f^{-1} : C \times C \injection  A \cup B\), следователно \(f^{-1}_{\restriction \{c\} \times C} : \{c\} \times C \injection B\).
+\\
+Тогава нека \(t : C \to B\) и \((\forall x \in C)(t(x) = f^{-1}(<c, x>)\).
+\\
+Тогава е очевидно \(t : C \injection B\).
+\\
+Следователно \(\exists g (g : A \surjection C) \; \lor \; \exists h (h : C \injection B)\). 
+\\
+\vspace{1mm}
+\\
+И в двата възможни случая доказахме
+\\
+\(\exists g (g : A \surjection C) \; \lor \; \exists h (h : C \injection B)\). \(\qed\)
+
+\section*{Задача 3.}
+Нека \(S\) е такова, че
+\begin{align*}
+    \{A\} \subseteq S \subseteq \mathcal{P}(A) \\
+    \& \\
+    \forall X(\emptyset \neq X \subseteq S \implies \cap X \in S).
+\end{align*}
+Нека \(f : S \to S\) е монотонна функция.
+Тогава \(f\) има най-малка неподвижна точка.
+
+\subsection*{Решение:}
+Нека \(B = \{X \; | \; X \in S \; \& \; f(X) \subseteq X\}\).
+Очевидно \(B \subseteq S\). Понеже \(S \subseteq \mathcal{P}(A)\),
+то \((\forall T \in S)(T \subseteq A)\). Тогава \(A \in S\)
+и \(f(A) \subseteq A\), понеже \(f(A) \in S\). Следователно
+\(A \in B\) и значи \(B \neq \emptyset\).
+Така \(\emptyset \neq B \subseteq S\) и значи \(\cap B \in S\).
+Нека тогава \(X_0 = \cap B\). Нека \(X \in B\).
+Тогава \(X_0 = \cap B \subseteq X\), но понеже \(f\) е монотонна,
+то \(f(X_0) \subseteq f(X)\). Но \(X \in B\) следователно
+\(f(X) \subseteq X\) и значи \(f(X_0) \subseteq X\).
+Така \((\forall T \in B)(f(X_0) \subseteq T)\) и значи
+\(f(X_0) \subseteq X_0\). Но \(X_0 = \cap B \in S\)
+и така \(X_0 \in B\). От \(f(X_0) \subseteq X_0\) и \(f\)
+е монотнонна, следва че \(f(f(X_0)) \subseteq f(X_0)\).
+Обаче \(Range(f) \subseteq S\) и значи \(f(X_0) \in S\).
+Така \(f(X_0) \in B\). Следователно \(X_0 \subseteq f(X_0)\).
+И значи получихме \(f(X_0) \subseteq X_0\) и \(X_0 \subseteq f(X_0)\).
+Следователно \(X_0 \in S\) и \(X_0 = f(X_0)\), тоест \(X_0\) е неподвижна точка за \(f\).
+Нека \(Z \in S\) и \(f(Z) = Z\). Тогава \(f(Z) \subseteq Z\). \\
+Следователно \(Z \in B\). Тогава \(X_0 = \cap B \subseteq Z\). \\
+Следователно \((\forall Z \in S)(f(Z) = Z \implies X_0 \subseteq Z)\). \\
+Следователно \(X_0\) е най-малката неподвижна точка на \(f\). \(\qed\)
+
+\section*{Лема за разделените инекции}
+Нека \(f : A \injection B\) и \(g : C \injection D\)
+и \(A \cap C = \emptyset\) и \(B \cap D = \emptyset\).
+\\
+Тогава \(f \cup g : A \cup C \injection B \cup D\).
+
+\subsection*{Доказателство:}
+Понеже \(Dom(f) \cap Dom(g) = \emptyset\), то \(f\) и \(g\) са съвместими
+\\
+и \(f \cup g \; : \; A \cup C \to B \cup D\).
+Нека \(x \in A \cup C\) и \(y \in A \cup C\) и \(x \neq y\).
+Възможни са три случая:
+
+\subsubsection*{Случай 1. \(x \in A \; \& \; y \in A\)}
+Тогава \((f \cup g)(x) = f(x) \neq f(y) = (f \cup g)(y)\),
+понеже \(f\) е инекция.
+
+\subsubsection*{Случай 2. \(x \in C \; \& \; y \in C\)}
+Тогава \((f \cup g)(x) = g(x) \neq g(y) = (f \cup g)(y)\),
+понеже \(g\) е инекция.
+
+\subsubsection*{Случай 3. \(x \in A \; \& \; y \in C\)}
+Тогава \((f \cup g)(x) = f(x) \in B\) и \((f \cup g)(y) = g(y) \in D\)
+и \(B \cap D = \emptyset\) следователно \((f \cup g)(x) \neq (f \cup g)(y)\).
+
+\subsubsection*{Заключение:}
+Следователно понеже \(x\) и \(y\) бяха произволни,
+то \(f \cup g : A \cup C \injection B \cup D\). \(\qed\)
+
+\section*{Задача 4.}
+Нека \(<A, \leq_A>\) и \(<B, \leq_B>\) са линейно наредени множества
+и \(<A, \leq_A>\) е изоморфно с начален отрез на \(<B, \leq_B>\),
+а \(<B, \leq_B>\) е изоморфно с финален отрез на \(<A, \leq_A>\).
+Тогава \(<A, \leq_A> \; \cong \; <B, \leq_B>\).
+
+\subsection*{Съкращения:}
+Нека \(<L, \leq>\) е линейно наредено множество. Тогава
+\begin{align*}
+StartingCut(S, L, \leq) \leftrightharpoons S \subseteq L \; \& \; (\forall y \in S)(\forall x \in L)(x \leq y \implies x \in S) \\
+FinalCut(F, L, \leq) \leftrightharpoons  F \subseteq L \; \& \; (\forall x \in F)(\forall y \in L)(x \leq y \implies y \in F)
+\end{align*}
+
+\subsection*{Лема 1:}
+Нека \(<L, \leq>\) е линейно наредено множество.
+\\
+Тогава \(StartingCut(S, L, \leq) \implies FinalCut(L \setminus S, L, \leq)\).
+
+\subsubsection*{Доказателство:}
+Нека \(S\) е такова, че \(StartingCut(S, L, \leq)\).
+Тогава \(S \subseteq L\) и значи \(L \setminus S \subseteq L\).
+Нека \(x \in L \setminus S\). Нека \(y \in L\) и нека \(x \leq y\).
+Тогава да допуснем, че \(y \notin L \setminus S\),
+Но тогава \(y \in S\) и тогава \(x \in S\), защото \(StartingCut(S, L, \leq)\).
+Това е Абсурд! Следователно \(y \in L \setminus S\).
+Следователно \(FinalCut(L \setminus S, L, \leq)\)). \(\qed\)
+
+\subsection*{Лема 2:}
+Нека \(<L, \leq>\) е линейно наредено множество.
+\\
+Тогава \(FinalCut(F, L, \leq) \implies StartingCut(L \setminus F, L, \leq)\).
+
+\subsubsection*{Доказателство:}
+Нека \(F\) е такова, че \(FinalCut(F, L, \leq)\).
+Тогава \(F \subseteq L\) и значи \(L \setminus F \subseteq L\).
+Нека \(y \in L \setminus F\). Нека \(x \in L\) и нека \(x \leq y\).
+Тогава да допуснем, че \(x \notin L \setminus F\),
+Но тогава \(x \in F\) и тогава \(y \in F\), защото \(FinalCut(F, L, \leq)\).
+Това е Абсурд! Следователно \(x \in L \setminus F\).
+Следователно \(StartingCut(L \setminus F, L, \leq)\)). \(\qed\)
+
+\subsection*{Решение:}
+\(<A, \leq_A>\) е изоморфно с начален отрез на \(<B, \leq_B>\)
+нека тогава \(S\) е такова, че \(StartingCut(S, B, \leq_B)\)
+и \(<A, \leq_A> \; \cong \; <S, \leq_B^S>\).
+Нека тогава \(f : A \bijection S\) е изоморфзъм на \(<A, \leq_A>\) върху \(<S, \leq_B^S>\).
+В частност \(f : A \injection B\).
+\(<B, \leq_B>\) е изоморфно с финален отрез на \(<A, \leq_A>\)
+нека тогава \(F\) е такова, че \(FinalCut(F, A, \leq_A)\)
+и \(<B, \leq_B> \; \cong \; <F, \leq_A^F>\).
+Нека тогава \(g : B \bijection F\) е изоморфзъм на \(<B, \leq_B>\) върху \(<F, \leq_A^F>\).
+В частност \(g : B \injection A\).
+\\
+\vspace{1mm}
+\\
+Ще построим изоморфизъм на \(<A, \leq_A>\) върху \(<B, \leq_B>\).
+Идеята да е разделим множеството \(A\) на две части \(X_0\) и \(A \setminus X_0\).
+Като ще искаме \(X_0 \subseteq Range(g)\), което да е финален отрез и елементите на \(X_0\) ще изпращаме с \(g^{-1}\),
+а на \(A \setminus X_0\), което ще е начален отрез с \(f\).
+За тези цел ще поискаме да разделим и елементите на \(B\) на две части.
+Ще искаме
+\\
+\(g^{-1}[X_0] = B \setminus f[A \setminus X_0]\) или \(X_0 = g[B \setminus f[A \setminus X_0]]\).
+\\
+\vspace{1mm}
+\\
+Нека \(X \in \mathcal{P}(A)\), тогава \(X \subseteq A\) и значи \(A \setminus X \subseteq A\).
+Тогава \(f[A \setminus X] \subseteq S \subseteq B\) и значи \(B \setminus f[A \setminus X] \subseteq B\).
+Следователно \(g[B \setminus f[A \setminus X]] \subseteq F \subseteq A\) и значи
+\(g[B \setminus f[A \setminus X]] \in \mathcal{P}(A)\).
+Тоест \((\forall T \in \mathcal{P}(A))(g[B \setminus f[A \setminus T]] \in \mathcal{P}(A))\).
+Тогава разглеждаме фукцията \(h : \mathcal{P}(A) \to \mathcal{P}(A)\), за която
+\\
+\((\forall T \in \mathcal{P}(A))(h(T) = g[B \setminus f[A \setminus T]] \in \mathcal{P}(A))\).
+\\
+\vspace{1mm}
+\\
+Ще покажем, че \(h\) е монотонна.
+Нека \(X_1 \subseteq X_2 \subseteq A\) тогава \(A \setminus X_2 \subseteq A \setminus X_1\)
+и значи \(f[A \setminus X_2] \subseteq f[A \setminus X_1]\), но тогава
+\(B \setminus f[A \setminus X_1] \subseteq B \setminus f[A \setminus X_2]\)
+и значи \(g[B \setminus f[A \setminus X_1]] \subseteq g[B \setminus f[A \setminus X_2]]\).
+Тоест \(h(X_1) \subseteq h(X_2)\). Следователно \(h : \mathcal{P}(A) \to \mathcal{P}(A)\) е монотоннa.
+\\
+\vspace{1mm}
+\\
+Ще построим неподвижна точка на \(h\), която да е финален отрез на
+\\
+\(<A, \leq_A>\). За целта ще докажем две леми.
+
+\subsubsection*{Лема 3: \(\forall M (StartingCut(M, A, \leq_A) \implies StartingCut(f[M], B, \leq_B))\)}
+Нека \(M\) е такова, че \(StartingCut(M, A, \leq_A)\).
+Нека \(y \in f[M]\). Нека \(x \in B\) и \(x \leq_B y\).
+От \(y \in f[M]\) следва, че \(y \in f[A] = S\), защото \(M \subseteq A\).
+Но от \(StartingCut(S, B, \leq_B)\), следва че \(x \in S = Range(f)\).
+Понеже \(f : A \bijection S\) и \(f\) е изоморфизъм, то \(f^{-1}(x) \leq_A f^{-1}(y)\).
+Но \(y \in f[M]\) следователно \(f^{-1}(y) \in M\).
+Но \(StartingCut(M, A, \leq_A)\) и \(f^{-1}(x) \leq_A f^{-1}(y)\)
+следователно \(f^{-1}(x) \in M\) и значи \(x = f(f^{-1}(x)) \in f[M]\).
+\\
+Заключение: \(StartingCut(f[M], B, \leq_B)\). \(\qed\)
+
+\subsubsection*{Лема 4: \(\forall M (FinalCut(M, B, \leq_B) \implies FinalCut(g[M], A, \leq_A))\)}
+Нека \(M\) е такова, че \(FinalCut(M, B, \leq_B)\).
+Нека \(x \in g[M]\). Нека \(y \in A\) и \(x \leq_A y\).
+От \(x \in g[M]\) следва, че \(x \in g[B] = F\), защото \(M \subseteq B\).
+Но от \(FinalCut(F, A, \leq_A)\), следва че \(y \in F = Range(g)\).
+Понеже \(g : B \bijection F\) и \(g\) е изоморфизъм, то \(g^{-1}(x) \leq_B g^{-1}(y)\).
+Но \(x \in g[M]\) следователно \(g^{-1}(x) \in M\).
+Но \(FinalCut(M, B, \leq_B)\) и \(g^{-1}(x) \leq_B g^{-1}(y)\)
+следователно \(g^{-1}(y) \in M\) и значи \(y = g(g^{-1}(y)) \in g[M]\).
+\\
+Заключение: \(FinalCut(g[M], A, \leq_A)\). \(\qed\)
+\\
+\vspace{1mm}
+\\
+Нека \(P = \{X \; | \; FinalCut(X, A, \leq_A) \; \& \; X \subseteq h(X) \}\).
+\(P\) е множество, защото отделяме от \(\mathcal{P}(A)\) със свойството
+\begin{align*}
+(\forall z \in X)(\forall y \in A)(z \leq_A y \implies y \in X) \; \& \; X \subseteq h(X).
+\end{align*}
+Ще се нуждаем от следната Лема:
+\subsubsection*{Лема 5: \((\forall X \in P)(h(X) \in P)\)}
+Нека \(X \in P\). Тогава \(X \subseteq h(X)\) следователно \(h(X) \subseteq h(h(X))\), защото \(h\) е монотонна.
+Но от \(X \in P\) следва и \(FinalCut(X, A, \leq_A)\). Тогава
+\\
+по Лема 1 \(StartingCut(A \setminus X, A, \leq_A)\).
+Тогава от Лема 3
+\\
+\(StartingCut(f[A \setminus X], B, \leq_B)\).
+Тогава от Лема 2
+\\
+\(FinalCut(B \setminus f[A \setminus X], B, \leq B)\).
+Тогава от Лема 4
+\\
+\(FinalCut(g[B \setminus f[A \setminus X]], A \leq_A)\).
+Следователно \(FinalCut(h(X), A, \leq_A)\).
+Така \(FinalCut(h(X), A, \leq_A)\) и \(h(X) \subseteq h(h(X))\)
+следователно \(h(X) \in P\).
+Заключение: \((\forall u \in P)(h(u) \in P)\). \(\qed\)
+\\
+\vspace{1mm}
+\\
+Ще покажем, че \(\cup P \in P\).
+\\
+\vspace{1mm}
+\\
+Първо ще покажем, че \(FinalCut(\cup P, A, \leq_A)\).
+В сила е \((\forall u \in P)(u \subseteq A)\) следователно \(\cup P \subseteq A\).
+Нека \(x \in \cup P\). Нека \(y \in A\) и нека \(x \leq_A y\).
+От \(x \in \cup P\), следва \((\exists u \in P)(x \in u)\).
+Нека тогава \(u \in P\) е такова, че \(x \in u\).
+\(u \in P\) следователно \(FinalCut(u, A, \leq_A)\)
+но \(x \in u\) и \(x \leq_A y\).
+Следователно \(y \in u\).
+Следователно \(y \in \cup P\).
+Следователно \(FinalCut(\cup P, A, \leq_A)\).
+\\
+\vspace{1mm}
+\\
+Остава да покажем, че \(\cup P \subseteq h(\cup P)\).
+Нека \(a \in \cup P\). Тогавва
+\\
+\((\exists M \in P)(a \in M)\).
+Нека тогава \(M \in P\) е такова, че \(a \in M\).
+От \(M \in P\) следва \(M \subseteq \cup P\).
+Но \(h\) е монотонна, следователно \(h(M) \subseteq h(\cup P)\).
+\\
+Но \(M \in P\) значи \(M \subseteq h(M)\).
+Така \(M \subseteq h(\cup P)\) и значи \(a \in h(\cup P)\).
+Следователно \(\cup P \subseteq h(\cup P)\).
+Така \(\cup P \in P\).
+\\
+\vspace{1mm}
+\\
+Тогава от \(\cup P \in P\) и Лема 5 следва \(h(\cup P) \in P\) и значи \(h(\cup P) \subseteq \cup P\).
+Следователно \(\cup P = h(\cup P)\) и \(FinalCut(\cup P, A,leqA_A)\).
+\\
+\vspace{1mm}
+\\
+Нека тогава \(X_0 = \cup P\).
+В сила са:
+\begin{align*}
+    X_0 = g[B \setminus f[A \setminus X_0]] \\
+    FinalCut(X_0, A, \leq_A) \\
+    StartingCut(A \setminus X_0, A, \leq_A) \; \text{(по Лема 2)} \\
+    StartingCut(f[A \setminus X_0], B, \leq_B) \; \text{(по Лема 3)} \\
+    FinalCut(B \setminus f[A \setminus X_0], B, \leq_B) \; \text{(по Лема 1)}
+\end{align*}
+Така \(X_0 \subseteq Range(g)\) и значи \(X_0 \subseteq Dom(g^{-1})\).
+Нека \(u = (g^{-1})_{\restriction X_0}\) и \(v = f_{\restriction A \setminus X_0}\).
+Тогава \(Dom(u) = X_0\) и \(Dom(v) = A \setminus X_0\) са непресичащи 
+и значи \(u\) и \(v\) са съвместими. Нека тогава \(t = u \cup v\).
+Тогава \(Dom(t) = Dom(u) \cup Dom(v) = X_0 \cup (A \setminus X_0) = A\)
+и \(Range(t) = Range(u) \cup Range(v)
+= Range(f_{\restriction A \setminus X_0}) \cup Range(g^{-1}_{\restriction X_0})
+= f[A \setminus X_0] \cup g^{-1}[X_0]
+\\
+= f[A \setminus X_0] \cup g^{-1}[g[B \setminus f[A \setminus X_0]]]
+= f[A \setminus X_0] \cup B \setminus f[A \setminus X_0] = B\).
+Следователно \(t : A \surjection B\).
+Понеже \(f\) и \(g^{-1}\) са инекции, то и \(u\) и \(v\) са инекции,
+но и \(Dom(u) \cap Dom(v) = \emptyset\) и \(Range(u) \cap Range(v) = \emptyset\)
+и от Лемата за разделените инекции, следва че \(t : A \injection B\).
+Така \(t : A \bijection B\). Ще покажем, че \(t\) е силен хомоморфизъм на линейни наредби.
+Нека \(a_1 \in A\) и \(a_2 \in A\) и нека \(a_1 <_A a_2\).
+Възможни са три случая.
+\\
+\vspace{1mm}
+\\
+Случай 1 \(a_1 \in A \setminus X_0 \; \& \; a_2 \in A \setminus X_0\):
+\\
+\vspace{1mm}
+\\
+Тогава \(t(a_1) = v(a_1) = f(a_1) <_B f(a_2) = v(a_2) = t(a_1)\).
+\\
+\vspace{1mm}
+\\
+Случай 2 \(a_1 \in X_0 \; \& \; a_2 \in X_0\):
+\\
+\vspace{1mm}
+\\
+Тогава \(t(a_1) = u(a_1) = g^{-1}(a_1) <_B g^{-1}(a_2) = u(a_2) = t(a_1)\).
+\\
+\vspace{1mm}
+\\
+Случай 3 \(a_1 \in A \setminus X_0 \; \& \; a_2 \in X_0\):
+\\
+\vspace{1mm}
+\\
+Понеже \(t\) е инекция да допуснем, че
+\(t(a_2) <_B t(a_1)\).
+Тогава \(u(a_2) <_B v(a_1)\),
+обаче \(Range(v) = f[A \setminus X_0]\) и \(StartingCut(f[A \setminus X_0], A, \leq_A)\).
+Тогава
+\\
+\(u(a_2) \in f[A \setminus X_0]\).
+Но това е Абсурд, защото \(Range(u) = B \setminus f[A \setminus X_0]\).
+Следователно \(t(a_1) <_B t(a_2)\), защото \(t\) е инекция, a \(a_1 \in A \setminus X_0 \; \& \; a_2 \in X_0\).
+\\
+\vspace{1mm}
+\\
+Не е възможно \(a_1 \in X_0 \; \& \; a_2 \in A \setminus X_0 \; \& \; a_1 <_A a_2\),
+защото
+\\
+\(FinalCut(X_0, A, \leq_A)\) и значи \(a_2 \in X_0\).
+\\
+\vspace{1mm}
+\\
+Така получаваме \((\forall a_1 \in A)(\forall a_2 \in A)(a_1 \leq_A a_2 \implies t(a_1) \leq_B t(a_2)\)).
+\\
+\vspace{1mm}
+\\
+Нека сега \(b_1 \in B\), \(b_2 \in B\) и \(b_1 \leq_B b_2\).
+\(<A, \leq_A>\) е л.н.м. В частност всеки два елемента на \(A\) са \(\leq_A\) сравними.
+Да допуснем, че
+\\
+\(t^{-1}(b_2) <_A t^{-1}(b_1)\).
+Тогава \(t(t^{-1}(b_2)) <_B t(t^{-1}(b_1))\) и значи \(b_2 <_B b_1\).
+\\
+Но това е Абсурд!
+Следователно \(t^{-1}(b_1) <_A t^{-1}(b_2)\).
+Следователно \\
+\((\forall b_1 \in B)(\forall b_2 \in B)(b_1 \leq_B b_2 \implies t^{-1}(b_1) \leq_A t^{-1}(b_2)\)).
+Следователно
+\((\forall a_1 \in A)(\forall a_2 \in A)(t(a_1) \leq_B t(a_2) \implies a_1 \leq_A a_2\)).
+Така \(t\) е силен хомоморфизъм на \(<A, \leq_A>\) върху \(<B, \leq_B>\)
+и значи \(t\) е изоморфизъм.
+Следователно \(<A \leq_A> \; \cong  \; <B \leq_B>\). \(\qed\)
+
+\section*{Задача 5.}
+Нека \(\mathcal{W}_1 = \; <W_2, \leq_1>\) и \(\mathcal{W}_2 = \; <W_2, \leq_2>\) са добре наредени множества.
+Тогава е в сила точно едно от трите:
+\begin{itemize}
+    \item \(\mathcal{W}_1\) и \(\mathcal{W}_2\) са изоморфни;
+    \item \(\mathcal{W}_1\) е изоморфно на начален сегмент на \(\mathcal{W}_2\);
+    \item \(\mathcal{W}_2\) е изоморфно на начален сегмент на \(\mathcal{W}_1\).
+\end{itemize}
+\vspace{1mm}
+Преди да преминем към решението ще формулираме и докажем две леми.
+\subsection*{Лема 1:}
+Нека \(\mathcal{A} = \; <A, \leq_A>\) и \(\mathcal{B} = \; <B, \leq_B>\) са добре наредени множества.
+Нека \(a \in A\), \(b \in B\), \(d \in B\) и
+\(<seg_A(a), \leq_A^a> \; \cong \; <seg_B(b), \leq_B^b>\)
+и \(<seg_A(a), \leq_A^a> \; \cong \; <seg_B(d), \leq_B^d>\).
+Тогава \(b = d\).
+\subsubsection*{Доказателство:}
+Да допуснем, че \(b \neq d\).
+Тогава нека Б.О.О. \(b \leq_B d\).
+Тогава
+\\
+\(b \in seg_B(d) \setminus seg_B(b)\) и \(seg_B(b) \subseteq seg_B(d)\).
+Но очевидно тогава \(seg_B(b) = seg_{seg_B(d)}(b) \subseteq seg_B(d)\).
+Понеже
+\(<seg_A(a), \leq_A^a> \; \cong \; <seg_B(b), \leq_B^b>\), то
+нека \(f : seg_A(a) \bijection seg_B(b)\) е изоморфизъм.
+Понеже \(<seg_A(a), \leq_A^a> \; \cong \; <seg_B(d), \leq_B^d>\),
+то нека
+\(g : seg_A(a) \bijection seg_B(d)\) е изоморфизъм.
+Тогава очевидно
+\(f^{-1} \circ g : seg_B(b) \bijection seg_B(d)\)
+е изоморфизъм. Но тогава
+\\
+\(seg_B(b) = seg_{seg_B(d)}(b) \subset seg_B(d)\)
+и \(<seg_B(b), \leq_B^b> \; \cong \; <seg_B(d), \leq_B^d>\).
+\\
+Но това знаем, че е невъзможно, защото никое добре наредено множество
+не е изоморфно на свой собствен начален сегмет.
+Следователно \(b = d\). \(\qed\)
+\subsection*{Лема 2:}
+Нека \(\mathcal{A} = \; <A, \leq_A>\) и \(\mathcal{B} = \; <B, \leq_B>\) са добре наредени множества.
+Нека \(a \in A\), \(b \in B\), \(c \in B\) и нека \(a <_A c\).
+Нека \(f : seg_A(c) \bijection seg_B(b)\) е изоморфизъм на
+\(<seg_A(c), \leq_A^c>\) върху \(<seg_B(b), \leq_B^b>\).
+Тогава \(f_{\restriction seg_A(a)}\) е изоморфизъм на
+\(<seg_A(a), \leq_A^c>\) върху \(<seg_B(f(a)), \leq_B^{f(a)}>\).
+\subsection*{Доказателство:}
+Понеже \(a <_A c\), то \(seg_A(a) \subseteq seg_A(c)\).
+Тогава нека \(g = f_{\restriction seg_A(a)}\).
+\\
+Понеже \(f : seg_A(c) \bijection seg_B(b)\), то \(g : seg_A(a) \injection seg_B(b)\).
+\\
+\(Range(g) = Range(f_{\restriction seg_A(a)}) = f[seg_A(a)] = f[\{x \in A \; | \; x <_A a\}]
+\\
+= \{f(x) \; | \; x \in A \; \& \; x <_A a\}
+= \{f(x) \; | \; x \in seg_A(a) \; \& \; f(x) <_B f(a)\}
+\\
+= \{f(f^{-1}(y)) \; | \; y \in seg_B(c) \; \& \; f(f^{-1}(y)) <_B f(a)\}
+\\
+= \{y \; | \; y \in seg_B(c) \; \& \; y <_B f(a)\}
+= \{y \; | \; y \in B \; \& \; y <_B f(a)\}
+\\ = seg_B(f(a))\). Следователно \(g : seg_A(a) \bijection seg_B(f(a))\).
+Понеже
+\\
+\((\forall x \in seg_A(a))(\forall y \in seg_A(a))
+(x \leq_A^a y \iff x \leq_A y \\
+\iff f(x) \leq_B f(y) \iff g(x) \leq_B g(y) \iff g(x) \leq_B^{f(a)} g(y))\),
+\\
+то следва че
+\(g : seg_A(a) \bijection seg_B(f(a))\) е изоморфизъм на
+\\
+\(<seg_A(a), \leq_A^a>\) върху \(<seg_B(f(a)), \leq_B^{f(a)}>\). \(\qed\)
+
+\subsection*{Решение:}
+Нека \(f \subseteq W_1 \times W_2\) е следната релация:
+\begin{align*}
+f = \{<x, y> \in W_1 \times W_2 \; | \; <seg_{W_1}(x), \leq_1^x> \; \cong \; <seg_{W_2}(y), \leq_2^y> \}.
+\end{align*}
+
+\subsubsection*{\(f\) е функция:}
+Нека \(x \in W_1\), \(y \in W_2\) и \(z \in W_2\)
+са такива, че \(<x, y> \; \in f\) и \(<x, z> \; \in f\).
+Тогава \(<seg_{W_1}(x), \leq_1^x> \; \cong \; <seg_{W_2}(y), \leq_2^y>\)
+и \(<seg_{W_1}(x), \leq_1^x> \; \cong \; <seg_{W_2}(z), \leq_2^z>\).
+Но тогава по Лема 1 \(y = z\).
+Следователно \(Funct(f)\).
+
+\subsubsection*{\(f\) е инекция:}
+Нека \(x \in W_1\), \(y \in W_2\) и \(s \in W_1\)
+са такива, че \(<x, y> \; \in f\) и \(<s, y> \; \in f\).
+Тогава \(<seg_{W_1}(x), \leq_1^x> \; \cong \; <seg_{W_2}(y), \leq_2^y>\)
+и \(<seg_{W_1}(s), \leq_1^s> \; \cong \; <seg_{W_2}(y), \leq_2^y>\).
+Следователно \(<seg_{W_2}(y), \leq_2^y> \; \cong \; <seg_{W_1}(x), \leq_1^x>\)
+и \(<seg_{W_2}(y), \leq_2^y> \; \cong \; <seg_{W_1}(s), \leq_1^s>\).
+Но тогава по Лема 1 \(x = s\).
+Следователно \(f\) е инекция.
+
+\subsubsection*{\(f\) запазва наредбата:}
+Нека \(x \in Dom(f)\), \(s \in Dom(f)\) и \(x <_1 s\).
+След като \(s \in Dom(f)\), то
+\((\exists y \in W_2)(<seg_{W_1}(s), \leq_1^s> \; \cong \; <seg_{W_2}(y), \leq_2^y>)\).
+Нека тогава \(y \in W_2\) и
+\(<seg_{W_1}(s), \leq_1^s> \; \cong \; <seg_{W_2}(y), \leq_2^y>\).
+Тогава нека \(h : seg_{W_1}(s) \bijection seg_{W_2}(y)\) е изоморфизъм на
+\(<seg_{W_1}(s), \leq_1^s>\) върху \(<seg_{W_2}(y), \leq_2^y>\).
+Тогава според Лема 2
+\(<seg_{W_1}(x), \leq_1^x> \; \cong \; <seg_{W_2}(g(x)), \leq_2^{g(x)}>\).
+Но \(g(x) \in seg_{W_2}(y)\) и значи \(g(x) <_2 y\).
+Но тогава \(f(x) = g(x) <_2 y = f(s)\).
+Следователно
+\((\forall a \in Dom(f))(\forall b \in Dom(f))(a <_1 b \implies f(a) <_2 f(b))\).
+
+\subsubsection*{\(Dom(f)\) е начален сегмент:}
+\(Dom(f) \subseteq W_1\).
+Нека \(v \in Dom(f)\). Нека \(u \in W_1\) и \(u <_1 v\).
+Нека \(t = f(v)\).
+От \(v \in Dom(f)\), следва че
+\(<seg_{W_1}(v), \leq_1^v> \; \cong \; <seg_{W_2}(t), \leq_2^{t}>\).
+Тогава нека \(h : seg_{W_1}(v) \bijection seg_{W_2}(t)\) е изоморфизъм.
+Тогава според Лема 2
+\\
+\(<seg_{W_1}(u), \leq_1^u> \; \cong \; <seg_{W_2}(h(u)), \leq_2^{h(u)}>\).
+Следователно \(<u, h(u)> \; \in f\).
+Тогава \(u \in Dom(f)\).
+Следователно \(Dom(f)\) е начален сегмент на \(W_1\).
+
+\subsubsection*{\(Range(f)\) е начален сегмент:}
+\(Range(f) \subseteq W_2\).
+Нека \(v \in Range(f)\). Нека \(u \in W_2\) и \(u <_2 v\).
+Нека \(z \in W_1\) и \(v = f(z)\).
+От \(z \in Dom(f)\), следва че
+\(<seg_{W_1}(z), \leq_1^z> \; \cong \; <seg_{W_2}(v), \leq_2^{v}>\).
+Тогава нека \(h : seg_{W_2}(v) \bijection seg_{W_1}(z)\) е изоморфизъм.
+Тогава според \\
+Лема 2
+\(<seg_{W_2}(u), \leq_2^u> \; \cong \; <seg_{W_1}(h(u)), \leq_1^{h(u)}>\).
+Следователно
+\\
+\(<h(u), u> \; \in f\).
+Тогава \(u \in Range(f)\).
+Следователно \(Range(f)\) е начален сегмент на \(W_2\).
+\\
+\vspace{1mm}
+\\
+Така понеже \(f\) запазва наредбата и е инекция, то \(f\) е изоморфизъм на
+\\
+\(<Dom(f), \leq_1 \cap (Dom(f) \times Dom(f))>\)
+върху
+\\
+\(<Range(f), \leq_2 \cap (Range(f) \times Range(f))>\).
+
+\subsubsection*{\(Dom(f) = W_1 \; \lor \; Range(f) = W_2\):}
+
+Допускаме, че \(Dom(f) \neq W_1 \; \& \; Range(f) \neq W_2\). Но понеже
+\\
+\(Dom(f) \subseteq W_1\) и \(Range(f) \subseteq W_2\),
+следва че \(W_1 \setminus Dom(f) \neq \emptyset\)
+\\
+и \(W_2 \setminus Range(f) \neq \emptyset\).
+\\
+Нека тогава \(x = \underset{\leq_1}{min}(W_1 \setminus Dom(f))\)
+и \(y = \underset{\leq_2}{min}(W_2 \setminus Range(f))\).
+\\
+Понеже \((\forall s \in W_1) (s \in W_1 \setminus Dom(f) \implies x \leq_1 s)\), то
+\\
+\((\forall s \in W_1) (s <_1 x \implies s \in Dom(f))\).
+Следователно \(seg_{W_1}(x) \subseteq Dom(f)\).
+Нека \(s \in Dom(f)\). Допускаме, че \(s \notin seg_{W_1}(x)\).
+Тогава \(x \leq_1 s\). Но понеже \(x \notin Dom(f)\), то \(x <_1 s\).
+Понеже \(s \in Dom(f)\), то
+\\
+\(<seg_{W_1}(s), \leq_1^s> \; \cong \; <seg_{W_2}(f(s)), \leq_2^{f(s)}>\).
+Нека тогава
+\\
+\(h : seg_{W_1}(s) \bijection seg_{W_2}(f(s))\)
+е изоморфизъм на
+\(<seg_{W_1}(s), \leq_1^s>\) върху \(<seg_{W_2}(f(s)), \leq_2^{f(s)}>\).
+Тогава според Лема 2
+\\
+\(<seg_{W_1}(x), \leq_1^x> \; \cong \; <seg_{W_2}(h(x)), \leq_2^{h(x)}>\).
+Но тогава \(x \in Dom(f)\). Това е Абсурд!
+Следователно \(s \in seg_{W_1}(x)\).
+Следователно \(Dom(f) \subseteq seg_{W_1}(x)\).
+Така \(Dom(f) = seg_{W_1}(x)\).
+\\
+С аналогични разсъждения получаваме \(Range(f) = seg_{W_2}(y)\).
+\\
+Понеже \(f\) е инекция, то \(f : seg_{W_1}(x) \bijection seg_{W_2}(y)\).
+Но \(f\) запазва и наредбата, следователно \(f\) е изоморфизъм на
+\(<seg_{W_1}(x), \leq_1^x>\) върху
+\\
+\(<seg_{W_2}(y), \leq_2^{y}>\).
+Така \(<x, y> \; \in f\).
+Следователно
+\\
+\(x \in Dom(f)\) и \(y \in Range(f)\).
+Това е Абсурд!
+\\
+Следователно \(Dom(f) = W_1 \; \lor \; Range(f) = W_2\).
+\\
+\vspace{1mm}
+\\
+Възможни са три случая.
+\\
+\vspace{1mm}
+\\
+Случай 1 \(Dom(f) = W_1 \; \& \; Range(f) = W_2\):
+\\
+\vspace{1mm}
+\\
+Тогава понеже \(f\) е изоморфизъм, то \(\mathcal{W}_1 \cong \mathcal{W}_2\).
+\\
+\vspace{1mm}
+\\
+Случай 2 \(Dom(f) = W_1 \; \& \; Range(f) \neq W_2\):
+\\
+\vspace{1mm}
+\\
+Тогава понеже \(Rage(f)\) е начален сегмент на \(W_2\) относно \(\leq_2\)
+и \(f\) е изоморфизъм, то \(\mathcal{W}_1\) е изоморфно на \(Range(f)\),
+което е собствен начален сегмент на \(\mathcal{W}_2\). 
+\\
+\vspace{1mm}
+\\
+Случай 3 \(Dom(f) \neq W_1 \; \& \; Range(f) = W_2\):
+\\
+\vspace{1mm}
+\\
+Тогава понеже \(Dom(f)\) е начален сегмент на \(W_1\) относно \(\leq_1\)
+и \(f\) е изоморфизъм, то \(\mathcal{W}_2\) е изоморфно на \(Dom(f)\),
+което е собствен начален сегмент на \(\mathcal{W}_1\).
+
+\section*{Лема за най-големия елемент.}
+Нека \(<L, \leq_L>\) е линейно наредено множество.
+Нека \(\emptyset \neq M \subseteq L\) и \(M\) е крайно.
+Тогава в \(M\) има най-голям елемент относно \(\leq_L\).
+
+\subsection*{Доказателство:}
+Нека \(<L, \leq_L>\) е линейно наредено множество.
+С индукция в множеството на естествените числа ще докажем
+следното твърдение:
+\begin{align*}
+\forall n \forall M (\overline{\overline{M}} = \overline{\overline{s(n)}} \; \& \; M \subseteq L \implies (\exists m \in M)(\forall x \in M)(x \leq_L m)).
+\end{align*}
+
+\subsubsection*{База: \(n = 0\)}
+Нека \(M \subseteq L\) и \(\overline{\overline{M}} = \overline{\overline{1}}\).
+Тогава \(M = \{m\}\) и понеже \(\leq_L\) е рефлексивна в \(L\), то
+\(m \leq m\) и значи \((\forall x \in M)(x \leq_L m)\).
+
+\subsubsection*{Индукционно предположение:}
+Нека \(n \in \omega\) и 
+\(\forall M (\overline{\overline{M}} = \overline{\overline{s(n)}} \; \& \; M \subseteq L \implies (\exists m \in M)(\forall x \in M)(x \leq_L m))\).
+
+\subsubsection*{Индукционна стъпка:}
+Нека \(M \subseteq L\) и \(\overline{\overline{M}} = \overline{\overline{s(s(n))}}\).
+Тогава \(M \neq \emptyset\). Нека тогава \(a \in M\).
+Тогава очевидно \(\overline{\overline{M \setminus \{a\}}} = \overline{\overline{s(n)}}\)
+и \(M \setminus \{a\} \subseteq L\). Тогава по И.П. за \(M \setminus \{a\}\),
+следва че \((\exists b \in M \setminus \{a\})(\forall x \in M \setminus \{a\})(x \leq_L b)\). Нека тогава \(b \in M\) и \((\forall x \in M \setminus \{a\})(x \leq_L b)\).
+Понеже \(<L, \leq_L>\) е линейно наредено множество, то са възможни два случая.
+\\
+\vspace{1mm}
+\\
+Случай 1 \(a \leq_L b\):
+\\
+\vspace{1mm}
+\\
+Нека \(x \in M\). Тогава, ако \(x \in M \setminus \{a\}\), то \(x \leq_L b\) понеже
+\(b\) е най-голямия относно \(\leq_L\) в \(M \setminus \{a\}\),
+ако пък \(x = a\), то директно \(x \leq_L b\).
+Следователно \(b \in M\) и \((\forall x \in M)(x \leq_L b)\).
+\\
+\vspace{1mm}
+\\
+Случай 2 \(b \leq_L a\):
+\\
+\vspace{1mm}
+\\
+Нека \(x \in M\). Тогава, ако \(x \in M \setminus \{a\}\), то \(x \leq_L b\) понеже
+\(b\) е най-голямия относно \(\leq_L\) в \(M \setminus \{a\}\) и от \(b \leq_L a\) и транзитивността на \(\leq_L\), следва че \(x \leq_L a\),
+ако пък \(x = a\), то от рефлексивността на \(\leq_L\) следва \(x \leq_L a\).
+Следователно \(a \in M\) и \((\forall x \in M)(x \leq_L a)\).
+\\
+\vspace{1mm}
+\\
+Така и в двата случая е в сила \((\exists m \in M)(\forall x \in M)(x \leq_L m))\).
+Но \(M\) е произволно, следователно след обобщение получаваме
+\\
+\(\forall M (\overline{\overline{M}} = \overline{\overline{s(s(n))}} \; \& \; M \subseteq L \implies (\exists m \in M)(\forall x \in M)(x \leq_L m))\).
+
+\subsubsection*{Заключение:}
+\begin{align*}
+\forall n \forall M (\overline{\overline{M}} = \overline{\overline{s(n)}} \; \& \; M \subseteq L \implies (\exists m \in M)(\forall x \in M)(x \leq_L m)).
+\end{align*} \(\qed\)
+
+\section*{Лема за добрата наредба и ординала.}
+Нека \(<W, \leq_W>\) е добре наредено множество.
+Тогава има при това единствен ординал \(\alpha\),
+такъв че \(<W, \leq_W> \; \cong \; <\alpha, \leq_\alpha>\).
+
+\subsection*{Доказателство:}
+Да допуснем, че за всяко \(\alpha\), \(<\alpha, \leq_\alpha>\) е изоморфно със собствен начален сегмент на \(<W, \leq_W>\). Тогава по аксиомната схема за замяната има множество
+\(A\), такова че \\
+\((\forall w \in W)(\exists a \in A)(ord(a) \; \& <seg(w), \leq_W^w> \; \cong \; <a, \leq_a>)\).
+Нега тогава \(A\) е такова множество и нека \(B = \{a \; | \; a \in A \; \& \; ord(a)\}\). Тогава по аксиомната схема за отделянето \(B\) е множество.
+Нека тогава \(\alpha\) е произволен ординал, тогава според допускането
+\((\exists w \in W)(<seg(w), \leq_W^w> \; \cong \; <a, \leq_a>)\).
+Тогава \(a \in A\), но в сила е и \(ord(a)\).
+Следователно \(a \in B\).
+Следователно \(\forall \alpha (\alpha \in B)\). Но това е Абсурд, защото няма множество,
+което да съдържа всички ординали!
+Но от Задача 5. следва, че наредбата на всеки ординал е сравнима с \(\leq_W\).
+Тогава нека \\
+\(\alpha = \mu\beta[(\exists \gamma \leq \beta)(<W, \leq_W> \; \cong \; <\gamma, \leq_\gamma>)]\). Да допуснем, че \(<W, \leq_W>\) не е изоморфно с \(<\alpha, \leq_\alpha>\). Тогава от свойството, което \(\alpha\) минимизира има ординал
+\(\gamma \leq \alpha\), такъв че \(<W, \leq_W> \; \cong \; <\gamma, \leq_\gamma>\).
+Нека тогава \(\gamma \leq \alpha\) и \(<W, \leq_W> \; \cong \; <\gamma, \leq_\gamma>\).
+Понеже \(<W, \leq_W>\) не е изоморфно с \(<\alpha, \leq_\alpha>\), то \(\gamma < \alpha\)
+и \(<W, \leq_W> \; \cong \; <\gamma, \leq_\gamma>\). Но това противоречи на факта,
+че \(\alpha\) е най-малкият ординал със свойството \((\exists \delta \leq \alpha)(<W, \leq_W> \; \cong \; <\delta, \leq_\delta>)\).
+Следователно \(<W, \leq_W> \; \cong \; <\alpha, \leq_\alpha>\).
+От фактите, че има единствен изоморфизъм между две добри наредби и изоморфизма на добри наредби е рефлексивно, симетрично и транзитивно свойство е ясно, че \(\alpha\) е единствения ординал, за който стандартната ординална наредба е изоморфна с \(\leq_W\). \(\qed\)
+
+\section*{Лема за образа на функция с краен домейн.}
+Нека \(f : A \to B\) и нека \(A\) е крайно.
+Тогава \(Range(f)\) е крайно и \(\overline{\overline{Range(f)}} \leq \overline{\overline{A}}\).
+
+\subsection*{Доказателство:}
+Нека \(g = \{<b, f^{-1}[\{b\}]> | \; b \in Range(f)\}\).
+От аксиомните схеми за замяна и отделяне е ясно, че \(g\) е множество.
+Очевидно \(Rel(g)\).
+Очевидно и \(Funct(g)\).
+Нека \(b_1 \in Range(f)\) и \(b_2 \in Range(f)\)
+и \(g(b_1) = g(b_2)\).
+Тогава \(f^{-1}[\{b_1\}] = f^{-1}[\{b_2\}]\).
+Но тогава \(\{b_1\} = \{b_2\}\) и значи \(b_1 = b_2\).
+Следователно \(g\) е инекция.
+Следователно \(g : Range(f) \bijection Range(g)\).
+Нека \(b \in Range(f)\). Тогава \((\exists a \in A)(f(a) = b)\).
+Нека тогава \(a \in A\) и \(f(a) = b\).
+Тогава \(a \in f^{-1}[\{b\}]\) и значи \(g(b) \neq \emptyset\).
+Тогава \(Range(g)\) е множество от непразни множества.
+Но очевидно \(Range(g) \subseteq \mathcal{P}(A)\).
+Понеже \(A\) е крайно, то знаем и че \(\mathcal{P}(A)\) е крайно.
+Следователно \(Range(g)\) е крайно множество от непразни множества.
+Тогава \(Range(g)\) има функция на избора.
+Нека тогава \(h\) е функция на избора за \(Range(g)\) (Правим креан избор).
+Тогава \((\forall b \in Range(f))(h(g(b)) \in g(b) \subseteq A)\).
+Следователно \(Range(g \circ h) \subseteq A\).
+Но \(A\) е крайно и значи \(Range(g \circ h)\) също е крайно.
+Но тогава \(g \circ h : Range(f) \bijection Range(g \circ h)\). \\
+Следователно \(\overline{\overline{Range(f)}} = \overline{\overline{Range(g \circ h)}} \leq \overline{\overline{A}}\). \(\qed\)
+
+\section*{Задача 6.}
+Нека \(A\) е множество. Тогава \(A\) е крайно тогава и само тогава когато
+има бинарна релация \(R\), такава че \(<A, R>\) и \(<A, R^{-1}>\) са добре наредени.
+
+\subsection*{Решение:}
+
+\subsubsection*{\((\implies)\) Нека \(A\) е крайно.}
+Тогава нека \(n\) е такова, че \(\overline{\overline{A}} = \overline{\overline{n}}\).
+Нека тогава \(f : A \bijection n\). Дефинираме релация \(\leq_f\) в \(A\)
+така
+\begin{align*}
+    \leq_f \; = \{u \; | \; u \in A \times A \; \& \; \exists a \exists b (u = <a, b> \; \& \; f(a) \leq_n f(b)) \}.
+\end{align*}
+По аксиомната схема за отделянето следва, че \(\leq_f\) е множество.
+От факта, че отделяме от \(A \times A\) следва \(Rel(\leq_f)\).
+\\
+\vspace{1mm}
+\\
+Нека \(a \in A\). Тогава \(<a, a> \in A \times A\), но също така \(f(a) \leq_n f(a)\).
+Следователно \(a \leq_f a\). Следователно \(\leq_f\) е рефлексивна.
+\\
+\vspace{1mm}
+\\
+Нека \(b \in A\) и \(c \in A\) и \(b \leq_f c\) и \(c \leq_f b\).
+Тогава \(f(b) \leq_n f(c)\) и \(f(c) \leq_n f(b)\).
+Но \(\leq_n\) е антисиметрична, следователно \(f(b) = f(c)\).
+Но \(f\) е бикеция следователно \(b = c\).
+Следователно \(\leq_f\) е антисиметрична.
+\\
+\vspace{1mm}
+\\
+Нека \(x \in A\), \(y \in A\), \(z \in A\)
+и \(x \leq_f y\) и \(y \leq_f z\).
+Тогава \(f(x) \leq_n f(y)\) и \(f(y) \leq_n f(z)\).
+Но \(\leq_n\) е транзитивна, следователно \(f(x) \leq_n f(z)\).
+Следователно \(x \leq_f z\).
+Следователно \(\leq_f\) е транзитивна.
+\\
+\vspace{1mm}
+\\
+Следователно \(\leq_f\) задава частична наредба в \(A\).
+\\
+\vspace{1mm}
+\\
+Ще докажем, че всяко непразно подмножество на \(A\) има най-голям и най-малък елемент.
+\\
+\vspace{1mm}
+\\
+Нека \(B \subseteq A\) и \(B \neq \emptyset\).
+Нека \(C = f[B]\). Тогава \(C \subseteq n\) и \(C \neq \emptyset\).
+Тогава \(C\) има най-малък елемент спрямо \(\leq_n\). Нека това е \(m\).
+Също така понеже \(n\) е крайно и добре наредено,
+то \(C\) е крайно и \(n\) е линейно наредено.
+Тогава според Лемата за най-големия елемент \(C\) има най-голям елемент спрямо \(\leq_n\).
+Нека това е \(k\).
+Тогава в сила е \((\forall l \in C)(m \leq_n l \; \& \; l \leq_n k)\).
+Нека \(u \in B\). Тогава \(m \leq_n f(u)\) и \(f(u) \leq_n k\).
+Следователно \(f^{-1}(m) \leq_f u\) и \(u \leq_f f^{-1}(k)\).
+Понеже \(m \in C\), \(k \in C\), \(C = f[B]\) и \(f\) е биекция,
+то \(f^{-1}(m) \in B\) и \(f^{-1}(k) \in B\).
+Така \(f^{-1}(m)\) е най-малкия за \(B\) спрямо \(\leq_f\)
+и \(f^{-1}(k)\) е най-големия за \(B\) спрямо \(\leq_f\).
+Но тогава \(f^{-1}(m)\) е най-малкия за \(B\) спрямо \(\leq_f\)
+и \(f^{-1}(k)\) е най-малкия за \(B\) спрямо \(\geq_f\).
+Понеже \(B\) беше произволно, то следва че
+\(<A, \leq_f>\) и \(<A, \geq_f>\) са добре наредени множества.
+
+\subsubsection*{\((\impliedby)\) Нека има бинарна релация \(R\), таква че \\ \(<A, R>\) и \(<A, R^{-1}>\) са добре наредени.}
+Нека тогава \(R\) е такава бинарна релация, че \(<A, R>\) и \(<A, R^{-1}>\) са добре наредени. \(<A, R>\) е добре наредено тогава по Лемата за добрата наредба и ординала
+има ординал \(\alpha\), такъв че \(<A, R> \; \cong \; <\alpha, \leq_\alpha>\).
+Нека тогава \(\alpha\) е такъв че \(<A, R> \; \cong \; <\alpha, \leq_\alpha>\).
+Нека тогава \(g\) е единствения изоморфизъм на \(<A, R>\) върху \(<\alpha, \leq_\alpha>\).
+Допускаме, че \(\omega \leq \alpha\).
+Тогава \(\omega \subseteq \alpha\) по свойствата на ординалите.
+Понеже \(0 \in \omega\), то \(\emptyset \neq \omega \subseteq \alpha\).
+Нека \(D = g^{-1}[\omega]\). Тогава \(\emptyset \neq D \subseteq A\) и значи
+\(D\) има най-малък елемент относно \(R^{-1}\).
+Тогава нека \(y \in D\) е такъв, че \((\forall d \in D)(<y, d> \in R^{-1})\).
+Следователно \((\forall d \in D)(<d, y> \in R)\).
+Следователно \((\forall d \in D)(g(d) \leq_\alpha g(y))\).
+Но \(g(y) \in \omega\) и \(s(g(y)) \in \omega\) и \(g(y) < s(g(y))\) и \(\lnot(s(g(y)) \leq g(y))\).
+Следователно допускането \(\omega \leq \alpha\) доведе до Абсурд,
+но от свойството трихотомия на сравнението на ординали следва \(\alpha < \omega\).
+Следователно \(\alpha \in \omega\) и значи \(Nat(\alpha)\).
+Но понеже \(g : A \bijection \alpha\), то \(\overline{\overline{A}} = \overline{\overline{\alpha}}\) и значи \(A\) е крайно. \(\qed\)
+
+\section*{Задача 7.}
+Нека \(A\) е множество. Тогава \(A\) е крайно тогава и само тогава когато
+За всяко непразно подмножество \(B\) на \(A\) \(<B, \subseteq>\) има максимален елемент.
+
+\subsection*{Решение:}
+
+\subsubsection*{\((\implies)\) Нека \(A\) е крайно множество.}
+Нека \(n\) е такова, че \(\overline{\overline{A}} = \overline{\overline{n}}\).
+Тогава както знаем \(\mathcal{P}(A)\) е крайно множество от крайни множества.
+Нека тогава \(B \in \mathcal{P}(A) \setminus \{\emptyset\}\).
+Тогава \(B\) е крайно множество от крайни множества.
+Нека тогава \\
+\(C = \{k \; | \; k \in \omega \; \& \; (\exists M \in B)(\overline{\overline{k}} = \overline{\overline{M}})\}\).
+От аксиомната схема за отделянето \(C\) е множество.
+Ако разгледаме \(id_C\), то очевидно \(id_C : C \injection s(n)\),
+понеже \((\forall S \in \mathcal{P}(A))(Fin(S) \; \& \; \overline{\overline{S}} \leq \overline{\overline{A}})\) и \(\emptyset \subset B \subseteq \mathcal{P}(A)\) и следователно \\ \(Fin(C) \; \& \; \emptyset \neq C \subseteq s(n)\). Но \(<s(n), \leq_{s(n)}>\) е добре наредено и крайно и значи линейно наредено и крайно и тогава по Лемата за най-големия елемент \(C\) има най-голям елемент. Нека това е \(m\). 
+Но \(m \in C\) следователно \((\exists S \in B)(\overline{\overline{S}} = \overline{\overline{m}})\). Нека тогава \(S \in B\) и \(\overline{\overline{S}} = \overline{\overline{m}}\). Да допуснем, че \(S\) не е максимален за \(B\) спрямо \(\subseteq\). Тогава \((\exists Y \in B)(S \subset Y)\).
+Нека тогава \(Y \in B\) и \(S \subset Y\).
+Тогава понеже \(Y \in B\), то \(Fin(Y)\) и тогава \(\overline{\overline{S}} < \overline{\overline{Y}}\). Нека \(l\) е такова, че \(\overline{\overline{l}} = \overline{\overline{Y}}\). Тогава е ясно, че \(m < l\).
+От \(Y \in B\) следва, че \(l \in C\). Но тогава \(l \leq m\), което е Абсурд!
+Следователно \(S\) е максимален за \(B\) спрямо \(\subseteq\).
+Но понеже \(B\) е произволно, то след обобщение получаваме,
+че всяко непразно подмножество на \(A\) има максимален елемент спрямо \(\subseteq\).
+
+\subsubsection*{\((\impliedby)\) Нека всяко непразно подмножество на \(A\) има максимален елемент спрямо \(\subseteq\).}
+
+Нека тогава разгледаме \(P = \{T \; | \; T \in \mathcal{P}(A) \; \& \; Fin(T)\}\).
+По аксиомната схема за отделянето \(P\) е множество.
+При това очевидно \(P \subseteq \mathcal{P}(A)\).
+Също така понеже \(\emptyset \in \mathcal{P}(A)\) и \(Fin(\emptyset)\),
+то \(\emptyset \in P\) и значи \(P \neq \emptyset\).
+Но тогава \(P\) има максимален елемент относно \(\subseteq\).
+Нека тогава \(D \in P\) и \(\lnot(\exists M \in P)(D \subset M)\).
+Понеже \(D \in P\), то \(D \subseteq A\) и \(Fin(D)\).
+Да допуснем, че \(D \neq A\). Тогава \(A \setminus D \neq \emptyset\).
+Нека тогава \(x \in A \setminus D\).
+Тогава \(D \cup \{x\} \subseteq A\) и както знаем \(Fin(D \cup \{x\})\).
+Следователно \(D \cup \{x\} \in P\) и \(D \subset D \cup \{x\}\).
+Но това е Абсурд, защото \(D\) е максимален относно \(\subseteq\).
+Следователно \(A = D\) и така \(Fin(A)\). \(\qed\)
+
+\section*{Задача 8.}
+
+\subsection*{Част 1 (ZF). \(\forall A (\exists B (B \subset A \; \& \; \overline{\overline{A}} = \overline{\overline{B}}) \implies \lnot Fin(A))\).}
+
+Твърдението е логически еквивалентно с: \\
+\(\forall A (Fin(A) \implies (\forall B \in \mathcal{P}(A) \setminus \{A\})(\overline{\overline{A}} \neq \overline{\overline{B}}))\), което и ще докажем. \\
+
+Нека \(A\) е крайно множество. Нека \(B \in \mathcal{P}(A) \setminus \{A\}\).
+Тогава понеже \(A\) е крайно, то както знаем и \(B\) е крайно.
+Обаче понеже \(B \subset A\), то \(\overline{\overline{B}} < \overline{\overline{A}}\)
+и следователно \(\overline{\overline{A}} \neq \overline{\overline{B}}\). \(\qed\)
+
+\subsection*{Част 2 (ZF + ACC).}
+\begin{align*}
+    \forall A (\lnot Fin(A) \implies (\exists B \in \mathcal{P}(A) \setminus A)(\overline{\overline{B}} = \overline{\overline{A}}))
+\end{align*}
+
+Нека \(A\) е безкрайно множество, тоест не е крайно.
+Първо с индукция ще покажем, че \(\forall n (\exists S \in \mathcal{P}(A))(\overline{\overline{S}} = \overline{\overline{n}})\).
+\\
+\vspace{1mm}
+\\
+База: \(\emptyset \in \mathcal{P}(A)\) и \(\emptyset = 0\).
+\\
+\vspace{1mm}
+\\
+Индукционна хипотеза: Нека \(n\) е такова, че \((\exists S \in \mathcal{P}(A))(\overline{\overline{S}} = \overline{\overline{n}})\).
+\\
+\vspace{1mm}
+\\
+Индукционна стъпка: От И.Х. знаем, че \((\exists S \in \mathcal{P}(A))(\overline{\overline{A}} = \overline{\overline{n}})\).
+Нека тогава \(X \in \mathcal{P}(A)\) и \(\overline{\overline{X}} = \overline{\overline{n}}\). Ако допуснем, че \(A \setminus X = \emptyset\),
+то \(X = A\) и значи \(Fin(A)\), което е Абсурд!
+Тогава \(A \setminus X \neq \emptyset\).
+Нека тогава \(a \in A \setminus X\).
+Тогава както знаем \(\overline{\overline{X \cup \{a\}}} = \overline{\overline{s(n)}}\)
+и \(X \cup \{a\} \in \mathcal{P}(A)\).
+\\
+\vspace{1mm}
+\\
+Заключение: \(\forall n (\exists S \in \mathcal{P}(A))(\overline{\overline{S}} = \overline{\overline{n}})\).
+\\
+\vspace{1mm}
+\\
+Както знаем \(\forall n \; Fin(\mathcal{P}(n))\).
+Нека тогава \\
+\(U = \{P \; | \; P \in \mathcal{P}(\mathcal{P}(A)) \; \& \; \exists n (\forall S \in P)(\overline{\overline{S}} = \overline{\overline{\mathcal{P}(n)}}) \}\).
+Тогава по аксиомната схема за отделянето \(U\) е множество.
+От \(\forall n (\exists S \in \mathcal{P}(A))(\overline{\overline{S}} = \overline{\overline{n}})\) и \(\forall n \; Fin(\mathcal{P}(n))\) 
+следва \((\forall P \in U)(P \neq \emptyset)\).
+Нека \\
+\(f = \{<n, P> \; | \; n \in \omega \; \& \; P \in U \; \& \; (\forall S \in P)(\overline{\overline{S}} = \overline{\overline{\mathcal{P}(n)}})\}\).
+По аксиомните схеми за замяна и отделяне следва, че \(f\) е множество.
+От \(f \subseteq \omega \times U\) следва \(Rel(f)\).
+От факта \(\forall n \forall m (n \neq m \iff \overline{\overline{P(n)}} \neq \overline{\overline{P(m)}})\) следва, че \(f : \omega \injection U\).
+Очевидно \(Range(f) = U\) и значи \(f : \omega \bijection U\).
+Следователно \(U\) е изброимо. Но също така \(U\) е множество от непразни множества.
+Тогава от (ACC) \(U\) има функция на избора.
+Нека тогава \(g\) е функция на избора за \(U\).
+Тогава очевидно \(\forall n ((f \circ g)(n) \in f(n) \; \& \; \overline{\overline{(f \circ g)(n)}} = \overline{\overline{\mathcal{P}(n)}} \; \& \; (f \circ g)(n) \subseteq A)\).
+Нека
+\begin{align*}
+    G(x, y) \leftrightharpoons \\
+        (Funct(x) \; \& \; (\exists n \in \omega)(Dom(x) = n \; \& \; y = (f \circ g)(n) \setminus (\cup Range(x))) \\
+        \lor \\
+        (\lnot (Funct(x) \; \& \; (\exists n \in \omega)(Dom(x) = n)) \; \& \; y = \emptyset)
+\end{align*}
+
+Очевидно \(G\) задава формулна операция.
+Тогава според Теоремата за трансфинитна рекурсия има при това единствена формулна операция \(F\) такава, че \(\forall \alpha (F(\alpha) = G(F_{\restriction\alpha}))\).
+Тогава нека \(h = F_{\restriction\omega}\).
+Тогава очевидно \(\forall n (h(n) = (f \circ g)(n) \setminus (\cup Range(h_{\restriction n})))\).
+\\
+\vspace{1mm}
+\\
+По индукция ще докажем
+\(\forall n (\overline{\overline{\cup Range(h_{\restriction n}) }} \leq \overline{\overline{\mathcal{P}(n) \setminus \{\emptyset\}}} \; \& \; h(n) \neq \emptyset)\).
+\\
+\vspace{1mm}
+\\
+База: \(0 = \emptyset\) и значи \(Range(h_{\restriction 0}) = Range(\emptyset) = \emptyset\). Както видяхме \\
+\(\mathcal{P}(0) \setminus \{\emptyset\} = \emptyset\).
+Следователно \(\overline{\overline{\cup Range(h_{\restriction 0}) }} \leq \overline{\overline{\mathcal{P}(0) \setminus \{\emptyset\}}}\). \\
+Имаме и \(h(0) = (f \circ g)(0) \setminus (\cup Range(h_{\restriction 0}))
+= (f \circ g)(0) \setminus \emptyset = (f \circ g)(0)\). \\
+Но \(\overline{\overline{(f \circ g)(0)}} = \overline{\overline{\mathcal{P}(0)}}
+= \overline{\overline{\{\emptyset\}}} = \overline{\overline{\{0\}}}
+= \overline{\overline{1}}\) и така \(\exists e(h(0) = \{e\})\). \\
+Следователно \(h(0) \neq \emptyset\).
+\\
+\vspace{1mm}
+\\
+Индукционна хипотеза: Нека \(n \in \omega\) е такова, че \\
+\(\overline{\overline{\cup Range(h_{\restriction n}) }} \leq \overline{\overline{\mathcal{P}(n) \setminus \{\emptyset\}}} \; \& \; h(n) \neq \emptyset\).
+\\
+\vspace{1mm}
+\\
+Индукционна стъпка:
+\(Range(h_{\restriction s(n)}) = Range(h_{\restriction n}) \cup \{h(n)\}\). \\
+\(h(n) = (f \circ g)(n) \setminus (\cup Range(h_{\restriction n}))\).
+Също така \\
+\(\mathcal{P}(s(n)) = \mathcal{P}(n \cup \{n\}) = \mathcal{P}(n) \cup \{n \cup p \; | \; p \in  \mathcal{P}(n)\}\).
+И тогава  \\
+\(\mathcal{P}(s(n)) \setminus \{\emptyset\}
+= (\mathcal{P}(n) \setminus \emptyset) \cup \{n \cup p \; | \; p \in  \mathcal{P}(n)\}\). \\
+От И.Х. \(\overline{\overline{\cup Range(h_{\restriction n}) }} \leq \overline{\overline{\mathcal{P}(n) \setminus \{\emptyset\}}}\). \\
+Нека тогава
+\(u : \cup Range(h_{\restriction n}) \injection \mathcal{P}(n) \setminus \{\emptyset\}\).
+Имаме още \(\overline{\overline{(f \circ g)(n)}} = \overline{\overline{\mathcal{P}(n)}}\).
+Нека тогава \(v : (f \circ g)(n) \bijection \mathcal{P}(n)\).
+Но \(h(n) \subseteq (f \circ g)(n)\)
+и значи \\
+\(v_{\restriction h(n)} : h(n) \injection \mathcal{P}(n)\).
+Очевидно \(r : \mathcal{P}(n) \to \{n \cup p \; | \; p \in  \mathcal{P}(n)\}\),
+за която \(r(p) = n \cup p\) е биекция.
+Следователно \(v_{\restriction h(n)} \circ r : h(n) \injection \{n \cup p \; | \; p \in  \mathcal{P}(n)\}\).
+В сила е \(\cup Range(h_{\restriction s(n)}) = (\cup Range(h_{\restriction n})) \cup h(n)\). Но \\
+\(h(n) = (f \circ g)(n) \setminus (\cup Range(h_{\restriction n}))\).
+Следователно \((\cup Range(h_{\restriction n})) \cap h(n) = \emptyset\).
+Очевидно и \(P(n) \cap \{n \cup p \; | \; p \in  \mathcal{P}(n)\} = \emptyset\).
+Тогава е приложима Лемата за разделените инекции.
+От нея следва \\
+\(u \cup (v_{\restriction h(n)} \circ r) : \cup Range(h_{\restriction s(n)}) \injection \mathcal{P}(s(n)) \setminus \{\emptyset\}\). \\
+Следователно \(\overline{\overline{\cup Range(h_{\restriction s(n)})}} \leq \overline{\overline{\mathcal{P}(s(n)) \setminus \{\emptyset\}}}\). \\
+В сила са:
+\begin{align*}
+    h(s(n)) = (f \circ g)(s(n)) \setminus (\cup Range(h_{\restriction s(n)}) \\
+    \overline{\overline{(f \circ g)(s(n))}} = \overline{\overline{\mathcal{P}(s(n))}} \; \& \; Fin((f \circ g)(s(n))) \\
+    \overline{\overline{\cup Range(h_{\restriction s(n)})}} \leq \overline{\overline{\mathcal{P}(s(n)) \setminus \{\emptyset\}}}
+\end{align*}
+Да допуснем, че \(h(s(n)) = \emptyset\).
+Тогава получаваме \(\overline{\overline{\cup Range(h_{\restriction s(n)})}} = \overline{\overline{\mathcal{P}(s(n))}}\), което е Абсурд!
+Следователно \(h(s(n)) \neq \emptyset\).
+\\
+\vspace{1mm}
+\\
+Заключение:
+\(\forall n (\overline{\overline{\cup Range(h_{\restriction n}) }} \leq \overline{\overline{\mathcal{P}(n) \setminus \{\emptyset\}}} \; \& \; h(n) \neq \emptyset)\).
+\\
+\vspace{1mm}
+\\
+Да допуснем, че \(\exists n \exists m (n \neq m \; \& \; h(n) \cap h(m) \neq \emptyset)\).
+Нека тогава \(n\) и \(m\) са такива, че
+\(n \neq m \; \& \; h(n) \cap h(m) \neq \emptyset\).
+Тогава Б.О.О. \(m < n\).
+Но \(h(n) = (f \circ g)(n) \setminus (\cup Range(h_{\restriction n}))\)
+и \(h(m) \subseteq \cup Range(h_{\restriction n})\),
+следователно \(h(n) \cap h(m) = \emptyset\).
+Така \(h(n) \cap h(m) \neq \emptyset\) и \(h(n) \cap h(m) = \emptyset\),
+което е Абсурд! Следователно
+\(\forall n \forall m (n \neq m \iff h(n) \cap h(m) \neq \emptyset)\).
+Така директно следва \(h : \omega \bijection Range(h)\).
+Понеже \(\forall n ((f \circ g)(n) \subseteq A)\) и от до тук доказаното получаваме
+\(\forall n (h(n) \subseteq A \; \& \; h(n) \neq \emptyset)\).
+Следователно \(Range(h)\) е изброимо множество от непразни множества.
+Следователно от ACC \(Range(h)\) има функция на избора.
+Нека тогава \(t\) е функция на избора за \(Range(h)\).
+Така \(\forall n ((h \circ t)(n) \in h(n) \; \& \; (h \circ t)(n) \in A)\).
+Обаче \(Range(h)\) е множество от непресичащи се множества,
+от където \((h \circ t) : \omega \bijection Range(h \circ t)\)
+и \(Range(h \circ t) \subseteq A\).
+Нека \(M = Range(h \circ t)\).
+Нека \(y = h \circ t\).
+Нека \(z = (y^{-1} \circ s_{\restriction \omega}) \circ y\).
+Очевидно \(z : M \bijection M \setminus \{y(0)\}\).
+Тогава прилагаме Лемата за разделените инекции
+и получаваме \(z \cup id_{\restriction A \setminus M} : A \bijection A \setminus \{y(0)\}\).
+Така от \(A \setminus \{y(0)\} \subseteq A\) и \(y(0) \in M \subseteq A\)
+следва \(A \setminus \{y(0)\} \subset A\) и \(\overline{\overline{A}} = \overline{\overline{A \setminus \{y(0)\}}}\).
+\(\qed\)
+
+\section*{Задача 9. Да се докаже}
+\begin{align*}
+\forall A \forall a \forall b (a \notin A \; \& \; b \notin \mathcal{P}(A) \; \& \; \overline{\overline{A}} = \overline{\overline{A \cup \{a\}}}
+\implies \overline{\overline{\mathcal{P}(A)}} = \overline{\overline{\mathcal{P}(A) \cup \{b\}}})
+\end{align*}
+
+\subsection*{Решение:}
+Нека \(A\), \(a\) и \(b\) са такива, че
+\(a \notin A \; \& \; b \notin \mathcal{P}(A) \; \& \; \overline{\overline{A}} = \overline{\overline{A \cup \{a\}}}\).
+Понеже \(id_{\mathcal{P}(A)} : \mathcal{P}(A) \bijection \mathcal{P}(A)\),
+то \(id_{\mathcal{P}(A)} : \mathcal{P}(A) \injection \mathcal{P}(A) \cup \{b\}\).
+Следователно \(\overline{\overline{\mathcal{P}(A)}} \leq \overline{\overline{\mathcal{P}(A) \cup \{b\}}}\).
+Имаме \(\overline{\overline{A}} = \overline{\overline{A \cup \{a\}}}\)
+тогава нека \(f : A \cup \{a\} \bijection A\).
+Нека \(g = f_{\restriction A}\) тогава \(g : A \bijection A \setminus \{f(a)\}\).
+Нека тогава \(h \; : \; \mathcal{P}(A) \to \mathcal{P}(A)\) и 
+\((\forall S \in \mathcal{P}(A))(h(S) = g[S])\).
+Ще покажем, че \(h\) е инекция.
+\\
+Нека \(X \in \mathcal{P}(A)\) и \(Y \in \mathcal{P}(A)\)
+и нека са такива, че \(h(X) = h(Y)\).
+Тогава \(g[X] = g[Y]\) и тогава понеже \(g : A \bijection A \setminus \{f(a)\}\),
+то \(X = g^{-1}[g[X]] = g^{-1}[g[Y]] = Y\). Следователно 
+\((\forall X \in \mathcal{P}(A))(\forall Y \in \mathcal{P}(A))(h(X) = h(Y) \implies X = Y)\). Следователно \(h : \mathcal{P}(A) \injection \mathcal{P}(A)\).
+Понеже \(f : A \cup \{a\} \bijection A\), то \(f(a) \in A\) и значи \(\{f(a)\} \in \mathcal{P}(A)\). От \(g : A \bijection A \setminus \{f(a)\}\),
+следва че \((\forall S \in \mathcal{P}(A))(h(S) = g[S] \subseteq A \setminus \{f(a)\})\).
+Следователно \((\forall S \in \mathcal{P}(A))(f(a) \notin h(S))\).
+Следователно \(\{f(a)\} \notin Range(h)\).
+Тогава \(Funct(\{<b, \{f(a)\}>\})\) и \(b \notin Dom(h)\) и \(\{f(a)\} \notin Range(h)\)
+и така по Лемата за разделените инекции \(h \cup \{<b, \{f(a)\}>\} : \mathcal{P}(A) \cup \{b\} \injection Range(h) \cup \{\{f(a)\}\}\). Също така имаме
+\((\forall S \in \mathcal{P}(A))(h(S) = g[S] \subseteq A \setminus \{f(a)\})\)
+и значи \(Range(h) \subseteq \mathcal{P}(A)\). Но \(f(a) \in A\) и така
+\(Range(h) \cup \{\{f(a)\}\} \subseteq \mathcal{P}(A) \cup \mathcal{P}(A) = \mathcal{P}(A)\).
+Следователно \(h \cup \{<b, \{f(a)\}>\} : \mathcal{P}(A) \cup \{b\} \injection \mathcal{P}(A)\). Така \(\overline{\overline{\mathcal{P}(A) \cup \{b\}}} \leq \overline{\overline{\mathcal{P}(A)}}\) и от Теоремата на Кантор-Шрьодер-Бернщайн следва, че \(\overline{\overline{\mathcal{P}(A)}} = \overline{\overline{\mathcal{P}(A) \cup \{b\}}}\). \(\qed\)
+
+\section*{Задача 12. В (ZFC) всяко множество от непразни крайни множества има минимална трансверзала}
+\(\forall A ((\forall x \in A)(\exists n \in \omega)(\overline{\overline{x}} = \overline{\overline{s(n)}}) \implies \exists Y ((\forall x \in A)(Y \cap x \neq \emptyset) \; \& \; \forall Z ((Z \subseteq Y \; \& \; (\forall x \in A)(Z \cap x \neq \emptyset)) \implies Z = Y)))\)
+
+\subsection*{Решение:}
+Нека \(A\) е такова, че \((\forall x \in A)(\exists n \in \omega)(\overline{\overline{x}} = \overline{\overline{s(n)}})\).
+Нека \\
+\(T = \{Y \; | \; Y \in \mathcal{P}(\cup A) \; \& \; (\forall x \in A)(Y \cap x \neq \emptyset)\}\).
+\(T\) е множество, защото отделяме от \(\mathcal{P}(\cup A)\) със свойството "е трансверзала за \(A\)". Също така \(<T, \supseteq_T>\) е частично наредено множество.
+В (ZFC) е сила Лемата на Цорн, така че ще я приложим.
+Първо в сила е следното \((\forall x \in A)(x \cap (\cup A) = x \neq \emptyset)\).
+Следователно \(\cup A \in T\) и значи \(T \neq \emptyset\).
+Нека \(C\) е произволна непразна верига в \(<T, \supseteq_T>\).
+Тогава \(<C, \supseteq_T\cap \; (C \times C)>\) е линейно наредено множество.
+Нека \(Y = \cap C\). Тогава \((\forall X \in C)(C \supseteq Y)\).
+Понеже \(C \subseteq T \subseteq \mathcal{P}(\cup A)\), то \(Y \in \mathcal{P}(\cup A)\).
+Да допуснем, че \(Y \notin T\). Тогава \\
+\((\exists x \in A)(Y \cap x = \emptyset)\).
+Нека тогава \(x \in A\) и \(Y \cap x = \emptyset\).
+Тогава \\
+\((\forall s \in x)(x \notin Y)\).
+Тогава \((\forall s \in x)(\exists t \in C)(x \notin t)\).
+Нека \\
+\(\varphi(s, U, x, C) \leftrightharpoons (s \in x \; \& \; U = \{t \; | \; t \in C \; \& \; s \notin t \}) \; \lor \; (s \notin x \; \& \; U = \emptyset)\).
+Очевидно \(\varphi\) е функционално свойство относно \(s\) при фиксирани параметри \(x\) и \(C\).
+Тогава по аксиомната схема за замяната относно \(\varphi\) и \(x\) с параметри \(x\) и \(C\) има множество \(B\), такова че
+\((\forall s \in x)(\exists U \in B)(\varphi(s, U, x, C))\).
+Нека тогава \(D = \{U \; | \; U \in B \; \& \; (\exists s \in x)(\varphi(s, U, x, C))\}\). \(D\) е множество според аксиомната схема за отделянето.
+Също така очевидно \(D = \{U \; | \; (\exists s \in x)(U = \{t \; | \; t \in C \; \& \; s \notin t \}) \}\) и \(\overline{\overline{D}} \leq \overline{\overline{x}}\).
+Но \(x\) е крайно и непразно и значи \(D\) също. От \((\forall s \in x)(\exists t \in C)(x \notin t)\) следва, че \((\forall U \in D)(U \neq \emptyset)\).
+Тогава нека \(f\) е функция на избора за \(D\) (правим краен избор).
+Тогава очевидно \((\forall U \in D)(f(U) \in U \; \& \; (\exists s \in x)(f(U) \in C \; \& \; s \notin f(U)))\). Така \(\emptyset \neq Range(f) \subseteq C\) и от Лемата за образа на фунцкия с креан домейн имаме \(\overline{\overline{Range(f)}} \leq \overline{\overline{D}}\) значи \(Range(f)\) е крайно и е подмножество на линейно наредено множество. 
+Тогава по Лемата за най-големия елемент \(Range(f)\) има най-голям елемент относно \(\supseteq_T \cap \; (C \times C)\).
+Нека тогава \(t \in Range(f)\) и \((\forall v \in Range(f))(t \subseteq v)\).
+Очевидно \(\cap Range(f) \subseteq t\).
+Нека \(w \in t\). Нека \(r \in Range(f)\).
+Тогава понеже \(t \subseteq r\), то \(w \in r\).
+Така \((\forall v \in Range(f))(w \in v)\).
+Следователно \(w \in \cap Range(f)\).
+Следователно \(t \subseteq \cap Range(f)\).
+Понеже \(t \in Range(f) \subseteq C\), то \(t \in C\).
+Нека \(s \in x\), ако допуснем, че \(s \in t\),
+то \((\forall v \in Range(f))(s \in v)\).
+Но тогава \((\forall U \in D)(s \in f(U))\).
+Нека \(U \in D\) и \(\varphi(s, U, x, C)\).
+Тогава \((\forall v \in U)(s \notin v)\).
+В частност \(s \notin f(U)\). Но това е Абсурд!
+Следователно \((\forall s \in x)(s \notin t)\).
+Следователно \(t \cap x = \emptyset\).
+Но тогава \(t \notin C\), което е Абсурд!
+Следователно \((\forall c \in C)(Y \supseteq_T c) \; \& \; Y \in T\).
+Така всяка непразна верига в \(<T, \supseteq_T>\) има горна граница в \(T\).
+Следователно по Лемата на Цорн в \(T\) има максимален елемент относно \(\supseteq_T>\).
+Нека тогава \(V \in T\) и \(V\) е максимален относно \(\supseteq_T>\).
+Тогава \(V\) е минимален относно \(\subseteq_T\).
+Нека \(Z \subseteq V\) и \((\forall a \in A)(Z \cap a \neq \emptyset)\).
+Тогава понеже \(V \in \mathcal{P}(\cup A)\), то \(Z \in \mathcal{P}(\cup A)\).
+Но тогава \(Z \in T\). Понеже \(V\) е минимален относно \(\subseteq_T\),
+то \(Z \not\subset V\) и значи \(Z = V\). \(\qed\)
+
+\section*{Задача 13.}
+Нека \(\varphi(A, B, C) \leftrightharpoons \\
+A \subseteq B \; \& \; \forall f((f : C \to B) \implies (\cap Range(f) \in B \; \& \; \cup Range(f) \in B))\). \\
+Тогава
+\(\forall C \forall A ((A \neq \emptyset \; \& \; C \neq \emptyset) \implies \exists! B (\varphi(A, B, C) \; \& \; \forall D (\varphi(A, D, C) \implies B \subseteq D)))\).
+
+\subsection*{Решение:}
+Нека \(A\) и \(C\) са непразни множества.
+
+\subsubsection*{Наблюдение 1:}
+\((\forall a \in A)(a \subseteq \cup A) \implies (\forall a \in A)(a \in \mathcal{P}(\cup A)) \implies A \subseteq \mathcal{P}(\cup A) \)
+следователно \(A \in \mathcal{P}(\mathcal{P}(\cup A))\).
+
+\subsubsection*{Наблюдение 2:}
+Нека \(X \in \mathcal{P}(\mathcal{P}(\cup A))\).
+Нека \(f : C \to X\). Тогава
+\(Range(f) \subseteq X \subseteq \mathcal{P}(\cup A)\).
+Следователно \(Range(f) \in \mathcal{P}(\mathcal{P}(\cup A))\).
+Но тогава очевидно \\
+\(\cap Range(f) \in \mathcal{P}(\cup A)\) и
+\(\cup Range(f) \in \mathcal{P}(\cup A)\).
+Тогава по аксиомната схема за отделянето следните две са множества:
+\begin{align*}
+\{U \; | \; U \in \mathcal{P}(\cup A) \; \& \; \exists g ((g : C \to X) \; \& \; U = \cap Range(g))\} \\
+\{U \; | \; U \in \mathcal{P}(\cup A) \; \& \; \exists g ((g : C \to X) \; \& \; U = \cup Range(g))\}
+\end{align*}
+Нека тогава \(N = \{U \; | \; U \in \mathcal{P}(\cup A) \; \& \; \exists g ((g : C \to X) \; \& \; U = \cup Range(g))\}\) и
+\(S = \{U \; | \; U \in \mathcal{P}(\cup A) \; \& \; \exists g ((g : C \to X) \; \& \; U = \cap Range(g))\}\).
+Тогава очевидно \(N \subseteq \mathcal{P}(\cup A)\) и \(S \subseteq \mathcal{P}(\cup A)\).
+Следователно \(N \in \mathcal{P}(\mathcal{P}(\cup A))\) и
+\(S \in \mathcal{P}(\mathcal{P}(\cup A))\).
+Следователно \(\cup\{X, N, S\} \in \mathcal{P}(\mathcal{P}(\cup A))\).
+
+\subsubsection*{Наблюдение 3:}
+По аксиомната схема за отделянето \\
+\(\{T \; | \; T \in \mathcal{P}(\mathcal{P}(\cup A)) \; \& \; A \subseteq T \}\) е множество. \\
+Нека  \(S = \{T \; | \; T \in \mathcal{P}(\mathcal{P}(\cup A)) \; \& \; A \subseteq T \}\). Очевидно \(S \subseteq \mathcal{P}(\mathcal{P}(\cup A))\). \\
+От Наблюдение 1 
+\(A \in \mathcal{P}(\mathcal{P}(\cup A))\), следователно \\
+\(A \subseteq \mathcal{P}(\cup A)\) и \(\mathcal{P}(\cup A) \in \mathcal{P}(\mathcal{P}(\cup A))\).
+Следователно \(\mathcal{P}(\cup A) \in S\). \\
+Нека \(Y \subseteq S\) е произволно и \(Y \neq \emptyset\).
+Понеже \((\forall Z \in Y)(Z \in S)\), \\
+то \((\forall Z \in Y)(A \subseteq Z \; \& \; Z \in \mathcal{P}(\mathcal{P}(\cup A)))\).
+Следователно \\
+\(A \subseteq \cap Y \; \& \; \cap Y \in \mathcal{P}(\mathcal{P}(\cup A))\).
+Следователно \(\cap Y \in S\). \\
+Следователно \((\forall Y \in \mathcal{P}(S) \setminus \{\emptyset\})(\cap Y \in S)\).
+
+\subsubsection*{Същинско решение:}
+Нека \(P = \mathcal{P}(\mathcal{P}(\cup A)))\)
+и нека \(S = \{T \; | \; T \in P \; \& \; A \subseteq T \}\). \\
+Дефинираме три оператора.
+Нека \(h_\cap : P \to P\), \(h_\cup : P \to P\) и \(h : S \to S\) и
+\begin{align*}
+    (\forall X \in P)(h_\cap(X) = \{U \; | \; U \in \mathcal{P}(\cup A) \; \& \; \exists g ((g : C \to X) \; \& \; U = \cap Range(g))\}) \\
+    \& \\
+    (\forall X \in P)(h_\cup(X) = \{U \; | \; U \in \mathcal{P}(\cup A) \; \& \; \exists g ((g : C \to X) \; \& \; U = \cup Range(g))\}) \\
+    \& \\
+    (\forall X \in S)(h(X) = \cup \{X,  h_\cap(X), h_\cup(X)\}).
+\end{align*}
+
+От Наблюдение 2 е ясно, че \(h_\cap\) и \(h_\cup\) са коректно дефинирани. \\
+Нека \(X \in S\). Тогава \(X \subseteq \cup \{X,  h_\cap(X), h_\cup(X)\}\).
+Понеже \(X \in S\), то \(X \in P\) и \(A \subseteq X\).
+Следователно \(\cup \{X,  h_\cap(X), h_\cup(X)\} \in P\) и \(A \subseteq \cup \{X,  h_\cap(X), h_\cup(X)\}\). Следователно \(\cup \{X,  h_\cap(X), h_\cup(X)\} \in S\).
+Тогава очевидно \(h : S \to S\). \\
+Нека \(Y \in S\) и \(Z \in S\) и \(Y \subseteq Z\).
+От \(Y \subseteq Z\) следва \(\tensor[^C]{Y}{} \subseteq \tensor[^C]{Z}{}\).
+Тогава очевидно \(h_\cap(Y) \subseteq h_\cap(Z)\) и \(h_\cup(Y) \subseteq h_\cup(Z)\).
+Следователно очевидно \(h(Y) \subseteq h(Z)\). Следователно \(h\) е монотонен в \(S\).
+Но тогава от Наблюдение 3 следва, че е приложима Задача 3.
+Нека тогава \(B\) е най-малката неподвижна точка за \(h\).
+Ще покажем, че \(\varphi(A, B, C)\) е в сила.
+Понеже \(B\) е неподвижна точка за \(h\), то \(B \in S\) и значи \(A \subseteq B\).
+Нека \(f\) е произволно, такова че \(f : C \to B\).
+Нека \(I = \cap Range(f)\) и \(U = \cup Range(f)\).
+От Наблюдение 2 следва, че \(I \in \mathcal{P}(\cup A)\) и \(U \in \mathcal{P}(\cup A)\).
+Така \(I \in h_\cap(B)\) и \(U \in h_\cup(B)\).
+Но \(B = h(B) = \cup\{B, h_\cap(B), h_\cup(B)\}\),
+следователно \(h_\cap(B) \subseteq B\) и \(h_\cup(B) \subseteq B\).
+Значи \(I \in B\) и \(U \in B\).
+Но \(f\) беше произволно, следователно \(\varphi(A, B, C)\).
+Нека \(D\) е произволно и такова, че \(\varphi(A, D, C)\).
+Тогава \(A \subseteq D\). Но \(A \subseteq \mathcal{P}(\cup A)\)
+и значи \(\emptyset \neq A \subseteq (D \cap \mathcal{P}(\cup A))\).
+Нека \(T = D \cap \mathcal{P}(\cup A)\). Тогава \(A \subseteq T\)
+и \(T \subseteq D\) и \(T \subseteq \mathcal{P}(\cup A)\).
+Следователно \(T \in P\) и \(A \subseteq T\).
+Следователно \(T \in S\). Понеже \(T \subseteq T\), то \(T \subseteq h(T)\).
+Нека \(R \in h_\cap(T)\) и \(R\) е произволно.
+Тогава \(\exists g ((g : C \to T) \; \& \; R = \cap Range(g))\).
+Нека тогава \(g\) е такова, че \(g : C \to T\) и \(R = \cap Range(g)\).
+Понеже \(g : C \to T\) и \(T \subseteq D\), то \(g : C \to D\).
+Но тогава от \(\varphi(A, D, C)\), следва че \(R \in D\).
+Но \(R \in h_\cap(T)\) и значи \(R \in \mathcal{P}(\cup A)\).
+Така \(R \in D\) и \(R \in \mathcal{P}(\cup A)\), 
+следователно \(R \in T\). Но понеже \(R\) беше произволно,
+то \(h_\cap(T) \subseteq T\).
+По аналогични разсъждения \(h_\cup(T) \subseteq T\).
+Но също така \(T \subseteq T\) и така \(h(T) \subseteq T\).
+Следователно \(h(T) = T\) и \(T \in S\).
+Но \(B\) е най-малката неподвижна точка за \(h\),
+следователно \(B \subseteq T\).
+Но \(T \subseteq D\), следователно \(B \subseteq D\).
+Понеже \(D\) е произволно, то следва че
+\(\forall D (\varphi(A, D, C) \implies B \subseteq D)\).
+Нека \(V\) е такова, че \(\varphi(A, V, C)\) и
+\(\forall D (\varphi(A, D, C) \implies V \subseteq D)\).
+Тогава понеже \(\varphi(A, B, C)\), то \(V \subseteq B\).
+Но от \(\varphi(A, V, C)\) и доказаното следва, че \(B \subseteq V\).
+Следователно \(V = B\). Следователно \(B\) е единствено със свойството
+\(\varphi(A, B, C)\) и \(\forall D (\varphi(A, D, C) \implies B \subseteq D)\). \(\qed\)
+
+\section*{Задача 14.}
+Нека \(<A, \leq_1>\) е добре наредено множество и \(\forall n (\overline{\overline{A}} \neq \overline{\overline{n}})\). Тогава има добра наредба \(\leq_2\) в \(A\),
+такава че \(<A, \leq_1>\) и \(<A, \leq_2>\) не са изоморфни.
+
+\subsection*{Решение:}
+От Лемата за добрата наредба и ординала има единствен ординал \(\alpha\),
+такъв че \\
+\(<A, \leq_1> \; \cong \; <\alpha, \leq_\alpha>\).
+Нека тогава \(\alpha\) е този ординал.
+Нека тогава \\
+\(g : A \bijection \alpha\) е единствения изоморфизъм между \(<A, \leq_1>\) и \(<\alpha, \leq_\alpha>\).
+Ако допуснем, че \(\alpha < \omega\), то \(\alpha \in \omega\)
+и \(\overline{\overline{A}} \neq \overline{\overline{\alpha}}\),
+което е Абсурд. Следователно \(\omega \leq \alpha\).
+Тогава \(f(\beta) = \begin{cases}
+ 0 & , \; \beta = \alpha \\
+ \beta & , \; \omega \leq \beta < \alpha \\
+ s(\beta) & , \; \beta < \omega
+\end{cases}\)
+\quad е биекция от \(\alpha\) към \(s(\alpha)\).
+Но \(\alpha\) е собствен начален сегмент на \(s(\alpha)\)
+относно наредбата на \(s(\alpha)\) по свойствата на ординалите.
+Следователно \(f\) не запазва наредбата, защото ако я запазваше
+\(f\) щеше да е изоморфизъм между \(<\alpha, \leq_\alpha>\) и \(<s(\alpha), \leq_{s(\alpha)}>\), което е невъзможно. 
+Очевидно \(g \circ f : A \bijection s(\alpha)\).
+В \(A\) въвеждаме релацията \(\leq_2\) по следния начин
+\(a_1 \leq_2 a_2 \iff <a_1, a_2> \; \in A \times A \; \& \; (g \circ f)(a_1) \leq (g \circ f)(a_2)\).
+Очевидно \(\leq_2\) е добра наредба в \(A\) пренесена от \(<s(\alpha), \leq_{s(\alpha)}>\).
+Тоест \(<A, \leq_2> \; \cong \; <s(\alpha), \leq_{s(\alpha)}>\).
+Ако допуснем, че \(<A, \leq_1> \; \cong \; <A, \leq_2>\),
+то ще получим, че \(<\alpha, \leq_\alpha> \; \cong \; <s(\alpha), \leq_{s(\alpha)}>\),
+защото свойството изоморфизъм на добри наредби е симетрично и транзитивно,
+което ще доведе до противоречие.
+Следователно \(<A, \leq_1>\) и \(<A, \leq_2>\) не са изоморфни. \(\qed\)
+
+
+
+\section*{Задача 15. \(\forall A (\overline{\overline{A}} < \overline{\overline{A}} + \overline{\overline{\mathcal{H}(A)}})\)}
+
+\subsection*{Решение:}
+Нека \(B = (\{0\} \times A) \cup (\{1\} \times \mathcal{H}(A)) \).
+Тогава \(\overline{\overline{B}} = \overline{\overline{A}} + \overline{\overline{\mathcal{H}(A)}}\).
+\\
+Нека \(zero \; : \; A \to \{0\} \times A\) е такава, че
+\((\forall a \in A)(zero(a) = <0, a>)\).
+\\
+Тогава очевидно \(zero : A \injection B\)
+и значи \(\overline{\overline{A}} \leq \overline{\overline{B}}\).
+Да допуснем, че \(\overline{\overline{A}} = \overline{\overline{B}}\).
+\\
+Нека тогава \(f : B \bijection A\).
+Тогава \(f_{\restriction \{1\} \times \mathcal{H}(A)} :
+\{1\} \times \mathcal{H}(A) \injection A\).
+\\
+Нека \(one \; : \; \mathcal{H}(A) \to \{1\} \times \mathcal{H}(A)\) е такава, че
+\\
+\((\forall x \in \mathcal{H}(A))(one(x) = <1, x>)\).
+Очевидно \(one : \mathcal{H}(A) \bijection \{1\} \times \mathcal{H}(A)\).
+Следователно \(one \circ f : \mathcal{H}(A) \injection A\).
+Така \(\overline{\overline{\mathcal{H}(A)}} \leq \overline{\overline{A}}\), което е Абсурд!
+Следователно \(\forall A (\overline{\overline{A}} < \overline{\overline{A}} + \overline{\overline{\mathcal{H}(A)}})\). \(\qed\)
+
+
+\end{document}
