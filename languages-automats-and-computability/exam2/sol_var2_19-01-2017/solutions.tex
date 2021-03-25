@@ -55,7 +55,7 @@ w = \alpha\beta\gamma \land \; w' = \alpha\beta'\gamma \land \exists \; \beta \t
 
 $v \overset{*}{\implies} u \iff (v, \; u) \in R_{\overset{*}{\implies}}$
 
-\subsection{$G$ е контекстно-свободна граматика определете езика $\Lang(G)$}
+\subsection{$G$ е контекстно-свободна граматика. Определете езика $\Lang(G)$}
 
 $\Lang(G) = \{w \in \Sigma^* \; | \; S \overset{*}{\implies} w\}$
 
@@ -68,7 +68,7 @@ $\Lang(G) = \{w \in \Sigma^* \; | \; S \overset{*}{\implies} w\}$
 За $aaba$: \\
 
 $S \implies (S \to ABA) \\\\
-ABBA \implies (A \to aA) \\\\
+ABA \implies (A \to aA) \\\\
 aABA \implies (A \to a) \\\\
 aaBA \implies (B \to b) \\\\
 aabA \implies (A \to a) \\\\
@@ -101,7 +101,7 @@ $(\{S, \; A, \; B\}, \; \{a, \; b\}, \; \{S \to AABa, \; A \to aAa \; | \; a, \;
 
 \subsubsection{Вярно ли е, че езикът $\{a, \; b\}^* \backslash \Lang(G)$ е контекстно-свободен?}
 
-Лесно се вижда, че $\Lang(G) = \Lang(a^+(bbb \; + \; b)^+a^+)$, тоест че $\Lang(G)$ всъщност е регулярен език. \\
+Лесно се вижда, че $\Lang(G) = \Lang(a^+b(bb)^*a^*)$, тоест че $\Lang(G)$ всъщност е регулярен език. \\
 
 Ние знаем, че допълнението на всеки регулярен език е регулярен език, тоест $\{a, \; b\}^* \backslash \Lang(G)$ е регулярен. \\
 
