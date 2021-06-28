@@ -1,0 +1,260 @@
+\documentclass[a4paper,9pt]{extarticle}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}                
+\usepackage{enumerate}
+\usepackage{multirow}
+\usepackage{alltt}
+\usepackage{euler}
+
+\newcommand{\Nat}{\mathbb{N}}
+\newcommand{\Int}{\mathbb{Z}}
+\newcommand{\Rat}{\mathbb{Q}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Uni}{\mathcal{U}}
+\newcommand{\dimention}{\mathbf{dim}}
+
+\author{Иво Стратев}
+\title{Тема 21 - Ранг на матрици}
+
+\begin{document}
+
+\maketitle
+
+\section{Означения}
+
+\subsection{Универсум на структура}
+Ако \(\mathcal{S}\) е (алгебрическа) структура с универсум / домейн / носител множество \(E\), то универсума на \(\mathcal S\) ще белжим с \(\Uni(S)\) и в сила е \(\Uni(\mathcal S) = E\). \\\\
+Например ако \(F\) образува поле \(\F\), то \(\Uni(\F) = F\)
+или ако \(V\) образува линейно пространство \(\mathcal L\), то \(\Uni(\mathcal L) = V\).
+
+\subsection{Множество на матрици с фиксиран размер и над фиксирано поле}
+Ако \(n, m \in \Nat_+\) и \(\F\) е поле, то множеството на матриците с \(m\) реда и \(n\) стълба над поле \(\F\) ще бележим с \(M_{m, n}(\F)\).
+
+\subsection{Линейно простраство на матрици с фиксиран размер и над фиксирано поле}
+Ако \(n, m \in \Nat_+\) и \(\F\) е поле, то линейното пространство, което \(M_{m, n}(\F)\) образува спрямо стандартните операции за действия с матрици ще бележим с \(\mathcal{M}_{m, n}(\F)\). \\\\
+Забележка: \(\Uni(\mathcal{M}_{m, n}(\F)) = M_{m, n}(\F)\).
+
+\subsection{Подпространство}
+Нека \(V\) образува Лин. п-во \(\mathcal L\) над поле \(\F\) и \(W \subseteq V\) и \(W\) образува подпространство на \(\mathcal L\), тогава това подпространство ще бележим с \(SubSpace(W, \mathcal L)\)
+и така в сила ще е неравенството \(\dimention(SubSpace(W, \mathcal L)) \leq \dimention(\mathcal L)\).
+
+\section{Ранг на крайно множество вектори (система)}
+Нека \(\mathcal L\) е лин. п-во над поле \(\F\). Нека \(A\) е крайно подмножество на \(\Uni(\mathcal L)\).
+Тогава рангът на \(A\) е равен на \(\dimention(SubSpace(l_\mathcal{L}(A), \mathcal L))\) - размерността на подпространството на \(\mathcal L\), образувано от линейната обивка на \(A\) спрямо \(\mathcal L\).
+Рангът на \(A\) ще бележим с \(rank_\mathcal{L}(A)\).\\\\
+Забелжка: Ако \(A = \{a_1, a_2, \dots, a_n\}\), то \[l_\mathcal{L}(A) = \{v \in \Uni(\mathcal L) \mid (\exists c_1, c_2, \dots, c_n \in \Uni(\F))[v = \displaystyle\sum_{i = 1}^n c_i \odot a_i] \}.\]
+
+\section{Ранг по редове на матрица}
+Нека \(n, m \in \Nat_+\) и \(\F\) е поле и нека \(A \in M_{m, n}(\F)\) и редовете на \(A\) са \(a_1, a_2, \dots, a_m\).
+Тогава рангът по редове на матрицата е равен на \(rank_{\mathcal{M}_{1, n}(\F)}(\{a_1, a_2, \dots, a_m\})\).
+Рангът по редове на \(A\) ще бележим с \(rowRank_{m, n, \F}(A)\).
+
+\section{Ранг по стълбове на матрица}
+Нека \(n, m \in \Nat_+\) и \(\F\) е поле и нека \(A \in M_{m, n}(\F)\) и стълбовете на \(A\) са \(a^1, a^2, \dots, a^n\).
+Тогава рангът по стълбове на матрицата е равен на \(rank_{\mathcal{M}_{m, 1}(\F)}(\{a^1, a^2, \dots, a^n\})\).
+Рангът по стълбове на \(A\) ще бележим с \(colRank_{m, n, \F}(A)\).
+
+\section{Ранг на матрица}
+Нека \(n, m \in \Nat_+\) и \(\F\) е поле и нека \(A \in M_{m, n}(\F)\).
+Тогава рангът на \(A\) е равен на \(rowRank_{m, n, \F}(A)\).
+Рангът на \(A\) ще бележим с \(rank_{m, n, \F}(A)\).
+
+\section{Лема за ранговете}
+Нека \(n, m \in \Nat_+\) и \(\F\) е поле и нека \(A \in M_{m, n}(\F)\). \\
+Тогава \(rowRank_{m, n, \F}(A) \leq colRank_{m, n, \F}(A)\).
+
+\subsection{Доказателство:}
+Нека \(a_1, a_2, \dots, a_m\) са редовете на \(A\), а \(a^1, a^2, \dots, a^n\) са стълбовете. \\
+Нека \(t = colRank_{m, n, \F}(A)\).
+Тогава нека \(c^1, c^2, \dots, c^t\) е базис на \(SubSpace(l_{\mathcal{M}_{m, 1}(\F)}(\{a^1, a^2, \dots, a^n\}, \mathcal{M}_{m, 1}(\F))\). \\
+Нека тогава \(R \in M_{t, n}(\F)\) е такава, че \[(\forall i \in \{1, 2, \dots, n\})[a^i = R_{1i} c^1 + R_{2i} c^2 + \dots + R_{ti} c^t].\]
+Нека \(C\) е матрицата със стълбове \(c^1, c^2, \dots, c^t\).
+Така
+\begin{align*}
+   \forall i \in \{1, 2, \dots, n\} \\
+    a^i = \begin{bmatrix}
+        a_{1i} \\
+        a_{2i} \\
+        \vdots \\
+        a_{mi}
+    \end{bmatrix} =
+    R_{1i} \begin{bmatrix}
+        c_{11} \\
+        c_{21} \\
+        \vdots \\
+        c_{m1}
+    \end{bmatrix}
+    + R_{2i} \begin{bmatrix}
+        c_{12} \\
+        c_{22} \\
+        \vdots \\
+        c_{m2}
+    \end{bmatrix}
+    + \dots +
+    R_{ti} \begin{bmatrix}
+        c_{1r} \\
+        c_{2r} \\
+        \vdots \\
+        c_{mt}
+    \end{bmatrix} =
+    \begin{bmatrix}
+        \displaystyle\sum_{k = 1}^t R_{ki} c_{1k} \\
+         \displaystyle\sum_{k = 1}^t R_{ki} c_{2k} \\
+        \vdots \\
+         \displaystyle\sum_{k = 1}^t R_{ki} c_{mk} \\
+    \end{bmatrix}
+\end{align*}
+Следователно
+\begin{align*}
+    \forall i \in \{1, 2, \dots, m\} \\
+    a_i = \begin{bmatrix}
+        a_{i1} &
+        a_{i2} &
+        \hdots &
+        a_{in}
+    \end{bmatrix} =
+    \begin{bmatrix}
+        \displaystyle\sum_{k = 1}^t R_{k1} c_{ik} &
+        \displaystyle\sum_{k = 1}^t R_{k2} c_{ik} &
+        \hdots &
+        \displaystyle\sum_{k = 1}^t R_{kn} c_{ik}
+    \end{bmatrix} = \\
+    c_{i1} \begin{bmatrix}
+        R_{11} & R_{12} & \hdots & R_{1n}
+    \end{bmatrix}
+    + c_{i2} \begin{bmatrix}
+        R_{21} & R_{22} & \hdots & R_{2n}
+    \end{bmatrix}
+    + \dots + 
+    c_{it} \begin{bmatrix}
+        R_{t1} & R_{t2} & \hdots & R_{tn}
+    \end{bmatrix}.
+\end{align*}
+Сега ако означим с \(r_1, r_2, \dots, r_t\) редовете на \(R\) получаваме
+\[(\forall i \in \{1, 2, \dots, m\})[a_i = c_{i1} r_1 + c_{i2} r_2 + \dots + c_{it} r_t ]\]
+или
+\[(\forall i \in \{1, 2, \dots, m\})[a_i = l_{\mathcal{M}_{1, n}(\F)}(r_1, r_2, \dots, r_t)].\]
+Следователно \(dim(SubSpace(l_{\mathcal{M}_{1, n}(\F)}(\{a_1, a_2, \dots, a_m\}, \mathcal{M}_{1, n}(\F))) \leq t\).\\
+Следователно  \(rowRank_{m, n, \F}(A) \leq t = colRank_{m, n, \F}(A)\). \(\qed\)
+
+\section{Теорема за ранговете}
+Нека \(n, m \in \Nat_+\) и \(\F\) е поле и нека \(A \in M_{m, n}(\F)\). \\
+Тогава \(rowRank_{m, n, \F}(A) = colRank_{m, n, \F}(A)\).
+
+\subsection{Доказателство:}
+Прилагаме Лемата за ранговете за \(A^t\) и получаваме \\
+\(rowRank_{n, m, \F}(A^t) \leq colRank_{n, m, \F}(A^t)\), но съобразваме, че \\
+\(rowRank_{n, m, \F}(A^t) = colRank_{m, n, \F}(A)\) и \(colRank_{n, m, \F}(A^t) = rowRank_{m, n, \F}(A)\).
+Следователно \(colRank_{m, n, \F}(A) \leq rowRank_{m, n, \F}(A)\).
+Но ако приложим Лемата за ранговете за \(A\) получаваме и \(rowRank_{m, n, \F}(A) \leq colRank_{m, n, \F}(A)\).
+Следователно \(rowRank_{m, n, \F}(A) = colRank_{m, n, \F}(A)\). \(\qed\)
+
+\section{Система линейни уравнения}
+Нека \(n, m \in \Nat_+\) и \(\F\) е поле и нека \(a_{11}, a_{12}, \dots, a_{1n}; a_{21}, a_{22}, \dots, a_{2n}; \dots \; a_{m1}, a_{m2}, \dots, a_{mn} \in \Uni(\F)\) и \(b_1, b_2, \dots, b_m\in \Uni(\F)\) и \(x_1, x_2, \dots x_n \in \Uni(\F)\) тогава системата
+\begin{align*}
+    a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n = b_1 \\
+    a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n = b_2 \\
+    \vdots \\
+    a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n = b_m
+\end{align*}
+наричаме система линейни уравнения. \\
+Ако \(A = \begin{bmatrix}
+    a_{11} & a_{12} & \dots & a_{1n} \\
+    a_{12} & a_{22} & \dots & a_{2n} \\
+    \vdots & \vdots & \ddots &\vdots \\
+    a_{m1} & a_{m2} & \dots & a_{mn} \\
+\end{bmatrix}\), \(x = \begin{bmatrix}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_n
+\end{bmatrix}\) и \(b = \begin{bmatrix}
+    b_1 \\
+    b_2 \\
+    \vdots \\
+    b_m
+\end{bmatrix}\), то горната система ще записваме на кратко като \(Ax = b\).
+
+\section{Множество от решения на СЛУ}
+Нека \(n, m \in \Nat_+\) и \(\F\) е поле и нека \(A \in M_{m, n}(\F)\) и \(b \in M_{n, 1}(\F)\) тогава множеството
+\(\{x \in M_{m, 1}(\F) \mid Ax = b\}\) ще означаваме с \(Sol(A, b)\).
+
+\section{Съвместима система}
+Нека \(n, m \in \Nat_+\) и \(\F\) е поле и нека \(A \in M_{m, n}(\F)\) и \(b \in M_{n, 1}(\F)\).
+Системата \(Ax = b\) наричаме съвместима ако \(Sol(A, b) \neq \emptyset\).
+
+\section{Несъвместима система}
+Нека \(n, m \in \Nat_+\) и \(\F\) е поле и нека \(A \in M_{m, n}(\F)\) и \(b \in M_{n, 1}(\F)\).
+Системата \(Ax = b\) наричаме несъвместима ако не е съвместима.
+
+\section{Теорема на Руше}
+Нека \(n, m \in \Nat_+\) и \(\F\) е поле и нека \(A \in M_{m, n}(\F)\) и \(b \in M_{n, 1}(\F)\).
+Тогава системата \(Ax = b\) е съвместима тогава и само тогава когато \(rank_{m, n + 1, \F}([A | b]) = rank_{m, n, \F}(A)\).
+
+\subsection{Доказателство:}
+Нека стълбовете на \(A\) са \(a^1, a^2, \dots, a^n\) тогава
+\(Ax = b\) е съвместима ТСТК \(Sol(A, b) \neq \emptyset\) ТСТК \((\exists x \in M_{m, 1}(\F))[Ax = b]\) ТСТК
+\begin{align*}
+    \exists x_1, x_2, \dots, x_n \in \Uni(F) \\
+    a_{11} x_1 + a_{12} x_2 + \cdots + a_{1n} x_n = b_1 \\
+    a_{21} x_1 + a_{22} x_2 + \cdots + a_{2n} x_n = b_2 \\
+    \vdots \\
+    a_{m1} x_1 + a_{m2} x_2 + \cdots + a_{mn} x_n = b_m
+\end{align*}
+ТСТК
+\begin{align*}
+    \exists x_1, x_2, \dots, x_n \in \Uni(F) \\
+    x_1 \begin{bmatrix}
+        a_{11} \\
+        a_{21} \\
+        \vdots \\
+        a_{m1}
+    \end{bmatrix}
+    + x_2 \begin{bmatrix}
+        a_{12} \\
+        a_{22} \\
+        \vdots \\
+        a_{m2}
+    \end{bmatrix}
+    + \dots
+    + x_n \begin{bmatrix}
+        a_{1n} \\
+        a_{2n} \\
+        \vdots \\
+        a_{mn}
+    \end{bmatrix}
+    = \begin{bmatrix}
+        b_1 \\
+        b_2 \\
+        \vdots \\
+        b_m
+    \end{bmatrix}
+\end{align*}
+ТСТК
+\begin{align*}
+    \exists x_1, x_2, \dots, x_n \in \Uni(F) \\
+    x_1 a^1 + x_2 a^2 + \dots + x_n a^n = b
+\end{align*}
+ТСТК
+\begin{align*}
+    b \in l_{M_{m, 1}(\F)}(\{a^1, a^2, \dots, a^n\})
+\end{align*}
+ТСТК \(rank_{\mathcal{M}_{m, 1}(\F)}(\{b\} \cup \{a^1, a^2, \dots, a^n\}) = rank_{\mathcal{M}_{m, 1}(\F)}(\{a^1, a^2, \dots, a^n\})\) \\
+ТСТК \(rank_{m, n + 1, \F}([A | b]) = rank_{m, n, \F}(A)\). \\\\
+Следователно \(Ax = b\) е съвместима ТСТК \(rank_{m, n + 1, \F}([A | b]) = rank_{m, n, \F}(A)\). \(\qed\)
+
+\section{Хомогенна система}
+Нека \(n, m \in \Nat_+\) и \(\F\) е поле и нека \(A \in M_{m, n}(\F)\) и \(b \in M_{n, 1}(\F)\).
+Системата \(Ax = b\) наричаме хомогенна, ако \((\forall i \in \{1, 2, \dots, n\})[b_i = 0_\F]\), тоест \(b = \theta\).
+
+\section{Фундаментална система от решения}
+Нека \(n, m \in \Nat_+\) и \(\F\) е поле и нека \(A \in M_{m, n}(\F)\).
+Фундаментална система от решения на ситемата \(Ax = \theta\) наричаме всеки базис на
+\(SubSpace(Sol(A, \theta),\; \mathcal{M}_{n, 1}(\F))\).
+\end{document}
